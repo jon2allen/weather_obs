@@ -53,6 +53,9 @@ def weather_obs_init():
       year, month, day, hour, min = map(str, time.strftime("%Y %m %d %H %M").split())
       station_file = station_id + '_Y' + year + '_M' + month + '_D' + day + '_H' + hour + ".csv"
       print("Satation filename: ", station_file)
+    else:
+      print("Error: No station given - please use --station")
+      exit(4)		 
     return True
 # default global vars.
 # iteration is for duration/repetitive hourly collection - so you know what index you are at. 
