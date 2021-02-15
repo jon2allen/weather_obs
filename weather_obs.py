@@ -55,6 +55,7 @@ def weather_obs_init():
       print("Satation filename: ", station_file)
     else:
       print("Error: No station given - please use --station")
+      print(" see readme")
       exit(4)		 
     return True
 # default global vars.
