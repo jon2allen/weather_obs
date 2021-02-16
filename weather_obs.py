@@ -31,7 +31,7 @@ def weather_obs_init():
     parser.add_argument('--init', help='Initialize CSV', action="store_true" )
     parser.add_argument('--station', help='URL of station' )
     parser.add_argument('--collect', help='Run collectiion in background - Y/N', action="store_true")
-    parser.add_argument('--append', help='Append data to CSV file - specifed',action="store_true" )
+    parser.add_argument('--append', help='Append data to CSV file - specifed' )
     parser.add_argument('-d', '--Duration', help='Always, 1Day, 1week, 1Month' )
     args = parser.parse_args()
     # cannocial header
@@ -61,6 +61,9 @@ def weather_obs_init():
       year, month, day, hour, min = map(str, time.strftime("%Y %m %d %H %M").split())
       station_file = station_id + '_Y' + year + '_M' + month + '_D' + day + '_H' + hour + ".csv"
       print("Satation filename: ", station_file)
+      if (append_data == True):
+          station_file = args.append
+          print( "Station id ( append ): ", station_file )
     else:
       print("Error: No station given - please use --station")
       print(" see readme")
@@ -101,7 +104,7 @@ def dump_xml( xmldata, iteration ):
 def trace_print( s ):
     global trace
     if ( trace == True):
-        print("fucntion trace: ", s)
+        print("function trace: ", s)
 """
  function: get_weather_from_NOAA(xmldata)
  inputs:
@@ -230,9 +233,19 @@ def weather_obs_app_start():
   return
 #
 #
+# need to specify file.
+def weather_obs_app_append():
+  content = get_weather_from_NOAA(primary_station)
+  #  print(content)
+  xmld1 = get_data_from_NOAA_xml( content)
+  weather_csv_driver('a', station_file, xmld1[0], xmld1[1])
+  return
 #
 if __name__ == "__main__":
   weather_obs_init()
+  if (append_data == True):
+      print("Appending data")
+      weather_obs_app_append()
   if (collect_data == True ):
      weather_obs_app_start()
      while True:
