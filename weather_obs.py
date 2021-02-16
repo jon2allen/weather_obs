@@ -257,9 +257,15 @@ if __name__ == "__main__":
       print("Appending data")
       weather_obs_app_append()
   if (collect_data == True ):
+     global hours
+     hours = 0
      weather_obs_app_start()
      while True:
         schedule.run_pending()
+        hours += 1
+        print("Num hours running: ", hours )
+        if ( hours == 23 ):
+            print("Running 1 day")
         time.sleep(60)
         
       
