@@ -9,9 +9,12 @@ To Run:
     - runs to default date time file.
 
 --init <file>  -- create custom name csv
+
 --append <file> -- append a row of xml data to cusotmer csv
+
 --collect -- continue and append observations in background until stopped
    ( Ctrl-C in foreground, kill in background )
+
 --duration ( not implemented yet )   
 
 

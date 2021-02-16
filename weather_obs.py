@@ -63,6 +63,7 @@ def weather_obs_init():
       station_file = station_id + '_Y' + year + '_M' + month + '_D' + day + '_H' + hour + ".csv"
       print("Satation filename: ", station_file)
       global init_csv
+      init_csv = False
       if (args.init):
           init_csv = True
           station_file = args.init
