@@ -28,7 +28,7 @@ import schedule
 
 def weather_obs_init():
     parser = argparse.ArgumentParser(description='NOAA weather obsevation')
-    parser.add_argument('--init', help='Initialize CSV', action="store_true" )
+    parser.add_argument('--init', help='Initialize CSV' )
     parser.add_argument('--station', help='URL of station' )
     parser.add_argument('--collect', help='Run collectiion in background - Y/N', action="store_true")
     parser.add_argument('--append', help='Append data to CSV file - specifed' )
@@ -38,6 +38,7 @@ def weather_obs_init():
     # can't depend on xml feed to complete every value
     global csv_headers
     csv_headers = ['credit','credit_URL','image','suggested_pickup','suggested_pickup_period','location','station_id','latitude','longitude','observation_time','observation_time_rfc822','weather','temperature_string','temp_f','temp_c','relative_humidity','wind_string','wind_dir','wind_degrees','wind_mph','wind_kt','wind_gust_mph','wind_gust_kt','pressure_string','pressure_mb','pressure_in','dewpoint_string','dewpoint_f','dewpoint_c','heat_index_string','heat_index_f','heat_index_c','windchill_string','windchill_f','windchill_c','visibility_mi','icon_url_base','two_day_history_url','icon_url_name','ob_url','disclaimer_url','copyright_url','privacy_policy_url']
+
     global append_data
     append_data = False
     if (args.append):
@@ -61,6 +62,11 @@ def weather_obs_init():
       year, month, day, hour, min = map(str, time.strftime("%Y %m %d %H %M").split())
       station_file = station_id + '_Y' + year + '_M' + month + '_D' + day + '_H' + hour + ".csv"
       print("Satation filename: ", station_file)
+      global init_csv
+      if (args.init):
+          init_csv = True
+          station_file = args.init
+          print("init_csv", station_file )
       if (append_data == True):
           station_file = args.append
           print( "Station id ( append ): ", station_file )
@@ -243,6 +249,9 @@ def weather_obs_app_append():
 #
 if __name__ == "__main__":
   weather_obs_init()
+  if (init_csv == True):
+      print("Init... ")
+      weather_obs_app_start()
   if (append_data == True):
       print("Appending data")
       weather_obs_app_append()
