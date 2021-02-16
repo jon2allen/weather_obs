@@ -30,7 +30,7 @@ def weather_obs_init():
     parser = argparse.ArgumentParser(description='NOAA weather obsevation')
     parser.add_argument('--init', help='Initialize CSV', action="store_true" )
     parser.add_argument('--station', help='URL of station' )
-    parser.add_argument('--collect', help='Run collectiion in background - Y/N')
+    parser.add_argument('--collect', help='Run collectiion in background - Y/N', action="store_true")
     parser.add_argument('--append', help='Append data to CSV file - specifed',action="store_true" )
     parser.add_argument('-d', '--Duration', help='Always, 1Day, 1week, 1Month' )
     args = parser.parse_args()
@@ -38,6 +38,10 @@ def weather_obs_init():
     # can't depend on xml feed to complete every value
     global csv_headers
     csv_headers = ['credit','credit_URL','image','suggested_pickup','suggested_pickup_period','location','station_id','latitude','longitude','observation_time','observation_time_rfc822','weather','temperature_string','temp_f','temp_c','relative_humidity','wind_string','wind_dir','wind_degrees','wind_mph','wind_kt','wind_gust_mph','wind_gust_kt','pressure_string','pressure_mb','pressure_in','dewpoint_string','dewpoint_f','dewpoint_c','heat_index_string','heat_index_f','heat_index_c','windchill_string','windchill_f','windchill_c','visibility_mi','icon_url_base','two_day_history_url','icon_url_name','ob_url','disclaimer_url','copyright_url','privacy_policy_url']
+    global collect_data
+    collect_data = False
+    if (args.collect):
+      collect_data = True
     # check station and fill out appropriate values
     if (args.station):
       global primary_station
@@ -61,7 +65,7 @@ def weather_obs_init():
 # default global vars.
 # iteration is for duration/repetitive hourly collection - so you know what index you are at. 
 obs_iteration = 0 
-dump_xml_flag = True
+dump_xml_flag = False
 trace = True
 primary_station = ""
 """
@@ -217,15 +221,18 @@ def weather_obs_app_start():
   #  print(content)
   xmld1 = get_data_from_NOAA_xml( content)
   weather_csv_driver('w', station_file, xmld1[0], xmld1[1])
-  schedule.every().hour.do( weather_collect_driver, primary_station, station_file)
+  if ( collect_data == True):
+      schedule.every().hour.do( weather_collect_driver, primary_station, station_file)
   return
 #
 #
 #
 if __name__ == "__main__":
   weather_obs_init()
-  weather_obs_app_start()
-  while True:
-    schedule.run_pending()
-    time.sleep(60)
+  if (collect_data == True ):
+     weather_obs_app_start()
+     while True:
+        schedule.run_pending()
+        time.sleep(60)
+        
       
