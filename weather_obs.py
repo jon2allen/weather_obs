@@ -63,13 +63,15 @@ def weather_obs_init():
       station_file = station_id + '_Y' + year + '_M' + month + '_D' + day + '_H' + hour + ".csv"
       print("Satation filename: ", station_file)
       global init_csv
-      init_csv = False
+      init_csv = True
+      # initialize a CSV until we prove we are appending.
       if (args.init):
           init_csv = True
           station_file = args.init
           print("init_csv", station_file )
       if (append_data == True):
           station_file = args.append
+          init_csv = False
           print( "Station id ( append ): ", station_file )
     else:
       print("Error: No station given - please use --station")
@@ -231,10 +233,14 @@ def weather_collect_driver( xml_url, csv_out):
 # TODO - need init the file. collect driver needs the file to exits
 # primitive_test_loop()
 def weather_obs_app_start():
-  content = get_weather_from_NOAA(primary_station)
-  #  print(content)
-  xmld1 = get_data_from_NOAA_xml( content)
-  weather_csv_driver('w', station_file, xmld1[0], xmld1[1])
+  # if appending and scheduling - skip over to collect
+  if ( append_data != True):
+      content = get_weather_from_NOAA(primary_station)
+      #  print(content)
+      xmld1 = get_data_from_NOAA_xml( content)
+      weather_csv_driver('w', station_file, xmld1[0], xmld1[1])
+      trace_print("Initializing new file: ")
+      trace_print(station_file)
   if ( collect_data == True):
       schedule.every().hour.do( weather_collect_driver, primary_station, station_file)
   return
@@ -257,14 +263,15 @@ if __name__ == "__main__":
       print("Appending data")
       weather_obs_app_append()
   if (collect_data == True ):
-     global hours
-     hours = 0
+     global run_minutes
+     run_minutes = 0
      weather_obs_app_start()
      while True:
         schedule.run_pending()
-        hours += 1
-        print("Num hours running: ", hours )
-        if ( hours == 23 ):
+        run_minutes += 1
+        if ((run_minutes % 60) == 0):
+            print("Num minutes running: ", run_minutes )
+        if ( run_minutes == 1440 ):
             print("Running 1 day")
         time.sleep(60)
         
