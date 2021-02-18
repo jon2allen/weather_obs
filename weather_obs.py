@@ -44,26 +44,35 @@ def weather_obs_init():
     parser.add_argument('-d', '--Duration', help='Always, 1Day, 1week, 1Month' )
     parser.add_argument('-c', '--cut', action="store_true")
     args = parser.parse_args()
+    print("parsing args...")
     # cannocial header
     # can't depend on xml feed to complete every value
     global csv_headers
     csv_headers = ['credit','credit_URL','image','suggested_pickup','suggested_pickup_period','location','station_id','latitude','longitude','observation_time','observation_time_rfc822','weather','temperature_string','temp_f','temp_c','relative_humidity','wind_string','wind_dir','wind_degrees','wind_mph','wind_kt','wind_gust_mph','wind_gust_kt','pressure_string','pressure_mb','pressure_in','dewpoint_string','dewpoint_f','dewpoint_c','heat_index_string','heat_index_f','heat_index_c','windchill_string','windchill_f','windchill_c','visibility_mi','icon_url_base','two_day_history_url','icon_url_name','ob_url','disclaimer_url','copyright_url','privacy_policy_url']
-    global cut_file
-    global append_data
-    cut_file = False
-    if (args.cut):
-       cut_file = True
-       print("cut file set")
-    append_data = False
-    if (args.append):
-        append_data = True
+    #  global collect_data
+    #  collect_data = False
+    #  global job1
     global collect_data
     collect_data = False
     global job1
-    if (args.collect):
-      collect_data = True
-      job1 = ""
-      append_data = True   # collect asssumes append
+    global cut_file
+    global append_data
+    global append_data_specified
+    global init_csv
+    init_csv = False
+    cut_file = False
+    append_data_specified = False
+    apppend_data = False
+    if (args.cut):
+       print("cut specified")
+       cut_file = True
+       print("cut file set")
+       append_data = False
+    if (args.append):
+        print("appdend specified")
+        append_data = True
+        append_data_specified = True
+       # collect asssumes append
     # check station and fill out appropriate values
     if (args.station):
       global primary_station
@@ -78,17 +87,23 @@ def weather_obs_init():
       print("Station id:  ", station_id)
       station_file = create_station_file_name()
       print("Satation filename: ", station_file)
-      global init_csv
       init_csv = True
       # initialize a CSV until we prove we are appending.
       if (args.init):
           init_csv = True
           station_file = args.init
           print("init_csv", station_file )
-      if (append_data == True):
+      if (append_data_specified == True):
           station_file = args.append
           init_csv = False
           print( "Station id ( append ): ", station_file )
+      if (args.collect):
+         print("collect in station setting")
+         collect_data = True
+         job1 = ""
+         if (init_csv == False) and (append_data_specified == False):
+            station_file = create_station_file_name()
+            print("Station filename (collect): ", station_file)
     else:
       print("Error: No station given - please use --station")
       print(" see readme")
@@ -101,6 +116,7 @@ dump_xml_flag = False
 trace = True
 primary_station = ""
 job1 = ""
+append_data = False
 """
  function: dump_xml
    purpose:  dump raw xml for debugging
@@ -258,6 +274,7 @@ def weather_collect_driver( xml_url, csv_out):
 # primitive_test_loop()
 def weather_obs_app_start():
   # if appending and scheduling - skip over to collect
+  global append_data
   if ( append_data != True):
       content = get_weather_from_NOAA(primary_station)
       #  print(content)
@@ -268,6 +285,7 @@ def weather_obs_app_start():
   if ( collect_data == True):
       global job1
       print("schedule")
+      append_data = True
       job1 = schedule.every().hour.do( weather_collect_driver, primary_station, station_file)
   return
 #
@@ -285,7 +303,7 @@ if __name__ == "__main__":
   if (init_csv == True):
       print("Init... ")
       weather_obs_app_start()
-  if (append_data == True):
+  if (append_data_specified == True):
       print("Appending data")
       weather_obs_app_append()
   if (collect_data == True ):
@@ -293,24 +311,33 @@ if __name__ == "__main__":
      run_minutes = 0
      t_begin = datetime.datetime.now()
      print("starting time:",t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
-     weather_obs_app_start()
+     # for case of collect and append specified
+     if (append_data_specified == True):
+         weather_obs_app_start()
      while True:
         schedule.run_pending()
         run_minutes += 1
         if ((run_minutes % 60) == 0):
+            # every hour check to see if need to cut
             print("Num minutes running: ", run_minutes )
             if ( cut_file == True):
                 cut_time = datetime.datetime.now()
                 if (cut_time.day > t_begin.day):
+                    if ((t_begin.minute - t_cut_time.minute) < 5):
+                        print(" cut time less than 1 hour")
+                        job1.run()
+                        print(" Ran job again to catch up ")
                     print("running cut operation")
                     station_file = create_station_file_name()
                     print("New Station file:", station_file)
+                    #create new file with cannocial headers
                     weather_csv_driver('c', station_file, csv_headers, [])
                     schedule.cancel_job(job1)
                     # we rassigned the next station file ( global )
                     # new writes should go there.
                     t_begin = datetime.datetime.now() 
                     print("Time of last cut:",t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
+                    # this will reschedule job with new file.
                     weather_obs_app_start()
         time.sleep(60)
         
