@@ -8,8 +8,8 @@
            append - append reading to CSV file
            station -  NOAA observation URL
            collect -  run in backgroun and collect hourly, implied append
-           cycle   -  "weekly, daily, monthly"
-                      Data per CSV file
+           cut   -  "weekly, daily, monthly"
+                      Data per CSV file, default is daily.
            duration - "Always" ( means loop forever until killed. )
                     - 1 day, 1 week or 1 month.
 
@@ -24,8 +24,17 @@ import csv
 import urllib.request
 import xml.etree.ElementTree as ET
 import time
+import datetime
 import schedule
 
+def create_station_file_name():
+      year, month, day, hour, min = map(str, time.strftime("%Y %m %d %H %M").split())
+      file_n = station_id + '_Y' + year + '_M' + month + '_D' + day + '_H' + hour + ".csv"
+      return file_n
+"""
+   Get arguments
+   Establish globals
+"""
 def weather_obs_init():
     parser = argparse.ArgumentParser(description='NOAA weather obsevation')
     parser.add_argument('--init', help='Initialize CSV' )
@@ -33,20 +42,28 @@ def weather_obs_init():
     parser.add_argument('--collect', help='Run collectiion in background - Y/N', action="store_true")
     parser.add_argument('--append', help='Append data to CSV file - specifed' )
     parser.add_argument('-d', '--Duration', help='Always, 1Day, 1week, 1Month' )
+    parser.add_argument('-c', '--cut', action="store_true")
     args = parser.parse_args()
     # cannocial header
     # can't depend on xml feed to complete every value
     global csv_headers
     csv_headers = ['credit','credit_URL','image','suggested_pickup','suggested_pickup_period','location','station_id','latitude','longitude','observation_time','observation_time_rfc822','weather','temperature_string','temp_f','temp_c','relative_humidity','wind_string','wind_dir','wind_degrees','wind_mph','wind_kt','wind_gust_mph','wind_gust_kt','pressure_string','pressure_mb','pressure_in','dewpoint_string','dewpoint_f','dewpoint_c','heat_index_string','heat_index_f','heat_index_c','windchill_string','windchill_f','windchill_c','visibility_mi','icon_url_base','two_day_history_url','icon_url_name','ob_url','disclaimer_url','copyright_url','privacy_policy_url']
-
+    global cut_file
     global append_data
+    cut_file = False
+    if (args.cut):
+       cut_file = True
+       print("cut file set")
     append_data = False
     if (args.append):
         append_data = True
     global collect_data
     collect_data = False
+    global job1
     if (args.collect):
       collect_data = True
+      job1 = ""
+      append_data = True   # collect asssumes append
     # check station and fill out appropriate values
     if (args.station):
       global primary_station
@@ -59,8 +76,7 @@ def weather_obs_init():
       print(station[:4])
       station_id = station[:4]
       print("Station id:  ", station_id)
-      year, month, day, hour, min = map(str, time.strftime("%Y %m %d %H %M").split())
-      station_file = station_id + '_Y' + year + '_M' + month + '_D' + day + '_H' + hour + ".csv"
+      station_file = create_station_file_name()
       print("Satation filename: ", station_file)
       global init_csv
       init_csv = True
@@ -84,6 +100,7 @@ obs_iteration = 0
 dump_xml_flag = False
 trace = True
 primary_station = ""
+job1 = ""
 """
  function: dump_xml
    purpose:  dump raw xml for debugging
@@ -188,13 +205,19 @@ def get_data_from_NOAA_xml( xmldata ):
                  in binary string - broken into lists
 """
 def weather_csv_driver( mode, csv_file, w_header, w_row ):
+   cut_mode = False
    trace_print('csv_driver')
-   if ( mode != 'w' ) and  ( mode != 'a' ):
-     print(" mode is invalid")
-     return False
+#   if ( mode != 'w' ) and  ( mode != 'a' ):
+#     print(" mode is invalid")
+#     return False
    if (len(csv_file) < 4 ):
      print("CSV file must contain station name")
      return False
+   if ( mode == 'c'):
+     # cut file request is active
+     # denote the special mode and change it to write.
+     cut_mode = True
+     mode = 'w'
    ## test for xmldata... not sure yet
    ## newline parm so that excel in windows doesn't have blank line in csv
    ## https://stackoverflow.com/questions/3348460/csv-file-written-with-python-has-blank-lines-between-each-row
@@ -203,7 +226,8 @@ def weather_csv_driver( mode, csv_file, w_header, w_row ):
         if ( mode == 'w' ):
             trace_print("csv_driver: header+row")
             weather_writer.writerow( w_header )
-            weather_writer.writerow( w_row )
+            if (cut_mode == False):
+              weather_writer.writerow( w_row )
         elif ( mode == 'a' ):
             trace_print("csv_drver: row_only")
             weather_writer.writerow( w_row )
@@ -242,7 +266,9 @@ def weather_obs_app_start():
       trace_print("Initializing new file: ")
       trace_print(station_file)
   if ( collect_data == True):
-      schedule.every().hour.do( weather_collect_driver, primary_station, station_file)
+      global job1
+      print("schedule")
+      job1 = schedule.every().hour.do( weather_collect_driver, primary_station, station_file)
   return
 #
 #
@@ -265,14 +291,27 @@ if __name__ == "__main__":
   if (collect_data == True ):
      global run_minutes
      run_minutes = 0
+     t_begin = datetime.datetime.now()
+     print("starting time:",t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
      weather_obs_app_start()
      while True:
         schedule.run_pending()
         run_minutes += 1
         if ((run_minutes % 60) == 0):
             print("Num minutes running: ", run_minutes )
-        if ( run_minutes == 1440 ):
-            print("Running 1 day")
+            if ( cut_file == True):
+                cut_time = datetime.datetime.now()
+                if (cut_time.day > t_begin.day):
+                    print("running cut operation")
+                    station_file = create_station_file_name()
+                    print("New Station file:", station_file)
+                    weather_csv_driver('c', station_file, csv_headers, [])
+                    schedule.cancel_job(job1)
+                    # we rassigned the next station file ( global )
+                    # new writes should go there.
+                    t_begin = datetime.datetime.now() 
+                    print("Time of last cut:",t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
+                    weather_obs_app_start()
         time.sleep(60)
         
       
