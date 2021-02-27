@@ -322,9 +322,7 @@ if __name__ == "__main__":
             print("Num minutes running: ", run_minutes )
             if ( cut_file == True):
                 t_cut_time = datetime.datetime.now()
-#               if (t_cut_time.day > t_begin.day):
-#               if (t_begin.hour - t_cut_time.hour == 4):  
-                if (t_begin.hour):    #testing
+                if (t_cut_time.day > t_begin.day):  
                     if ((t_begin.minute - t_cut_time.minute) < 5):
                         print(" cut time less than 1 hour")
                         job1.run()
