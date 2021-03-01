@@ -300,6 +300,20 @@ def weather_obs_app_append():
   weather_csv_driver('a', station_file, xmld1[0], xmld1[1])
   return
 #
+"""
+  Pass last cut time and check against now
+  check at each day, month, and year.
+  """
+def duration_cut_check( t_last )
+  t_now = datetime.datetime.now() 
+  if t_now.year > t_last.year:
+      return True
+  if t_now.month > t_last.month:
+      return True
+  if t_now.day > t_last.day:
+      return True
+  return False     
+
 if __name__ == "__main__":
   weather_obs_init()
   if (init_csv == True):
@@ -321,7 +335,7 @@ if __name__ == "__main__":
         run_minutes += 1
         if ((run_minutes % 60) == 0):
             # every hour check to see if need to cut
-            trace_print("Num minutes running: ", run_minutes )
+            trace_print("Num minutes running: ", str(run_minutes) )
             if ( cut_file == True):
                 t_cut_time = datetime.datetime.now()
                 if (t_cut_time.day > t_begin.day):  

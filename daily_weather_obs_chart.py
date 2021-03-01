@@ -22,12 +22,16 @@ import dateutil
 # csv dir is where the data resides
 # where the graph png shoud be placed.
 os.environ['TZ'] = 'US/Eastern'
+os.chdir('/var/www/html/weather_obs')
 station = ""
 csv_dir = ""
 graph_out_dir = ""
-day = "16"
-month = "02"
 now = datetime.datetime.now()
+
+day = str(now.day)
+month = str(now.month)
+print("month: ", month )
+print("day: ", day )
 
 
 """
@@ -44,23 +48,29 @@ dirlist = os.listdir()
 station_file_list = []
 target_csv = ""
 
-file_id = station + "_Y"
+file_id = station + "_Y" + str(now.year)
+
+print("file_id:", file_id )
+
 
 for f in dirlist:
-    if( f[:6] == file_id):
+    if( f[:10] == file_id):
        print("station CSV file:" ,f)
        station_file_list.append(f)
-    print("file: ", f[:6])
+    print("file: ", f[:10])
 print(station_file_list)    
 for f in station_file_list:
-    print("Month: ", f[12:14])
-    print("day: ", f[16:18])
-    d1 = int(f[16:18])
-    if (d1 == int(now.day)):
-        print("Match day:", f)
-        target_csv = f
-    if  d1 < int(day):
-        print("In the past:" ,f)
+    m1 = int(f[12:14])
+    if m1 == int(now.month):
+       print("match month")
+       print("Month: ", f[12:14])
+       print("day: ", f[16:18])
+       d1 = int(f[16:18])
+       if (d1 == int(now.day)):
+           print("Match day:", f)
+           target_csv = f
+       if  d1 < int(day):
+           print("In the past:" ,f)
         
 date_utc = lambda x: dateutil.parser.parse(x, ignoretz=True)
 obs1 = pd.read_csv(target_csv,parse_dates=[9],date_parser=date_utc)
