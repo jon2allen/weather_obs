@@ -17,9 +17,11 @@ import matplotlib.dates as mdates
 from matplotlib.dates import DateFormatter
 import time
 import datetime
+import dateutil
 # station is 4 character NOAA observation station in CAPS
 # csv dir is where the data resides
 # where the graph png shoud be placed.
+os.environ['TZ'] = 'US/Eastern'
 station = ""
 csv_dir = ""
 graph_out_dir = ""
@@ -60,8 +62,8 @@ for f in station_file_list:
     if  d1 < int(day):
         print("In the past:" ,f)
         
-        
-obs1 = pd.read_csv(target_csv,parse_dates=[9])
+date_utc = lambda x: dateutil.parser.parse(x, ignoretz=True)
+obs1 = pd.read_csv(target_csv,parse_dates=[9],date_parser=date_utc)
 
 print(obs1.shape)
 print(obs1.columns)
