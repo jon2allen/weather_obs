@@ -27,6 +27,10 @@ import time
 import datetime
 import schedule
 
+"""
+   set the format from current date
+   cannoical format for obs
+"""
 def create_station_file_name():
       year, month, day, hour, min = map(str, time.strftime("%Y %m %d %H %M").split())
       file_n = station_id + '_Y' + year + '_M' + month + '_D' + day + '_H' + hour + ".csv"
@@ -41,8 +45,9 @@ def weather_obs_init():
     parser.add_argument('--station', help='URL of station' )
     parser.add_argument('--collect', help='Run collectiion in background - Y/N', action="store_true")
     parser.add_argument('--append', help='Append data to CSV file - specifed' )
-    parser.add_argument('-d', '--Duration', help='Always, 1Day, 1week, 1Month' )
+    parser.add_argument('-d', '--Duration', help='Duration cycle - default - 24 hours, 3 hours')
     parser.add_argument('-c', '--cut', action="store_true")
+    parser.add_argument('-x', '--xml', action="store_true")
     args = parser.parse_args()
     trace_print("parsing args...")
     # cannocial header
@@ -148,7 +153,7 @@ def trace_print( s, *t1):
     global trace
     jstr = ''.join(t1)
     if ( trace == True):
-        print("function trace: ", s, jstr )
+        print("function trace: ", s, jstr, flush=True)
 """
  function: get_weather_from_NOAA(xmldata)
  inputs:
@@ -303,15 +308,27 @@ def weather_obs_app_append():
 """
   Pass last cut time and check against now
   check at each day, month, and year.
+  hour cycle is every so many hours
+  No need to support less - observations are hourly
   """
-def duration_cut_check( t_last )
+def duration_cut_check( t_last, hour_cycle  ):
+  trace_print("Duration check")
   t_now = datetime.datetime.now() 
   if t_now.year > t_last.year:
+      trace_print( "Duration year check")
       return True
   if t_now.month > t_last.month:
+      trace_print( "Duration month check")
       return True
   if t_now.day > t_last.day:
+      trace_print( "Duration day check")
       return True
+  if (t_now.hour - t_last.hour == 0 ):
+      return False   
+  if (hour_cycle > 0):
+     if ((t_now.hour - t_last.hour) % hour_cycle == 0 ):
+       trace_print( "Duration cycle check at ", str(hour_cycle))
+       return True
   return False     
 
 if __name__ == "__main__":
@@ -328,6 +345,8 @@ if __name__ == "__main__":
      t_begin = datetime.datetime.now()
      trace_print("starting time:",t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
      # for case of collect and append specified
+     # TODO - should we force to be 15 minutes afer the hour
+     #        NOAA may not update.  Or should that be an option??
      if (append_data_specified == True):
          weather_obs_app_start()
      while True:
@@ -338,7 +357,7 @@ if __name__ == "__main__":
             trace_print("Num minutes running: ", str(run_minutes) )
             if ( cut_file == True):
                 t_cut_time = datetime.datetime.now()
-                if (t_cut_time.day > t_begin.day):  
+                if ( duration_cut_check(t_begin, 1)): 
                     if ((t_begin.minute - t_cut_time.minute) < 5):
                         trace_print(" cut time less than 1 hour")
                         job1.run()
