@@ -86,6 +86,14 @@ for f in station_file_list:
 if (args.file):
     target_csv = str(args.file)
     print("file input: ", target_csv)
+    print("Month: ", f[12:14])
+    print("day: ", f[16:18])
+    d1 = int(f[16:18])
+    if (d1 == int(now.day)):
+        print("Match day:", f)
+        target_csv = f
+    if  d1 < int(day):
+        print("In the past:" ,f)
         
 date_utc = lambda x: dateutil.parser.parse(x, ignoretz=True)
 obs1 = pd.read_csv(target_csv,parse_dates=[9],date_parser=date_utc)
@@ -133,9 +141,9 @@ fig.text(0.5,0.05,  'Hour of day', va='center', fontsize=18)
 # plt.xticks(positions,labels)
 date_form = DateFormatter("%I")
 ax.xaxis.set_major_formatter(date_form)
-fig.savefig(fig_png, dpi=fig.dpi)
 print(x)
 print(y)
 print(z)
 print(x.size)
 print(y.size)        
+fig.savefig(fig_png, dpi=fig.dpi)
