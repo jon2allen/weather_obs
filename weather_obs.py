@@ -321,7 +321,7 @@ if __name__ == "__main__":
         run_minutes += 1
         if ((run_minutes % 60) == 0):
             # every hour check to see if need to cut
-            trace_print("Num minutes running: ", run_minutes )
+            trace_print("Num minutes running: ", str(run_minutes) )
             if ( cut_file == True):
                 t_cut_time = datetime.datetime.now()
                 if (t_cut_time.day > t_begin.day):  

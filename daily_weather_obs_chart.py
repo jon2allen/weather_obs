@@ -18,6 +18,12 @@ from matplotlib.dates import DateFormatter
 import time
 import datetime
 import dateutil
+
+parser = argparse.ArgumentParser(description='weather obs - daily chart')
+parser.add_argument('--file', help='name of input file - csv ')
+parser.add_argument('--chart', help='output png file' )
+args = parser.parse_args()
+
 # station is 4 character NOAA observation station in CAPS
 # csv dir is where the data resides
 # where the graph png shoud be placed.
@@ -49,6 +55,11 @@ station_file_list = []
 target_csv = ""
 
 file_id = station + "_Y" + str(now.year)
+fig_png  = station + '_current'+ '.png'
+
+
+if (args.chart):
+   fig_png = str(args.chart)
 
 print("file_id:", file_id )
 
@@ -71,6 +82,10 @@ for f in station_file_list:
            target_csv = f
        if  d1 < int(day):
            print("In the past:" ,f)
+
+if (args.file):
+    target_csv = str(args.file)
+    print("file input: ", target_csv)
         
 date_utc = lambda x: dateutil.parser.parse(x, ignoretz=True)
 obs1 = pd.read_csv(target_csv,parse_dates=[9],date_parser=date_utc)
@@ -118,7 +133,7 @@ fig.text(0.5,0.05,  'Hour of day', va='center', fontsize=18)
 # plt.xticks(positions,labels)
 date_form = DateFormatter("%I")
 ax.xaxis.set_major_formatter(date_form)
-fig.savefig(station + '_current'+ '.png', dpi=fig.dpi)
+fig.savefig(fig_png, dpi=fig.dpi)
 print(x)
 print(y)
 print(z)
