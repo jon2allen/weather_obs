@@ -45,7 +45,7 @@ def weather_obs_init():
     parser.add_argument('--station', help='URL of station' )
     parser.add_argument('--collect', help='Run collectiion in background - Y/N', action="store_true")
     parser.add_argument('--append', help='Append data to CSV file - specifed' )
-    parser.add_argument('-d', '--Duration', help='Duration cycle - default - 24 hours, 3 hours')
+    parser.add_argument('-d', '--duration', help='Duration cycle - default - 24 hours, 3 hours')
     parser.add_argument('-c', '--cut', action="store_true")
     parser.add_argument('-x', '--xml', action="store_true")
     args = parser.parse_args()
@@ -58,20 +58,29 @@ def weather_obs_init():
     #  collect_data = False
     #  global job1
     global collect_data
-    collect_data = False
+    
     global job1
     global cut_file
     global append_data
     global append_data_specified
     global init_csv
+    global duration_interval
+    global dump_xml_flag
+    dump_xml_flag = False
     init_csv = False
     cut_file = False
     append_data_specified = False
     apppend_data = False
+    collect_data = False
+    duration_interval = 0
+    if (args.duration):
+       duration_interval = int(args.duration)
+       trace_print("duration interval: ", str(args.duration))
+    if (args.xml == True):
+        dump_xml_flag = True   
     if (args.cut):
        trace_print("cut specified")
        cut_file = True
-       trace_print("cut file set")
        append_data = False
     if (args.append):
         trace_print("appdend specified")
@@ -117,7 +126,6 @@ def weather_obs_init():
 # default global vars.
 # iteration is for duration/repetitive hourly collection - so you know what index you are at. 
 obs_iteration = 0 
-dump_xml_flag = False
 trace = True
 primary_station = ""
 job1 = ""
@@ -250,6 +258,7 @@ def weather_csv_driver( mode, csv_file, w_header, w_row ):
             trace_print("csv_driver: header+row")
             weather_writer.writerow( w_header )
             if (cut_mode == False):
+              trace_print("csv_driver: header_only")
               weather_writer.writerow( w_row )
         elif ( mode == 'a' ):
             trace_print("csv_drver: row_only")
@@ -357,11 +366,14 @@ if __name__ == "__main__":
             trace_print("Num minutes running: ", str(run_minutes) )
             if ( cut_file == True):
                 t_cut_time = datetime.datetime.now()
-                if ( duration_cut_check(t_begin, 1)): 
+                if ( duration_cut_check(t_begin, duration_interval)): 
                     if ((t_begin.minute - t_cut_time.minute) < 5):
                         trace_print(" cut time less than 1 hour")
-                        job1.run()
-                        trace_print(" Ran job again to catch up ")
+                        if (duration_interval < 2 ):
+                           schedule.cancel_job(job1)
+                        else:
+                           job1.run()
+                           trace_print(" Ran job again to catch up ")
                     trace_print("running cut operation")
                     station_file = create_station_file_name()
                     trace_print("New Station file:", station_file)
