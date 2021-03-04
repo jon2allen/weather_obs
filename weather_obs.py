@@ -26,13 +26,21 @@ import xml.etree.ElementTree as ET
 import time
 import datetime
 import schedule
+"""
+testing
+"""
+#from freezegun import freeze_time
+#import unittest
 
+#freezer = freeze_time("2021-12-31 23:56:30", tick=True)
+#freezer.start()
 """
    set the format from current date
    cannoical format for obs
 """
 def create_station_file_name():
-      year, month, day, hour, min = map(str, time.strftime("%Y %m %d %H %M").split())
+      t_now = datetime.datetime.now()
+      year, month, day, hour, min = map(str, t_now.strftime("%Y %m %d %H %M").split())
       file_n = station_id + '_Y' + year + '_M' + month + '_D' + day + '_H' + hour + ".csv"
       return file_n
 """
@@ -96,7 +104,7 @@ def weather_obs_init():
       station_file = ""
       station = args.station[-8:]
       trace_print("Station URL of XML - " + str(args.station))
-      print(station[:4])
+      # print(station[:4])
       station_id = station[:4]
       trace_print("Station id:  ", station_id)
       station_file = create_station_file_name()
@@ -333,7 +341,7 @@ def duration_cut_check( t_last, hour_cycle  ):
       trace_print( "Duration day check")
       return True
   if (t_now.hour - t_last.hour == 0 ):
-      return False   
+      return False  
   if (hour_cycle > 0):
      if ((t_now.hour - t_last.hour) % hour_cycle == 0 ):
        trace_print( "Duration cycle check at ", str(hour_cycle))
@@ -358,22 +366,25 @@ if __name__ == "__main__":
      #        NOAA may not update.  Or should that be an option??
      if (append_data_specified == True):
          weather_obs_app_start()
+     delay_t = 60 - t_begin.minute
+     trace_print("minutes till the next hour: ", str(delay_t))
      while True:
-        schedule.run_pending()
-        run_minutes += 1
-        if ((run_minutes % 60) == 0):
+        run_minutes =  datetime.datetime.now().minute
+        # trace_print("run_minutes(tst): ", str(datetime.datetime.now().minute))
+        if ((run_minutes % 15 == 0)):
             # every hour check to see if need to cut
+            # cut check before schedule.run_pending
             trace_print("Num minutes running: ", str(run_minutes) )
             if ( cut_file == True):
                 t_cut_time = datetime.datetime.now()
                 if ( duration_cut_check(t_begin, duration_interval)): 
-                    if ((t_begin.minute - t_cut_time.minute) < 5):
-                        trace_print(" cut time less than 1 hour")
-                        if (duration_interval < 2 ):
-                           schedule.cancel_job(job1)
-                        else:
-                           job1.run()
-                           trace_print(" Ran job again to catch up ")
+                #    if ((t_begin.minute - t_cut_time.minute) < 5):
+                #       trace_print(" cut time less than 1 hour")
+                #        if (duration_interval < 2 ):
+                #           schedule.cancel_job(job1)
+                #        else:
+                #           job1.run()
+                #           trace_print(" Ran job again to catch up ")
                     trace_print("running cut operation")
                     station_file = create_station_file_name()
                     trace_print("New Station file:", station_file)
@@ -386,6 +397,7 @@ if __name__ == "__main__":
                     trace_print("Time of last cut:",t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
                     # this will reschedule job with new file.
                     weather_obs_app_start()
+        else:
+             trace_print("run pending")
+             schedule.run_pending()            
         time.sleep(60)
-        
-      
