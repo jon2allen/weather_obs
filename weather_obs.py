@@ -26,9 +26,21 @@ import xml.etree.ElementTree as ET
 import time
 import datetime
 import schedule
+"""
+testing
+"""
+#from freezegun import freeze_time
+#import unittest
 
+#freezer = freeze_time("2021-12-31 23:56:30", tick=True)
+#freezer.start()
+"""
+   set the format from current date
+   cannoical format for obs
+"""
 def create_station_file_name():
-      year, month, day, hour, min = map(str, time.strftime("%Y %m %d %H %M").split())
+      t_now = datetime.datetime.now()
+      year, month, day, hour, min = map(str, t_now.strftime("%Y %m %d %H %M").split())
       file_n = station_id + '_Y' + year + '_M' + month + '_D' + day + '_H' + hour + ".csv"
       return file_n
 """
@@ -41,8 +53,9 @@ def weather_obs_init():
     parser.add_argument('--station', help='URL of station' )
     parser.add_argument('--collect', help='Run collectiion in background - Y/N', action="store_true")
     parser.add_argument('--append', help='Append data to CSV file - specifed' )
-    parser.add_argument('-d', '--Duration', help='Always, 1Day, 1week, 1Month' )
+    parser.add_argument('-d', '--duration', help='Duration cycle - default - 24 hours, 3 hours')
     parser.add_argument('-c', '--cut', action="store_true")
+    parser.add_argument('-x', '--xml', action="store_true")
     args = parser.parse_args()
     trace_print("parsing args...")
     # cannocial header
@@ -53,20 +66,29 @@ def weather_obs_init():
     #  collect_data = False
     #  global job1
     global collect_data
-    collect_data = False
+    
     global job1
     global cut_file
     global append_data
     global append_data_specified
     global init_csv
+    global duration_interval
+    global dump_xml_flag
+    dump_xml_flag = False
     init_csv = False
     cut_file = False
     append_data_specified = False
     apppend_data = False
+    collect_data = False
+    duration_interval = 0
+    if (args.duration):
+       duration_interval = int(args.duration)
+       trace_print("duration interval: ", str(args.duration))
+    if (args.xml == True):
+        dump_xml_flag = True   
     if (args.cut):
        trace_print("cut specified")
        cut_file = True
-       trace_print("cut file set")
        append_data = False
     if (args.append):
         trace_print("appdend specified")
@@ -82,7 +104,7 @@ def weather_obs_init():
       station_file = ""
       station = args.station[-8:]
       trace_print("Station URL of XML - " + str(args.station))
-      print(station[:4])
+      # print(station[:4])
       station_id = station[:4]
       trace_print("Station id:  ", station_id)
       station_file = create_station_file_name()
@@ -112,7 +134,6 @@ def weather_obs_init():
 # default global vars.
 # iteration is for duration/repetitive hourly collection - so you know what index you are at. 
 obs_iteration = 0 
-dump_xml_flag = False
 trace = True
 primary_station = ""
 job1 = ""
@@ -148,7 +169,7 @@ def trace_print( s, *t1):
     global trace
     jstr = ''.join(t1)
     if ( trace == True):
-        print("function trace: ", s, jstr )
+        print("function trace: ", s, jstr, flush=True)
 """
  function: get_weather_from_NOAA(xmldata)
  inputs:
@@ -245,6 +266,7 @@ def weather_csv_driver( mode, csv_file, w_header, w_row ):
             trace_print("csv_driver: header+row")
             weather_writer.writerow( w_header )
             if (cut_mode == False):
+              trace_print("csv_driver: header_only")
               weather_writer.writerow( w_row )
         elif ( mode == 'a' ):
             trace_print("csv_drver: row_only")
@@ -300,6 +322,32 @@ def weather_obs_app_append():
   weather_csv_driver('a', station_file, xmld1[0], xmld1[1])
   return
 #
+"""
+  Pass last cut time and check against now
+  check at each day, month, and year.
+  hour cycle is every so many hours
+  No need to support less - observations are hourly
+  """
+def duration_cut_check( t_last, hour_cycle  ):
+  trace_print("Duration check")
+  t_now = datetime.datetime.now() 
+  if t_now.year > t_last.year:
+      trace_print( "Duration year check")
+      return True
+  if t_now.month > t_last.month:
+      trace_print( "Duration month check")
+      return True
+  if t_now.day > t_last.day:
+      trace_print( "Duration day check")
+      return True
+  if (t_now.hour - t_last.hour == 0 ):
+      return False  
+  if (hour_cycle > 0):
+     if ((t_now.hour - t_last.hour) % hour_cycle == 0 ):
+       trace_print( "Duration cycle check at ", str(hour_cycle))
+       return True
+  return False     
+
 if __name__ == "__main__":
   weather_obs_init()
   if (init_csv == True):
@@ -314,21 +362,28 @@ if __name__ == "__main__":
      t_begin = datetime.datetime.now()
      trace_print("starting time:",t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
      # for case of collect and append specified
+     # TODO - should we force to be 15 minutes afer the hour
+     #        NOAA may not update.  Or should that be an option??
      if (append_data_specified == True):
          weather_obs_app_start()
+     delay_t = 60 - t_begin.minute
+     trace_print("minutes till the next hour: ", str(delay_t))
      while True:
-        schedule.run_pending()
-        run_minutes += 1
-        if ((run_minutes % 60) == 0):
+        run_minutes =  datetime.datetime.now().minute
+        # trace_print("run_minutes(tst): ", str(datetime.datetime.now().minute))
+        if ((run_minutes % 15 == 0)):
             # every hour check to see if need to cut
             trace_print("Num minutes running: ", str(run_minutes) )
             if ( cut_file == True):
                 t_cut_time = datetime.datetime.now()
-                if (t_cut_time.day > t_begin.day):  
-                    if ((t_begin.minute - t_cut_time.minute) < 5):
-                        trace_print(" cut time less than 1 hour")
-                        job1.run()
-                        trace_print(" Ran job again to catch up ")
+                if ( duration_cut_check(t_begin, duration_interval)): 
+                #    if ((t_begin.minute - t_cut_time.minute) < 5):
+                #       trace_print(" cut time less than 1 hour")
+                #        if (duration_interval < 2 ):
+                #           schedule.cancel_job(job1)
+                #        else:
+                #           job1.run()
+                #           trace_print(" Ran job again to catch up ")
                     trace_print("running cut operation")
                     station_file = create_station_file_name()
                     trace_print("New Station file:", station_file)
@@ -341,6 +396,7 @@ if __name__ == "__main__":
                     trace_print("Time of last cut:",t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
                     # this will reschedule job with new file.
                     weather_obs_app_start()
+        else:
+             trace_print("run pending")
+             schedule.run_pending()            
         time.sleep(60)
-        
-      
