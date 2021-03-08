@@ -373,7 +373,6 @@ if __name__ == "__main__":
         # trace_print("run_minutes(tst): ", str(datetime.datetime.now().minute))
         if ((run_minutes % 15 == 0)):
             # every hour check to see if need to cut
-            # cut check before schedule.run_pending
             trace_print("Num minutes running: ", str(run_minutes) )
             if ( cut_file == True):
                 t_cut_time = datetime.datetime.now()
