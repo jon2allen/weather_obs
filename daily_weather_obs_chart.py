@@ -19,16 +19,51 @@ import time
 import datetime
 import dateutil
 
+"""
+  This will find the last hour of the current day
+  if you want a specific file - specify --file
+"""
+def hunt_for_csv(file_id):
+    station_file_list = []
+    dirlist = os.listdir()
+    target_csv = ''
+    for f in dirlist:
+        if( f[:10] == file_id):
+          print("station CSV file:" ,f)
+          station_file_list.append(f)
+          print("file: ", f[:10])
+    print(station_file_list)    
+    last_hour = 0
+    for f in station_file_list:
+        m1 = int(f[12:14])
+        if m1 == int(now.month):
+            print("match month")
+            print("Month: ", f[12:14])
+            print("day: ", f[16:18])
+            print("hour:  ", f[20:22])
+            d1 = int(f[16:18])
+            if (d1 == int(now.day)):
+               print("Match day:", f)
+               target_csv = f
+            if  d1 < int(day):
+               print("In the past:" ,f)
+    return target_csv
+            
+           
 parser = argparse.ArgumentParser(description='weather obs - daily chart')
 parser.add_argument('--file', help='name of input file - csv ')
 parser.add_argument('--chart', help='output png file' )
+parser.add_argument('--station', help='station - either linke or 4 char name' )
 args = parser.parse_args()
 
 # station is 4 character NOAA observation station in CAPS
 # csv dir is where the data resides
 # where the graph png shoud be placed.
 os.environ['TZ'] = 'US/Eastern'
-os.chdir('/var/www/html/weather_obs')
+try:
+    os.chdir('/var/www/html/weather_obs')
+except:
+    print("using start directory")    
 station = ""
 csv_dir = ""
 graph_out_dir = ""
@@ -48,7 +83,11 @@ print("day: ", day )
       - temp wind and guust
 """
 
-station = "KDCA"
+if (args.station):
+    station = args.station
+    print("station: ", station)
+else:
+    station = "KDCA"
 
 dirlist = os.listdir()  
 station_file_list = []
@@ -63,40 +102,20 @@ if (args.chart):
 
 print("file_id:", file_id )
 
-
-for f in dirlist:
-    if( f[:10] == file_id):
-       print("station CSV file:" ,f)
-       station_file_list.append(f)
-    print("file: ", f[:10])
-print(station_file_list)    
-for f in station_file_list:
-    m1 = int(f[12:14])
-    if m1 == int(now.month):
-       print("match month")
-       print("Month: ", f[12:14])
-       print("day: ", f[16:18])
-       d1 = int(f[16:18])
-       if (d1 == int(now.day)):
-           print("Match day:", f)
-           target_csv = f
-       if  d1 < int(day):
-           print("In the past:" ,f)
+         
+target_csv = hunt_for_csv(file_id)
+print("test_csv: ", target_csv)           
 
 if (args.file):
     target_csv = str(args.file)
     print("file input: ", target_csv)
-    print("Month: ", f[12:14])
-    print("day: ", f[16:18])
-    d1 = int(f[16:18])
-    if (d1 == int(now.day)):
-        print("Match day:", f)
-        target_csv = f
-    if  d1 < int(day):
-        print("In the past:" ,f)
-        
-date_utc = lambda x: dateutil.parser.parse(x, ignoretz=True)
-obs1 = pd.read_csv(target_csv,parse_dates=[9],date_parser=date_utc)
+   
+try:        
+    date_utc = lambda x: dateutil.parser.parse(x, ignoretz=True)
+    obs1 = pd.read_csv(target_csv,parse_dates=[9],date_parser=date_utc)
+except:
+    print("file not found:  ", target_csv)
+    exit(16)
 
 print(obs1.shape)
 print(obs1.columns)
