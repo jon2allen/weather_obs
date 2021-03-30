@@ -166,3 +166,17 @@ print(z)
 print(x.size)
 print(y.size)        
 fig.savefig(fig_png, dpi=fig.dpi)
+
+
+obs_prn = obs1[['observation_time','wind_mph','wind_dir','wind_gust_mph','wind_string']]
+
+
+out_txt = obs_prn.to_html()
+
+print(out_txt)
+
+file_html = open('wind_chart.html', 'w')
+file_html.write(out_txt)
+file_html.close()
+
+ 

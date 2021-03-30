@@ -26,9 +26,10 @@ import xml.etree.ElementTree as ET
 import time
 import datetime
 import schedule
+import hashlib
 """
 testing
-"""
+""" 
 #from freezegun import freeze_time
 #import unittest
 
@@ -182,6 +183,7 @@ def get_weather_from_NOAA(station):
    trace_print("url request")
    with urllib.request.urlopen(station) as response:
    	xml = response.read()
+   trace_print("xml md5: ",  hashlib.md5(xml).hexdigest())
    return xml
 """
    function:  transforam observation
