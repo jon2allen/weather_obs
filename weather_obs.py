@@ -274,6 +274,8 @@ def weather_csv_driver( mode, csv_file, w_header, w_row ):
             trace_print("csv_drver: row_only")
             weather_writer.writerow( w_row )
    weather_file.close()
+   csv_write_time = datetime.datetime.now()
+   trace_print("csv_write_time: ",csv_write_time.strftime("%A, %d. %B %Y %I:%M%p"))
    return True 
 """
 function: weather_collet_driver
@@ -312,7 +314,7 @@ def weather_obs_app_start():
       global job1
       trace_print("schedule")
       append_data = True
-      job1 = schedule.every().hour.do( weather_collect_driver, primary_station, station_file)
+      job1 = schedule.every().hour.at(":20").do( weather_collect_driver, primary_station, station_file)
   return
 #
 #
@@ -362,7 +364,7 @@ if __name__ == "__main__":
      global run_minutes
      run_minutes = 0
      t_begin = datetime.datetime.now()
-     trace_print("starting time:",t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
+     trace_print("starting time: ",t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
      # for case of collect and append specified
      # TODO - should we force to be 15 minutes afer the hour
      #        NOAA may not update.  Or should that be an option??
