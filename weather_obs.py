@@ -27,6 +27,7 @@ import time
 import datetime
 import schedule
 import hashlib
+from daily_weather_obs_chart import hunt_for_csv
 """
 testing
 """ 
@@ -57,6 +58,7 @@ def weather_obs_init():
     parser.add_argument('-d', '--duration', help='Duration cycle - default - 24 hours, 3 hours')
     parser.add_argument('-c', '--cut', action="store_true")
     parser.add_argument('-x', '--xml', action="store_true")
+    parser.add_argument('-r', '--resume', help='resume append and cut', action="store_true")
     args = parser.parse_args()
     trace_print("parsing args...")
     # cannocial header
@@ -75,12 +77,14 @@ def weather_obs_init():
     global init_csv
     global duration_interval
     global dump_xml_flag
+    global resume
     dump_xml_flag = False
     init_csv = False
     cut_file = False
     append_data_specified = False
     apppend_data = False
     collect_data = False
+    resume = False
     duration_interval = 0
     if (args.duration):
        duration_interval = int(args.duration)
@@ -92,10 +96,16 @@ def weather_obs_init():
        cut_file = True
        append_data = False
     if (args.append):
-        trace_print("appdend specified")
+        trace_print("append specified")
         append_data = True
         append_data_specified = True
        # collect asssumes append
+    if (args.resume):
+       trace_print("resume specified")
+       cut_file = True
+       append_data_specified = True
+       append_data = True
+       resume = True
     # check station and fill out appropriate values
     if (args.station):
       global primary_station
@@ -109,7 +119,7 @@ def weather_obs_init():
       station_id = station[:4]
       trace_print("Station id:  ", station_id)
       station_file = create_station_file_name()
-      trace_print("Satation filename: ", station_file)
+      trace_print("Station filename: ", station_file)
       init_csv = True
       # initialize a CSV until we prove we are appending.
       if (args.init):
@@ -119,6 +129,15 @@ def weather_obs_init():
       if (append_data_specified == True):
           station_file = args.append
           init_csv = False
+          if (resume == True):
+             trace_print("resume here")
+             now = datetime.datetime.now()
+             file_id = station_id + "_Y" + str(now.year)
+             station_file = hunt_for_csv(file_id) 
+             if (len(station_file) < 4 ):
+                station_file = create_station_file_name()
+                init_csv = True
+                trace_print("Resume - No file file on current day")
           trace_print( "Station id ( append ): ", station_file )
       if (args.collect):
          trace_print("collect in station setting")
@@ -358,6 +377,8 @@ if __name__ == "__main__":
       trace_print("Init... ")
       weather_obs_app_start()
   if (append_data_specified == True):
+      if (resume == True):
+         trace_print("resume - with append")
       trace_print("Appending data")
       weather_obs_app_append()
   if (collect_data == True ):
