@@ -17,6 +17,7 @@ To Run:
 
 --duration ( not implemented yet )   
 
+--resume - start appending at current day file.  if no curent day exists. start new one
 
 Run in background on Linux:  python weather_obs.py --init --station https://w1.weather.gov/xml/current_obs/KDCA.xml &
 
@@ -26,3 +27,11 @@ https://w1.weather.gov/xml/current_obs/
 
 
 CSV default file:  TIST_Y2021 _M02_D09_H19.csv  ( stations + date )
+
+
+resume.sh - suggested startup scrpt for bootup. change to suit your install.
+
+Examples:
+weather_obs.py  --station https://w1.weather.gov/xml/current_obs/KDCA.xml --cut --collect --resume  
+** resume cut and collect after reboot. 
+
