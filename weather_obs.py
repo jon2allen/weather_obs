@@ -348,6 +348,9 @@ def weather_collect_driver( xml_url, csv_out):
      trace_print("weather_collect_driver")
      xmldata = get_weather_from_NOAA( xml_url )
      outdata = get_data_from_NOAA_xml( xmldata )
+     if ( duplicate_observation( outdata[1] )):
+         trace_print(" duplicate in collect.  exiting...")
+         return True
      weather_csv_driver('a', csv_out, outdata[0], outdata[1])
      obs_iteration = obs_iteration + 1
      dump_xml(xmldata, obs_iteration )
