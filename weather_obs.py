@@ -137,6 +137,8 @@ def weather_obs_init():
              if (len(station_file) < 4 ):
                 station_file = create_station_file_name()
                 init_csv = True
+                append_data = False
+                append_data_specified = True
                 trace_print("Resume - No file file on current day")
           trace_print( "Station id ( append ): ", station_file )
       if (args.collect):
@@ -191,11 +193,48 @@ def trace_print( s, *t1):
     if ( trace == True):
         print("function trace: ", s, jstr, flush=True)
 """
+   function:  get_last_csv_row
+        get last line of current csv
+   inputs:  file name
+   output:  list of last row
+"""
+def get_last_csv_row( st_file):
+  try:
+    with open(st_file, "r", encoding="utf-8", errors="ignore") as csv_1:
+        final_line = csv_1.readlines()[-1]
+        trace_print("final line:", final_line)
+        csv_1.close()
+        return final_line
+  except:
+     trace_print("csv file not found... continue...")
+     return ""
+"""
+   function: duplicate_observation
+        test curret observation date against csv file last row
+   inputs:  list of observations from parse of xml file
+   output:  True = if duplicate, false if not or csv empty.
+"""      
+def duplicate_observation(  current_obs ):
+    last_one = get_last_csv_row(station_file)
+    if ( len(last_one) < 4 ):
+      return False
+    last_obs = last_one.split(',\"')
+    last_obs_dt = last_obs[7]
+    last_obs_dt = last_obs_dt[:-1]
+    trace_print("last_obs:", last_obs_dt, "len ", str(len(last_obs_dt)))
+    trace_print("current_obs: ", current_obs[6], " ", current_obs[9], "len ", str(len(current_obs[9])))
+    if (current_obs[9] == last_obs_dt ):
+        trace_print("Is equal")
+        return True
+    return False
+"""
  function: get_weather_from_NOAA(xmldata)
  inputs:
       station - URL of station XML
  outputs:
       tuple ( header, data ) - for updating CSV file
+      trace - print md5 to validate changes in xml data form NOAA
+            - there are episodes where it doesn't change, etc.
 """
 
 def get_weather_from_NOAA(station):
@@ -342,6 +381,12 @@ def weather_obs_app_append():
   content = get_weather_from_NOAA(primary_station)
   #  print(content)
   xmld1 = get_data_from_NOAA_xml( content)
+  """
+    test if last row and what is coming in are equal
+  """
+  if ( duplicate_observation( xmld1[1] )):
+      trace_print('duplicate append, exit up')
+      return
   weather_csv_driver('a', station_file, xmld1[0], xmld1[1])
   return
 #
@@ -380,7 +425,13 @@ if __name__ == "__main__":
       if (resume == True):
          trace_print("resume - with append")
       trace_print("Appending data")
-      weather_obs_app_append()
+      # resume sets init_csv - have to retest again
+      # resume sets thsi when a new file has to be created
+      # resume starts next day.
+      # try to resume same day - if not start a new day csv
+      if ( init_csv == False):
+           trace_print( "Append processing start")
+           weather_obs_app_append()
   if (collect_data == True ):
      global run_minutes
      run_minutes = 0
