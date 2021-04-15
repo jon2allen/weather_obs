@@ -1,0 +1,17 @@
+[<StreamHandler <stdout> (INFO)>, <TimedRotatingFileHandler C:\Users\jonallen\Documents\github\weather_obs\weather_obs.log (NOTSET)>]
+weather_obs - Station URL of XML - https://w1.weather.gov/xml/current_obs/KDCA.xml
+weather_obs - Station id:  KDCA
+weather_obs - Station filename: KDCA_Y2021_M04_D14_H17.csv
+weather_obs - resume here
+weather_obs - Station id ( append ): KDCA_Y2021_M04_D14_H00.csv
+weather_obs - collect in station setting
+weather_obs - Append processing start
+weather_obs - url request
+weather_obs - xml md5: 2ceba6b877d258757c050e3fe38b89bf
+weather_obs - parsing NOAA xml
+weather_obs - csv_driver
+weather_obs - csv_drver: row_only
+weather_obs - csv_write_time: Wednesday, 14. April 2021 05:10PM
+weather_obs - starting time: Wednesday, 14. April 2021 05:10PM
+weather_obs - schedule job
+weather_obs - minutes till the next hour: 50

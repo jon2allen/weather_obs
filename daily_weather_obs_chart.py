@@ -23,6 +23,9 @@ import dateutil
   This will find the last hour of the current day
   if you want a specific file - specify --file
 """
+import logging
+logger = logging.getLogger('weather_obs_f')
+
 def hunt_for_csv(file_id):
     station_file_list = []
     now = datetime.datetime.now()
@@ -32,24 +35,24 @@ def hunt_for_csv(file_id):
     target_csv = ''
     for f in dirlist:
         if( f[:10] == file_id):
-          print("station CSV file:" ,f)
+          logger.debug("station CSV file: %s" ,f)
           station_file_list.append(f)
-          print("file: ", f[:10])
-    print(station_file_list)    
+          logger.debug("file: %s", f[:10])
+    logger.debug(station_file_list)    
     last_hour = 0
     for f in station_file_list:
         m1 = int(f[12:14])
         if m1 == int(now.month):
-            print("match month")
-            print("Month: ", f[12:14])
-            print("day: ", f[16:18])
-            print("hour:  ", f[20:22])
+            logger.debug("match month")
+            logger.debug("Month: %s ", f[12:14])
+            logger.debug("day: %s ", f[16:18])
+            logger.debug("hour: %s ", f[20:22])
             d1 = int(f[16:18])
             if (d1 == int(now.day)):
-               print("Match day:", f)
+               logger.debug("Match day: %s", f)
                target_csv = f
             if  d1 < int(day):
-               print("In the past:" ,f)
+               logger.debug("In the past: %s" ,f)
     return target_csv
 
 if __name__ == "__main__":            

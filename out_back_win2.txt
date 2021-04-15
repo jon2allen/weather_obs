@@ -1,0 +1,103 @@
+function trace:  parsing args... 
+function trace:  cut specified 
+function trace:  cut file set 
+function trace:  Station URL of XML - https://w1.weather.gov/xml/current_obs/KDCA.xml 
+KDCA
+function trace:  Station id:   KDCA
+function trace:  Satation filename:  KDCA_Y2021_M03_D01_H15.csv
+function trace:  collect in station setting 
+function trace:  Init...  
+function trace:  url request 
+function trace:  parsing NOAA xml 
+function trace:  csv_driver 
+function trace:  csv_driver: header+row 
+function trace:  Initializing new file:  
+function trace:  KDCA_Y2021_M03_D01_H15.csv 
+function trace:  schedule 
+function trace:  starting time: Monday, 01. March 2021 03:28PM
+function trace:  Num minutes running:  60
+function trace:  Duration check 
+function trace:  Duration cycle check at  1
+function trace:   cut time less than 1 hour 
+function trace:  weather_collect_driver 
+function trace:  url request 
+function trace:  parsing NOAA xml 
+function trace:  csv_driver 
+function trace:  csv_drver: row_only 
+function trace:  dumpxml_entry 
+function trace:   Ran job again to catch up  
+function trace:  running cut operation 
+function trace:  New Station file: KDCA_Y2021_M03_D01_H16.csv
+function trace:  csv_driver 
+function trace:  csv_driver: header+row 
+function trace:  Time of last cut: Monday, 01. March 2021 04:27PM
+function trace:  schedule 
+function trace:  weather_collect_driver 
+function trace:  url request 
+function trace:  parsing NOAA xml 
+function trace:  csv_driver 
+function trace:  csv_drver: row_only 
+function trace:  dumpxml_entry 
+function trace:  Num minutes running:  120
+function trace:  Duration check 
+function trace:  Duration cycle check at  1
+function trace:   cut time less than 1 hour 
+function trace:  weather_collect_driver 
+function trace:  url request 
+function trace:  parsing NOAA xml 
+function trace:  csv_driver 
+function trace:  csv_drver: row_only 
+function trace:  dumpxml_entry 
+function trace:   Ran job again to catch up  
+function trace:  running cut operation 
+function trace:  New Station file: KDCA_Y2021_M03_D01_H17.csv
+function trace:  csv_driver 
+function trace:  csv_driver: header+row 
+function trace:  Time of last cut: Monday, 01. March 2021 05:27PM
+function trace:  schedule 
+function trace:  weather_collect_driver 
+function trace:  url request 
+function trace:  parsing NOAA xml 
+function trace:  csv_driver 
+function trace:  csv_drver: row_only 
+function trace:  dumpxml_entry 
+function trace:  Num minutes running:  180
+function trace:  Duration check 
+function trace:  Duration cycle check at  1
+function trace:   cut time less than 1 hour 
+function trace:  weather_collect_driver 
+function trace:  url request 
+function trace:  parsing NOAA xml 
+function trace:  csv_driver 
+function trace:  csv_drver: row_only 
+function trace:  dumpxml_entry 
+function trace:   Ran job again to catch up  
+function trace:  running cut operation 
+function trace:  New Station file: KDCA_Y2021_M03_D01_H18.csv
+function trace:  csv_driver 
+function trace:  csv_driver: header+row 
+function trace:  Time of last cut: Monday, 01. March 2021 06:27PM
+function trace:  schedule 
+function trace:  weather_collect_driver 
+function trace:  url request 
+function trace:  parsing NOAA xml 
+function trace:  csv_driver 
+function trace:  csv_drver: row_only 
+function trace:  dumpxml_entry 
+function trace:  Num minutes running:  240
+function trace:  Duration check 
+function trace:  Duration cycle check at  1
+function trace:   cut time less than 1 hour 
+function trace:  weather_collect_driver 
+function trace:  url request 
+function trace:  parsing NOAA xml 
+function trace:  csv_driver 
+function trace:  csv_drver: row_only 
+function trace:  dumpxml_entry 
+function trace:   Ran job again to catch up  
+function trace:  running cut operation 
+function trace:  New Station file: KDCA_Y2021_M03_D01_H19.csv
+function trace:  csv_driver 
+function trace:  csv_driver: header+row 
+function trace:  Time of last cut: Monday, 01. March 2021 07:27PM
+function trace:  schedule 
