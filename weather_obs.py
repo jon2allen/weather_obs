@@ -122,7 +122,7 @@ def weather_obs_init():
       station_id = station[:4]
       trace_print( 4, "Station id:  ", station_id)
       station_file = create_station_file_name()
-      if (append_data_specifed == False):
+      if (append_data_specified == False):
           trace_print( 4, "Station filename: ", station_file)
       init_csv = True
       # initialize a CSV until we prove we are appending.
