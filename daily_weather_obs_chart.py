@@ -81,6 +81,9 @@ if __name__ == "__main__":
     print("month: ", month )
     print("day: ", day )
 
+    chart_date = now.strftime("%b %d, %Y") 
+    print("chart_date: ", chart_date )
+ 
 
     """
     code logic
@@ -147,7 +150,7 @@ if __name__ == "__main__":
 
     ax.plot_date( x,y, linestyle = "solid")
     plt.grid(True)
-    plt.title("National Airport", fontsize=14)
+    plt.title("National Airport  - " + chart_date, fontsize=14)
     for  i in range(  x.size   ):
         if (i == (x.size - 1 )):
                 ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-15, -15), 
