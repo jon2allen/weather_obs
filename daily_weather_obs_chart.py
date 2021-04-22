@@ -10,6 +10,7 @@ import sys
 import os
 import argparse
 import csv
+import re
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -55,22 +56,46 @@ def hunt_for_csv(file_id):
                logger.debug("In the past: %s" ,f)
     return target_csv
 
+"""
+  function:  parset_date_from_station_csv
+  input:  filename ( cannoical format - example 'KDCA_Y2021_M04_D04_H00.csv')
+  output:  datetime of file
+"""
+
+def parse_date_from_station_csv( fname ):
+    ds = re.split('[_.]', fname)
+    year = ds[1]
+    year = year[-4:]
+    month = ds[2]
+    month = month[-2:]
+    day = ds[3]
+    day = day[-2:]
+    return datetime.date(int(year), int(month), int(day))
+
 if __name__ == "__main__":            
            
     parser = argparse.ArgumentParser(description='weather obs - daily chart')
     parser.add_argument('--file', help='name of input file - csv ')
     parser.add_argument('--chart', help='output png file' )
     parser.add_argument('--station', help='station - either linke or 4 char name' )
+    parser.add_argument('--dir', help='director - otherwise /var/www/html/weather_obs' )
     args = parser.parse_args()
-
     # station is 4 character NOAA observation station in CAPS
     # csv dir is where the data resides
     # where the graph png shoud be placed.
     os.environ['TZ'] = 'US/Eastern'
-    try:
-        os.chdir('/var/www/html/weather_obs')
-    except:
-        print("using start directory")    
+    if (args.dir):
+      print("args.dir: ", args.dir )
+      try:
+        os.chdir(args.dir)
+      except:
+        try:
+            print ( "trying /var/www/html/weather_obs" ) 
+            os.chdir('/var/www/html/weather_obs')
+        except:
+             print("using start directory")    
+    else:
+         os.chdir('/var/www/html/weather_obs')
     station = ""
     csv_dir = ""
     graph_out_dir = ""
@@ -83,7 +108,11 @@ if __name__ == "__main__":
 
     chart_date = now.strftime("%b %d, %Y") 
     print("chart_date: ", chart_date )
- 
+   
+    if (args.file):
+       dt = parse_date_from_station_csv( args.file )
+       chart_date = dt.strftime("%b %d, %Y")
+       print(" new chart_date: ", chart_date )
 
     """
     code logic
