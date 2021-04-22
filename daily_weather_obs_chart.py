@@ -78,6 +78,7 @@ if __name__ == "__main__":
     parser.add_argument('--file', help='name of input file - csv ')
     parser.add_argument('--chart', help='output png file' )
     parser.add_argument('--station', help='station - either linke or 4 char name' )
+    parser.add_argument('--table', help='output html table file' )
     parser.add_argument('--dir', help='director - otherwise /var/www/html/weather_obs' )
     args = parser.parse_args()
     # station is 4 character NOAA observation station in CAPS
@@ -206,7 +207,15 @@ if __name__ == "__main__":
     obs_prn = obs1[['observation_time','wind_mph','wind_dir','wind_gust_mph','wind_string']]
     out_txt = obs_prn.to_html()
     print(out_txt)
-    file_html = open('wind_chart.html', 'w')
+    if (args.table):
+      try:
+         file_html = open(args.table, 'w') 
+      except:
+         print("error - cannot open", args.table )
+         sys.exit(8)
+    else:
+      file_html = open('wind_chart.html', 'w')
+    ####
     file_html.write(out_txt)
     file_html.close()
 
