@@ -63,7 +63,9 @@ def hunt_for_csv(file_id):
 """
 
 def parse_date_from_station_csv( fname ):
-    ds = re.split('[_.]', fname)
+    csv_name = os.path.split( fname )
+    # just need the file name not the path
+    ds = re.split('[_.]', str(csv_name[1]))
     year = ds[1]
     year = year[-4:]
     month = ds[2]
@@ -79,6 +81,8 @@ if __name__ == "__main__":
     parser.add_argument('--chart', help='output png file' )
     parser.add_argument('--station', help='station - either linke or 4 char name' )
     parser.add_argument('--table', help='output html table file' )
+    parser.add_argument("--tablecols", help='list of cols by position')
+    parser.add_argument("--listcols", action="store_true", help='helper func - list columns by position')
     parser.add_argument('--dir', help='director - otherwise /var/www/html/weather_obs' )
     args = parser.parse_args()
     # station is 4 character NOAA observation station in CAPS
@@ -96,7 +100,11 @@ if __name__ == "__main__":
         except:
              print("using start directory")    
     else:
-         os.chdir('/var/www/html/weather_obs')
+         #todo - doesn't work on windows
+         try:
+             os.chdir('/var/www/html/weather_obs')
+         except:
+             pass
     station = ""
     csv_dir = ""
     graph_out_dir = ""
@@ -114,6 +122,7 @@ if __name__ == "__main__":
        dt = parse_date_from_station_csv( args.file )
        chart_date = dt.strftime("%b %d, %Y")
        print(" new chart_date: ", chart_date )
+   
 
     """
     code logic
@@ -144,7 +153,7 @@ if __name__ == "__main__":
 
             
     target_csv = hunt_for_csv(file_id)
-    print("test_csv: ", target_csv)           
+    print("target_csv: ", target_csv)           
 
     if (args.file):
         target_csv = str(args.file)
@@ -157,14 +166,28 @@ if __name__ == "__main__":
         print("file not found:  ", target_csv)
         exit(16)
 
-    print(obs1.shape)
-    print(obs1.columns)
+    if( args.listcols ):
+        x = 0
+        for cols in obs1.columns:
+            print("column: ", x, "  -- " , cols)
+            x = x+1
+        sys.exit(0) 
+    if (args.tablecols):
+        try:
+           table_col_list = list(map(int, args.tablecols.split(',')))  
+        except:
+            print("html table list not column intergers")
+
+             
+    
+    #print(obs1.shape)
+    #print(obs1.columns)
 
     obs1['wind_gust_mph'] = pd.to_numeric(obs1['wind_gust_mph'], errors = 'coerce')
     obs1['wind_mph'] = pd.to_numeric(obs1['wind_mph'], errors = 'coerce')
     # obs1['observation_time'] = obs1['observation_time'].dt.hour
 
-    print(obs1.dtypes)
+    # print(obs1.dtypes)
 
 
     # rows, cols = wind.shape
@@ -177,10 +200,12 @@ if __name__ == "__main__":
     x = obs1['observation_time']
     y = obs1['wind_mph']
     z = obs1['wind_dir']
+    chart_loc = obs1['location']
+    print("chart_loc: ", chart_loc[1])
 
     ax.plot_date( x,y, linestyle = "solid")
     plt.grid(True)
-    plt.title("National Airport  - " + chart_date, fontsize=14)
+    plt.title( str(chart_loc[1]) + " - " + chart_date , fontsize=15)
     for  i in range(  x.size   ):
         if (i == (x.size - 1 )):
                 ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-15, -15), 
@@ -204,19 +229,48 @@ if __name__ == "__main__":
     print(x.size)
     print(y.size)        
     fig.savefig(fig_png, dpi=fig.dpi)
-    obs_prn = obs1[['observation_time','wind_mph','wind_dir','wind_gust_mph','wind_string']]
-    out_txt = obs_prn.to_html()
-    print(out_txt)
-    if (args.table):
-      try:
-         file_html = open(args.table, 'w') 
-      except:
-         print("error - cannot open", args.table )
-         sys.exit(8)
+    
+    # todo - make subroutine and pass list of columns by number from --tablecols
+    # 9, 19, 17, 12 
+    def weather_obs_html_table( obs_col, file_f):
+        try:
+            obs_prn = obs1.iloc[:, obs_col ]
+            out_text = obs_prn.to_html()
+        except:
+            print("column out of range or other")
+            return False
+        try:
+            file_html = open(file_f, 'w') 
+        except:
+            print("error - cannot open", file_f )
+            return False
+        file_html.write(out_text)
+        print( out_text )
+        file_html.close()
+        return True
+    
+    if (args.tablecols):
+        weather_obs_html_table( table_col_list, args.table )
     else:
-      file_html = open('wind_chart.html', 'w')
+        #default
+        weather_obs_html_table( [9,19,17,21,16], 'wind_chart.html')
+    
+    # obs_prn = obs1[['observation_time','wind_mph','wind_dir','wind_gust_mph','wind_string']]
+    #obs_prn = obs1.iloc[:, [ 5, 9, 19, 17, 12, 11, 10]]
+    #out_txt = obs_prn.to_html()
+    #print(out_txt)
+    #if (args.table):
+    #  try:
+    #     file_html = open(args.table, 'w') 
+    #  except:
+    #     print("error - cannot open", args.table )
+    #    sys.exit(8)
+    #else:
+    #  file_html = open('wind_chart.html', 'w')
     ####
-    file_html.write(out_txt)
-    file_html.close()
+    #file_html.write(out_txt)
+    #file_html.close()
+    # func test
+    # weather_obs_html_table( [9, 10, 11, 12], 'new_chart.html')
 
     
