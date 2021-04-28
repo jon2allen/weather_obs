@@ -172,6 +172,8 @@ if __name__ == "__main__":
             print("column: ", x, "  -- " , cols)
             x = x+1
         sys.exit(0) 
+    # default tablecols for wind
+    table_col_list =  [9, 19, 17, 21, 16]
     if (args.tablecols):
         try:
            table_col_list = list(map(int, args.tablecols.split(',')))  
@@ -248,29 +250,12 @@ if __name__ == "__main__":
         print( out_text )
         file_html.close()
         return True
-    
-    if (args.tablecols):
-        weather_obs_html_table( table_col_list, args.table )
-    else:
+   
+    if ( args.table):
+        weather_obs_html_table( table_col_list, args.table)
         #default
-        weather_obs_html_table( [9,19,17,21,16], 'wind_chart.html')
+    else:
+        weather_obs_html_table( table_col_list , 'wind_chart.html')
     
-    # obs_prn = obs1[['observation_time','wind_mph','wind_dir','wind_gust_mph','wind_string']]
-    #obs_prn = obs1.iloc[:, [ 5, 9, 19, 17, 12, 11, 10]]
-    #out_txt = obs_prn.to_html()
-    #print(out_txt)
-    #if (args.table):
-    #  try:
-    #     file_html = open(args.table, 'w') 
-    #  except:
-    #     print("error - cannot open", args.table )
-    #    sys.exit(8)
-    #else:
-    #  file_html = open('wind_chart.html', 'w')
-    ####
-    #file_html.write(out_txt)
-    #file_html.close()
-    # func test
-    # weather_obs_html_table( [9, 10, 11, 12], 'new_chart.html')
-
+    
     
