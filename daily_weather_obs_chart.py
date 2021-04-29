@@ -173,6 +173,7 @@ if __name__ == "__main__":
             x = x+1
         sys.exit(0) 
     # default tablecols for wind
+    # df[['observation_time','wind_mph','wind_dir','wind_gust_mph','wind_string']]
     table_col_list =  [9, 19, 17, 21, 16]
     if (args.tablecols):
         try:
@@ -203,11 +204,13 @@ if __name__ == "__main__":
     y = obs1['wind_mph']
     z = obs1['wind_dir']
     chart_loc = obs1['location']
-    print("chart_loc: ", chart_loc[1])
+    print("chart_loc: ", chart_loc[0])
 
     ax.plot_date( x,y, linestyle = "solid")
     plt.grid(True)
-    plt.title( str(chart_loc[1]) + " - " + chart_date , fontsize=15)
+    plt.title( str(chart_loc[0]) + " - " + chart_date , fontsize=15)
+    print("xlim: ", ax.get_xlim())
+    print("ylim: ", ax.get_ylim()) 
     for  i in range(  x.size   ):
         if (i == (x.size - 1 )):
                 ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-15, -15), 
