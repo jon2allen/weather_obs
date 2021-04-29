@@ -225,18 +225,6 @@ if __name__ == "__main__":
             else:
                     ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-15, -15),
                         textcoords='offset pixels')
-
-    for  i in range(  x.size   ):
-        if (i == (x.size - 1 )):
-                ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-15, -15), 
-                textcoords='offset points')
-        else:
-            if y[i] == y[i+1]:
-                    ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-30, 15), 
-                    textcoords='offset points')
-            else:
-                    ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-15, -15), 
-                        textcoords='offset points')
     fig.autofmt_xdate()
     fig.text(0.04,0.5, 'Wind Speed - MPH', va='center', rotation='vertical', fontsize=18)
     fig.text(0.5,0.05,  'Hour of day', va='center', fontsize=18)
