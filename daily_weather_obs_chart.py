@@ -213,6 +213,21 @@ if __name__ == "__main__":
     print("ylim: ", ax.get_ylim()) 
     for  i in range(  x.size   ):
         if (i == (x.size - 1 )):
+                ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-15, -15),textcoords='offset pixels')
+        else:
+            if y[i] == y[i+1]:
+                    if (len(z[i]) > 7 ):
+                        ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-60, -15),
+                          textcoords='offset pixels')
+                    else:
+                        ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-30, -15),
+                          textcoords='offset pixels')
+            else:
+                    ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-15, -15),
+                        textcoords='offset pixels')
+
+    for  i in range(  x.size   ):
+        if (i == (x.size - 1 )):
                 ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-15, -15), 
                 textcoords='offset points')
         else:
@@ -260,5 +275,6 @@ if __name__ == "__main__":
     else:
         weather_obs_html_table( table_col_list , 'wind_chart.html')
     
-    
+    print(ax.axis())
+   
     
