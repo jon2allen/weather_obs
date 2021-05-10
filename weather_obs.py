@@ -43,10 +43,10 @@ testing
    set the format from current date
    cannoical format for obs
 """
-def create_station_file_name():
+def create_station_file_name(station = 'KDCA', ext = 'csv'):
       t_now = datetime.datetime.now()
       year, month, day, hour, min = map(str, t_now.strftime("%Y %m %d %H %M").split())
-      file_n = station_id + '_Y' + year + '_M' + month + '_D' + day + '_H' + hour + ".csv"
+      file_n = station + '_Y' + year + '_M' + month + '_D' + day + '_H' + hour + "." + ext
       return file_n
 """
    Get arguments
@@ -59,10 +59,11 @@ def weather_obs_init():
     parser.add_argument('--station', help='URL of station' )
     parser.add_argument('--collect', help='Run collectiion in background - Y/N', action="store_true")
     parser.add_argument('--append', help='Append data to CSV file - specifed' )
-    parser.add_argument('-d', '--duration', help='Duration cycle - default - 24 hours, 3 hours')
+    parser.add_argument('-d', '--duration', help='Duration cycle - default - 24 hours ')
     parser.add_argument('-c', '--cut', action="store_true")
     parser.add_argument('-x', '--xml', action="store_true")
     parser.add_argument('-r', '--resume', help='resume append and cut', action="store_true")
+    parser.add_argument('-j', '--json', help = "generate json data to file")
     args = parser.parse_args()
     trace_print( 1, "parsing args...")
     # cannocial header
