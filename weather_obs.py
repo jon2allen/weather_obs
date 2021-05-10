@@ -53,6 +53,7 @@ def create_station_file_name():
    Establish globals
 """
 def weather_obs_init():
+    """ init the app, get args and establish globals """
     parser = argparse.ArgumentParser(description='NOAA weather obsevation')
     parser.add_argument('--init', help='Initialize CSV' )
     parser.add_argument('--station', help='URL of station' )
@@ -174,6 +175,7 @@ append_data = False
       file:  xml_dump + <iteration> . xml
 """
 def dump_xml( xmldata, iteration ):
+    """  dump the xml to a file for deugging """
     trace_print( 1, "dumpxml_entry")
     global dump_xml_flag
     if ( dump_xml_flag == True):
@@ -198,6 +200,7 @@ def dump_xml( xmldata, iteration ):
       function trace string.
 """
 def trace_print( i, s, *t1):
+    """ central logging function """
     global trace
     jstr = ''.join(t1)
     msg1 = s + jstr
@@ -224,6 +227,7 @@ def trace_print( i, s, *t1):
    output:  list of last row
 """
 def get_last_csv_row( st_file):
+  """ helper function to get last row of csv file """
   try:
     with open(st_file, "r", encoding="utf-8", errors="ignore") as csv_1:
         final_line = csv_1.readlines()[-1]
@@ -240,6 +244,7 @@ def get_last_csv_row( st_file):
    output:  True = if duplicate, false if not or csv empty.
 """      
 def duplicate_observation(  current_obs ):
+    """ test last line of csv for duplicate """ 
     last_one = get_last_csv_row(station_file)
     if ( len(last_one) < 4 ):
       return False
@@ -263,6 +268,7 @@ def duplicate_observation(  current_obs ):
 """
 
 def get_weather_from_NOAA(station):
+   """ simple get xml data, and print the md5 """
    trace_print( 4, "url request")
    with urllib.request.urlopen(station) as response:
    	xml = response.read()
@@ -275,6 +281,7 @@ def get_weather_from_NOAA(station):
    outputs:  data for writing out to CSV
 """  
 def transform_observation( attribute, data):
+  """ place to hook any transforms on te data """
   output = data
   if (attribute == 'observation_time'):
      output = data[16:]
@@ -302,6 +309,7 @@ def transform_observation( attribute, data):
  transform data before adding to the writing list of rows
 """
 def get_data_from_NOAA_xml( xmldata ):
+  """ parse noaa observatin data from xml into list """
   tree = ET.fromstring(xmldata)
   h1 = []
   r1 = []
@@ -329,6 +337,7 @@ def get_data_from_NOAA_xml( xmldata ):
                  in binary string - broken into lists
 """
 def weather_csv_driver( mode, csv_file, w_header, w_row ):
+   """ write out csv data - mode is append, write or cut """
    cut_mode = False
    trace_print(4, 'csv_driver')
 #   if ( mode != 'w' ) and  ( mode != 'a' ):
@@ -369,6 +378,7 @@ function: weather_collet_driver
       Appends ( only ) csv file with data from obs xml
 """
 def weather_collect_driver( xml_url, csv_out):
+     """ Appends ( only ) csv file with data from obs xml """
      global obs_iteration
      trace_print( 4, "weather_collect_driver")
      xmldata = get_weather_from_NOAA( xml_url )
@@ -387,6 +397,7 @@ def weather_collect_driver( xml_url, csv_out):
 # TODO - need init the file. collect driver needs the file to exits
 # primitive_test_loop()
 def weather_obs_app_start():
+  """ top level start of collection """ 
   # if appending and scheduling - skip over to collect
   global append_data
   if ( append_data != True):
@@ -406,6 +417,7 @@ def weather_obs_app_start():
 #
 # need to specify file.
 def weather_obs_app_append():
+  """ append top level """ 
   content = get_weather_from_NOAA(primary_station)
   #  print(content)
   xmld1 = get_data_from_NOAA_xml( content)
@@ -425,6 +437,7 @@ def weather_obs_app_append():
   No need to support less - observations are hourly
   """
 def duration_cut_check( t_last, hour_cycle  ):
+  """ see if new file is to be created or cut """ 
   trace_print( 1, "Duration check")
   t_now = datetime.datetime.now() 
   if t_now.year > t_last.year:
