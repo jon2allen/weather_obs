@@ -36,9 +36,10 @@ def hunt_for_csv(file_id):
     target_csv = ''
     for f in dirlist:
         if( f[:10] == file_id):
-          logger.debug("station CSV file: %s" ,f)
-          station_file_list.append(f)
-          logger.debug("file: %s", f[:10])
+          if 'csv' in f:
+              logger.debug("station CSV file: %s" ,f)
+              station_file_list.append(f)
+              logger.debug("file: %s", f[:10])
     logger.debug(station_file_list)    
     last_hour = 0
     for f in station_file_list:
