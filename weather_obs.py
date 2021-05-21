@@ -123,7 +123,7 @@ def weather_obs_init():
       # print(station[:4])
       station_id = station[:4]
       trace_print( 4, "Station id:  ", station_id)
-      station_file = create_station_file_name()
+      station_file = create_station_file_name( station_id )
       if (append_data_specified == False):
           trace_print( 4, "Station filename: ", station_file)
       init_csv = True
@@ -141,7 +141,7 @@ def weather_obs_init():
              file_id = station_id + "_Y" + str(now.year)
              station_file = hunt_for_csv(file_id) 
              if (len(station_file) < 4 ):
-                station_file = create_station_file_name()
+                station_file = create_station_file_name(station_id)
                 init_csv = True
                 append_data = False
                 append_data_specified = True
@@ -152,7 +152,7 @@ def weather_obs_init():
          collect_data = True
          job1 = ""
          if (init_csv == False) and (append_data_specified == False):
-            station_file = create_station_file_name()
+            station_file = create_station_file_name(station_id)
             trace_print( 4, "Station filename (collect): ", station_file)
     else:
       trace_print( 3, "Error: No station given - please use --station")
