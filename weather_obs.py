@@ -39,15 +39,45 @@ testing
 
 #freezer = freeze_time("2021-12-31 23:56:30", tick=True)
 #freezer.start()
+
+logger = logging.getLogger('weather_obs_f')
+csv_headers = ['credit','credit_URL','image','suggested_pickup','suggested_pickup_period','location','station_id','latitude','longitude','observation_time','observation_time_rfc822','weather','temperature_string','temp_f','temp_c','relative_humidity','wind_string','wind_dir','wind_degrees','wind_mph','wind_kt','wind_gust_mph','wind_gust_kt','pressure_string','pressure_mb','pressure_in','dewpoint_string','dewpoint_f','dewpoint_c','heat_index_string','heat_index_f','heat_index_c','windchill_string','windchill_f','windchill_c','visibility_mi','icon_url_base','two_day_history_url','icon_url_name','ob_url','disclaimer_url','copyright_url','privacy_policy_url']
 """
    set the format from current date
    cannoical format for obs
 """
+
+def get_obs_time( obs_date):
+    t_str = obs_date
+    trace_print(4, "Local observation time ( get_obs_time): ", t_str[:-3])
+    #actual timezone is not important for obs file output.
+    obs_date = datetime.datetime.strptime( t_str[:-3], "%B %d %Y, %I:%M %p ")
+    return obs_date
+   
 def create_station_file_name(station = 'KDCA', ext = 'csv'):
+      """ 
+      create station file from current time 
+      """
       t_now = datetime.datetime.now()
       year, month, day, hour, min = map(str, t_now.strftime("%Y %m %d %H %M").split())
       file_n = station + '_Y' + year + '_M' + month + '_D' + day + '_H' + hour + "." + ext
       return file_n
+   
+def create_station_file_name2( station = "https://w1.weather.gov/xml/current_obs/KDCA.xml", ext = 'csv'):
+    """ 
+    create_station_file from observation time 
+    """
+    w_xml = get_weather_from_NOAA(station)
+    headers, row = get_data_from_NOAA_xml(w_xml)
+    obs_date = get_obs_time( row[9])
+
+    station_id = station[-8:-4]
+    year, month, day, hour, min, am = map(str, obs_date.strftime("%Y %m %d %H %M %p").split())
+    file_n = station_id + '_Y' + year + '_M' + month + '_D' + day + '_H' + hour + "." + ext
+    trace_print(4, "my_p", str(am))
+    return file_n
+    
+    
 """
    Get arguments
    Establish globals
@@ -69,8 +99,7 @@ def weather_obs_init():
     # cannocial header
     # can't depend on xml feed to complete every value
     global csv_headers
-    csv_headers = ['credit','credit_URL','image','suggested_pickup','suggested_pickup_period','location','station_id','latitude','longitude','observation_time','observation_time_rfc822','weather','temperature_string','temp_f','temp_c','relative_humidity','wind_string','wind_dir','wind_degrees','wind_mph','wind_kt','wind_gust_mph','wind_gust_kt','pressure_string','pressure_mb','pressure_in','dewpoint_string','dewpoint_f','dewpoint_c','heat_index_string','heat_index_f','heat_index_c','windchill_string','windchill_f','windchill_c','visibility_mi','icon_url_base','two_day_history_url','icon_url_name','ob_url','disclaimer_url','copyright_url','privacy_policy_url']
-    #  global collect_data
+        #  global collect_data
     #  collect_data = False
     #  global job1
     global collect_data
@@ -83,6 +112,8 @@ def weather_obs_init():
     global duration_interval
     global dump_xml_flag
     global resume
+    global prior_obs_time
+    global current_obs_time
     dump_xml_flag = False
     init_csv = False
     cut_file = False
@@ -123,7 +154,7 @@ def weather_obs_init():
       # print(station[:4])
       station_id = station[:4]
       trace_print( 4, "Station id:  ", station_id)
-      station_file = create_station_file_name( station_id )
+      station_file = create_station_file_name2( primary_station )
       if (append_data_specified == False):
           trace_print( 4, "Station filename: ", station_file)
       init_csv = True
@@ -141,7 +172,7 @@ def weather_obs_init():
              file_id = station_id + "_Y" + str(now.year)
              station_file = hunt_for_csv(file_id) 
              if (len(station_file) < 4 ):
-                station_file = create_station_file_name(station_id)
+                station_file = create_station_file_name2(primary_station)
                 init_csv = True
                 append_data = False
                 append_data_specified = True
@@ -152,7 +183,7 @@ def weather_obs_init():
          collect_data = True
          job1 = ""
          if (init_csv == False) and (append_data_specified == False):
-            station_file = create_station_file_name(station_id)
+            station_file = create_station_file_name2(primary_station)
             trace_print( 4, "Station filename (collect): ", station_file)
     else:
       trace_print( 3, "Error: No station given - please use --station")
@@ -203,6 +234,7 @@ def dump_xml( xmldata, iteration ):
 def trace_print( i, s, *t1):
     """ central logging function """
     global trace
+    global logger
     jstr = ''.join(t1)
     msg1 = s + jstr
     out1 =  msg1
@@ -381,13 +413,25 @@ function: weather_collet_driver
 def weather_collect_driver( xml_url, csv_out):
      """ Appends ( only ) csv file with data from obs xml """
      global obs_iteration
+     global prior_obs_time
+     global current_obs_time
      trace_print( 4, "weather_collect_driver")
      xmldata = get_weather_from_NOAA( xml_url )
      outdata = get_data_from_NOAA_xml( xmldata )
+     # TODO:  set data for last observation time.
+     # use for cut logic.
+     # if local time crossed midnight - cut a new file. 
+     # save prior - obs_time_prior
+     # curent to - obs_time_curent.
+     prior_obs_time = current_obs_time
+     current_obs_time = get_obs_time(outdata[1][9])
+     trace_print(4, "current_obs_time(driver):  ", str(current_obs_time))
+     trace_print(4, "prior_obs_time(driver): ", str(prior_obs_time))
      if ( duplicate_observation( outdata[1] )):
          trace_print( 3, " duplicate in collect.  exiting...")
          return True
      weather_csv_driver('a', csv_out, outdata[0], outdata[1])
+     
      obs_iteration = obs_iteration + 1
      dump_xml(xmldata, obs_iteration )
      return True
@@ -401,10 +445,19 @@ def weather_obs_app_start():
   """ top level start of collection """ 
   # if appending and scheduling - skip over to collect
   global append_data
+  global prior_obs_time
+  global current_obs_time
   if ( append_data != True):
       content = get_weather_from_NOAA(primary_station)
       #  print(content)
       xmld1 = get_data_from_NOAA_xml( content)
+      obs_string = xmld1[1][9]
+      trace_print(4, "raw observation string: ", obs_string)
+      obs_time_stamp = get_obs_time(obs_string)
+      prior_obs_time = obs_time_stamp
+      current_obs_time = obs_time_stamp 
+      trace_print(4, "current_obs_time(start):  ", str(current_obs_time))
+      trace_print(4, "prior_obs_time:(start) ", str(prior_obs_time))
       weather_csv_driver('w', station_file, xmld1[0], xmld1[1])
       trace_print( 4, "Initializing new file: ")
       trace_print( 4, station_file)
@@ -419,18 +472,49 @@ def weather_obs_app_start():
 # need to specify file.
 def weather_obs_app_append():
   """ append top level """ 
+  global prior_obs_time
+  global current_obs_time
   content = get_weather_from_NOAA(primary_station)
   #  print(content)
   xmld1 = get_data_from_NOAA_xml( content)
+  
   """
     test if last row and what is coming in are equal
   """
+  # if --resume is specified - then we need to set prior to current.
+  try:
+      prior_obs_time = current_obs_time
+  except:
+      prior_obs_time =  get_obs_time(xmld1[1][9])
+  current_obs_time = get_obs_time(xmld1[1][9])
+  trace_print(4, "current_obs_time(append):  ", str(current_obs_time))
+  trace_print(4, "prior_obs_time(append): ", str(prior_obs_time))
   if ( duplicate_observation( xmld1[1] )):
       trace_print(3, 'duplicate append, exit up')
       return
   weather_csv_driver('a', station_file, xmld1[0], xmld1[1])
   return
 #
+def duration_cut_check2( t_last, t_curr, hour_cycle  ):
+  """ see if new file is to be created or cut """ 
+  trace_print( 1, "Duration check")
+  t_now = t_curr 
+  if t_now.year > t_last.year:
+      trace_print( 1, "Duration year check")
+      return True
+  if t_now.month > t_last.month:
+      trace_print( 1, "Duration month check")
+      return True
+  if t_now.day > t_last.day:
+      trace_print( 1, "Duration day check")
+      return True
+  if (t_now.hour - t_last.hour == 0 ):
+      return False  
+  if (hour_cycle > 0):
+     if ((t_now.hour - t_last.hour) % hour_cycle == 0 ):
+       trace_print( 1, "Duration cycle check at ", str(hour_cycle))
+       return True
+  return False  
 """
   Pass last cut time and check against now
   check at each day, month, and year.
@@ -468,7 +552,7 @@ if __name__ == "__main__":
   # this inhibts logger from putting out messages to stderr
   # which appears to be double logging when run from cli or foreground.
   logging.root.handlers = []
-  global logger
+  # global logger
   global schedule_logger
   logger = logging.getLogger('weather_obs_f')
   ch = logging.StreamHandler(stream=sys.stdout)
@@ -525,7 +609,7 @@ if __name__ == "__main__":
             trace_print( 1, "Num minutes running: ", str(run_minutes) )
             if ( cut_file == True):
                 t_cut_time = datetime.datetime.now()
-                if ( duration_cut_check(t_begin, duration_interval)): 
+                if ( duration_cut_check2(prior_obs_time, current_obs_time, duration_interval)): 
                 #    if ((t_begin.minute - t_cut_time.minute) < 5):
                 #       trace_print( 1, " cut time less than 1 hour")
                 #        if (duration_interval < 2 ):
@@ -534,7 +618,7 @@ if __name__ == "__main__":
                 #           job1.run()
                 #           trace_print( 1, " Ran job again to catch up ")
                     trace_print( 4, "running cut operation")
-                    station_file = create_station_file_name()
+                    station_file = create_station_file_name2(primary_station)
                     trace_print( 4, "New Station file:", station_file)
                     #create new file with cannocial headers
                     weather_csv_driver('c', station_file, csv_headers, [])
