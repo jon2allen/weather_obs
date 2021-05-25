@@ -24,7 +24,7 @@ import csv
 import urllib.request
 import xml.etree.ElementTree as ET
 import time
-import datetime
+from datetime import datetime,timedelta
 import schedule
 import hashlib
 import inspect
@@ -39,6 +39,9 @@ testing
 
 #freezer = freeze_time("2021-12-31 23:56:30", tick=True)
 #freezer.start()
+obs_time_debug = False
+global run_minutes
+run_minutes = 0
 
 logger = logging.getLogger('weather_obs_f')
 csv_headers = ['credit','credit_URL','image','suggested_pickup','suggested_pickup_period','location','station_id','latitude','longitude','observation_time','observation_time_rfc822','weather','temperature_string','temp_f','temp_c','relative_humidity','wind_string','wind_dir','wind_degrees','wind_mph','wind_kt','wind_gust_mph','wind_gust_kt','pressure_string','pressure_mb','pressure_in','dewpoint_string','dewpoint_f','dewpoint_c','heat_index_string','heat_index_f','heat_index_c','windchill_string','windchill_f','windchill_c','visibility_mi','icon_url_base','two_day_history_url','icon_url_name','ob_url','disclaimer_url','copyright_url','privacy_policy_url']
@@ -48,17 +51,24 @@ csv_headers = ['credit','credit_URL','image','suggested_pickup','suggested_picku
 """
 
 def get_obs_time( obs_date):
+    global run_minutes
     t_str = obs_date
+    if (obs_time_debug):
+       # adjust stamp for specific test
+       # run_minutes will be set to 0 at top of hour ( 0 - 59)
+       obs_date = datetime(2021, 5, 25, 23, 52) + timedelta(minutes = run_minutes)
+       print("Debug obs_date:" , obs_date)
+       return obs_date
     trace_print(4, "Local observation time ( get_obs_time): ", t_str[:-3])
     #actual timezone is not important for obs file output.
-    obs_date = datetime.datetime.strptime( t_str[:-3], "%B %d %Y, %I:%M %p ")
+    obs_date = datetime.strptime( t_str[:-3], "%B %d %Y, %I:%M %p ")
     return obs_date
    
 def create_station_file_name(station = 'KDCA', ext = 'csv'):
       """ 
       create station file from current time 
       """
-      t_now = datetime.datetime.now()
+      t_now = datetime.now()
       year, month, day, hour, min = map(str, t_now.strftime("%Y %m %d %H %M").split())
       file_n = station + '_Y' + year + '_M' + month + '_D' + day + '_H' + hour + "." + ext
       return file_n
@@ -168,7 +178,7 @@ def weather_obs_init():
           init_csv = False
           if (resume == True):
              trace_print( 4, "resume here")
-             now = datetime.datetime.now()
+             now = datetime.now()
              file_id = station_id + "_Y" + str(now.year)
              station_file = hunt_for_csv(file_id) 
              if (len(station_file) < 4 ):
@@ -399,7 +409,7 @@ def weather_csv_driver( mode, csv_file, w_header, w_row ):
             trace_print( 4, "csv_drver: row_only")
             weather_writer.writerow( w_row )
    weather_file.close()
-   csv_write_time = datetime.datetime.now()
+   csv_write_time = datetime.now()
    trace_print( 4, "csv_write_time: ",csv_write_time.strftime("%A, %d. %B %Y %I:%M%p"))
    return True 
 """
@@ -499,6 +509,8 @@ def duration_cut_check2( t_last, t_curr, hour_cycle  ):
   """ see if new file is to be created or cut """ 
   trace_print( 1, "Duration check")
   t_now = t_curr 
+  trace_print(1, "t_now: ", str(t_now))
+  trace_print( 1, "t_last: ", str(t_last))
   if t_now.year > t_last.year:
       trace_print( 1, "Duration year check")
       return True
@@ -524,7 +536,7 @@ def duration_cut_check2( t_last, t_curr, hour_cycle  ):
 def duration_cut_check( t_last, hour_cycle  ):
   """ see if new file is to be created or cut """ 
   trace_print( 1, "Duration check")
-  t_now = datetime.datetime.now() 
+  t_now = datetime.now() 
   if t_now.year > t_last.year:
       trace_print( 1, "Duration year check")
       return True
@@ -590,9 +602,8 @@ if __name__ == "__main__":
            trace_print( 4, "Append processing start")
            weather_obs_app_append()
   if (collect_data == True ):
-     global run_minutes
      run_minutes = 0
-     t_begin = datetime.datetime.now()
+     t_begin = datetime.now()
      trace_print( 4, "starting time: ",t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
      # for case of collect and append specified
      # TODO - should we force to be 15 minutes afer the hour
@@ -602,14 +613,14 @@ if __name__ == "__main__":
      delay_t = 60 - t_begin.minute
      trace_print( 4, "minutes till the next hour: ", str(delay_t))
      while True:
-        run_minutes =  datetime.datetime.now().minute
-        # trace_print( 1, "run_minutes(tst): ", str(datetime.datetime.now().minute))
+        run_minutes =  datetime.now().minute
+        # trace_print( 1, "run_minutes(tst): ", str(datetime.now().minute))
         if ((run_minutes % 15 == 0)):
             # every hour check to see if need to cut
             trace_print( 1, "Num minutes running: ", str(run_minutes) )
             if ( cut_file == True):
-                t_cut_time = datetime.datetime.now()
-                if ( duration_cut_check2(prior_obs_time, current_obs_time, duration_interval)): 
+                t_cut_time = datetime.now()
+                if ( duration_cut_check2( current_obs_time, current_obs_time + timedelta(hours=1), duration_interval)): 
                 #    if ((t_begin.minute - t_cut_time.minute) < 5):
                 #       trace_print( 1, " cut time less than 1 hour")
                 #        if (duration_interval < 2 ):
@@ -625,7 +636,7 @@ if __name__ == "__main__":
                     schedule.cancel_job(job1)
                     # we rassigned the next station file ( global )
                     # new writes should go there.
-                    t_begin = datetime.datetime.now() 
+                    t_begin = datetime.now() 
                     trace_print( 4, "Time of last cut:",t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
                     # this will reschedule job with new file.
                     weather_obs_app_start()

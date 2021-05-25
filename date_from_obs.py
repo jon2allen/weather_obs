@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 import pytz
 from weather_obs import *
 import logging
@@ -28,8 +28,9 @@ def app_station(i_station):
     t_str = row[9]
     print(t_str[:-3])
     #actual timezone is not important for obs file output.
-    my_date = datetime.datetime.strptime( t_str[:-3], "%B %d %Y, %I:%M %p ")
+    my_date = datetime.strptime( t_str[:-3], "%B %d %Y, %I:%M %p ")
     print(my_date)
+    print("time + 1 hour: ", my_date + timedelta(hours=1))
     
 app_station(test_station)
 app_station(test_station_hawaii)
@@ -37,3 +38,14 @@ app_station(test_station_hawaii)
 print( create_station_file_name2( test_station) )
 print( create_station_file_name2(test_station_hawaii))
 print( create_station_file_name())
+
+print(" more testing...")
+
+time_now = datetime.now() + timedelta(hours=15)
+
+time_tmw = datetime.now() + timedelta(hours=16)
+
+print( "time_now:", str(time_now))
+print( "time_tom:", str(time_tmw))
+
+print( duration_cut_check2(time_now, time_tmw, 0))
