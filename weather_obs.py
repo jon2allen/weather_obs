@@ -63,7 +63,8 @@ def get_obs_time( obs_date):
     #actual timezone is not important for obs file output.
     obs_date = datetime.strptime( t_str[:-3], "%B %d %Y, %I:%M %p ")
     return obs_date
-   
+
+#TODO - pass a time stamp instead of now.  chose now or some other time at top level  
 def create_station_file_name(station = 'KDCA', ext = 'csv'):
       """ 
       create station file from current time 
@@ -620,7 +621,7 @@ if __name__ == "__main__":
             trace_print( 1, "Num minutes running: ", str(run_minutes) )
             if ( cut_file == True):
                 t_cut_time = datetime.now()
-                if ( duration_cut_check2( current_obs_time, current_obs_time + timedelta(hours=1), duration_interval)): 
+                if ( duration_cut_check2( prior_obs_time, current_obs_time , duration_interval)): 
                 #    if ((t_begin.minute - t_cut_time.minute) < 5):
                 #       trace_print( 1, " cut time less than 1 hour")
                 #        if (duration_interval < 2 ):
@@ -629,6 +630,8 @@ if __name__ == "__main__":
                 #           job1.run()
                 #           trace_print( 1, " Ran job again to catch up ")
                     trace_print( 4, "running cut operation")
+                    # sychronize obs_time for new day 
+                    prior_obs_time = current_obs_time
                     station_file = create_station_file_name2(primary_station)
                     trace_print( 4, "New Station file:", station_file)
                     #create new file with cannocial headers
