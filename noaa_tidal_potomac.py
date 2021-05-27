@@ -1,6 +1,4 @@
-#!/usr/bin/env python
-
-
+#!/usr/bin/python
 
 from weather_obs import create_station_file_name
 import requests
@@ -9,14 +7,11 @@ import numpy as pd
 from bs4 import BeautifulSoup
 import re
 from weather_obs import *
+import os
 
 tidal_pt = 'https://www.ndbc.noaa.gov/data/Forecasts/FZUS51.KLWX.html'
 
-
-
-#leantext = BeautifulSoup(my_f[x:y], "html.parser").text
-
-#print(leantext)
+os.chdir('/var/www/html/weather_obs')
 
 class obs_collector:
      def __init__( self, url, id):
@@ -25,21 +20,29 @@ class obs_collector:
      def show_collector(self):
           return  str(self.station_id + "@" + self.station_url)
      def get_url_data(self):
-         self.url_data = requests.get(self.station_url) 
+          self.url_data = requests.get(self.station_url) 
      def show_url_data(self):
+          """show Url data if desired"""
           return self.url_data.text
      def set_station_file_name(self):
           self.obs_filename = create_station_file_name(self.station_id, "txt")
      def write_station_data(self):
+          """write out last forcast"""
           obs_file = open(self.obs_filename,"w")
           obs_file.write(self.last_forcast)
           obs_file.close()
+     def write_station_data_custom(self, ending_text):
+          obs_file = open( self.station_id + "_" + ending_text, "w")
+          obs_file.write(self.last_forcast)
+          obs_file.close()        
      def obs_collection_sequence(self):
+         """ basic collection sequence - fetch, intpret, write """
          self.get_url_data()
          self.find_station_data()               
          self.set_station_file_name()
          self.write_station_data()
      def find_station_data(self):
+          """ parse station data from noaa html page """
           f = BeautifulSoup(self.url_data.text,'lxml')
           my_content = f.find(id="contentarea")
           # print(my_content)
@@ -79,11 +82,12 @@ class obs_collector:
           self.last_forcast = r_station_data
           return r_station_data
                     
-               # print(text_obs[station_list[i][0]:station_list[i+1][0]])
-  
-          
+#
+#  init the collector
+#  run the collection sequnce
+#  1 additional custom write out of the data          
 
-obs_x = obs_collector( url = 'https://www.ndbc.noaa.gov/data/Forecasts/FZUS51.KLWX.html', id = "ANZ530")
+obs_x = obs_collector( url = 'https://www.ndbc.noaa.gov/data/Forecasts/FZUS51.KLWX.html', id = "ANZ535")
 
 
 
@@ -91,22 +95,13 @@ print( obs_x.show_collector())
 
 obs_x.obs_collection_sequence()
 
-#obs_x.get_url_data()
-
-# print(obs_x.show_url_data())
-
-#print(obs_x.station_id)
-
-#obs_x.set_station_file_name()
 
 print(obs_x.obs_filename)
-
-#print("Station data: \n", obs_x.find_station_data())
-
-#obs_x.write_station_data();
-
+# write out to "latest" for page pickup
+# saves effort on figuring out which file to open
+obs_x.write_station_data_custom( "latest.txt")
 
 
-exit();    
+exit()    
  
 
