@@ -39,13 +39,16 @@ print( create_station_file_name2( test_station) )
 print( create_station_file_name2(test_station_hawaii))
 print( create_station_file_name())
 
+
 print(" more testing...")
 
-time_now = datetime.now() + timedelta(hours=15)
+time_now = datetime.now() + timedelta(hours=14)
 
-time_tmw = datetime.now() + timedelta(hours=16)
+time_tmw = datetime.now() + timedelta(hours=2)
 
 print( "time_now:", str(time_now))
 print( "time_tom:", str(time_tmw))
+
+print(create_station_file_name( time_tmw))
 
 print( duration_cut_check2(time_now, time_tmw, 0))

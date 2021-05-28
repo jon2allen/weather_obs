@@ -65,11 +65,14 @@ def get_obs_time( obs_date):
     return obs_date
 
 #TODO - pass a time stamp instead of now.  chose now or some other time at top level  
-def create_station_file_name(station = 'KDCA', ext = 'csv'):
+def create_station_file_name(obs_time_stamp = None, station = 'KDCA', ext = 'csv'):
       """ 
-      create station file from current time 
+      create station file from current time or time provided
       """
-      t_now = datetime.now()
+      if obs_time_stamp == None:
+          t_now = datetime.now()
+      else:
+          t_now = obs_time_stamp
       year, month, day, hour, min = map(str, t_now.strftime("%Y %m %d %H %M").split())
       file_n = station + '_Y' + year + '_M' + month + '_D' + day + '_H' + hour + "." + ext
       return file_n
@@ -622,17 +625,13 @@ if __name__ == "__main__":
             if ( cut_file == True):
                 t_cut_time = datetime.now()
                 if ( duration_cut_check2( prior_obs_time, current_obs_time , duration_interval)): 
-                #    if ((t_begin.minute - t_cut_time.minute) < 5):
-                #       trace_print( 1, " cut time less than 1 hour")
-                #        if (duration_interval < 2 ):
-                #           schedule.cancel_job(job1)
-                #        else:
-                #           job1.run()
-                #           trace_print( 1, " Ran job again to catch up ")
                     trace_print( 4, "running cut operation")
-                    # sychronize obs_time for new day 
+                    # sychronize obs_time for new day - so file name will be corrrect
+                    obs_cut_time = current_obs_time + timedelta(minutes=30)
+                    # last observation at 11:50 or so - add 30 minutes for file create.
+                    station_file = create_station_file_name(obs_cut_time, station_id)
+                    # start a new day cycle
                     prior_obs_time = current_obs_time
-                    station_file = create_station_file_name2(primary_station)
                     trace_print( 4, "New Station file:", station_file)
                     #create new file with cannocial headers
                     weather_csv_driver('c', station_file, csv_headers, [])
