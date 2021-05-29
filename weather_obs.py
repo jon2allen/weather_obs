@@ -624,11 +624,11 @@ if __name__ == "__main__":
             trace_print( 1, "Num minutes running: ", str(run_minutes) )
             if ( cut_file == True):
                 t_cut_time = datetime.now()
-                if ( duration_cut_check2( prior_obs_time, current_obs_time , duration_interval)): 
+                obs_cut_time = current_obs_time + timedelta(minutes=10)
+                if ( duration_cut_check2( prior_obs_time, obs_cut_time , duration_interval)): 
                     trace_print( 4, "running cut operation")
                     # sychronize obs_time for new day - so file name will be corrrect
-                    obs_cut_time = current_obs_time + timedelta(minutes=30)
-                    # last observation at 11:50 or so - add 30 minutes for file create.
+                    # last observation at 11:50 or so - add 10 minutes for file create.
                     station_file = create_station_file_name(obs_cut_time, station_id)
                     # start a new day cycle
                     prior_obs_time = current_obs_time
