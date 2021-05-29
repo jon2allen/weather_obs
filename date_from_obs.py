@@ -49,6 +49,6 @@ time_tmw = datetime.now() + timedelta(hours=2)
 print( "time_now:", str(time_now))
 print( "time_tom:", str(time_tmw))
 
-print(create_station_file_name( time_tmw))
+print(create_station_file_name(obs_time_stamp = time_tmw))
 
 print( duration_cut_check2(time_now, time_tmw, 0))

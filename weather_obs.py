@@ -65,7 +65,7 @@ def get_obs_time( obs_date):
     return obs_date
 
 #TODO - pass a time stamp instead of now.  chose now or some other time at top level  
-def create_station_file_name( station = 'KDCA', ext = 'csv', obs_time_stamp = 0:
+def create_station_file_name( station = 'KDCA', ext = 'csv', obs_time_stamp = 0):
       """ 
       create station file from current time or time provided
       """
