@@ -25,6 +25,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 import time
 from datetime import datetime,timedelta
+from dateutil import parser
 import schedule
 import hashlib
 import inspect
@@ -39,7 +40,8 @@ testing
 
 #freezer = freeze_time("2021-12-31 23:56:30", tick=True)
 #freezer.start()
-obs_time_debug = False
+obs_time_debug = True
+obs_debug_t_delta = 7
 global run_minutes
 run_minutes = 0
 
@@ -54,14 +56,20 @@ def get_obs_time( obs_date):
     global run_minutes
     t_str = obs_date
     if (obs_time_debug):
+       trace_print(4, "Local observation time ( get_obs_time): ", t_str)
+       #actual timezone is not important for obs file output.
+       # obs_date = datetime.strptime( t_str[:20], "%b %d %Y, %I:%M %p ")
+       obs_date = parser.parse(t_str[:20])
        # adjust stamp for specific test
        # run_minutes will be set to 0 at top of hour ( 0 - 59)
-       obs_date = datetime(2021, 5, 25, 23, 52) + timedelta(minutes = run_minutes)
-       print("Debug obs_date:" , obs_date)
+       obs_date = obs_date + timedelta(hours = obs_debug_t_delta)
+       trace_print(4, "Debug obs_date:" , str(obs_date))
        return obs_date
-    trace_print(4, "Local observation time ( get_obs_time): ", t_str[:-3])
+    trace_print(4, "Local observation time ( get_obs_time): ", t_str)
     #actual timezone is not important for obs file output.
-    obs_date = datetime.strptime( t_str[:-3], "%B %d %Y, %I:%M %p ")
+    obs_date = parser.parse(t_str[:20])
+    # obs_date = datetime.strptime( t_str[:20], "%b %d %Y, %I:%M %p ")
+    trace_print(4, "get_obs_time return()")
     return obs_date
 
 #TODO - pass a time stamp instead of now.  chose now or some other time at top level  
@@ -437,7 +445,10 @@ def weather_collect_driver( xml_url, csv_out):
      # if local time crossed midnight - cut a new file. 
      # save prior - obs_time_prior
      # curent to - obs_time_curent.
-     prior_obs_time = current_obs_time
+     trace_print(4, "current_obs_time(driver_before):  ", str(current_obs_time))
+     trace_print(4, "prior_obs_time(driver_before): ", str(prior_obs_time))
+     if ( prior_obs_time.hour > 1 ):     
+          prior_obs_time = current_obs_time
      current_obs_time = get_obs_time(outdata[1][9])
      trace_print(4, "current_obs_time(driver):  ", str(current_obs_time))
      trace_print(4, "prior_obs_time(driver): ", str(prior_obs_time))
@@ -473,7 +484,7 @@ def weather_obs_app_start():
       trace_print(4, "current_obs_time(start):  ", str(current_obs_time))
       trace_print(4, "prior_obs_time:(start) ", str(prior_obs_time))
       weather_csv_driver('w', station_file, xmld1[0], xmld1[1])
-      trace_print( 4, "Initializing new file: ")
+      trace_print( 4, "Initializing new file (app_start): ")
       trace_print( 4, station_file)
   if ( collect_data == True):
       global job1
@@ -511,7 +522,7 @@ def weather_obs_app_append():
 #
 def duration_cut_check2( t_last, t_curr, hour_cycle  ):
   """ see if new file is to be created or cut """ 
-  trace_print( 1, "Duration check")
+  trace_print( 1, "Duration check 2")
   t_now = t_curr 
   trace_print(1, "t_now: ", str(t_now))
   trace_print( 1, "t_last: ", str(t_last))
@@ -629,10 +640,11 @@ if __name__ == "__main__":
                     trace_print( 4, "running cut operation")
                     # sychronize obs_time for new day - so file name will be corrrect
                     # last observation at 11:50 or so - add 10 minutes for file create.
-                    station_file = create_station_file_name(obs_cut_time, station_id)
+                    station_file = create_station_file_name(station_id, "csv", obs_cut_time)
                     # start a new day cycle
-                    prior_obs_time = current_obs_time
-                    trace_print( 4, "New Station file:", station_file)
+                    prior_obs_time = obs_cut_time
+                    curent_obs_time = obs_cut_time
+                    trace_print( 4, "New Station file (cut):", station_file)
                     #create new file with cannocial headers
                     weather_csv_driver('c', station_file, csv_headers, [])
                     schedule.cancel_job(job1)
