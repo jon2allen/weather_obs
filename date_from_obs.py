@@ -28,7 +28,7 @@ def app_station(i_station):
     t_str = row[9]
     print(t_str[:-3])
     #actual timezone is not important for obs file output.
-    my_date = datetime.strptime( t_str[:-3], "%B %d %Y, %I:%M %p ")
+    my_date = datetime.strptime( t_str[:20], "%b %d %Y, %I:%M %p ")
     print(my_date)
     print("time + 1 hour: ", my_date + timedelta(hours=1))
     

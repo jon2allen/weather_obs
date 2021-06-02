@@ -40,8 +40,8 @@ testing
 
 #freezer = freeze_time("2021-12-31 23:56:30", tick=True)
 #freezer.start()
-obs_time_debug = False
-obs_debug_t_delta = 7
+obs_time_debug = True
+obs_debug_t_delta = 12
 global run_minutes
 run_minutes = 0
 
@@ -447,9 +447,12 @@ def weather_collect_driver( xml_url, csv_out):
      # curent to - obs_time_curent.
      trace_print(4, "current_obs_time(driver_before):  ", str(current_obs_time))
      trace_print(4, "prior_obs_time(driver_before): ", str(prior_obs_time))
-     if ( prior_obs_time.hour > 1 ):     
-          prior_obs_time = current_obs_time
+     # if it comes in at zero hour ( mindnight) then reset current and prior
+     prior_obs_time = current_obs_time   
      current_obs_time = get_obs_time(outdata[1][9])
+     if (prior_obs_time.hour == 23 ):
+         trace_print(4, "Special driver processing at hour 23")
+         prior_obs_time = current_obs_time
      trace_print(4, "current_obs_time(driver):  ", str(current_obs_time))
      trace_print(4, "prior_obs_time(driver): ", str(prior_obs_time))
      if ( duplicate_observation( outdata[1] )):
@@ -630,7 +633,7 @@ if __name__ == "__main__":
      while True:
         run_minutes =  datetime.now().minute
         # trace_print( 1, "run_minutes(tst): ", str(datetime.now().minute))
-        if ((run_minutes % 15 == 0)):
+        if ((run_minutes  == 59)):
             # every hour check to see if need to cut
             trace_print( 1, "Num minutes running: ", str(run_minutes) )
             if ( cut_file == True):
@@ -647,7 +650,7 @@ if __name__ == "__main__":
                     trace_print( 4, "New Station file (cut):", station_file)
                     #create new file with cannocial headers
                     weather_csv_driver('c', station_file, csv_headers, [])
-                    schedule.cancel_job(job1)
+                    schedule.clear()
                     # we rassigned the next station file ( global )
                     # new writes should go there.
                     t_begin = datetime.now() 
