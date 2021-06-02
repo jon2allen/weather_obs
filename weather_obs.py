@@ -40,7 +40,7 @@ testing
 
 #freezer = freeze_time("2021-12-31 23:56:30", tick=True)
 #freezer.start()
-obs_time_debug = True
+obs_time_debug = False
 obs_debug_t_delta = 7
 global run_minutes
 run_minutes = 0
