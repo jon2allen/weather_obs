@@ -40,8 +40,8 @@ testing
 
 #freezer = freeze_time("2021-12-31 23:56:30", tick=True)
 #freezer.start()
-obs_time_debug = True
-obs_debug_t_delta = 12
+obs_time_debug = False
+obs_debug_t_delta = 9
 global run_minutes
 run_minutes = 0
 
@@ -603,7 +603,9 @@ if __name__ == "__main__":
   schedule_logger = logging.getLogger('schedule')
   schedule_logger.setLevel(level=logging.DEBUG)
   schedule_logger.addHandler(fhandler)
-
+#
+  global prior_obs_time
+  global current_obs_time
   weather_obs_init()
   if (init_csv == True):
       trace_print( 4, "Init... ")
@@ -646,7 +648,7 @@ if __name__ == "__main__":
                     station_file = create_station_file_name(station_id, "csv", obs_cut_time)
                     # start a new day cycle
                     prior_obs_time = obs_cut_time
-                    curent_obs_time = obs_cut_time
+                    current_obs_time = obs_cut_time
                     trace_print( 4, "New Station file (cut):", station_file)
                     #create new file with cannocial headers
                     weather_csv_driver('c', station_file, csv_headers, [])
