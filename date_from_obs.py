@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from dateutil import parser
 import pytz
 from weather_obs import *
 import logging
@@ -26,9 +27,9 @@ def app_station(i_station):
     #item 9 is the observation_time 
     print(row[9])
     t_str = row[9]
-    print(t_str[:-3])
+    print(t_str[:20])
     #actual timezone is not important for obs file output.
-    my_date = datetime.strptime( t_str[:20], "%b %d %Y, %I:%M %p ")
+    my_date = parser.parse( t_str[:20])
     print(my_date)
     print("time + 1 hour: ", my_date + timedelta(hours=1))
     

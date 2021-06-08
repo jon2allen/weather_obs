@@ -292,6 +292,23 @@ def get_last_csv_row( st_file):
   except:
      trace_print( 3, "csv file not found... continue...")
      return ""
+
+def obs_sanity_check( xml_data, data_row):
+     # df[['observation_time','wind_mph','wind_dir','wind_string']]
+    table_col_list =  [9, 19, 17, 16]
+    global dump_xml_flag 
+    for col in table_col_list:
+        if (data_row[col].startswith("<no") == True ):
+            now = datetime.now()
+            midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
+            seconds = (now - midnight).seconds
+            dump_xml_flag = True
+            dump_xml( xml_data, seconds)
+            dump_xml_flag = False
+            trace_print(4, "potential bad xml - see xml dump at ", str(seconds))
+            return False
+        trace_print(1, "data checked: ", str(data_row[col]))           
+    return True        
 """
    function: duplicate_observation
         test curret observation date against csv file last row
@@ -440,6 +457,10 @@ def weather_collect_driver( xml_url, csv_out):
      trace_print( 4, "weather_collect_driver")
      xmldata = get_weather_from_NOAA( xml_url )
      outdata = get_data_from_NOAA_xml( xmldata )
+     ## check data and dump xml
+     ## data feed from noaa has unexpected output
+     ## check to see if wind is missing.
+     obs_sanity_check( xmldata, outdata[1])
      # TODO:  set data for last observation time.
      # use for cut logic.
      # if local time crossed midnight - cut a new file. 
