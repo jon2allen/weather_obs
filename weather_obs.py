@@ -21,7 +21,6 @@
 import sys
 import argparse
 import csv
-from typing_extensions import ParamSpecArgs
 import urllib.request
 import xml.etree.ElementTree as ET
 import time
