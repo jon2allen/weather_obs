@@ -180,9 +180,6 @@ def weather_obs_init():
     # cannocial header
     # can't depend on xml feed to complete every value
     global csv_headers
-        #  global collect_data
-    #  collect_data = False
-    #  global job1
     # check station and fill out appropriate values
     if (args.station):
       obs_setting = ObsSetting( args.station)
@@ -206,7 +203,7 @@ def weather_obs_init():
              if (len(obs_setting.station_file) < 4 ):
                 obs_setting.station_file = create_station_file_name2(obs_setting.primary_station)
                 obs_setting.init_csv = True
-                append_data = False
+                obs_setting.append_data = False
                 obs_setting.append_data_specified = True
                 trace_print( 3, "Resume - No file file on current day")
           trace_print( 4, "Station id ( append ): ", obs_setting.station_file )
@@ -678,7 +675,7 @@ if __name__ == "__main__":
             if ( obs1.cut_file == True):
                 t_cut_time = datetime.now()
                 obs_cut_time = obs1.current_obs_time + timedelta(minutes=10)
-                if ( duration_cut_check2( obs1prior_obs_time, obs_cut_time , obs1.duration_interval)): 
+                if ( duration_cut_check2( obs1.prior_obs_time, obs_cut_time , obs1.duration_interval)): 
                     trace_print( 4, "running cut operation")
                     # sychronize obs_time for new day - so file name will be corrrect
                     # last observation at 11:50 or so - add 10 minutes for file create.
