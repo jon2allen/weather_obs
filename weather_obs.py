@@ -678,7 +678,7 @@ if __name__ == "__main__":
             trace_print( 1, "Num minutes running: ", str(run_minutes) )
             if ( obs1.cut_file == True):
                 t_cut_time = datetime.now()
-                obs_cut_time = current_obs_time + timedelta(minutes=10)
+                obs_cut_time = obs1.current_obs_time + timedelta(minutes=10)
                 if ( duration_cut_check2( obs1prior_obs_time, obs_cut_time , obs1.duration_interval)): 
                     trace_print( 4, "running cut operation")
                     # sychronize obs_time for new day - so file name will be corrrect
