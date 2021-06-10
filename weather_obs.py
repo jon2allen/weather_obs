@@ -278,7 +278,7 @@ trace = True
  outputs:
       file:  xml_dump + <iteration> . xml
 """
-def dump_xml( xmldata, iteration ):
+def dump_xml( obs1, xmldata, iteration ):
     """  dump the xml to a file for deugging """
     trace_print( 1, "dumpxml_entry")
     if ( obs1.dump_xml_flag == True):
@@ -342,7 +342,7 @@ def get_last_csv_row( st_file):
      trace_print( 3, "csv file not found... continue...")
      return ""
 
-def obs_sanity_check( xml_data, data_row):
+def obs_sanity_check( obs1,  xml_data, data_row):
      # df[['observation_time','wind_mph','wind_dir','wind_gust_mph','wind_string']]
     table_col_list =  [9, 19, 17, 16]
     for col in table_col_list:
@@ -351,7 +351,7 @@ def obs_sanity_check( xml_data, data_row):
             midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
             seconds = (now - midnight).seconds
             obs1.dump_xml_flag = True
-            dump_xml( xml_data, seconds)
+            dump_xml( obs1, xml_data, seconds)
             obs1.dump_xml_flag = False
             trace_print(4, "potential bad xml - see xml dump at ", str(seconds))
             return False
@@ -504,7 +504,7 @@ def weather_collect_driver( obs1 ):
      ## check data and dump xml
      ## data feed from noaa has unexpected output
      ## check to see if wind is missing.
-     obs_sanity_check( xmldata, outdata[1])
+     obs_sanity_check( obs1, xmldata, outdata[1])
      # TODO:  set data for last observation time.
      # use for cut logic.
      # if local time crossed midnight - cut a new file. 
@@ -526,7 +526,7 @@ def weather_collect_driver( obs1 ):
      weather_csv_driver('a', obs1.station_file, outdata[0], outdata[1])
      
      obs1.obs_iteration = obs1.obs_iteration + 1
-     dump_xml(xmldata, obs1.obs_iteration )
+     dump_xml(obs1, xmldata, obs1.obs_iteration )
      return True
 # early test hardness code 
 # import obstest
@@ -550,7 +550,7 @@ def weather_obs_app_start(obs1):
       trace_print(4, "prior_obs_time:(start) ", str(obs1.prior_obs_time))
       weather_csv_driver('w', obs1.station_file, xmld1[0], xmld1[1])
       trace_print( 4, "Initializing new file (app_start): ", str(obs1.station_file) )
-      dump_xml( content, datetime.now().minute)
+      dump_xml( obs1,  content, datetime.now().minute)
   if ( obs1.collect_data == True):
       trace_print( 4, "schedule job @ ", str(obs1.primary_station), " -> ", str(obs1.station_file))
       obs1.append_data = True
@@ -564,7 +564,7 @@ def weather_obs_app_append(obs1):
   content = get_weather_from_NOAA(obs1.primary_station)
   #  print(content)
   xmld1 = get_data_from_NOAA_xml( content)
-  dump_xml( content, datetime.now().minute)
+  dump_xml( obs1, content, datetime.now().minute)
   
   """
     test if last row and what is coming in are equal
