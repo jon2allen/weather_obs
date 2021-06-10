@@ -42,8 +42,7 @@ testing
 #freezer.start()
 obs_time_debug = False
 obs_debug_t_delta = 9
-global run_minutes
-run_minutes = 0
+
 
 logger = logging.getLogger('weather_obs_f')
 csv_headers = ['credit','credit_URL','image','suggested_pickup','suggested_pickup_period','location','station_id','latitude','longitude','observation_time','observation_time_rfc822','weather','temperature_string','temp_f','temp_c','relative_humidity','wind_string','wind_dir','wind_degrees','wind_mph','wind_kt','wind_gust_mph','wind_gust_kt','pressure_string','pressure_mb','pressure_in','dewpoint_string','dewpoint_f','dewpoint_c','heat_index_string','heat_index_f','heat_index_c','windchill_string','windchill_f','windchill_c','visibility_mi','icon_url_base','two_day_history_url','icon_url_name','ob_url','disclaimer_url','copyright_url','privacy_policy_url']
@@ -71,6 +70,12 @@ class ObsSetting:
          self.trace = True
          self.prior_obs_time = ""
          self.current_obs_time = ""
+    def __str__(self):
+         my_str = "ObsSetting: "
+         return my_str + str( self.primary_station) + " -> " + str(self.station_file)
+    def __repr__(self):
+         my_str = "ObsSetting: "
+         return my_str + str( self.primary_station) + " -> " + str(self.station_file)
     def set_station(self, station_url):
         self.primary_station = station_url
         station = station_url[-8:]
@@ -79,7 +84,7 @@ class ObsSetting:
     def _trace(self,  s, *t1 ):
          jstr = ''.join(t1)
          msg1 = " " + s + jstr
-         trace_print(7, self.station_id, msg1 )
+         trace_print(4, self.station_id, msg1 )
     def set_observation_times( self, prior, current):
          self.prior_obs_time = prior
          self.current_obs_time = current
@@ -120,7 +125,6 @@ def get_obs_time( obs_date):
        # obs_date = datetime.strptime( t_str[:20], "%b %d %Y, %I:%M %p ")
        obs_date = parser.parse(t_str[:20])
        # adjust stamp for specific test
-       # run_minutes will be set to 0 at top of hour ( 0 - 59)
        obs_date = obs_date + timedelta(hours = obs_debug_t_delta)
        trace_print(4, "Debug obs_date:" , str(obs_date))
        return obs_date
@@ -175,46 +179,73 @@ def weather_obs_init():
     parser.add_argument('-x', '--xml', action="store_true")
     parser.add_argument('-r', '--resume', help='resume append and cut', action="store_true")
     parser.add_argument('-j', '--json', help = "generate json data to file")
+    parser.add_argument('-f', '--file', help = "read stations from file specifiec")
     args = parser.parse_args()
     trace_print( 1, "parsing args...")
     # cannocial header
     # can't depend on xml feed to complete every value
     global csv_headers
+    def check_params2( obs_setting, args):
+          obs_setting.station_file = create_station_file_name2( obs_setting.primary_station )
+          if (obs_setting.append_data_specified == False):
+                trace_print( 4, "Station filename: ", obs_setting.station_file)
+          obs_setting.init_csv = True
+            # initialize a CSV until we prove we are appending.
+          if (args.init):
+                obs_setting.set_init_processing(args.init)
+          if (obs_setting.append_data_specified == True):
+                obs_setting.station_file = args.append
+                obs_setting.init_csv = False
+                if (obs_setting.resume == True):
+                    trace_print( 4, "resume here")
+                    now = datetime.now()
+                    file_id = obs_setting.station_id + "_Y" + str(now.year)
+                    obs_setting.station_file = hunt_for_csv(file_id) 
+                    if (len(obs_setting.station_file) < 4 ):
+                        obs_setting.station_file = create_station_file_name2(obs_setting.primary_station)
+                        obs_setting.init_csv = True
+                        obs_setting.append_data = False
+                        obs_setting.append_data_specified = True
+                        trace_print( 3, "Resume - No file file on current day")
+                trace_print( 4, "Station id ( append ): ", obs_setting.station_file )
+          if (args.xml == True):
+              obs_setting.set_xml_dump_flag(True)  
+          if (args.collect):
+              trace_print( 4, "collect in station setting")
+              obs_setting. collect_data = True
+              if (obs_setting.init_csv == False) and (obs_setting.append_data_specified == False):
+                  obs_setting.station_file = create_station_file_name2(obs_setting.primary_station)
+                  trace_print( 4, "Station filename (collect): ", obs_setting.station_file)
+          return True      
+    if (args.file):
+       try:
+          with open(args.file, "r") as obs_file1:
+             obs_entry_list = obs_file1.readlines()
+             trace_print(4,str(obs_entry_list))
+       except:
+          print("Unable to open: ", args.file)
+       setting_list = []
+       #entries must be on the first 47 lines - no more or less - discard \n or other stuff
+       for entry in obs_entry_list:
+            setting_list.append(ObsSetting(entry[0:47]))
+       trace_print(4, str(setting_list))
+       obs_setting = setting_list[0]
+       check_parms1(obs_setting, args)
+       trace_print( 4, "Station id:  ", obs_setting.station_id)
+       # test harness for 2nd object from file.
+       check_params2(obs_setting,args )
+       check_parms1(setting_list[1], args)
+       trace_print( 4, "Station id:  ", setting_list[1].station_id)
+       check_params2(setting_list[1],args )
+       #TODO - create a list of objects and return 
+       # either key off list[0] for pgm settings or just deep copy the settings obj
+       return obs_setting
     # check station and fill out appropriate values
     if (args.station):
       obs_setting = ObsSetting( args.station)
       check_parms1(obs_setting, args)
       trace_print( 4, "Station id:  ", obs_setting.station_id)
-      obs_setting.station_file = create_station_file_name2( obs_setting.primary_station )
-      if (obs_setting.append_data_specified == False):
-          trace_print( 4, "Station filename: ", obs_setting.station_file)
-      obs_setting.init_csv = True
-      # initialize a CSV until we prove we are appending.
-      if (args.init):
-          obs_setting.set_init_processing(args.init)
-      if (obs_setting.append_data_specified == True):
-          obs_setting.station_file = args.append
-          obs_setting.init_csv = False
-          if (obs_setting.resume == True):
-             trace_print( 4, "resume here")
-             now = datetime.now()
-             file_id = obs_setting.station_id + "_Y" + str(now.year)
-             obs_setting.station_file = hunt_for_csv(file_id) 
-             if (len(obs_setting.station_file) < 4 ):
-                obs_setting.station_file = create_station_file_name2(obs_setting.primary_station)
-                obs_setting.init_csv = True
-                obs_setting.append_data = False
-                obs_setting.append_data_specified = True
-                trace_print( 3, "Resume - No file file on current day")
-          trace_print( 4, "Station id ( append ): ", obs_setting.station_file )
-      if (args.xml == True):
-         obs_setting.set_xml_dump_flag(True)  
-      if (args.collect):
-         trace_print( 4, "collect in station setting")
-         obs_setting. collect_data = True
-         if (obs_setting.init_csv == False) and (obs_setting.append_data_specified == False):
-            obs_setting.station_file = create_station_file_name2(obs_setting.primary_station)
-            trace_print( 4, "Station filename (collect): ", obs_setting.station_file)
+      check_params2(obs_setting,args )
     else:
       trace_print( 3, "Error: No station given - please use --station")
       trace_print( 3, " see readme")
@@ -638,9 +669,6 @@ if __name__ == "__main__":
   schedule_logger.addHandler(fhandler)
 #
   obs1 = weather_obs_init()
-  print("object stuff")
-  print( obs1.station_id)
-  print( obs1.init_csv)
   if (obs1.init_csv == True):
       trace_print( 4, "Init... ")
       weather_obs_app_start(obs1)
