@@ -229,17 +229,11 @@ def weather_obs_init():
        for entry in obs_entry_list:
             setting_list.append(ObsSetting(entry[0:47]))
        trace_print(4, str(setting_list))
-       obs_setting = setting_list[0]
-       check_parms1(obs_setting, args)
-       trace_print( 4, "Station id:  ", obs_setting.station_id)
-       # test harness for 2nd object from file.
-       check_params2(obs_setting,args )
-       check_parms1(setting_list[1], args)
-       trace_print( 4, "Station id:  ", setting_list[1].station_id)
-       check_params2(setting_list[1],args )
-       #TODO - create a list of objects and return 
-       # either key off list[0] for pgm settings or just deep copy the settings obj
-       return obs_setting
+       for entry in setting_list:     
+            check_parms1(entry, args)
+            trace_print( 4, "Station id:  ", entry.station_id)
+            check_params2( entry, args)
+       return setting_list
     # check station and fill out appropriate values
     if (args.station):
       obs_setting = ObsSetting( args.station)
@@ -250,7 +244,9 @@ def weather_obs_init():
       trace_print( 3, "Error: No station given - please use --station")
       trace_print( 3, " see readme")
       exit(4)		 
-    return obs_setting
+    obs_setting_list = []
+    obs_setting_list.append(obs_setting) 
+    return obs_setting_list
 
 def check_parms1(obs_setting, args):
     """ check standalong parms """
@@ -634,7 +630,36 @@ def duration_cut_check( t_last, hour_cycle  ):
      if ((t_now.hour - t_last.hour) % hour_cycle == 0 ):
        trace_print( 1, "Duration cycle check at ", str(hour_cycle))
        return True
-  return False     
+  return False  
+
+def foreach_obs( function, obs_list):
+  """ foreach loop """
+  for obs in obs_list:
+    function(obs)
+    
+def obs_cut_obs(obs1):
+    if ( obs1.cut_file == True):
+        t_cut_time = datetime.now()
+        obs_cut_time = obs1.current_obs_time + timedelta(minutes=10)
+        if ( duration_cut_check2( obs1.prior_obs_time, obs_cut_time , obs1.duration_interval)): 
+            trace_print( 4, "running cut operation")
+                    # sychronize obs_time for new day - so file name will be corrrect
+                    # last observation at 11:50 or so - add 10 minutes for file create.
+            obs1.station_file = create_station_file_name(obs1.station_id, "csv", obs_cut_time)
+                    # start a new day cycle
+            obs1.prior_obs_time = obs_cut_time
+            obs1.current_obs_time = obs_cut_time
+            trace_print( 4, "New Station file (cut):", obs1.station_file)
+                    #create new file with cannocial headers
+            weather_csv_driver('c', obs1.station_file, csv_headers, [])
+                    #TODO - go back to clearing jobs by id
+            schedule.cancel_job(obs1.job1)
+                    # we rassigned the next station file
+                    # new writes should go there.
+            t_begin = datetime.now() 
+            trace_print( 4, "Time of last cut:",t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
+                    # this will reschedule job with new file.
+            weather_obs_app_start(obs1)
 
 if __name__ == "__main__":
   # logging.basicConfig(handlers=[logging.NullHandler()], 
@@ -668,10 +693,11 @@ if __name__ == "__main__":
   schedule_logger.setLevel(level=logging.DEBUG)
   schedule_logger.addHandler(fhandler)
 #
-  obs1 = weather_obs_init()
+  obs1_list = weather_obs_init()
+  obs1 = obs1_list[0]
   if (obs1.init_csv == True):
       trace_print( 4, "Init... ")
-      weather_obs_app_start(obs1)
+      foreach_obs(weather_obs_app_start, obs1_list )
   if (obs1.append_data_specified == True):
       if (obs1.resume == True):
          trace_print( 1, "resume - with append")
@@ -682,7 +708,7 @@ if __name__ == "__main__":
       # try to resume same day - if not start a new day csv
       if ( obs1.init_csv == False):
            trace_print( 4, "Append processing start")
-           weather_obs_app_append(obs1)
+           foreach_obs(weather_obs_app_append, obs1_list )
   if (obs1.collect_data == True ):
      run_minutes = 0
      t_begin = datetime.now()
@@ -691,7 +717,7 @@ if __name__ == "__main__":
      # TODO - should we force to be 15 minutes afer the hour
      #        NOAA may not update.  Or should that be an option??
      if (obs1.append_data_specified == True):
-         weather_obs_app_start(obs1)
+         foreach_obs(weather_obs_app_start, obs1_list)
      delay_t = 60 - t_begin.minute
      trace_print( 4, "minutes till the next hour: ", str(delay_t))
      while True:
@@ -700,28 +726,7 @@ if __name__ == "__main__":
         if ((run_minutes  == 59)):
             # every hour check to see if need to cut
             trace_print( 1, "Num minutes running: ", str(run_minutes) )
-            if ( obs1.cut_file == True):
-                t_cut_time = datetime.now()
-                obs_cut_time = obs1.current_obs_time + timedelta(minutes=10)
-                if ( duration_cut_check2( obs1.prior_obs_time, obs_cut_time , obs1.duration_interval)): 
-                    trace_print( 4, "running cut operation")
-                    # sychronize obs_time for new day - so file name will be corrrect
-                    # last observation at 11:50 or so - add 10 minutes for file create.
-                    obs1.station_file = create_station_file_name(obs1.station_id, "csv", obs_cut_time)
-                    # start a new day cycle
-                    obs1.prior_obs_time = obs_cut_time
-                    obs1.current_obs_time = obs_cut_time
-                    trace_print( 4, "New Station file (cut):", obs1.station_file)
-                    #create new file with cannocial headers
-                    weather_csv_driver('c', obs1.station_file, csv_headers, [])
-                    #TODO - go back to clearing jobs by id
-                    schedule.clear()
-                    # we rassigned the next station file
-                    # new writes should go there.
-                    t_begin = datetime.now() 
-                    trace_print( 4, "Time of last cut:",t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
-                    # this will reschedule job with new file.
-                    weather_obs_app_start(obs1)
+            foreach_obs( obs_cut_obs, obs1_list)
         else:
              trace_print( 1, "run pending")
              schedule.run_pending()            
