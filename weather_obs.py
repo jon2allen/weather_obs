@@ -153,6 +153,8 @@ def create_station_file_name2( station = "https://w1.weather.gov/xml/current_obs
     create_station_file from observation time 
     """
     w_xml = get_weather_from_NOAA(station)
+    if ( obs_check_xml_data(w_xml) == False ):
+       return ""
     headers, row = get_data_from_NOAA_xml(w_xml)
     obs_date = get_obs_time( row[9])
 
@@ -340,8 +342,15 @@ def get_last_csv_row( st_file):
         return final_line
   except:
      trace_print( 3, "csv file not found... continue...")
-     return ""
-
+     return ""  
+   
+def obs_check_xml_data( xmldata ):
+    if (len(xmldata) < 4 ):
+      trace_print(4, "No XML data to process")
+      return False
+    else:
+      return True
+      
 def obs_sanity_check( obs1,  xml_data, data_row):
      # df[['observation_time','wind_mph','wind_dir','wind_gust_mph','wind_string']]
     table_col_list =  [9, 19, 17, 16]
@@ -363,7 +372,7 @@ def obs_sanity_check( obs1,  xml_data, data_row):
    inputs:  list of observations from parse of xml file
    output:  True = if duplicate, false if not or csv empty.
 """      
-def duplicate_observation(  current_obs ):
+def duplicate_observation( obs1, current_obs ):
     """ test last line of csv for duplicate """ 
     last_one = get_last_csv_row(obs1.station_file)
     if ( len(last_one) < 4 ):
@@ -390,9 +399,13 @@ def duplicate_observation(  current_obs ):
 def get_weather_from_NOAA(station):
    """ simple get xml data, and print the md5 """
    trace_print( 4, "url request")
-   with urllib.request.urlopen(station) as response:
-   	xml = response.read()
-   trace_print( 4, "xml md5: ",  hashlib.md5(xml).hexdigest())
+   try:
+      with urllib.request.urlopen(station) as response:
+        xml = response.read()
+      trace_print( 4, "xml md5: ",  hashlib.md5(xml).hexdigest())
+   except:
+      trace_print( 4, "URL request error")
+      xml = ""
    return xml
 """
    function:  transforam observation
@@ -500,6 +513,8 @@ def weather_collect_driver( obs1 ):
      """ Appends ( only ) csv file with data from obs xml """
      trace_print( 4, "weather_collect_driver")
      xmldata = get_weather_from_NOAA( obs1.primary_station )
+     if ( obs_check_xml_data(xmldata) == False ):
+       return False
      outdata = get_data_from_NOAA_xml( xmldata )
      ## check data and dump xml
      ## data feed from noaa has unexpected output
@@ -520,7 +535,7 @@ def weather_collect_driver( obs1 ):
          obs1.prior_obs_time = obs1.current_obs_time
      trace_print(4, "current_obs_time(driver):  ", str(obs1.current_obs_time))
      trace_print(4, "prior_obs_time(driver): ", str(obs1.prior_obs_time))
-     if ( duplicate_observation( outdata[1] )):
+     if ( duplicate_observation( obs1, outdata[1] )):
          trace_print( 3, " duplicate in collect.  exiting...")
          return True
      weather_csv_driver('a', obs1.station_file, outdata[0], outdata[1])
@@ -539,7 +554,8 @@ def weather_obs_app_start(obs1):
   # if appending and scheduling - skip over to collect
   if ( obs1.append_data != True):
       content = get_weather_from_NOAA(obs1.primary_station)
-      #  print(content)
+      if ( obs_check_xml_data(content) == False ):
+         return False
       xmld1 = get_data_from_NOAA_xml( content)
       obs_string = xmld1[1][9]
       trace_print(4, "raw observation string: ", obs_string)
@@ -562,7 +578,8 @@ def weather_obs_app_start(obs1):
 def weather_obs_app_append(obs1):
   """ append top level """ 
   content = get_weather_from_NOAA(obs1.primary_station)
-  #  print(content)
+  if ( obs_check_xml_data(xmldata) == False ):
+      return False
   xmld1 = get_data_from_NOAA_xml( content)
   dump_xml( obs1, content, datetime.now().minute)
   
