@@ -167,7 +167,6 @@ def create_station_file_name2( station = "https://w1.weather.gov/xml/current_obs
     
 """
    Get arguments
-   Establish globals
 """
 def weather_obs_init():
     """ init the app, get args and establish globals """
@@ -516,7 +515,7 @@ def weather_collect_driver( obs1 ):
      if ( obs_check_xml_data(xmldata) == False ):
        return False
      outdata = get_data_from_NOAA_xml( xmldata )
-     ## check data and dump xml
+     ## check data and dump xml for post-mortem
      ## data feed from noaa has unexpected output
      ## check to see if wind is missing.
      obs_sanity_check( obs1, xmldata, outdata[1])
@@ -578,7 +577,7 @@ def weather_obs_app_start(obs1):
 def weather_obs_app_append(obs1):
   """ append top level """ 
   content = get_weather_from_NOAA(obs1.primary_station)
-  if ( obs_check_xml_data(xmldata) == False ):
+  if ( obs_check_xml_data(content) == False ):
       return False
   xmld1 = get_data_from_NOAA_xml( content)
   dump_xml( obs1, content, datetime.now().minute)
@@ -588,7 +587,7 @@ def weather_obs_app_append(obs1):
   """
   # if --resume is specified - then we need to set prior to current.
   try:
-      obs1.prior_obs_time = current_obs_time
+      obs1.prior_obs_time = obs1.current_obs_time
   except:
       obs1.prior_obs_time =  get_obs_time(xmld1[1][9])
   obs1.current_obs_time = get_obs_time(xmld1[1][9])
