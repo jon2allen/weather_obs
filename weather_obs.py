@@ -595,6 +595,8 @@ def weather_obs_app_append(obs1):
   trace_print(4, "prior_obs_time(append): ", str(obs1.prior_obs_time))
   if ( duplicate_observation( obs1, xmld1[1] )):
       trace_print(3, 'duplicate append, exit up')
+      # error on double start
+      obs1.prior_obs_time = obs1.current_obs_time
       return
   weather_csv_driver('a', obs1.station_file, xmld1[0], xmld1[1])
   return
