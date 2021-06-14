@@ -29,6 +29,7 @@ from dateutil import parser
 import schedule
 import hashlib
 import inspect
+import traceback
 from daily_weather_obs_chart import hunt_for_csv
 import logging
 from logging.handlers import TimedRotatingFileHandler
@@ -655,8 +656,9 @@ def foreach_obs( function, obs_list):
   for obs in obs_list:
     function(obs)
     
-def obs_cut_obs(obs1):
-    if ( obs1.cut_file == True):
+def obs_cut__csv_file(obs1):
+  """ determines if day transition has happened and starts a new CSV """
+  if ( obs1.cut_file == True):
         t_cut_time = datetime.now()
         obs_cut_time = obs1.current_obs_time + timedelta(minutes=10)
         if ( duration_cut_check2( obs1.prior_obs_time, obs_cut_time , obs1.duration_interval)): 
@@ -678,6 +680,19 @@ def obs_cut_obs(obs1):
             trace_print( 4, "Time of last cut:",t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
                     # this will reschedule job with new file.
             weather_obs_app_start(obs1)
+
+def main_obs_loop(obs1_list):
+    """ main loop - runs schedule and test for cut csv condition """
+    run_minutes =  datetime.now().minute
+    if ((run_minutes  == 59)):
+            # every hour check to see if need to cut
+        trace_print( 1, "Num minutes running: ", str(run_minutes) )
+        foreach_obs( obs_cut_csv_file, obs1_list)
+    else:
+         trace_print( 1, "run pending")
+         schedule.run_pending()            
+             #schedule.run_all()
+    time.sleep(60)
 
 if __name__ == "__main__":
   # logging.basicConfig(handlers=[logging.NullHandler()], 
@@ -712,6 +727,7 @@ if __name__ == "__main__":
   schedule_logger.addHandler(fhandler)
 #
   obs1_list = weather_obs_init()
+  # currently all options are same as first entry
   obs1 = obs1_list[0]
   if (obs1.init_csv == True):
       trace_print( 4, "Init... ")
@@ -739,14 +755,4 @@ if __name__ == "__main__":
      delay_t = 60 - t_begin.minute
      trace_print( 4, "minutes till the next hour: ", str(delay_t))
      while True:
-        run_minutes =  datetime.now().minute
-        # trace_print( 1, "run_minutes(tst): ", str(datetime.now().minute))
-        if ((run_minutes  == 59)):
-            # every hour check to see if need to cut
-            trace_print( 1, "Num minutes running: ", str(run_minutes) )
-            foreach_obs( obs_cut_obs, obs1_list)
-        else:
-             trace_print( 1, "run pending")
-             schedule.run_pending()            
-             #schedule.run_all()
-        time.sleep(60)
+        main_obs_loop( obs1_list)
