@@ -316,16 +316,12 @@ def trace_print( i, s, *t1):
            logger.debug(out1)
         elif ( i == 2):
            logger.critcal(out1)
-           #print(msg1)
         elif ( i == 3):
            logger.warning(out1)
-           #print(msg1)
         elif ( i == 4):
            logger.info(out1)
-           #print(msg1)
         else:
            print("level not known:  ", out1, flush=True )
-          # print("function trace: ", s, jstr, flush=True)
 """
    function:  get_last_csv_row
         get last line of current csv
@@ -352,7 +348,8 @@ def obs_check_xml_data( xmldata ):
       return True
       
 def obs_sanity_check( obs1,  xml_data, data_row):
-     # df[['observation_time','wind_mph','wind_dir','wind_gust_mph','wind_string']]
+    """ checks wind to see if value is present """
+     # df[['observation_time','wind_mph','wind_dir','wind_string']]
     table_col_list =  [9, 19, 17, 16]
     for col in table_col_list:
         if (data_row[col].startswith("<no") == True ):
@@ -656,7 +653,7 @@ def foreach_obs( function, obs_list):
   for obs in obs_list:
     function(obs)
     
-def obs_cut__csv_file(obs1):
+def obs_cut_csv_file(obs1):
   """ determines if day transition has happened and starts a new CSV """
   if ( obs1.cut_file == True):
         t_cut_time = datetime.now()
@@ -747,9 +744,6 @@ if __name__ == "__main__":
      run_minutes = 0
      t_begin = datetime.now()
      trace_print( 4, "starting time: ",t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
-     # for case of collect and append specified
-     # TODO - should we force to be 15 minutes afer the hour
-     #        NOAA may not update.  Or should that be an option??
      if (obs1.append_data_specified == True):
          foreach_obs(weather_obs_app_start, obs1_list)
      delay_t = 60 - t_begin.minute
