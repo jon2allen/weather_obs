@@ -1,6 +1,7 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+from weather_obs import * 
 
 def parse_noaa_state_page(url, state):
     df = pd.DataFrame()
@@ -23,6 +24,8 @@ def parse_noaa_state_page(url, state):
                 columns.append(each.text)
                 # print("col: ", str(each.text) )
             columns.append("State")
+            columns.append("latitude")
+            columns.append("longitude")
         else:
             trs = tr.findAll("td")
             # print("trs")
@@ -48,7 +51,9 @@ def parse_noaa_state_page(url, state):
                 #text = each.text
                 # record.append(text)
             if ( len(record) > 2 ):
-                record.append(state)             
+                record.append(state)
+                record.append("Lat")
+                record.append("Long")             
                 records.append(record)
 
     # print("len records: ", len( records ))
@@ -80,13 +85,82 @@ def get_noaa_stations_locations():
         priot_st = my_st
     return states_df
 
-if __name__ == "__main__":   
-
-   states_df = get_noaa_stations_locations()
+def get_lat_and_long_for_obs( station):
+    xml = get_weather_from_NOAA(station)
+    if ( obs_check_xml_data(xml) == False ):
+          return ""
+    xmld1 = get_data_from_NOAA_xml( xml)
+    lat = xmld1[1][7]
+    long = xmld1[1][8]
+    print(xmld1[1][7])
+    print(xmld1[1][8])
+    return [ lat, long ]
+    
+def pass2_gather(csv_file_in, csv_file_out):
+    states_df = pd.read_csv(csv_file_in)
+    prefix_url = "https://w1.weather.gov/xml/current_obs/"  
+    obs_url = "https://w1.weather.gov/xml/current_obs/KAFO.xml"
+    lat_and_long = get_lat_and_long_for_obs(obs_url)
    
-   print("Shape: " , states_df.shape)
-   try:
-        states_df.to_csv("states_db.csv", mode='w+', index = False)
-   except:
-        print("error on csv")
+    print(lat_and_long)
+   
+    list_of_stations = states_df['XML'].to_list()
+    lat_column = []
+    long_column = []
+   
+    for station in list_of_stations:
+        print(station)
+        target_url =  prefix_url + str(station)
+        print( target_url)
+        lat_and_long = get_lat_and_long_for_obs(target_url)
+        if len(lat_and_long) > 1:
+            lat_column.append(lat_and_long[0])
+            long_column.append(lat_and_long[1])
+       
+    print(lat_column)
+    print("long:")
+    print(long_column)
+   
+    states_df['latitude'] = lat_column
+    states_df['longitude'] = long_column
+             
+    print("Shape: " , states_df.shape)
+    try:
+       states_df.to_csv(csv_file_out, mode='w+', index = False)
+    except:
+       print("error on csv")
+
+if __name__ == "__main__":   
+   """ init the app, get args and establish globals """
+   parser = argparse.ArgumentParser(description='Construct NOAA station db/csv')
+   parser.add_argument('--pass1', help='initialize station csv with station data' )
+   parser.add_argument('--pass2', help='Pull in Lat and Log into specified csv' )
+   parser.add_argument('--pass2out', help='specifiy a difffernt final out csv')
+
+
+   args = parser.parse_args()
+   
+   if (args.pass1):
+         states_df = get_noaa_stations_locations()
+         print("Shape: " , states_df.shape)
+         try:
+            states_df.to_csv(str(args.pass1), mode='w+', index = False)
+         except:
+             print("error on csv")
+        
+   if ( args.pass2):       
+        if (args.pass2out):
+            pass2_gather(str(args.pass2), str(args.pass2out))
+        else:
+            pass2_gather(str(args.pass2), str(args.pass2) )
+   
+       
+   
+   #states_df = get_noaa_stations_locations()
+   
+   # print("Shape: " , states_df.shape)
+   # try:
+      #  states_df.to_csv("states_db.csv", mode='w+', index = False)
+   #except:
+   #     print("error on csv")
     
