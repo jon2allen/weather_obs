@@ -21,7 +21,11 @@ def parse_noaa_state_page(url, state):
         ths = tr.findAll("th")
         if ths != []:
             for each in ths:
-                columns.append(each.text)
+                print("len_each", str(len(each.text)))
+                if ( len(each.text) > 20 ):
+                    columns.append(str(each.text[:20]))
+                else:
+                    columns.append(each.text)
                 # print("col: ", str(each.text) )
             columns.append("State")
             columns.append("latitude")
