@@ -13,7 +13,9 @@ test_data_row = "NOAA's National Weather Service","http://weather.gov/","","15 m
 
 test_xml = get_weather_from_NOAA(" https://w1.weather.gov/xml/current_obs/KDCA.xml")
 
-if (obs_sanity_check(test_xml, test_data_row)):
+obs1 = ObsSetting("https://w1.weather.gov/xml/current_obs/KDCA.xml")
+
+if (obs_sanity_check(obs1, test_xml, test_data_row)):
    print("check failed")
 else:
    print("check passed - check for xml file in current running dir")
