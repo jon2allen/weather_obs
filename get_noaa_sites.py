@@ -2,7 +2,7 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
-def parse_noaa_state_page(url):
+def parse_noaa_state_page(url, state):
     df = pd.DataFrame()
     try:
        response = requests.get(url)
@@ -22,6 +22,7 @@ def parse_noaa_state_page(url):
             for each in ths:
                 columns.append(each.text)
                 # print("col: ", str(each.text) )
+            columns.append("State")
         else:
             trs = tr.findAll("td")
             # print("trs")
@@ -46,7 +47,9 @@ def parse_noaa_state_page(url):
                     pass
                 #text = each.text
                 # record.append(text)
-            records.append(record)
+            if ( len(record) > 2 ):
+                record.append(state)             
+                records.append(record)
 
     # print("len records: ", len( records ))
     if ( len(records) < 2 ):
@@ -54,26 +57,36 @@ def parse_noaa_state_page(url):
     df = pd.DataFrame(data=records, columns = columns)
     return df
 
-with open("states_abbr.txt", "r") as fd:
-    state_lst = [x.strip().lower() for x in fd.readlines()]
 
-print("states:")
-print(state_lst)
-state_str = "state="
-url = "https://w1.weather.gov/xml/current_obs/seek.php?state=al&Find=Find"
-prior_st = "state=al"
-for st in state_lst:
-    my_st = state_str + str(st)
-    print("my_st: ", my_st)
-    target_url = url.replace(prior_st, my_st)
-    print("url: ", target_url )
-    df2 = parse_noaa_state_page(target_url)
-    print(df2.head())
-    priot_st = my_st
+def get_noaa_stations_locations():
+    with open("states_abbr.txt", "r") as fd:
+        state_lst = [x.strip().lower() for x in fd.readlines()]
+
+    #print("states:")
+    # print(state_lst)
+    state_str = "state="
+    url = "https://w1.weather.gov/xml/current_obs/seek.php?state=al&Find=Find"
+    prior_st = "state=al"
+
+    states_df = pd.DataFrame()
+    for st in state_lst:
+        my_st = state_str + str(st)
+        print("my_st: ", my_st)
+        target_url = url.replace(prior_st, my_st)
+        print("url: ", target_url )
+        df2 = parse_noaa_state_page(target_url, st.upper())
+        print(df2.head())
+        states_df = states_df.append(df2)
+        priot_st = my_st
+    return states_df
+
+if __name__ == "__main__":   
+
+   states_df = get_noaa_stations_locations()
+   
+   print("Shape: " , states_df.shape)
+   try:
+        states_df.to_csv("states_db.csv", mode='w+', index = False)
+   except:
+        print("error on csv")
     
-
-
-
-
-df = parse_noaa_state_page(url)
-print(df.head())
