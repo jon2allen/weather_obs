@@ -1,4 +1,4 @@
-Observation Location                    ,RSS,XML,State,latitude,longitude
+Observation Location,RSS,XML,State,latitude,longitude
 "Alabaster, Shelby County Airport (KEET)",KEET.rss,KEET.xml,AL,33.17833,-86.78167
 "Albertville, Albertville Municipal Airport (K8A0)",K8A0.rss,K8A0.xml,AL,34.22889,-86.25556
 "Alexander City, Thomas C Russell Field Airport (KALX)",KALX.rss,KALX.xml,AL,32.91472,-85.96278
