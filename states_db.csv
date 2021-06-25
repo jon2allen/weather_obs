@@ -1,0 +1,2433 @@
+Observation Location                    ,RSS,XML,State,latitude,longitude
+"Alabaster, Shelby County Airport (KEET)",KEET.rss,KEET.xml,AL,33.17833,-86.78167
+"Albertville, Albertville Municipal Airport (K8A0)",K8A0.rss,K8A0.xml,AL,34.22889,-86.25556
+"Alexander City, Thomas C Russell Field Airport (KALX)",KALX.rss,KALX.xml,AL,32.91472,-85.96278
+"Andalusia, Andalusia-Opp Municipal Airport (K79J)",K79J.rss,K79J.xml,AL,31.3,-86.38333
+Anniston Metro Airport (KANB),KANB.rss,KANB.xml,AL,33.59045,-85.84789
+Auburn-Opelika Airport (KAUO),KAUO.rss,KAUO.xml,AL,32.61667,-85.43333
+Bessemer Airport (KEKY),KEKY.rss,KEKY.xml,AL,33.3126,-86.9263
+"Birmingham, Birmingham International Airport (KBHM)",KBHM.rss,KBHM.xml,AL,33.56556,-86.745
+Cairns Army Air Field / Ozark (KOZR),KOZR.rss,KOZR.xml,AL,31.27672,-85.71099
+Craig Field / Selma (KSEM),KSEM.rss,KSEM.xml,AL,32.35,-86.98333
+Cullman Regional Folsom Field (KCMD),KCMD.rss,KCMD.xml,AL,34.2687,-86.858
+"Decatur, Pryor Field (KDCU)",KDCU.rss,KDCU.xml,AL,34.65806,-86.94333
+Demopolis Municipal Airport (KDYA),KDYA.rss,KDYA.xml,AL,32.4638,-87.9541
+"Dothan, Dothan Regional Airport (KDHN)",KDHN.rss,KDHN.xml,AL,31.32139,-85.44972
+Enterprise Municipal Airport (KEDN),KEDN.rss,KEDN.xml,AL,31.2982,-85.9048
+Eufaula Municipal Airport (KEUF),KEUF.rss,KEUF.xml,AL,31.951,-85.129
+"Evergreen, Middleton Field (KGZH)",KGZH.rss,KGZH.xml,AL,31.41889,-87.04806
+"Florala, Florala Municipal Airport (K0J4)",K0J4.rss,K0J4.xml,AL,31.0425,-86.31167
+"Fort Payne, Isbell Field Airport (K4A9)",K4A9.rss,K4A9.xml,AL,34.47361,-85.72139
+"Fort Rucker, Lowe Army Heliport (KLOR)",KLOR.rss,KLOR.xml,AL,31.35889,-85.74833
+"Gadsden, Gadsden Municipal Airport (KGAD)",KGAD.rss,KGAD.xml,AL,33.96667,-86.08333
+"Haleyville, Posey Field Airport (K1M4)",K1M4.rss,K1M4.xml,AL,34.28028,-87.60028
+Hanchey AHP / Ozark (KHEY),KHEY.rss,KHEY.xml,AL,31.35,-85.66667
+"Huntsville, Huntsville International / Jones Field (KHSV)",KHSV.rss,KHSV.xml,AL,34.64361,-86.78556
+"Huntsville, Madison County Executive Airport (KMDQ)",KMDQ.rss,KMDQ.xml,AL,34.86139,-86.55722
+Jack Edwards Airport (KJKA),KJKA.rss,KJKA.xml,AL,30.2896,-87.6718
+Jasper Walker County Airport & Bevill Field (KJFX),KJFX.rss,KJFX.xml,AL,33.902,-87.31417
+Mac Crenshaw Memorial Airport (KPRN),KPRN.rss,KPRN.xml,AL,31.8457,-86.6107
+Maxwell Air Force Base / Montgomery (KMXF),KMXF.rss,KMXF.xml,AL,32.38333,-86.36667
+Merkel Field Sylacauga Municipal Airport (KSCD),KSCD.rss,KSCD.xml,AL,33.1718,-86.3055
+"Mobile, Mobile Downtown Airport (KBFM)",KBFM.rss,KBFM.xml,AL,30.61389,-88.06333
+"Mobile, Mobile Regional Airport (KMOB)",KMOB.rss,KMOB.xml,AL,30.68833,-88.24556
+"Montgomery, Dannelly Field (KMGM)",KMGM.rss,KMGM.xml,AL,32.30028,-86.40611
+"Muscle Shoals, North West Alabama Regional Airport (KMSL)",KMSL.rss,KMSL.xml,AL,34.74389,-87.59944
+Prattville - Grouby Field (K1A9),K1A9.rss,K1A9.xml,AL,32.4387,-86.5127
+Redstone Airfield (KHUA),KHUA.rss,KHUA.xml,AL,34.6786,-86.6847
+SCHELL AHP (KSXS),KSXS.rss,KSXS.xml,AL,31.35,-85.85
+Scottsboro Municipal Airport (K4A6),K4A6.rss,K4A6.xml,AL,34.68871,-86.00593
+Sonny Callahan Airport (KCQF),KCQF.rss,KCQF.xml,AL,30.461,-87.877
+St Clair County Airport (KPLR),KPLR.rss,KPLR.xml,AL,33.5588,-86.2491
+"Troy, Troy Municipal Airport (KTOI)",KTOI.rss,KTOI.xml,AL,31.86056,-86.01222
+Tuscaloosa Regional Airport (KTCL),KTCL.rss,KTCL.xml,AL,33.21215,-87.61554
+"Adak Island, Adak Airport (PADK)",PADK.rss,PADK.xml,AK,51.87778,-176.64583
+Akun Airport (PAUT),PAUT.rss,PAUT.xml,AK,54.1446,-165.6041
+"Ambler, Ambler Airport (PAFM)",PAFM.rss,PAFM.xml,AK,67.1,-157.85
+"Anaktuvuk Pass, Anaktuvuk Pass Airport (PAKP)",PAKP.rss,PAKP.xml,AK,68.13361,-151.74333
+"Anchorage, Elmendorf Air Force Base (PAED)",PAED.rss,PAED.xml,AK,61.25306,-149.79389
+"Anchorage, Lake Hood Seaplane Base (PALH)",PALH.rss,PALH.xml,AK,61.18333,-149.96667
+"Anchorage, Merrill Field Airport (PAMR)",PAMR.rss,PAMR.xml,AK,61.21667,-149.85
+"Anchorage, Ted Stevens Anchorage International Airport (PANC)",PANC.rss,PANC.xml,AK,61.17444,-149.99611
+Angoon (PAGN),PAGN.rss,PAGN.xml,AK,57.5,-134.58333
+"Aniak, Aniak Airport (PANI)",PANI.rss,PANI.xml,AK,61.58139,-159.54278
+"Anvik, Anvik Airport (PANV)",PANV.rss,PANV.xml,AK,62.64833,-160.18972
+"Arctic Village, Arctic Village Airport (PARC)",PARC.rss,PARC.xml,AK,68.11444,-145.57917
+Atqasuk (PATQ),PATQ.rss,PATQ.xml,AK,70.4673,-157.4357
+"Barter Island, Barter Island LRRS Airport (PABA)",PABA.rss,PABA.xml,AK,70.13389,-143.57694
+"Bethel, Bethel Airport (PABE)",PABE.rss,PABE.xml,AK,60.77972,-161.83778
+"Bettles, Bettles Airport (PABT)",PABT.rss,PABT.xml,AK,66.91667,-151.51667
+"Birchwood, Birchwood Airport (PABV)",PABV.rss,PABV.xml,AK,61.41667,-149.51667
+"Buckland, Buckland Airport (PABL)",PABL.rss,PABL.xml,AK,65.98222,-161.15194
+"Chignik, Chignik Airport (PAJC)",PAJC.rss,PAJC.xml,AK,56.31139,-158.37333
+"Chulitna, Chulitna Airport (PAEC)",PAEC.rss,PAEC.xml,AK,62.88333,-149.83333
+Clarks Point Airport (PFCL),PFCL.rss,PFCL.xml,AK,58.8337,-158.5294
+"Cold Bay, Cold Bay Airport (PACD)",PACD.rss,PACD.xml,AK,55.22083,-162.72778
+"Cordova, Merle K (Mudhole) Smith Airport (PACV)",PACV.rss,PACV.xml,AK,60.49167,-145.47778
+"Deadhorse, Alpine Airstrip (PALP)",PALP.rss,PALP.xml,AK,70.33333,-150.93333
+"Deadhorse, Deadhorse Airport (PASC)",PASC.rss,PASC.xml,AK,70.2,-148.46667
+"Delta Junction/Ft Greely, Allen Army Airfield (PABI)",PABI.rss,PABI.xml,AK,64,-145.73333
+"Dillingham, Dillingham Airport (PADL)",PADL.rss,PADL.xml,AK,59.05,-158.51667
+"Eagle, Eagle Airport (PAEG)",PAEG.rss,PAEG.xml,AK,64.77639,-141.15083
+"Egegik, Egegik Airport (PAII)",PAII.rss,PAII.xml,AK,58.18528,-157.38556
+Elfin Cove - Elfin Cove Seaplane Base (PAEL),PAEL.rss,PAEL.xml,AK,58.19467,-136.34663
+"Emmonak, Emmonak Airport (PAEM)",PAEM.rss,PAEM.xml,AK,62.78333,-164.5
+"Eureka, Skelton Airport (PAZK)",PAZK.rss,PAZK.xml,AK,61.93333,-147.16667
+"Fairbanks, Eielson Air Force Base (PAEI)",PAEI.rss,PAEI.xml,AK,64.65,-147.1
+"Fairbanks, Fairbanks International Airport (PAFA)",PAFA.rss,PAFA.xml,AK,64.80389,-147.87611
+Fort Wainwright AAF (PAFB),PAFB.rss,PAFB.xml,AK,64.83667,-147.59556
+"Fort Yukon, Fort Yukon Airport (PFYU)",PFYU.rss,PFYU.xml,AK,66.56667,-145.26667
+"Ft. Richardson / Bryant U. S. Army Heliport, Ak (PAFR)",PAFR.rss,PAFR.xml,AK,61.26667,-149.65
+"Galbraith Lake, Galbraith Lake Airport (PAGB)",PAGB.rss,PAGB.xml,AK,68.48333,-149.48333
+"Galena, Edward G. Pitka Sr. Airport (PAGA)",PAGA.rss,PAGA.xml,AK,64.73333,-156.93333
+"Golovin, Golovin Airport (PAGL)",PAGL.rss,PAGL.xml,AK,64.54333,-163.03944
+"Gulkana, Gulkana Airport (PAGK)",PAGK.rss,PAGK.xml,AK,62.15,-145.45
+"Gustavus, Gustavus Airport (PAGS)",PAGS.rss,PAGS.xml,AK,58.41667,-135.7
+Haines - Haines Airport (PAHN),PAHN.rss,PAHN.xml,AK,59.2429,-135.5114
+Holy Cross (PAHC),PAHC.rss,PAHC.xml,AK,62.1873,-159.77657
+"Homer, Homer Airport (PAHO)",PAHO.rss,PAHO.xml,AK,59.65,-151.48333
+Hoonah - Hoonah Seaplane Base (PAOH),PAOH.rss,PAOH.xml,AK,58.097,-135.414
+"Hooper Bay, Hooper Bay Airport (PAHP)",PAHP.rss,PAHP.xml,AK,61.51667,-166.13333
+"Huslia, Huslia Airport (PAHL)",PAHL.rss,PAHL.xml,AK,65.6975,-156.35111
+Hydaburg - Hydaburg Seaplane Base (PAHY),PAHY.rss,PAHY.xml,AK,55.2,-132.83333
+Igiugig (PAIG),PAIG.rss,PAIG.xml,AK,59.32395,-155.90235
+"Iliamna, Iliamna Airport (PAIL)",PAIL.rss,PAIL.xml,AK,59.75,-154.9
+"Juneau, Juneau International Airport (PAJN)",PAJN.rss,PAJN.xml,AK,58.35472,-134.57611
+Kake - Kake Airport (PAFE),PAFE.rss,PAFE.xml,AK,56.964,-133.913
+Kalskag (PALG),PALG.rss,PALG.xml,AK,61.5364,-160.3414
+"Kaltag, Kaltag Airport (PAKV)",PAKV.rss,PAKV.xml,AK,64.31667,-158.73333
+"Kenai, Kenai Municipal Airport (PAEN)",PAEN.rss,PAEN.xml,AK,60.57306,-151.245
+"Ketchikan, Ketchikan International Airport (PAKT)",PAKT.rss,PAKT.xml,AK,55.35556,-131.71361
+Kinana / Bob Baker Me (PAIK),PAIK.rss,PAIK.xml,AK,66.98333,-160.43333
+"King Salmon, King Salmon Airport (PAKN)",PAKN.rss,PAKN.xml,AK,58.67667,-156.64917
+"Kipnuk, Kipnuk Airport (PAKI)",PAKI.rss,PAKI.xml,AK,59.93278,-164.03028
+"Kivalina, Kivalina Airport (PAVL)",PAVL.rss,PAVL.xml,AK,67.73333,-164.55
+Klawock - Klawock Airport (PAKW),PAKW.rss,PAKW.xml,AK,55.5839,-133.067
+"Kodiak, Kodiak Airport (PADQ)",PADQ.rss,PADQ.xml,AK,57.75,-152.5
+Koliganek (PAJZ),PAJZ.rss,PAJZ.xml,AK,59.727,-157.259
+"Koyuk, Koyuk Airport (PAKK)",PAKK.rss,PAKK.xml,AK,64.93389,-161.15806
+"Kuparuk, Ugnu-Kuparuk Airport (PAKU)",PAKU.rss,PAKU.xml,AK,70.31667,-149.58333
+Manokotak (PAMB),PAMB.rss,PAMB.xml,AK,58.9902,-159.0499
+"McGrath, McGrath Airport (PAMC)",PAMC.rss,PAMC.xml,AK,62.96667,-155.61667
+"McKinley Park, McKinley National Park Airport (PAIN)",PAIN.rss,PAIN.xml,AK,63.73333,-148.91667
+Middleton Island Airport (PAMD),PAMD.rss,PAMD.xml,AK,59.4423,-146.3166
+"Minchumina, Minchumina Airport (PAMH)",PAMH.rss,PAMH.xml,AK,63.88056,-152.30056
+Nelson Lagoon (PAOU),PAOU.rss,PAOU.xml,AK,56.008,-161.16
+Nenana Municipal Airport (PANN),PANN.rss,PANN.xml,AK,64.54796,-149.08398
+New Stuyahok (PANW),PANW.rss,PANW.xml,AK,59.45,-157.328
+Nikolai (PAFS),PAFS.rss,PAFS.xml,AK,63.019,-154.358
+"Noatak, Noatak Airport (PAWN)",PAWN.rss,PAWN.xml,AK,67.56667,-162.98333
+"Nome, Nome Airport (PAOM)",PAOM.rss,PAOM.xml,AK,64.51194,-165.445
+Noorvik (PFNO),PFNO.rss,PFNO.xml,AK,66.8175,-161.0223
+"Northway, Northway Airport (PAOR)",PAOR.rss,PAOR.xml,AK,62.96111,-141.92889
+"Nuiqsut, Nuiqsut Airport (PAQT)",PAQT.rss,PAQT.xml,AK,70.21,-151.00556
+"Palmer, Palmer Municipal Airport (PAAQ)",PAAQ.rss,PAAQ.xml,AK,61.6,-149.08333
+Petersburg (PAPG),PAPG.rss,PAPG.xml,AK,56.8017,-132.9453
+Platinum (PAPM),PAPM.rss,PAPM.xml,AK,59.01667,-161.81667
+"Point Hope, Point Hope Airport (PAPO)",PAPO.rss,PAPO.xml,AK,68.35,-166.8
+"Point Lay, Point Lay LRRS Airport (PPIZ)",PPIZ.rss,PPIZ.xml,AK,69.71667,-163
+Point Thomson Airstrip (PAAD),PAAD.rss,PAAD.xml,AK,70.136,-146.2901
+"Port Alsworth, Port Alsworth Airport (PALJ)",PALJ.rss,PALJ.xml,AK,60.2,-154.31667
+"Port Heiden, Port Heiden Airport (PAPH)",PAPH.rss,PAPH.xml,AK,56.95,-158.63333
+"Portage, Portage Glacier (PATO)",PATO.rss,PATO.xml,AK,60.78333,-148.83333
+"Prospect Creek, Prospect Creek Airport (PAPR)",PAPR.rss,PAPR.xml,AK,66.81278,-150.64389
+Puntilla (PAPT),PAPT.rss,PAPT.xml,AK,62.1,-152.75
+Ralph Wien Memorial Airport (PAOT),PAOT.rss,PAOT.xml,AK,66.88576,-162.60624
+Red Dog (PADG),PADG.rss,PADG.xml,AK,68.0321,-162.8992
+Ruby (PARY),PARY.rss,PARY.xml,AK,64.7272,-155.4697
+Russian Mission (PARS),PARS.rss,PARS.xml,AK,61.775,-161.3194
+Sand Point (PASD),PASD.rss,PASD.xml,AK,55.31667,-160.51667
+Savoonga Airport (PASA),PASA.rss,PASA.xml,AK,63.68333,-170.5
+Scammon Bay (PACM),PACM.rss,PACM.xml,AK,61.8453,-165.5713
+Selawik (PASK),PASK.rss,PASK.xml,AK,66.61667,-160
+"Seldovia, Seldovia Airport (PASO)",PASO.rss,PASO.xml,AK,59.45,-151.7
+Seward (PAWD),PAWD.rss,PAWD.xml,AK,60.11667,-149.45
+Shaktoolik Airport (PFSH),PFSH.rss,PFSH.xml,AK,64.3711,-161.224
+"Shemya, Eareckson AFB (PASY)",PASY.rss,PASY.xml,AK,52.71667,174.11667
+"Shishmaref, Shishmaref Airport (PASH)",PASH.rss,PASH.xml,AK,66.26667,-166.08333
+Shungnak Airport (PAGH),PAGH.rss,PAGH.xml,AK,66.8881,-157.1624
+Sitka - Sitka Airport (PASI),PASI.rss,PASI.xml,AK,57.048,-135.3647
+Skagway (PAGY),PAGY.rss,PAGY.xml,AK,59.4544,-135.3263
+Soldotna (PASX),PASX.rss,PASX.xml,AK,60.48333,-151.03333
+St Michael Airport (PAMK),PAMK.rss,PAMK.xml,AK,63.49006,-162.11039
+"St. George, St. George Airport (PAPB)",PAPB.rss,PAPB.xml,AK,56.57861,-169.66139
+"St. Mary's, St. Mary's Airport (PASM)",PASM.rss,PASM.xml,AK,62.05,-163.3
+"St. Paul Island, St. Paul Island Airport (PASN)",PASN.rss,PASN.xml,AK,57.16667,-170.21667
+"Talkeetna, Talkeetna Airport (PATK)",PATK.rss,PATK.xml,AK,62.32056,-150.09361
+"Tanana, Calhoun Memorial Airport (PATA)",PATA.rss,PATA.xml,AK,65.16667,-152.1
+Teller (PATE),PATE.rss,PATE.xml,AK,65.2404,-166.3393
+"Togiac Village, Togiak Airport (PATG)",PATG.rss,PATG.xml,AK,59.05,-160.4
+Toksook Bay (PAOO),PAOO.rss,PAOO.xml,AK,60.53352,-165.1143
+Unalakleet (PAUN),PAUN.rss,PAUN.xml,AK,63.88333,-160.8
+"Unalaska, Unalaska Airport (PADU)",PADU.rss,PADU.xml,AK,53.9,-166.53333
+Valdez 2 (PAVD),PAVD.rss,PAVD.xml,AK,61.13333,-146.26667
+Wales (PAIW),PAIW.rss,PAIW.xml,AK,65.6226,-168.0949
+"Wasilla, Wasilla Airport (PAWS)",PAWS.rss,PAWS.xml,AK,61.57194,-149.54056
+Wiley Post-Will Rogers Memorial Airport (PABR),PABR.rss,PABR.xml,AK,71.28528,-156.76583
+Wrangell (PAWG),PAWG.rss,PAWG.xml,AK,56.48333,-132.36667
+Yakutat (PAYA),PAYA.rss,PAYA.xml,AK,59.51667,-139.66667
+Ak-Chin Regional Airport (KA39),KA39.rss,KA39.xml,AZ,32.99,-111.91833
+Buckeye Municipal Airport (KBXK),KBXK.rss,KBXK.xml,AZ,33.4204,-112.6862
+"Bullhead City, Laughlin/Bullhead International Airport (KIFP)",KIFP.rss,KIFP.xml,AZ,35.1575,-114.55944
+"Casa Grande, Casa Grande Municipal Airport (KCGZ)",KCGZ.rss,KCGZ.xml,AZ,32.95,-111.76667
+"Chandler, Chandler Municipal Airport (KCHD)",KCHD.rss,KCHD.xml,AZ,33.26917,-111.81111
+"Colorado City, Colorado City Municipal Airport (KAZC)",KAZC.rss,KAZC.xml,AZ,36.95,-113
+Coolidge Municipal Airport (KP08),KP08.rss,KP08.xml,AZ,32.9359,-111.4265
+Davis-Monthan Air Force Base (KDMA),KDMA.rss,KDMA.xml,AZ,32.16667,-110.88333
+Flagstaff Pulliam Airport (KFLG),KFLG.rss,KFLG.xml,AZ,35.14433,-111.66637
+"Fort Huachuca, Libby AAF Ft Huachuca (KFHU)",KFHU.rss,KFHU.xml,AZ,31.58333,-110.33333
+Gila Bend Air Force Auxiliary Field (KGXF),KGXF.rss,KGXF.xml,AZ,32.8875,-112.72
+"Glendale, Glendale Municipal Airport (KGEU)",KGEU.rss,KGEU.xml,AZ,33.52722,-112.29528
+Goodyear Municipal (KGYR),KGYR.rss,KGYR.xml,AZ,33.41667,-112.38333
+Grand Canyon National Park Airport (KGCN),KGCN.rss,KGCN.xml,AZ,35.94582,-112.15538
+Havasu City Airport (KHII),KHII.rss,KHII.xml,AZ,34.56595,-114.35224
+"Kingman, Kingman Airport (KIGM)",KIGM.rss,KIGM.xml,AZ,35.25778,-113.93306
+Laguna Army Airfield (KLGF),KLGF.rss,KLGF.xml,AZ,32.86459,-114.39298
+Luke Air Force Base / Phoenix (KLUF),KLUF.rss,KLUF.xml,AZ,33.53333,-112.38333
+Mesa / Falcon Field (KFFZ),KFFZ.rss,KFFZ.xml,AZ,33.46667,-111.73333
+"Nogales, Nogales International Airport (KOLS)",KOLS.rss,KOLS.xml,AZ,31.42083,-110.84583
+"Page, Page Municipal Airport (KPGA)",KPGA.rss,KPGA.xml,AZ,36.92056,-111.44806
+Payson Airport (KPAN),KPAN.rss,KPAN.xml,AZ,34.2568364,-111.3392558
+"Phoenix, Phoenix Sky Harbor International Airport (KPHX)",KPHX.rss,KPHX.xml,AZ,33.427799,-112.003465
+"Phoenix, Phoenix-Deer Valley Municipal Airport (KDVT)",KDVT.rss,KDVT.xml,AZ,33.69026,-112.06618
+Phoenix-Mesa Gateway Airport (KIWA),KIWA.rss,KIWA.xml,AZ,33.31667,-111.65
+Pinal Airpark (KMZJ),KMZJ.rss,KMZJ.xml,AZ,32.50983,-111.32533
+Pioneer Airfield (KALK),KALK.rss,KALK.xml,AZ,31.60564,-110.4281
+"Prescott, Love Field (KPRC)",KPRC.rss,KPRC.xml,AZ,34.64917,-112.42222
+"Safford, Safford Municipal Airport (KSAD)",KSAD.rss,KSAD.xml,AZ,32.85722,-109.63556
+Scottsdale Airport (KSDL),KSDL.rss,KSDL.xml,AZ,33.61235,-111.92316
+Sedona Airport (KSEZ),KSEZ.rss,KSEZ.xml,AZ,34.85,-111.78333
+"Show Low, Show Low Regional Airport (KSOW)",KSOW.rss,KSOW.xml,AZ,34.26528,-110.00556
+Springerville Municipal Airport (KJTC),KJTC.rss,KJTC.xml,AZ,34.1294,-109.3109
+"St. Johns, St. Johns Industrial Airpark (KSJN)",KSJN.rss,KSJN.xml,AZ,34.51833,-109.37917
+Taylor Airport (KTYL),KTYL.rss,KTYL.xml,AZ,34.45272,-110.11503
+Tucson Marana Regional Airport (KAVQ),KAVQ.rss,KAVQ.xml,AZ,32.4096,-111.2184
+Tucson Ryan Field Airport (KRYN),KRYN.rss,KRYN.xml,AZ,32.1422,-111.1746
+"Tucson, Tucson International Airport (KTUS)",KTUS.rss,KTUS.xml,AZ,32.13153,-110.95635
+Williams/Clark Memorial Airport (KCMR),KCMR.rss,KCMR.xml,AZ,35.3054722,-112.1943889
+"Window Rock, Window Rock Airport (KRQE)",KRQE.rss,KRQE.xml,AZ,35.65,-109.06667
+"Winslow, Winslow Municipal Airport (KINW)",KINW.rss,KINW.xml,AZ,35.02806,-110.72083
+Yuma Auxiliary Airfield (KNOZ),KNOZ.rss,KNOZ.xml,AZ,32.5,-114.45
+"Yuma, Marine Corps Air Station (KNYL)",KNYL.rss,KNYL.xml,AZ,32.65944,-114.59306
+"Batesville, Batesville Regional Airport (KBVX)",KBVX.rss,KBVX.xml,AR,35.73333,-91.65
+Baxter County Airport (KBPK),KBPK.rss,KBPK.xml,AR,36.37056,-92.47194
+"Bentonville, Bentonville Municipal Airport/Louise M Thaden Field (KVBT)",KVBT.rss,KVBT.xml,AR,36.35,-94.21667
+"Blytheville, Blytheville Municipal Airport (KHKA)",KHKA.rss,KHKA.xml,AR,35.93889,-89.8325
+Camden / Harrell Field (KCDH),KCDH.rss,KCDH.xml,AR,33.61667,-92.76667
+Clinton Memorial Airfield (KCCA),KCCA.rss,KCCA.xml,AR,35.598,-92.4516
+Conway - Cantrell Field (KCXW),KCXW.rss,KCXW.xml,AR,35.0199,-92.5551
+Corning Municipal Airport (K4M9),K4M9.rss,K4M9.xml,AR,36.404,-90.648
+"De Queen, J Lynn Helms Sevier County Airport (KDEQ)",KDEQ.rss,KDEQ.xml,AR,34.04694,-94.39944
+Dexter B Florence Memorial Field (KADF),KADF.rss,KADF.xml,AR,34.0998,-93.0661
+Eaker Air Force Base (KBYH),KBYH.rss,KBYH.xml,AR,35.96667,-89.95
+"Fayetteville, Drake Field (KFYV)",KFYV.rss,KFYV.xml,AR,36.01028,-94.16778
+"Flippin, Marion County Regional Airport (KFLP)",KFLP.rss,KFLP.xml,AR,36.3,-92.58333
+Fort Smith Regional Airport (KFSM),KFSM.rss,KFSM.xml,AR,35.3335,-94.36524
+"Harrison, Boone County Airport (KHRO)",KHRO.rss,KHRO.xml,AR,36.26167,-93.15472
+"Hot Springs, Memorial Field Airport (KHOT)",KHOT.rss,KHOT.xml,AR,34.47806,-93.09611
+"Jonesboro, Jonesboro Municipal Airport (KJBR)",KJBR.rss,KJBR.xml,AR,35.83722,-90.64306
+Little Rock Air Force Base (KLRF),KLRF.rss,KLRF.xml,AR,34.91667,-92.15
+"Little Rock, Adams Field (KLIT)",KLIT.rss,KLIT.xml,AR,34.72667,-92.23611
+"Mena, Mena Intermountain Municipal Airport (KMEZ)",KMEZ.rss,KMEZ.xml,AR,34.54528,-94.2025
+"Monticello, Monticello Municipal Airport/Ellis Field (KLLQ)",KLLQ.rss,KLLQ.xml,AR,33.63833,-91.75111
+Mount Ida (KMWT),KMWT.rss,KMWT.xml,AR,34.55,-93.58333
+"Newport, Newport Municipal Airport (KM19)",KM19.rss,KM19.xml,AR,35.6375,-91.17611
+North Little Rock Municipal Airport (KORK),KORK.rss,KORK.xml,AR,34.83314,-92.25414
+Northwest Arkansas Regional Airport (KXNA),KXNA.rss,KXNA.xml,AR,36.28977,-94.31145
+"Pine Bluff, Grider Field Airport (KPBF)",KPBF.rss,KPBF.xml,AR,34.175,-91.93472
+Rogers - Rogers Executive Airport - Carter Field (KROG),KROG.rss,KROG.xml,AR,36.36667,-94.1
+Russelville Municipal Airport (KRUE),KRUE.rss,KRUE.xml,AR,35.25737,-93.09494
+Saline County Regional Airport (KSUZ),KSUZ.rss,KSUZ.xml,AR,34.59039,-92.47944
+Searcy Municipal Airport (KSRC),KSRC.rss,KSRC.xml,AR,35.21349,-91.73928
+"Siloam Springs, Smith Field Airport (KSLG)",KSLG.rss,KSLG.xml,AR,36.2,-94.48333
+South Arkansas Regional Airport (KELD),KELD.rss,KELD.xml,AR,33.22075,-92.814
+Springdale Municipal (KASG),KASG.rss,KASG.xml,AR,36.18333,-94.11667
+"Stuttgart, Stuttgart Municipal Airport (KSGT)",KSGT.rss,KSGT.xml,AR,34.6,-91.56667
+"Texarkana, Texarkana Regional-Webb Field (KTXK)",KTXK.rss,KTXK.xml,AR,33.45611,-93.9875
+Walnut Ridge Regional Airport (KARG),KARG.rss,KARG.xml,AR,36.12562,-90.92148
+"West Memphis, West Memphis Municipal Airport (KAWM)",KAWM.rss,KAWM.xml,AR,35.13333,-90.23333
+Alturas (KAAT),KAAT.rss,KAAT.xml,CA,41.48362,-120.5615
+"Arcata / Eureka, Arcata Airport (KACV)",KACV.rss,KACV.xml,CA,40.97806,-124.10861
+Auburn Municipal Airport (KAUN),KAUN.rss,KAUN.xml,CA,38.95535,-121.08636
+Avalon Catalina Airport (KAVX),KAVX.rss,KAVX.xml,CA,33.40421,-118.41456
+"Bakersfield, Meadows Field Airport (KBFL)",KBFL.rss,KBFL.xml,CA,35.43361,-119.05667
+Big Bear City Airport (KL35),KL35.rss,KL35.xml,CA,34.2638,-116.856
+"Bishop, Bishop Airport (KBIH)",KBIH.rss,KBIH.xml,CA,37.37111,-118.35806
+"Blythe, Blythe Airport (KBLH)",KBLH.rss,KBLH.xml,CA,33.61917,-114.71694
+Borrego Valley Airport (KL08),KL08.rss,KL08.xml,CA,33.25903,-116.32097
+Brackett Field Airport (KPOC),KPOC.rss,KPOC.xml,CA,34.09282,-117.77937
+Burbank - Bob Hope Airport (KBUR),KBUR.rss,KBUR.xml,CA,34.19967,-118.36538
+Byron (KC83),KC83.rss,KC83.xml,CA,37.8276,-121.6244
+Cable Airport (KCCB),KCCB.rss,KCCB.xml,CA,34.11161,-117.68739
+"Camarillo, Camarillo Airport (KCMA)",KCMA.rss,KCMA.xml,CA,34.21667,-119.08333
+"Carlsbad, McClellan-Palomar Airport (KCRQ)",KCRQ.rss,KCRQ.xml,CA,33.13,-117.27583
+Chico Municipal Airport (KCIC),KCIC.rss,KCIC.xml,CA,39.79879,-121.85795
+"China Lake, Naval Air Facility (KNID)",KNID.rss,KNID.xml,CA,35.68639,-117.69
+"Chino, Chino Airport (KCNO)",KCNO.rss,KCNO.xml,CA,33.97556,-117.62361
+COLUMBIA (KO22),KO22.rss,KO22.xml,CA,38.03,-120.42
+"Concord, Buchanan Field (KCCR)",KCCR.rss,KCCR.xml,CA,37.99167,-122.05194
+Corona Airport (KAJO),KAJO.rss,KAJO.xml,CA,33.8977,-117.6024
+"Crescent City, Jack McNamara Field Airport (KCEC)",KCEC.rss,KCEC.xml,CA,41.78028,-124.23667
+"Daggett, Barstow-Daggett Airport (KDAG)",KDAG.rss,KDAG.xml,CA,34.85361,-116.78667
+Delano Municipal Airport (KDLO),KDLO.rss,KDLO.xml,CA,35.74556,-119.2365
+Edwards Air Force Auxiliary North Base (K9L2),K9L2.rss,K9L2.xml,CA,34.99083,-117.86317
+Edwards Air Force Base (KEDW),KEDW.rss,KEDW.xml,CA,34.918,-117.879
+"El Centro, Naval Air Facility (KNJK)",KNJK.rss,KNJK.xml,CA,32.825,-115.66056
+El Monte (KEMT),KEMT.rss,KEMT.xml,CA,34.08333,-118.03333
+"Emigrant Gap, Blue Canyon Nyack Airport (KBLU)",KBLU.rss,KBLU.xml,CA,39.27611,-120.70806
+Fairfield / Travis Air Force Base (KSUU),KSUU.rss,KSUU.xml,CA,38.26667,-121.95
+Fallbrook Community Airpark (KL18),KL18.rss,KL18.xml,CA,33.3542,-117.2509
+"Fort Irwin/Barstow, Bicycle Lake Army Airfield (KBYS)",KBYS.rss,KBYS.xml,CA,35.28333,-116.61667
+FORT ORD/FRITZSCHE (KOAR),KOAR.rss,KOAR.xml,CA,36.68,-121.77
+Fortuna Rohnerville Airport (KFOT),KFOT.rss,KFOT.xml,CA,40.55296,-124.13338
+"Fresno, Fresno Air Terminal (KFAT)",KFAT.rss,KFAT.xml,CA,36.78,-119.71944
+"Fullerton, Fullerton Municipal Airport (KFUL)",KFUL.rss,KFUL.xml,CA,33.87194,-117.98472
+General Wm J Fox Airfield (KWJF),KWJF.rss,KWJF.xml,CA,34.74123,-118.21251
+Gillespie Field Airport (KSEE),KSEE.rss,KSEE.xml,CA,32.82738,-116.97369
+Gray Butte Field Airport (KGXA),KGXA.rss,KGXA.xml,CA,34.5666,-117.6704
+Half Moon Bay Airport (KHAF),KHAF.rss,KHAF.xml,CA,37.5136,-122.4996
+Hanford Municipal Airport (KHJO),KHJO.rss,KHJO.xml,CA,36.31145,-119.62315
+"Hawthorne, Hawthorne Municipal Airport (KHHR)",KHHR.rss,KHHR.xml,CA,33.92361,-118.33194
+"Hayward, Hayward Air Terminal (KHWD)",KHWD.rss,KHWD.xml,CA,37.66083,-122.11833
+Hemet-Ryan Airport (KHMT),KHMT.rss,KHMT.xml,CA,33.73403,-117.02231
+"Hollister, CA (KCVH)",KCVH.rss,KCVH.xml,CA,36.8933,-121.4103
+Imperial Beach Naval Outlying Field - Ream Field (KNRS),KNRS.rss,KNRS.xml,CA,32.56302,-117.11091
+"Imperial, Imperial County Airport (KIPL)",KIPL.rss,KIPL.xml,CA,32.83417,-115.57861
+John Wayne-Orange County Airport (KSNA),KSNA.rss,KSNA.xml,CA,33.6798,-117.8674
+Lemoore Naval Air Station - Reeves Field (KNLC),KNLC.rss,KNLC.xml,CA,36.30244,-119.93968
+Lincoln Regional Karl Harder Field (KLHM),KLHM.rss,KLHM.xml,CA,38.9092,-121.3513
+"Livermore, Livermore Municipal Airport (KLVK)",KLVK.rss,KLVK.xml,CA,37.69278,-121.81444
+"Lompoc, Lompoc Airport (KLPC)",KLPC.rss,KLPC.xml,CA,34.66667,-120.46667
+"Lompoc, Vandenberg Air Force Base (KVBG)",KVBG.rss,KVBG.xml,CA,34.72944,-120.57667
+"Long Beach, Long Beach Airport (KLGB)",KLGB.rss,KLGB.xml,CA,33.81167,-118.14639
+Los Alamitos Army Airfield (KSLI),KSLI.rss,KSLI.xml,CA,33.79628,-118.04179
+Los Angeles / USC Campus Downtown (KCQT),KCQT.rss,KCQT.xml,CA,34.02355,-118.29122
+"Los Angeles, Los Angeles International Airport (KLAX)",KLAX.rss,KLAX.xml,CA,33.93806,-118.38889
+"Los Angeles, Whiteman Airport (KWHP)",KWHP.rss,KWHP.xml,CA,34.25,-118.4
+Madera Municipal Airport (KMAE),KMAE.rss,KMAE.xml,CA,36.9851,-120.11064
+Mammoth Yosemite Airport (KMMH),KMMH.rss,KMMH.xml,CA,37.6241,-118.8423
+"Marysville, Beale Air Force Base (KBAB)",KBAB.rss,KBAB.xml,CA,39.13333,-121.43333
+"Marysville, Yuba County Airport (KMYV)",KMYV.rss,KMYV.xml,CA,39.09778,-121.56972
+MCMWTC BRIDGEPORT (KBAN),KBAN.rss,KBAN.xml,CA,38.3557,-119.5188
+Merced / Castle Air Force Base (KMER),KMER.rss,KMER.xml,CA,37.36667,-120.56667
+Merced Regional Airport (KMCE),KMCE.rss,KMCE.xml,CA,37.28306,-120.50778
+Modesto City-County Airport - Harry Sham Field (KMOD),KMOD.rss,KMOD.xml,CA,37.62549,-120.9549
+Mojave (KMHV),KMHV.rss,KMHV.xml,CA,35.06667,-118.15
+Montague Siskiyou County Airport (KSIY),KSIY.rss,KSIY.xml,CA,41.77375,-122.46817
+Monterey Regional Airport (KMRY),KMRY.rss,KMRY.xml,CA,36.59047,-121.84875
+Mount Shasta (KMHS),KMHS.rss,KMHS.xml,CA,41.31494,-122.31702
+"Mountain View, Moffett Field (KNUQ)",KNUQ.rss,KNUQ.xml,CA,37.40583,-122.04806
+Murrieta/Temecula French Valley (KF70),KF70.rss,KF70.xml,CA,33.5742,-117.1285
+"Napa, Napa County Airport (KAPC)",KAPC.rss,KAPC.xml,CA,38.2075,-122.27944
+"Needles, Needles Airport (KEED)",KEED.rss,KEED.xml,CA,34.76611,-114.62333
+Nevada County Air Park (KGOO),KGOO.rss,KGOO.xml,CA,39.224028,-121.003083
+Novato / Gnoss Field (KDVO),KDVO.rss,KDVO.xml,CA,38.14178,-122.55463
+"Oakland, Metro Oakland International Airport (KOAK)",KOAK.rss,KOAK.xml,CA,37.7178,-122.23294
+Oceano County Airport (KL52),KL52.rss,KL52.xml,CA,35.10147,-120.62236
+"Oceanside, Camp Pendleton, Marine Corps Air Station (KNFG)",KNFG.rss,KNFG.xml,CA,33.30472,-117.35389
+"Oceanside, Oceanside Municipal Airport (KOKB)",KOKB.rss,KOKB.xml,CA,33.21806,-117.35139
+Ontario International Airport (KONT),KONT.rss,KONT.xml,CA,34.05316,-117.57685
+"Oxnard, Oxnard Airport (KOXR)",KOXR.rss,KOXR.xml,CA,34.20056,-119.20306
+Palm Springs Regional Airport (KPSP),KPSP.rss,KPSP.xml,CA,33.82219,-116.50431
+"Palm Springs, Jacqueline Cochran Regional Airport (KTRM)",KTRM.rss,KTRM.xml,CA,33.62667,-116.15944
+"Palmdale, Palmdale Production Flight Plant (KPMD)",KPMD.rss,KPMD.xml,CA,34.62972,-118.08139
+Palo Alto Airport (KPAO),KPAO.rss,KPAO.xml,CA,37.46667,-122.11667
+Paso Robles Municipal Airport (KPRB),KPRB.rss,KPRB.xml,CA,35.66941,-120.62912
+Petaluma Municipal Airport (KO69),KO69.rss,KO69.xml,CA,38.2578,-122.6053
+Placerville Airport (KPVF),KPVF.rss,KPVF.xml,CA,38.7242,-120.7533
+"Point Mugu, Naval Air Warfare Center (KNTD)",KNTD.rss,KNTD.xml,CA,34.12389,-119.12167
+"Porterville, Porterville Municipal Airport (KPTV)",KPTV.rss,KPTV.xml,CA,36.03333,-119.06667
+"Ramona, Ramona Airport (KRNM)",KRNM.rss,KRNM.xml,CA,33.0375,-116.91583
+"Red Bluff, Red Bluff Municipal Airport (KRBL)",KRBL.rss,KRBL.xml,CA,40.15056,-122.25222
+Redding Municipal Airport (KRDD),KRDD.rss,KRDD.xml,CA,40.51461,-122.2977
+Reedley Municipal Airport (KO32),KO32.rss,KO32.xml,CA,36.671,-119.45103
+Riverside / March Air Force Base (KRIV),KRIV.rss,KRIV.xml,CA,33.9,-117.25
+Riverside Municipal Airport (KRAL),KRAL.rss,KRAL.xml,CA,33.95299,-117.43491
+Rogers Field Airport (KO05),KO05.rss,KO05.xml,CA,40.28236,-121.24117
+Sacramento Executive Airport (KSAC),KSAC.rss,KSAC.xml,CA,38.50674,-121.49597
+Sacramento International Airport (KSMF),KSMF.rss,KSMF.xml,CA,38.70071,-121.59479
+Sacramento Mather Airport (KMHR),KMHR.rss,KMHR.xml,CA,38.55996,-121.28397
+"Sacramento, McClellan Airfield Airport (KMCC)",KMCC.rss,KMCC.xml,CA,38.66667,-121.4
+"Salinas, Salinas Municipal Airport (KSNS)",KSNS.rss,KSNS.xml,CA,36.66361,-121.60806
+San Andreas Calaveras County Airport (KCPU),KCPU.rss,KCPU.xml,CA,38.1461,-120.6482
+San Bernardino Intl. Airport (KSBD),KSBD.rss,KSBD.xml,CA,34.09027,-117.24705
+San Carlos Airport (KSQL),KSQL.rss,KSQL.xml,CA,37.51667,-122.25
+San Clemente Island NALF (KNUC),KNUC.rss,KNUC.xml,CA,33.0218,-118.58266
+San Diego International Airport (KSAN),KSAN.rss,KSAN.xml,CA,32.73361,-117.18306
+"San Diego, Brown Field Municipal Airport (KSDM)",KSDM.rss,KSDM.xml,CA,32.57528,-116.99306
+"San Diego, Miramar MCAS/Mitscher Field Airport (KNKX)",KNKX.rss,KNKX.xml,CA,32.86833,-117.1425
+"San Diego, Montgomery Field (KMYF)",KMYF.rss,KMYF.xml,CA,32.81444,-117.13639
+"San Diego, North Island, Naval Air Station (KNZY)",KNZY.rss,KNZY.xml,CA,32.69083,-117.20889
+"San Francisco, San Francisco International Airport (KSFO)",KSFO.rss,KSFO.xml,CA,37.61961,-122.36558
+San Jose / Reid / Hillv (KRHV),KRHV.rss,KRHV.xml,CA,37.33333,-121.81667
+"San Jose, San Jose International Airport (KSJC)",KSJC.rss,KSJC.xml,CA,37.35917,-121.92417
+"San Luis Obispo, San Luis Obispo County-Mc Chesney Field (KSBP)",KSBP.rss,KSBP.xml,CA,35.23611,-120.63611
+San Nicolas Island Naval Outlying Field (KNSI),KNSI.rss,KNSI.xml,CA,33.23379,-119.45588
+Sandberg (KSDB),KSDB.rss,KSDB.xml,CA,34.74361,-118.72444
+"Santa Barbara, Santa Barbara Municipal Airport (KSBA)",KSBA.rss,KSBA.xml,CA,34.42611,-119.84361
+Santa Maria Public Airport/Capt G Allan Hancock Field (KSMX),KSMX.rss,KSMX.xml,CA,34.89408,-120.45212
+"Santa Monica, Santa Monica Municipal Airport (KSMO)",KSMO.rss,KSMO.xml,CA,34.01583,-118.45139
+"Santa Rosa, Santa Rosa Sonoma County Airport (KSTS)",KSTS.rss,KSTS.xml,CA,38.5,-122.81667
+"Santa Ynez, Santa Ynez Airport (KIZA)",KIZA.rss,KIZA.xml,CA,34.60694,-120.07556
+South County Airport of Santa Clara County (KE16),KE16.rss,KE16.xml,CA,37.0815861,-121.5968056
+"South Lake Tahoe, Lake Tahoe Airport (KTVL)",KTVL.rss,KTVL.xml,CA,38.89836,-119.99615
+"Stockton, Stockton Metropolitan Airport (KSCK)",KSCK.rss,KSCK.xml,CA,37.88972,-121.22361
+Susanville Municipal Airport (KSVE),KSVE.rss,KSVE.xml,CA,40.37569,-120.57269
+Tehachapi Municipal Airport (KTSP),KTSP.rss,KTSP.xml,CA,35.135,-118.4392
+"Torrance, Zamperini Field Airport (KTOA)",KTOA.rss,KTOA.xml,CA,33.8,-118.33333
+Tracy Municipal Airport (KTCY),KTCY.rss,KTCY.xml,CA,37.6889,-121.44158
+Truckee-Tahoe (KTRK),KTRK.rss,KTRK.xml,CA,39.31667,-120.13333
+Twentynine Palms SELF Airport (KNXP),KNXP.rss,KNXP.xml,CA,34.29401,-116.14717
+Ukiah Municipal Airport (KUKI),KUKI.rss,KUKI.xml,CA,39.12783,-123.20011
+University Airport (KEDU),KEDU.rss,KEDU.xml,CA,38.5315,-121.7865
+Vacaville Nut Tree Airport (KVCB),KVCB.rss,KVCB.xml,CA,38.37755,-121.95853
+"Van Nuys, Van Nuys Airport (KVNY)",KVNY.rss,KVNY.xml,CA,34.2125,-118.49083
+"Victorville, Southern California Logistics Airport (KVCV)",KVCV.rss,KVCV.xml,CA,34.59722,-117.38278
+"Visalia, Visalia Municipal Airport (KVIS)",KVIS.rss,KVIS.xml,CA,36.31667,-119.4
+"Watsonville, Watsonville Municipal Airport (KWVI)",KWVI.rss,KWVI.xml,CA,36.93944,-121.78889
+Westover Field - Amador County Airport (KJAQ),KJAQ.rss,KJAQ.xml,CA,38.3768,-120.79391
+Yolo County Airport (KDWA),KDWA.rss,KDWA.xml,CA,38.57939,-121.85694
+Air Force Academy (KAFF),KAFF.rss,KAFF.xml,CO,38.96667,-104.81667
+Aspen-Pitkin County Airport (KASE),KASE.rss,KASE.xml,CO,39.22992,-106.87051
+Astronaut Kent Rominger - Del Norte (KRCV),KRCV.rss,KRCV.xml,CO,37.7138,-106.352
+Berthoud Pass (K0CO),K0CO.rss,K0CO.xml,CO,39.79453,-105.76393
+Boulder Municipal Airport (KBDU),KBDU.rss,KBDU.xml,CO,40.0394297,-105.2258217
+Broomfield / Jeffco (KBJC),KBJC.rss,KBJC.xml,CO,39.90085,-105.10417
+Buckley Air Force Base Airport (KBKF),KBKF.rss,KBKF.xml,CO,39.71331,-104.75806
+Burlington - Carson County Airport (KITR),KITR.rss,KITR.xml,CO,39.24149,-102.2819
+Butts Army Airfield (Fort Carson) (KFCS),KFCS.rss,KFCS.xml,CO,38.68312,-104.75977
+Central Colorado Regional Airport (KAEJ),KAEJ.rss,KAEJ.xml,CO,38.81416,-106.12069
+Cheyenne Mountain (KCWN),KCWN.rss,KCWN.xml,CO,38.74343,-104.84334
+City of Colorado Springs Municipal Airport (KCOS),KCOS.rss,KCOS.xml,CO,38.80949,-104.68873
+Colorado Air and Space Port Airport (KCFO),KCFO.rss,KCFO.xml,CO,39.78419,-104.53764
+Colorado Plains Regional Airport (KAKO),KAKO.rss,KAKO.xml,CO,40.17428,-103.21459
+Copper Mountain - Red Cliff Pass (KCCU),KCCU.rss,KCCU.xml,CO,39.47523,-106.15228
+Cortez-Montezuma County Airport (KCEZ),KCEZ.rss,KCEZ.xml,CO,37.30706,-108.62644
+Cottonwood Pass (K7BM),K7BM.rss,K7BM.xml,CO,38.7825,-106.21806
+Craig-Moffat Airport (KCAG),KCAG.rss,KCAG.xml,CO,40.49297,-107.52394
+Delta/Blake Field Airport (KAJZ),KAJZ.rss,KAJZ.xml,CO,38.78688,-108.06584
+Denver - Centennial Airport (KAPA),KAPA.rss,KAPA.xml,CO,39.55991,-104.84841
+"Denver, Denver International Airport (KDEN)",KDEN.rss,KDEN.xml,CO,39.84658,-104.65622
+Durango-La Plata County Airport (KDRO),KDRO.rss,KDRO.xml,CO,37.14312,-107.76023
+Eagle County Regional (KEGE),KEGE.rss,KEGE.xml,CO,39.65,-106.91667
+Elbert Mountain - Monument Pass (KMNH),KMNH.rss,KMNH.xml,CO,39.22317,-104.64226
+ELLICOTT-B AFA (KABH),KABH.rss,KABH.xml,CO,38.7578,-104.3013
+Erie Municipal Airport (KEIK),KEIK.rss,KEIK.xml,CO,40.01169,-105.05033
+Fort Collins/Loveland - Northern Colorado Regional Airport (KFNL),KFNL.rss,KFNL.xml,CO,40.45,-105.01667
+Fort Morgan Municipal Airport (KFMM),KFMM.rss,KFMM.xml,CO,40.33148,-103.80704
+Fremont County Airport (K1V6),K1V6.rss,K1V6.xml,CO,38.42856,-105.10685
+Garfield County Regional Airport (KRIL),KRIL.rss,KRIL.xml,CO,39.52793,-107.71961
+Granby-Grand County Airport (KGNB),KGNB.rss,KGNB.xml,CO,40.09006,-105.91664
+Grand Junction Regional Airport (KGJT),KGJT.rss,KGJT.xml,CO,39.13389,-108.53861
+"Greeley, Greeley-Weld County Airport (KGXY)",KGXY.rss,KGXY.xml,CO,40.43333,-104.63333
+"Gunnison, Gunnison-Crested Butte Regional Airport (KGUC)",KGUC.rss,KGUC.xml,CO,38.53333,-106.93333
+Harriet Alexander Field Airport (KANK),KANK.rss,KANK.xml,CO,38.53828,-106.04864
+"Hayden, Yampa Valley Airport (KHDN)",KHDN.rss,KHDN.xml,CO,40.48333,-107.21667
+Holyoke Airport (KHEQ),KHEQ.rss,KHEQ.xml,CO,40.57155,-102.27676
+Juliet - Peetz (K1JW),K1JW.rss,K1JW.xml,CO,40.9667,-103.2
+"Kremmling, Mc Elroy Airfield (K20V)",K20V.rss,K20V.xml,CO,40.05361,-106.36889
+La Junta Municipal Airport (KLHX),KLHX.rss,KLHX.xml,CO,38.04949,-103.51334
+"La Veta Mountain, La Veta Pass (KVTP)",KVTP.rss,KVTP.xml,CO,37.50111,-105.16694
+Lamar Municipal Airport (KLAA),KLAA.rss,KLAA.xml,CO,38.07178,-102.68745
+"Leadville, Lake County Airport (KLXV)",KLXV.rss,KLXV.xml,CO,39.22806,-106.31611
+Lima - Grover (K1LW),K1LW.rss,K1LW.xml,CO,40.92,-103.7
+Limon Municipal Airport (KLIC),KLIC.rss,KLIC.xml,CO,39.27334,-103.66738
+Meadow Lake Airport (KFLY),KFLY.rss,KFLY.xml,CO,38.94391,-104.5684
+Meeker Airport (KEEO),KEEO.rss,KEEO.xml,CO,40.0444,-107.88832
+MIKE (HAXTUN) (K1MW),K1MW.rss,K1MW.xml,CO,40.7,-103.48
+"Montrose, Montrose Regional Airport (KMTJ)",KMTJ.rss,KMTJ.xml,CO,38.505,-107.8975
+NOVEMBER (GROVER) (K1NW),K1NW.rss,K1NW.xml,CO,40.63,-103.83
+Nucla Hopkins Field Airport (KAIB),KAIB.rss,KAIB.xml,CO,38.23875,-108.563277
+Oscar (K1OW),K1OW.rss,K1OW.xml,CO,40.8833,-104
+"Pagosa Springs, Wolf Creek Pass (KCPW)",KCPW.rss,KCPW.xml,CO,37.45139,-106.80028
+Perry Stokes Airport (KTAD),KTAD.rss,KTAD.xml,CO,37.26218,-104.33184
+Pueblo Memorial Airport (KPUB),KPUB.rss,KPUB.xml,CO,38.28869,-104.5057
+Rangely Airport (K4V0),K4V0.rss,K4V0.xml,CO,40.09397,-108.76306
+"Saguache, Saguache Municipal Airport (K04V)",K04V.rss,K04V.xml,CO,38.09722,-106.16861
+Salida - Monarch Pass (KMYP),KMYP.rss,KMYP.xml,CO,38.4972,-106.3197
+San Luis Valley Regional Airport (KALS),KALS.rss,KALS.xml,CO,37.43933,-105.8618
+"Springfield, Comanche National Grassland (KSPD)",KSPD.rss,KSPD.xml,CO,37.28333,-102.61667
+Steamboat Springs (KSBS),KSBS.rss,KSBS.xml,CO,40.5153,-106.86767
+Sterling Municipal Airport (KSTK),KSTK.rss,KSTK.xml,CO,40.61331,-103.26109
+"Stevens Field, Pagosa Springs (KPSO)",KPSO.rss,KPSO.xml,CO,37.2862,-107.056
+Sunlight (K5SM),K5SM.rss,K5SM.xml,CO,39.42556,-107.37917
+"Telluride, Telluride Regional Airport (KTEX)",KTEX.rss,KTEX.xml,CO,37.95389,-107.90861
+Vance Brand Airport (KLMO),KLMO.rss,KLMO.xml,CO,40.16115,-105.16042
+Walden-Jackson County Airport (K33V),K33V.rss,K33V.xml,CO,40.7454,-106.2754
+WALSENBURG (K4V1),K4V1.rss,K4V1.xml,CO,37.6941,-104.7881
+Walton Peak (KC07),KC07.rss,KC07.xml,CO,40.35442,-106.69922
+Wilkerson Pass (K4BM),K4BM.rss,K4BM.xml,CO,39.05028,-105.51444
+Wray Municipal Airport (K2V5),K2V5.rss,K2V5.xml,CO,40.09929,-102.24308
+Yuma Municipal Airport (K2V6),K2V6.rss,K2V6.xml,CO,40.1046,-102.7128
+"Bridgeport, Sikorsky Memorial Airport (KBDR)",KBDR.rss,KBDR.xml,CT,41.16421,-73.12663
+"Chester, Chester Airport (KSNC)",KSNC.rss,KSNC.xml,CT,41.38389,-72.50583
+"Danbury, Danbury Municipal Airport (KDXR)",KDXR.rss,KDXR.xml,CT,41.37167,-73.48444
+"Groton / New London, Groton / New London Airport (KGON)",KGON.rss,KGON.xml,CT,41.3275,-72.04944
+"Hartford, Hartford-Brainard Airport (KHFD)",KHFD.rss,KHFD.xml,CT,41.735,-72.65167
+"Meriden, Meriden Markham Municipal Airport (KMMK)",KMMK.rss,KMMK.xml,CT,41.50972,-72.82778
+"New Haven, Tweed-New Haven Airport (KHVN)",KHVN.rss,KHVN.xml,CT,41.26389,-72.88722
+"Oxford, Waterbury-Oxford Airport (KOXC)",KOXC.rss,KOXC.xml,CT,41.48333,-73.13333
+"Willimantic, Windham Airport (KIJD)",KIJD.rss,KIJD.xml,CT,41.74194,-72.18361
+"Windsor Locks, Bradley International Airport (KBDL)",KBDL.rss,KBDL.xml,CT,41.93806,-72.6825
+Delaware Airpark (K33N),K33N.rss,K33N.xml,DE,39.21869,-75.60047
+Dover Air Force Base (KDOV),KDOV.rss,KDOV.xml,DE,39.13333,-75.46667
+Georgetown - Delaware Coastal Airport (KGED),KGED.rss,KGED.xml,DE,38.68974,-75.36245
+"Wilmington, New Castle County Airport (KILG)",KILG.rss,KILG.xml,DE,39.67442,-75.60567
+Airglades Airport (K2IS),K2IS.rss,K2IS.xml,FL,26.73517,-81.05106
+Albert Whitted Airport (KSPG),KSPG.rss,KSPG.xml,FL,27.76852,-82.62564
+"Apalachicola, Apalachicola (KAAF)",KAAF.rss,KAAF.xml,FL,29.72694,-85.02472
+Bartow Municipal (KBOW),KBOW.rss,KBOW.xml,FL,27.95,-81.78333
+"Boca Raton, Boca Raton Airport (KBCT)",KBCT.rss,KBCT.xml,FL,26.37861,-80.10778
+Brooksville-Tampa Bay Regional Airport (KBKV),KBKV.rss,KBKV.xml,FL,28.47361,-82.45444
+Cecil Airport (KVQQ),KVQQ.rss,KVQQ.xml,FL,30.21292,-81.8707
+Clearwater Air Park (KCLW),KCLW.rss,KCLW.xml,FL,27.9742,-82.7563
+Cocoa - Patrick Air Force Base (KCOF),KCOF.rss,KCOF.xml,FL,28.24219,-80.60799
+"Cocoa Beach, Cape Canaveral Air Force Station Skid Strip (KXMR)",KXMR.rss,KXMR.xml,FL,28.46667,-80.56667
+"Crestview, Sikes Airport (KCEW)",KCEW.rss,KCEW.xml,FL,30.77222,-86.52
+Cross City Airport (KCTY),KCTY.rss,KCTY.xml,FL,29.633326,-83.105458
+Crystal River Airport (KCGC),KCGC.rss,KCGC.xml,FL,28.8673,-82.5713
+Daytona Beach International Airport (KDAB),KDAB.rss,KDAB.xml,FL,29.17354,-81.07186
+DeFuniak Spr AP (K54J),K54J.rss,K54J.xml,FL,30.7311,-86.1538
+DeLand Municipal Airport (KDED),KDED.rss,KDED.xml,FL,29.067,-81.2837
+"Destin, Destin-Ft. Walton Beach Airport (KDTS)",KDTS.rss,KDTS.xml,FL,30.39333,-86.4675
+Fernandina Beach Municipal Airport (KFHB),KFHB.rss,KFHB.xml,FL,30.61183,-81.46119
+Flagler County Airport (KFIN),KFIN.rss,KFIN.xml,FL,29.4657,-81.20872
+"Fort Lauderdale, Fort Lauderdale Executive Airport (KFXE)",KFXE.rss,KFXE.xml,FL,26.2,-80.18333
+Fort Lauderdale/Hollywood International Airport (KFLL),KFLL.rss,KFLL.xml,FL,26.07874,-80.1622
+"Fort Myers, Page Field (KFMY)",KFMY.rss,KFMY.xml,FL,26.58417,-81.8625
+"Fort Myers, Southwest Florida International Airport (KRSW)",KRSW.rss,KRSW.xml,FL,26.52694,-81.76639
+"Fort Pierce, St. Lucie County International Airport (KFPR)",KFPR.rss,KFPR.xml,FL,27.49806,-80.37667
+"Gainesville, Gainesville Regional Airport (KGNV)",KGNV.rss,KGNV.xml,FL,29.69194,-82.27556
+"Hollywood, North Perry Airport (KHWO)",KHWO.rss,KHWO.xml,FL,25.99889,-80.24111
+Homestead Air Reserve Base (KHST),KHST.rss,KHST.xml,FL,25.49488,-80.37324
+Hurlburt Field (KHRT),KHRT.rss,KHRT.xml,FL,30.41667,-86.68333
+IMMOKALEE (KIMM),KIMM.rss,KIMM.xml,FL,26.43,-81.4
+Inverness Airport (KINF),KINF.rss,KINF.xml,FL,28.8086,-82.3165
+Jacksonville Craig Municipal Airport (KCRG),KCRG.rss,KCRG.xml,FL,30.33709,-81.51275
+Jacksonville International Airport (KJAX),KJAX.rss,KJAX.xml,FL,30.49534,-81.6937
+Jacksonville Naval Air Station (KNIP),KNIP.rss,KNIP.xml,FL,30.23468,-81.67462
+Key West International Airport (KEYW),KEYW.rss,KEYW.xml,FL,24.55707,-81.75539
+Key West Naval Air Station (KNQX),KNQX.rss,KNQX.xml,FL,24.58009,-81.68293
+Keystone Airpark (K42J),K42J.rss,K42J.xml,FL,29.84475,-82.04753
+Kissimmee Gateway Airport (KISM),KISM.rss,KISM.xml,FL,28.29236,-81.43716
+Lake City Municipal Airport (KLCQ),KLCQ.rss,KLCQ.xml,FL,30.1821,-82.5769
+Lake Wales Municipal Airport (KX07),KX07.rss,KX07.xml,FL,27.89389,-81.62042
+Lakeland Regional (KLAL),KLAL.rss,KLAL.xml,FL,27.98333,-82.01667
+Leesburg International Airport (KLEE),KLEE.rss,KLEE.xml,FL,28.82142,-81.80964
+"Macdill Air Force Base, Fl. (KMCF)",KMCF.rss,KMCF.xml,FL,27.85,-82.5
+Marco Island Airport (KMKY),KMKY.rss,KMKY.xml,FL,25.995,-81.6725
+Marianna Municipal Airport (KMAI),KMAI.rss,KMAI.xml,FL,30.83698,-85.18347
+Mayport Naval Station - Adm David L. McDonald Field (KNRB),KNRB.rss,KNRB.xml,FL,30.39589,-81.42286
+Melbourne International Airport (KMLB),KMLB.rss,KMLB.xml,FL,28.09973,-80.6356
+"Miami, Kendall-Tamiami Executive Airport (KTMB)",KTMB.rss,KTMB.xml,FL,25.64194,-80.43472
+"Miami, Miami International Airport (KMIA)",KMIA.rss,KMIA.xml,FL,25.79056,-80.31639
+"Miami, Opa Locka Airport (KOPF)",KOPF.rss,KOPF.xml,FL,25.91,-80.28306
+Milton - Whiting Field Naval Air Station North (KNSE),KNSE.rss,KNSE.xml,FL,30.72848,-87.02192
+"Milton, Whiting Field South (KNDZ)",KNDZ.rss,KNDZ.xml,FL,30.69722,-87.02
+"Naples, Naples Municipal Airport (KAPF)",KAPF.rss,KAPF.xml,FL,26.15,-81.76667
+New Smyrna Beach Municipal Airport (KEVB),KEVB.rss,KEVB.xml,FL,29.05687,-80.94909
+Northeast Florida Regional Airport (KSGJ),KSGJ.rss,KSGJ.xml,FL,29.95924,-81.34105
+Ocala International Airport - Jim Taylor Field (KOCF),KOCF.rss,KOCF.xml,FL,29.16372,-82.22097
+Okeechobee County Airport (KOBE),KOBE.rss,KOBE.xml,FL,27.2628,-80.8498
+Orlando / Sanford Airport (KSFB),KSFB.rss,KSFB.xml,FL,28.78333,-81.25
+Orlando Executive Airport (KORL),KORL.rss,KORL.xml,FL,28.54655,-81.33543
+Orlando International Airport (KMCO),KMCO.rss,KMCO.xml,FL,28.41826,-81.32413
+"Ormond Beach, Ormond Beach Municipal Airport (KOMN)",KOMN.rss,KOMN.xml,FL,29.30111,-81.11361
+Palatka Kay Larkin Field (K28J),K28J.rss,K28J.xml,FL,29.6586,-81.6889
+Panama City - Northwest Florida Beaches International Airport (KECP),KECP.rss,KECP.xml,FL,30.3582,-85.7956
+Pensacola - Pensacola International Airport (KPNS),KPNS.rss,KPNS.xml,FL,30.47806,-87.18694
+Pensacola Naval Air Station (KNPA),KNPA.rss,KNPA.xml,FL,30.35641,-87.32326
+Perry-Foley Airport (KFPY),KFPY.rss,KFPY.xml,FL,30.07081,-83.58154
+"Plant City, Plant City Municipal Airport (KPCM)",KPCM.rss,KPCM.xml,FL,28,-82.15
+"Pompano Beach, Pompano Beach Airpark (KPMP)",KPMP.rss,KPMP.xml,FL,26.24556,-80.11139
+"Punta Gorda, Charlotte County Airport (KPGD)",KPGD.rss,KPGD.xml,FL,26.91778,-81.99361
+Quincy Municipal Airport (K2J9),K2J9.rss,K2J9.xml,FL,30.59787,-84.55743
+"Sarasota / Bradenton, Sarasota-Bradenton International Airport (KSRQ)",KSRQ.rss,KSRQ.xml,FL,27.40139,-82.55861
+Sebastian Municipal Airport (KX26),KX26.rss,KX26.xml,FL,27.81325,-80.49558
+Sebring Regional Airport (KSEF),KSEF.rss,KSEF.xml,FL,27.45639,-81.34239
+St. Petersburg/Clearwater Airport (KPIE),KPIE.rss,KPIE.xml,FL,27.91259,-82.68554
+Suwannee County Airport (K24J),K24J.rss,K24J.xml,FL,30.3001,-83.0247
+Tallahassee International Airport (KTLH),KTLH.rss,KTLH.xml,FL,30.39675,-84.35087
+"Tampa, Peter O Knight Airport (KTPF)",KTPF.rss,KTPF.xml,FL,27.91556,-82.44917
+"Tampa, Tampa International Airport (KTPA)",KTPA.rss,KTPA.xml,FL,27.96139,-82.54028
+The Florida Keys - Marathon International Airport (KMTH),KMTH.rss,KMTH.xml,FL,24.72626,-81.04765
+Titusville (KTIX),KTIX.rss,KTIX.xml,FL,28.51667,-80.8
+"Titusville, NASA Shuttle Landing Facility (KTTS)",KTTS.rss,KTTS.xml,FL,28.61667,-80.7
+Tri-County Airport (K1J0),K1J0.rss,K1J0.xml,FL,30.84578,-85.60139
+Tyndall Air Force Base (KPAM),KPAM.rss,KPAM.xml,FL,30.06444,-85.5637
+Tyndall Drone Runway (KTDR),KTDR.rss,KTDR.xml,FL,30.0333,-85.5333
+Valparaiso / Eglin Air Force Base (KVPS),KVPS.rss,KVPS.xml,FL,30.48333,-86.51667
+Venice Municipal Airport (KVNC),KVNC.rss,KVNC.xml,FL,27.0716,-82.44033
+"Vero Beach, Vero Beach Municipal Airport (KVRB)",KVRB.rss,KVRB.xml,FL,27.65556,-80.41806
+West Palm Beach - Palm Beach International Airport (KPBI),KPBI.rss,KPBI.xml,FL,26.6851,-80.09919
+Williston Montbrook Airport (KX60),KX60.rss,KX60.xml,FL,29.3557,-82.4719
+Winter Havens Gilbert Airport (KGIF),KGIF.rss,KGIF.xml,FL,28.06138,-81.75684
+Witham Field Airport (KSUA),KSUA.rss,KSUA.xml,FL,27.18157,-80.22519
+Zephyrhills Airport (KZPH),KZPH.rss,KZPH.xml,FL,28.2281,-82.1559
+"Alma, Bacon County Airport (KAMG)",KAMG.rss,KAMG.xml,GA,31.53611,-82.50667
+Americus Souther Field Airport (KACJ),KACJ.rss,KACJ.xml,GA,32.11081,-84.18886
+"Athens, Athens Airport (KAHN)",KAHN.rss,KAHN.xml,GA,33.95083,-83.32806
+Atlanta Regional Airport-Falcon Field (KFFC),KFFC.rss,KFFC.xml,GA,33.35436,-84.56893
+"Atlanta, De Kalb-Peachtree Airport (KPDK)",KPDK.rss,KPDK.xml,GA,33.87833,-84.29806
+"Atlanta, Hartsfield - Jackson Atlanta International Airport (KATL)",KATL.rss,KATL.xml,GA,33.64028,-84.42694
+Augusta Daniel Field (KDNL),KDNL.rss,KDNL.xml,GA,33.4669,-82.03836
+"Augusta, Bush Field (KAGS)",KAGS.rss,KAGS.xml,GA,33.36444,-81.96333
+"Bainbridge, Decatur County Industrial Air Park Airport (KBGE)",KBGE.rss,KBGE.xml,GA,30.96667,-84.63333
+Barwick Lafayette Airport (K9A5),K9A5.rss,K9A5.xml,GA,34.6885,-85.2903
+Baxley Municipal Airport (KBHC),KBHC.rss,KBHC.xml,GA,31.7138,-82.3938
+Blairsville Airport (KDZJ),KDZJ.rss,KDZJ.xml,GA,34.8544,-83.9973
+"Blakely, Early County Airport (KBIJ)",KBIJ.rss,KBIJ.xml,GA,31.39694,-84.895
+Brunswick / Glynco (KBQK),KBQK.rss,KBQK.xml,GA,31.25,-81.46667
+"Brunswick, Malcolm McKinnon Airport (KSSI)",KSSI.rss,KSSI.xml,GA,31.15167,-81.39139
+Butler Municipal Airport (K6A1),K6A1.rss,K6A1.xml,GA,32.567,-84.251
+Calhoun Tom B. David Field Airport (KCZL),KCZL.rss,KCZL.xml,GA,34.4554,-84.9392
+Camilla-Mitchell County Airport (KCXU),KCXU.rss,KCXU.xml,GA,31.2132,-84.2352
+"Canton, Cherokee County Airport (KCNI)",KCNI.rss,KCNI.xml,GA,34.31056,-84.42389
+Carrollton West Georgia Regional Airport (KCTJ),KCTJ.rss,KCTJ.xml,GA,33.63,-85.15
+Cartersville Airport (KVPC),KVPC.rss,KVPC.xml,GA,34.11589,-84.85064
+Claxton Evans County Airport (KCWV),KCWV.rss,KCWV.xml,GA,32.1951,-81.8696
+Cobb County International Airport - McCollum Field (KRYY),KRYY.rss,KRYY.xml,GA,34.01467,-84.59635
+Cochran Airport (K48A),K48A.rss,K48A.xml,GA,32.3994,-83.2759
+"Columbus, Columbus Metropolitan Airport (KCSG)",KCSG.rss,KCSG.xml,GA,32.51611,-84.94222
+Cordele Crisp County Airport (KCKF),KCKF.rss,KCKF.xml,GA,31.9888,-83.7739
+Cornelia Habersham County Airport (KAJR),KAJR.rss,KAJR.xml,GA,34.4998,-83.5567
+Covington Municipal Airport (KCVC),KCVC.rss,KCVC.xml,GA,33.632,-83.85
+Dallas Paulding County Regional Airport (KPUJ),KPUJ.rss,KPUJ.xml,GA,33.919,-84.952
+"Dalton, Dalton Municipal Airport (KDNN)",KDNN.rss,KDNN.xml,GA,34.72167,-84.86917
+Donalsonville Municipal Airport (K17J),K17J.rss,K17J.xml,GA,31.00697,-84.87761
+"Douglas, Douglas Municipal Airport (KDQH)",KDQH.rss,KDQH.xml,GA,31.47667,-82.86028
+"Dublin, W H 'Bud' Barron Airport (KDBN)",KDBN.rss,KDBN.xml,GA,32.56444,-82.985
+"Eastman, Heart of Georgia Regional Airport (KEZM)",KEZM.rss,KEZM.xml,GA,32.21417,-83.12778
+Fitzgerald Municipal Airport (KFZG),KFZG.rss,KFZG.xml,GA,31.6839,-83.2709
+Fort Benning (KLSF),KLSF.rss,KLSF.xml,GA,32.33333,-84.83333
+Franklin County Airport (K18A),K18A.rss,K18A.xml,GA,34.3404,-83.1308
+Fulton County Airport-Brown Field (KFTY),KFTY.rss,KFTY.xml,GA,33.77764,-84.52461
+"Gainesville, Gilmer Memorial Airport (KGVL)",KGVL.rss,KGVL.xml,GA,34.27194,-83.83028
+Gilmer County Airport (K49A),K49A.rss,K49A.xml,GA,34.6301,-84.5271
+"Greensboro, Greene County Regional Airport (K3J7)",K3J7.rss,K3J7.xml,GA,33.5975,-83.13889
+Griffin Spalding County Airport (K6A2),K6A2.rss,K6A2.xml,GA,33.227,-84.2749
+Gwinnett County Airport-Briscoe Field (KLZU),KLZU.rss,KLZU.xml,GA,33.98288,-83.95842
+Hazlehurst Airport (KAZE),KAZE.rss,KAZE.xml,GA,31.8847,-82.6474
+Henry County Airport (KHMP),KHMP.rss,KHMP.xml,GA,33.3899,-84.331
+Homerville Airport (KHOE),KHOE.rss,KHOE.xml,GA,31.0559,-82.7741
+Hunter U. S. Army Airfield (KSVN),KSVN.rss,KSVN.xml,GA,32.01667,-81.15
+Jackson County Airport (KJCA),KJCA.rss,KJCA.xml,GA,34.17586,-83.5616
+Jasper Pickens County Airport (KJZP),KJZP.rss,KJZP.xml,GA,34.45417,-84.45971
+Jesup-Wayne County Airport (KJES),KJES.rss,KJES.xml,GA,31.554,-81.8825
+LaGrange-Callaway Airport (KLGC),KLGC.rss,KLGC.xml,GA,33.00617,-85.06609
+Louisville Municipal Airport (K2J3),K2J3.rss,K2J3.xml,GA,32.98594,-82.38481
+Marietta / Dobbins Air Force Base (KMGE),KMGE.rss,KMGE.xml,GA,33.91667,-84.51667
+Metter Municipal Airport (KMHP),KMHP.rss,KMHP.xml,GA,32.37397,-82.08144
+Middle Georgia Regional Airport (KMCN),KMCN.rss,KMCN.xml,GA,32.68892,-83.65293
+"Milledgeville, Baldwin County Airport (KMLJ)",KMLJ.rss,KMLJ.xml,GA,33.15417,-83.24056
+Millen Airport (K2J5),K2J5.rss,K2J5.xml,GA,32.8935,-81.9654
+Monroe-Walton County Airport (KD73),KD73.rss,KD73.xml,GA,33.78253,-83.69281
+Moody Air Force Base (KVAD),KVAD.rss,KVAD.xml,GA,30.97913,-83.19247
+"Moultrie, Moultrie Municipal Airport (KMGR)",KMGR.rss,KMGR.xml,GA,31.08472,-83.80306
+"Newnan, Newnan Coweta County Airport (KCCO)",KCCO.rss,KCCO.xml,GA,33.31222,-84.77028
+Perry-Houston County Airport (KPXE),KPXE.rss,KPXE.xml,GA,32.5106,-83.7673
+Pine Mountain Harris County Airport (KPIM),KPIM.rss,KPIM.xml,GA,32.8407,-84.8824
+"Rome, R. B. Russell Airport (KRMG)",KRMG.rss,KRMG.xml,GA,34.34778,-85.16111
+Sandersville Kaolin Field Airport (KOKZ),KOKZ.rss,KOKZ.xml,GA,32.9667,-82.8382
+Savannah-Hilton Head International Airport (KSAV),KSAV.rss,KSAV.xml,GA,32.13137,-81.20226
+Southwest Georgia Regional Airport (KABY),KABY.rss,KABY.xml,GA,31.53652,-84.19571
+"Statesboro, Statesboro-Bulloch County Airport (KTBR)",KTBR.rss,KTBR.xml,GA,32.48306,-81.73722
+Swainsboro Emanuel County Airport (KSBO),KSBO.rss,KSBO.xml,GA,32.6091,-82.3699
+Swinton Smith Field at Reidsville Municipal Airport (KRVJ),KRVJ.rss,KRVJ.xml,GA,32.05949,-82.15358
+"Sylvania, Plantation Airpark (KJYL)",KJYL.rss,KJYL.xml,GA,32.64528,-81.59639
+"Thomaston, Thomaston-Upson County Airport (KOPN)",KOPN.rss,KOPN.xml,GA,32.955,-84.26444
+Thomasville Regional Airport (KTVI),KTVI.rss,KTVI.xml,GA,30.90179,-83.88113
+"Thomson, Thomson-McDuffie County Airport (KHQU)",KHQU.rss,KHQU.xml,GA,33.52944,-82.51639
+Tifton Henry Tift Myers (KTMA),KTMA.rss,KTMA.xml,GA,31.429,-83.4885
+Toccoa Le Tourneau Airport (KTOC),KTOC.rss,KTOC.xml,GA,34.5928,-83.2964
+Valdosta Regional Airport (KVLD),KVLD.rss,KVLD.xml,GA,30.77632,-83.27389
+"Vidalia, Vidalia Municipal Airport (KVDI)",KVDI.rss,KVDI.xml,GA,32.1925,-82.37194
+Warner Robins Air Force Base (KWRB),KWRB.rss,KWRB.xml,GA,32.63333,-83.6
+"Washington, Washington-Wilkes County Airport (KIIY)",KIIY.rss,KIIY.xml,GA,33.77972,-82.81639
+"Waycross / Ware County, Ga (KAYS)",KAYS.rss,KAYS.xml,GA,31.25,-82.4
+"Winder, Winder-Barrow Airport (KWDR)",KWDR.rss,KWDR.xml,GA,33.98222,-83.66806
+Wright Army Airfield (Fort Stewart)/Midcoast Regional Airport (KLHW),KLHW.rss,KLHW.xml,GA,31.88724,-81.56244
+"Andersen, Mariana Is, Andersen Air Force Base (PGUA)",PGUA.rss,PGUA.xml,GU,13.58333,144.93333
+Guam International Airport (PGUM),PGUM.rss,PGUM.xml,GU,13.48395,144.79712
+"Wake Island, Wake Island Army Airfield Airport (PWAK)",PWAK.rss,PWAK.xml,GU,19.28333,166.65
+Bradshaw Army Air Field / Hawaii (PHSF),PHSF.rss,PHSF.xml,HI,19.78333,-155.55
+Daniel K Inouye International Airport (PHNL),PHNL.rss,PHNL.xml,HI,21.3275,-157.94306
+"Hilo, Hilo International Airport (PHTO)",PHTO.rss,PHTO.xml,HI,19.72222,-155.05583
+"Kahului, Kahului Airport (PHOG)",PHOG.rss,PHOG.xml,HI,20.8925,-156.43694
+"Kailua / Kona, Keahole Airport (PHKO)",PHKO.rss,PHKO.xml,HI,19.74083,-156.05056
+"Kaneohe, Marine Corps Air Station (PHNG)",PHNG.rss,PHNG.xml,HI,21.45389,-157.76556
+"Kaunakakai, Molokai Airport (PHMK)",PHMK.rss,PHMK.xml,HI,21.15,-157.1
+"Kekaha, Pacific Missile Test Facility Barking Sands (PHBK)",PHBK.rss,PHBK.xml,HI,22.03639,-159.78639
+Lahaina - West Maui (PHJH),PHJH.rss,PHJH.xml,HI,20.96307,-156.67466
+"Lanai City, Lanai Airport (PHNY)",PHNY.rss,PHNY.xml,HI,20.78556,-156.95139
+"Lihue, Lihue Airport (PHLI)",PHLI.rss,PHLI.xml,HI,21.98389,-159.34111
+"Oahu, Kalaeloa Airport (PHJR)",PHJR.rss,PHJR.xml,HI,21.30833,-158.06806
+Wheeler Air Force Base / Oahu (PHHI),PHHI.rss,PHHI.xml,HI,21.48333,-158.03333
+Bear Lake County Airport (K1U7),K1U7.rss,K1U7.xml,ID,42.2497,-111.3416
+Boise Air Terminal (KBOI),KBOI.rss,KBOI.xml,ID,43.56704,-116.24053
+Boundary County Airport (K65S),K65S.rss,K65S.xml,ID,48.726,-116.2952
+Burley Municipal Airport (KBYI),KBYI.rss,KBYI.xml,ID,42.54525,-113.7686
+Caldwell - Caldwell Industrial Airport (KEUL),KEUL.rss,KEUL.xml,ID,43.64055,-116.63017
+Challis - Challis Airport (KLLJ),KLLJ.rss,KLLJ.xml,ID,44.523,-114.21611
+Coeur d'Alene Airport - Pappy Boyington Field (KCOE),KCOE.rss,KCOE.xml,ID,47.76667,-116.81667
+"Driggs, Driggs-Reed Memorial Airport (KDIJ)",KDIJ.rss,KDIJ.xml,ID,43.74167,-111.09778
+Gooding Municipal Airport (KGNG),KGNG.rss,KGNG.xml,ID,42.91716,-114.76516
+Grangeville - Idaho County Airport (KGIC),KGIC.rss,KGIC.xml,ID,45.94111,-116.13257
+"Hailey, Friedman Memorial Airport (KSUN)",KSUN.rss,KSUN.xml,ID,43.5,-114.3
+Idaho Falls Regional Airport (KIDA),KIDA.rss,KIDA.xml,ID,43.52083,-112.06611
+Jerome County Airport (KJER),KJER.rss,KJER.xml,ID,42.72736,-114.45469
+Joslin Field - Magic Valley Regional Airport (KTWF),KTWF.rss,KTWF.xml,ID,42.4785,-114.47739
+"Lewiston, Lewiston-Nez Perce County Airport (KLWS)",KLWS.rss,KLWS.xml,ID,46.37472,-117.01444
+Lowell (KP69),KP69.rss,KP69.xml,ID,46.14417,-115.59639
+McCall Airport (KMYL),KMYL.rss,KMYL.xml,ID,44.89425,-116.09978
+Mountain Home Air Force Base (KMUO),KMUO.rss,KMUO.xml,ID,43.05,-115.86667
+Nampa Municipal Airport (KMAN),KMAN.rss,KMAN.xml,ID,43.5813,-116.5231
+"Pocatello, Pocatello Regional Airport (KPIH)",KPIH.rss,KPIH.xml,ID,42.92028,-112.57111
+"Rexburg, Rexburg-Madison County Airport (KRXE)",KRXE.rss,KRXE.xml,ID,43.83167,-111.80611
+"Salmon, Lemhi County Airport (KSMN)",KSMN.rss,KSMN.xml,ID,45.11667,-113.88333
+"Sandpoint, Sandpoint Airport (KSZT)",KSZT.rss,KSZT.xml,ID,48.29944,-116.56
+"Stanley, Stanley Ranger Station (KSNT)",KSNT.rss,KSNT.xml,ID,44.20861,-114.93444
+Albertus Airport (KFEP),KFEP.rss,KFEP.xml,IL,42.24751,-89.58104
+Aurora Municipal Airport (KARR),KARR.rss,KARR.xml,IL,41.77132,-88.48147
+"Belleville, Scott AFB/MidAmerica Airport (KBLV)",KBLV.rss,KBLV.xml,IL,38.55,-89.85
+"Bloomington/Normal, Central Illinois Regional Airport at Bloomington-Normal (KBMI)",KBMI.rss,KBMI.xml,IL,40.47694,-88.91583
+Cairo Regional Airport (KCIR),KCIR.rss,KCIR.xml,IL,37.06388,-89.2232
+Carmi Municipal Airport (KCUL),KCUL.rss,KCUL.xml,IL,38.08875,-88.12125
+Centralia Municipal Airport (KENL),KENL.rss,KENL.xml,IL,38.50951,-89.08996
+"Chicago / West Chicago, Dupage Airport (KDPA)",KDPA.rss,KDPA.xml,IL,41.89639,-88.25111
+"Chicago / Wheeling, Pal-Waukee Airport (KPWK)",KPWK.rss,KPWK.xml,IL,42.12083,-87.90472
+"Chicago, Chicago Midway Airport (KMDW)",KMDW.rss,KMDW.xml,IL,41.78417,-87.75528
+"Chicago, Chicago-O'Hare International Airport (KORD)",KORD.rss,KORD.xml,IL,41.97972,-87.90444
+Chicago/Waukegan Regional Airport (KUGN),KUGN.rss,KUGN.xml,IL,42.42546,-87.86339
+"Danville, Vermilion County Airport (KDNV)",KDNV.rss,KDNV.xml,IL,40.19944,-87.59556
+De Kalb Taylor Municipal Airport (KDKB),KDKB.rss,KDKB.xml,IL,41.93381,-88.70657
+Decatur Airport (KDEC),KDEC.rss,KDEC.xml,IL,39.8308,-88.87192
+Edgar County Airport (KPRG),KPRG.rss,KPRG.xml,IL,39.69817,-87.6669
+"Effingham, Effingham County Memorial Airport (K1H2)",K1H2.rss,K1H2.xml,IL,39.07056,-88.53333
+"Fairfield, Fairfield Municipal Airport (KFWC)",KFWC.rss,KFWC.xml,IL,38.37861,-88.41278
+Flora Municipal Airport (KFOA),KFOA.rss,KFOA.xml,IL,38.66726,-88.4527
+Galesburg Municipal Airport (KGBG),KGBG.rss,KGBG.xml,IL,40.9329,-90.43339
+Greater Kankakee Airport (KIKK),KIKK.rss,KIKK.xml,IL,41.06871,-87.85372
+Harrisburg-Raleigh Airport (KHSB),KHSB.rss,KHSB.xml,IL,37.81281,-88.54486
+Illinois Valley Regional Airport (KVYS),KVYS.rss,KVYS.xml,IL,41.35175,-89.14963
+Jacksonville Municipal Airport (KIJX),KIJX.rss,KIJX.xml,IL,39.77401,-90.24187
+Joliet Regional Airport (KJOT),KJOT.rss,KJOT.xml,IL,41.51755,-88.17903
+Lansing Municipal Airport (KIGQ),KIGQ.rss,KIGQ.xml,IL,41.54125,-87.52822
+Lawrenceville-Vincennes International Airport (KLWV),KLWV.rss,KLWV.xml,IL,38.76046,-87.59903
+Lewis University Airport (KLOT),KLOT.rss,KLOT.xml,IL,41.60307,-88.10164
+Litchfield Municipal Airport (K3LF),K3LF.rss,K3LF.xml,IL,39.16052,-89.67419
+Logan County Airport (KAAA),KAAA.rss,KAAA.xml,IL,40.15885,-89.33891
+Macomb Municipal Airport (KMQB),KMQB.rss,KMQB.xml,IL,40.51763,-90.64807
+Marion - Williamson County Regional Airport (KMWA),KMWA.rss,KMWA.xml,IL,37.76671,-89.00993
+Marshall County Airport (KC75),KC75.rss,KC75.xml,IL,41.02307,-89.38854
+"Mattoon / Charleston, Coles County Memorial Airport (KMTO)",KMTO.rss,KMTO.xml,IL,39.47806,-88.27917
+Moline Quad-City Airport (KMLI),KMLI.rss,KMLI.xml,IL,41.4482,-90.52359
+Morris Muni-James R Washburn Field Airport (KC09),KC09.rss,KC09.xml,IL,41.43164,-88.41519
+"Mount Carmel, Mount Carmel Municipal Airport (KAJG)",KAJG.rss,KAJG.xml,IL,38.60928,-87.72508
+"Mount Sterling, Mount Sterling Municipal Airport (KI63)",KI63.rss,KI63.xml,IL,39.9875,-90.80417
+Mount Vernon Airport (KMVN),KMVN.rss,KMVN.xml,IL,38.32842,-88.85292
+Olney-Noble Airport (KOLY),KOLY.rss,KOLY.xml,IL,38.72133,-88.1799
+Peoria - General Downing-Peoria International Airport (KPIA),KPIA.rss,KPIA.xml,IL,40.6675,-89.68389
+"Pittsfield, Pittsfield Penstone Municipal Airport (KPPQ)",KPPQ.rss,KPPQ.xml,IL,39.63889,-90.77833
+Pontiac Municipal Airport (KPNT),KPNT.rss,KPNT.xml,IL,40.92327,-88.6213
+Quincy Regional Airport-Baldwin Field (KUIN),KUIN.rss,KUIN.xml,IL,39.9371,-91.19659
+Rantoul National Aviation Center Airport (KTIP),KTIP.rss,KTIP.xml,IL,40.28952,-88.1473
+Robinson Municipal Airport (KRSV),KRSV.rss,KRSV.xml,IL,39.01361,-87.64846
+"Rochelle, Rochelle Municipal-Koritz Field Airport (KRPJ)",KRPJ.rss,KRPJ.xml,IL,41.89057,-89.08175
+"Rockford, Greater Rockford Airport (KRFD)",KRFD.rss,KRFD.xml,IL,42.19278,-89.09333
+"Salem, Salem-Leckrone Airport (KSLO)",KSLO.rss,KSLO.xml,IL,38.64278,-88.96417
+Schaumburg Regional Airport (K06C),K06C.rss,K06C.xml,IL,41.98934,-88.10124
+Southern Illinois Airport (KMDH),KMDH.rss,KMDH.xml,IL,37.78328,-89.24532
+Springfield - Abraham Lincoln Capital Airport (KSPI),KSPI.rss,KSPI.xml,IL,39.84527,-89.68405
+St. Louis Downtown Airport (KCPS),KCPS.rss,KCPS.xml,IL,38.56403,-90.14871
+St. Louis Regional Airport (KALN),KALN.rss,KALN.xml,IL,38.88968,-90.03163
+Sterling Rockfalls (KSQI),KSQI.rss,KSQI.xml,IL,41.7432,-89.66547
+"Taylorville, Taylorville Municipal Airport (KTAZ)",KTAZ.rss,KTAZ.xml,IL,39.53417,-89.32778
+Tri-Township Airport (KSFY),KSFY.rss,KSFY.xml,IL,42.04544,-90.11009
+University of Illinois - Willard (KCMI),KCMI.rss,KCMI.xml,IL,40.03245,-88.27547
+Anderson Municipal Airport (KAID),KAID.rss,KAID.xml,IN,40.10612,-85.60977
+Angola Tri-State Steuben County Airport (KANQ),KANQ.rss,KANQ.xml,IN,41.6404,-85.0851
+Auburn De Kalb County Airport (KGWB),KGWB.rss,KGWB.xml,IN,41.307,-85.064
+Batesville Airport (KHLB),KHLB.rss,KHLB.xml,IN,39.34313,-85.25843
+"Bloomington, Monroe County Airport (KBMG)",KBMG.rss,KBMG.xml,IN,39.14306,-86.61667
+Clark Regional Airport (KJVY),KJVY.rss,KJVY.xml,IN,38.36661,-85.73814
+Columbus / Bakalar (KBAK),KBAK.rss,KBAK.xml,IN,39.26667,-85.9
+Crawfordsville Municipal Airport (KCFJ),KCFJ.rss,KCFJ.xml,IN,39.9756,-86.9199
+Daviess County Airport (KDCY),KDCY.rss,KDCY.xml,IN,38.7004,-87.1297
+Elkhart Municipal (KEKM),KEKM.rss,KEKM.xml,IN,41.71667,-86
+"Evansville, Evansville Regional Airport (KEVV)",KEVV.rss,KEVV.xml,IN,38.04306,-87.52028
+Fort Wayne International Airport (KFWA),KFWA.rss,KFWA.xml,IN,40.97251,-85.20637
+Frankfort Municipal Airport (KFKR),KFKR.rss,KFKR.xml,IN,40.2734,-86.5622
+Gary Regional Airport (KGYY),KGYY.rss,KGYY.xml,IN,41.61212,-87.40908
+"Goshen, Goshen Municipal Airport (KGSH)",KGSH.rss,KGSH.xml,IN,41.52611,-85.78667
+Greenwood Municipal Airport (KHFY),KHFY.rss,KHFY.xml,IN,39.6276,-86.088
+Grissom Air Force Base / Peru (KGUS),KGUS.rss,KGUS.xml,IN,40.65,-86.15
+Huntingburg (KHNB),KHNB.rss,KHNB.xml,IN,38.25,-86.95
+Huntington Municipal Airport (KHHG),KHHG.rss,KHHG.xml,IN,40.8529,-85.4571
+INDIANAPOLIS (KTYQ),KTYQ.rss,KTYQ.xml,IN,40.03066,-86.2515
+Indianapolis International Airport (KIND),KIND.rss,KIND.xml,IN,39.72518,-86.2816
+Indianapolis Mount Comfort Airport (KMQJ),KMQJ.rss,KMQJ.xml,IN,39.8435,-85.8971
+"Indianapolis, Eagle Creek Airpark (KEYE)",KEYE.rss,KEYE.xml,IN,39.825,-86.29583
+Kendallville Municipal Airport (KC62),KC62.rss,KC62.xml,IN,41.4739,-85.2541
+"Kokomo, Kokomo Municipal Airport (KOKK)",KOKK.rss,KOKK.xml,IN,40.53333,-86.06667
+La Porte Municipal Airport (KPPO),KPPO.rss,KPPO.xml,IN,41.5725,-86.7345
+"Lafayette, Purdue University Airport (KLAF)",KLAF.rss,KLAF.xml,IN,40.4125,-86.9475
+Logansport/Cass County Airport (KGGP),KGGP.rss,KGGP.xml,IN,40.711,-86.373
+Madison Municipal Airport (KIMS),KIMS.rss,KIMS.xml,IN,38.7589,-85.4655
+Marion Municipal Airport (KMZZ),KMZZ.rss,KMZZ.xml,IN,40.49,-85.68
+Michigan City Municipal Airport (KMGC),KMGC.rss,KMGC.xml,IN,41.7033,-86.8212
+Monticello White County Airport (KMCX),KMCX.rss,KMCX.xml,IN,40.7088,-86.7668
+"Muncie, Delaware County-Johnson Field (KMIE)",KMIE.rss,KMIE.xml,IN,40.23417,-85.39361
+Plymouth (KC65),KC65.rss,KC65.xml,IN,41.36667,-86.3
+Portland Municipal Airport (KPLD),KPLD.rss,KPLD.xml,IN,40.45158,-84.98903
+Putnam County Regional Airport (KGPC),KGPC.rss,KGPC.xml,IN,39.6354,-86.8155
+Rensselaer Jasper County Airport (KRZL),KRZL.rss,KRZL.xml,IN,40.94789,-87.18258
+Richmond Municipal Airport (KRID),KRID.rss,KRID.xml,IN,39.7572,-84.8428
+Rochester Fulton County Airport (KRCR),KRCR.rss,KRCR.xml,IN,41.06553,-86.18169
+Shelbyville Municipal Airport (KGEZ),KGEZ.rss,KGEZ.xml,IN,39.58546,-85.79982
+South Bend International Airport (KSBN),KSBN.rss,KSBN.xml,IN,41.70889,-86.31861
+Starke County Airport (KOXI),KOXI.rss,KOXI.xml,IN,41.33,-86.665
+Terre Haute Regional Airport (KHUF),KHUF.rss,KHUF.xml,IN,39.4429,-87.32207
+Valparaiso Porter County Municipal Airport (KVPZ),KVPZ.rss,KVPZ.xml,IN,41.45349,-86.99805
+"Warsaw, Warsaw Municipal Airport (KASW)",KASW.rss,KASW.xml,IN,41.27444,-85.84
+Algona (KAXA),KAXA.rss,KAXA.xml,IA,43.08333,-94.26667
+"Ames, Ames Municipal Airport (KAMW)",KAMW.rss,KAMW.xml,IA,41.99056,-93.61889
+Ankeny Regional Airport (KIKV),KIKV.rss,KIKV.xml,IA,41.68782,-93.56944
+Atlantic (KAIO),KAIO.rss,KAIO.xml,IA,41.4,-95.05
+"Audubon, Audubon County Airport (KADU)",KADU.rss,KADU.xml,IA,41.70111,-94.92028
+Boone Municipal (KBNW),KBNW.rss,KBNW.xml,IA,42.05,-93.85
+Burlington Regional Airport (KBRL),KBRL.rss,KBRL.xml,IA,40.77293,-91.12543
+Carroll (KCIN),KCIN.rss,KCIN.xml,IA,42.05,-94.78333
+Cedar Rapids Airport (KCID),KCID.rss,KCID.xml,IA,41.88295,-91.72456
+Centerville Municipal Airport (KTVK),KTVK.rss,KTVK.xml,IA,40.6839,-92.901
+Chariton (KCNC),KCNC.rss,KCNC.xml,IA,41.03333,-93.36667
+Charles City (KCCY),KCCY.rss,KCCY.xml,IA,43.06667,-92.61667
+"Cherokee, Cherokee Municipal Airport (KCKP)",KCKP.rss,KCKP.xml,IA,42.73167,-95.55583
+Clarion (KCAV),KCAV.rss,KCAV.xml,IA,42.75,-93.76667
+Clinton Municipal Airport (KCWI),KCWI.rss,KCWI.xml,IA,41.82954,-90.33279
+Council Bluffs (KCBF),KCBF.rss,KCBF.xml,IA,41.26125,-95.7604
+Creston Municipal Airport (KCSQ),KCSQ.rss,KCSQ.xml,IA,41.01886,-94.361
+Davenport Municipal Airport (KDVN),KDVN.rss,KDVN.xml,IA,41.61338,-90.59479
+Decorah (KDEH),KDEH.rss,KDEH.xml,IA,43.28333,-91.73333
+Denison (KDNS),KDNS.rss,KDNS.xml,IA,41.98333,-95.38333
+Des Moines International Airport (KDSM),KDSM.rss,KDSM.xml,IA,41.53399,-93.65307
+Dubuque Regional Airport (KDBQ),KDBQ.rss,KDBQ.xml,IA,42.39837,-90.7091
+"Estherville, Estherville Municipal Airport (KEST)",KEST.rss,KEST.xml,IA,43.40111,-94.74722
+Fairfield Municipal Airport (KFFL),KFFL.rss,KFFL.xml,IA,41.0521,-91.98339
+Forest City Municipal Airport (KFXY),KFXY.rss,KFXY.xml,IA,43.235,-93.624
+Fort Dodge (KFOD),KFOD.rss,KFOD.xml,IA,42.55,-94.18333
+Fort Madison Municipal Airport (KFSW),KFSW.rss,KFSW.xml,IA,40.66154,-91.32672
+Grinnell Municipal Airfield (KGGI),KGGI.rss,KGGI.xml,IA,41.7092,-92.7349
+Hampton Municipal Airport (KHPT),KHPT.rss,KHPT.xml,IA,42.72369,-93.22633
+"Harlan, Harlan Municipal Airport (KHNR)",KHNR.rss,KHNR.xml,IA,41.58444,-95.33972
+"Independence, Independence Municipal Airport (KIIB)",KIIB.rss,KIIB.xml,IA,42.45,-91.93333
+Iowa City Municipal Airport (KIOW),KIOW.rss,KIOW.xml,IA,41.63945,-91.5445
+Iowa Falls Municipal Airport (KIFA),KIFA.rss,KIFA.xml,IA,42.471,-93.27
+Keokuk Municipal Airport (KEOK),KEOK.rss,KEOK.xml,IA,40.46149,-91.42739
+Knoxville (KOXV),KOXV.rss,KOXV.xml,IA,41.3,-93.11667
+"Lamoni, Lamoni Municipal Airport (KLWD)",KLWD.rss,KLWD.xml,IA,40.63056,-93.90083
+Le Mars Municipal Airport (KLRJ),KLRJ.rss,KLRJ.xml,IA,42.77478,-96.19239
+"Marshalltown, Marshalltown Municipal Airport (KMIW)",KMIW.rss,KMIW.xml,IA,42.11056,-92.91611
+Mason City Municipal Airport (KMCW),KMCW.rss,KMCW.xml,IA,43.15442,-93.32607
+Monticello Regional Airport (KMXO),KMXO.rss,KMXO.xml,IA,42.22035,-91.16041
+"Mount Pleasant, Mount Pleasant Municipal Airport (KMPZ)",KMPZ.rss,KMPZ.xml,IA,40.94667,-91.51111
+Muscatine (KMUT),KMUT.rss,KMUT.xml,IA,41.36667,-91.15
+Newton Municipal Airport - Earl Johnson Field (KTNU),KTNU.rss,KTNU.xml,IA,41.67014,-93.01902
+Oelwein Municipal Airport (KOLZ),KOLZ.rss,KOLZ.xml,IA,42.68316,-91.97595
+Osceola Municipal Airport (KI75),KI75.rss,KI75.xml,IA,41.05222,-93.68966
+"Oskaloosa, Oskaloosa Municipal Airport (KOOA)",KOOA.rss,KOOA.xml,IA,41.22611,-92.49361
+Ottumwa Regional Airport (KOTM),KOTM.rss,KOTM.xml,IA,41.10082,-92.44451
+"Pella, Pella Municipal Airport (KPEA)",KPEA.rss,KPEA.xml,IA,41.4,-92.93333
+Perry Municipal Airport (KPRO),KPRO.rss,KPRO.xml,IA,41.828,-94.1599
+Red Oak (KRDK),KRDK.rss,KRDK.xml,IA,41.01667,-95.26667
+Schenck Field Airport (KICL),KICL.rss,KICL.xml,IA,40.72421,-95.02224
+Sheldon (KSHL),KSHL.rss,KSHL.xml,IA,43.21667,-95.83333
+Shenandoah Municipal (KSDA),KSDA.rss,KSDA.xml,IA,40.75,-95.41667
+"Sioux City, Sioux Gateway Airport (KSUX)",KSUX.rss,KSUX.xml,IA,42.4025,-96.38444
+Sioux County Regional Airport (KSXK),KSXK.rss,KSXK.xml,IA,42.98583,-96.1614
+Spencer Municipal Airport (KSPW),KSPW.rss,KSPW.xml,IA,43.16825,-95.21008
+Storm Lake (KSLB),KSLB.rss,KSLB.xml,IA,42.6,-95.23333
+"Vinton, Vinton Veterans Memorial Airpark Airport (KVTI)",KVTI.rss,KVTI.xml,IA,42.21861,-92.02583
+Washington (KAWG),KAWG.rss,KAWG.xml,IA,41.28333,-91.66667
+"Waterloo, Waterloo Municipal Airport (KALO)",KALO.rss,KALO.xml,IA,42.55444,-92.40111
+Webster City Municipal Airport (KEBS),KEBS.rss,KEBS.xml,IA,42.43724,-93.87237
+Allen County Airport (KK88),KK88.rss,KK88.xml,KS,37.8682,-95.3869
+Atkinson Municipal Airport (KPTS),KPTS.rss,KPTS.xml,KS,37.4494,-94.7311
+Atwood-Rawlins County City-County Airport (KADT),KADT.rss,KADT.xml,KS,39.84034,-101.04248
+Augusta Municipal Airport (K3AU),K3AU.rss,K3AU.xml,KS,37.6716,-97.0779
+Beech Factory Airport (KBEC),KBEC.rss,KBEC.xml,KS,37.69392,-97.21492
+Benton Lloyd Stearman Field (K1K1),K1K1.rss,K1K1.xml,KS,37.7744,-97.1132
+"Chanute, Chanute Martin Johnson Airport (KCNU)",KCNU.rss,KCNU.xml,KS,37.67028,-95.48417
+Coffey County Airport (KUKL),KUKL.rss,KUKL.xml,KS,38.30247,-95.72497
+"Coffeyville, Coffeyville Municipal Airport (KCFV)",KCFV.rss,KCFV.xml,KS,37.09111,-95.56639
+Colby Shaltz Field Airport (KCBK),KCBK.rss,KCBK.xml,KS,39.43,-101.0511
+"Concordia, Blosser Municipal Airport (KCNK)",KCNK.rss,KCNK.xml,KS,39.55139,-97.65056
+"Dodge City, Dodge City Regional Airport (KDDC)",KDDC.rss,KDDC.xml,KS,37.77278,-99.96972
+El Dorado Captain Jack Thomas Airport (KEQA),KEQA.rss,KEQA.xml,KS,37.77534,-96.81449
+"Elkhart, Elkhart-Morton County Airport (KEHA)",KEHA.rss,KEHA.xml,KS,37,-101.88333
+"Emporia, Emporia Municipal Airport (KEMP)",KEMP.rss,KEMP.xml,KS,38.32889,-96.19389
+Fort Riley - Marshall AAF (KFRI),KFRI.rss,KFRI.xml,KS,39.05586,-96.76166
+Garden City Regional Airport (KGCK),KGCK.rss,KGCK.xml,KS,37.9275,-100.72444
+"Goodland, Renner Field (KGLD)",KGLD.rss,KGLD.xml,KS,39.3675,-101.69306
+"Great Bend, Great Bend Municipal Airport (KGBD)",KGBD.rss,KGBD.xml,KS,38.35,-98.86667
+"Hays, Hays Regional Airport (KHYS)",KHYS.rss,KHYS.xml,KS,38.85,-99.26667
+"Hill City, Hill City Municipal Airport (KHLC)",KHLC.rss,KHLC.xml,KS,39.37472,-99.82972
+Hugoton Municipal Airport (KHQG),KHQG.rss,KHQG.xml,KS,37.16308,-101.37052
+"Hutchinson, Hutchinson Municipal Airport (KHUT)",KHUT.rss,KHUT.xml,KS,38.06806,-97.86056
+INDEPENDENCE (KIDP),KIDP.rss,KIDP.xml,KS,37.1584,-95.7784
+"Lawrence, Lawrence Municipal Airport (KLWC)",KLWC.rss,KLWC.xml,KS,39.00833,-95.21167
+"Liberal, Liberal Municipal Airport (KLBL)",KLBL.rss,KLBL.xml,KS,37.05,-100.96667
+Lt. William M. Milliken Airport (K13K),K13K.rss,K13K.xml,KS,37.85161,-96.29202
+Lyons-Rice County Municipal Airport (KLYO),KLYO.rss,KLYO.xml,KS,38.34025,-98.22856
+"Manhattan, Manhattan Municipal Airport (KMHK)",KMHK.rss,KMHK.xml,KS,39.13528,-96.67778
+Marysville Municipal Airport (KMYZ),KMYZ.rss,KMYZ.xml,KS,39.8553,-96.6306
+McConnell Air Force Base (KIAB),KIAB.rss,KIAB.xml,KS,37.61667,-97.26667
+"Medicine Lodge, Medicine Lodge (KP28)",KP28.rss,KP28.xml,KS,37.28389,-98.55278
+"Newton, Newton City/County Airport (KEWK)",KEWK.rss,KEWK.xml,KS,38.05,-97.28333
+Norton Municipal Airport (KNRN),KNRN.rss,KNRN.xml,KS,39.85047,-99.89469
+Oakley Municipal Airport (KOEL),KOEL.rss,KOEL.xml,KS,39.11178,-100.81667
+Oberlin Municipal Airport (KOIN),KOIN.rss,KOIN.xml,KS,39.83489,-100.53978
+"Olathe, Johnson County Executive Airport (KOJC)",KOJC.rss,KOJC.xml,KS,38.85,-94.73917
+"Olathe, New Century Aircenter (KIXD)",KIXD.rss,KIXD.xml,KS,38.82444,-94.88694
+"Parsons, Tri-City Airport (KPPF)",KPPF.rss,KPPF.xml,KS,37.32778,-95.50417
+Pratt Municipal (KPTT),KPTT.rss,KPTT.xml,KS,37.7,-98.75
+"Russell, Russell Municipal Airport (KRSL)",KRSL.rss,KRSL.xml,KS,38.87278,-98.81306
+"Salina, Salina Municipal Airport (KSLN)",KSLN.rss,KSLN.xml,KS,38.78,-97.64417
+Scott City Municipal Airport (KTQK),KTQK.rss,KTQK.xml,KS,38.47502,-100.88444
+SMITH CENTER (KK82),KK82.rss,KK82.xml,KS,39.761,-98.7935
+ST FRANCIS (KSYF),KSYF.rss,KSYF.xml,KS,39.763884,-101.797861
+Stanton County Municipal Airport (KJHN),KJHN.rss,KJHN.xml,KS,37.5782,-101.7304
+Sublette Municipal Airport (K19S),K19S.rss,K19S.xml,KS,37.4969,-100.8329
+Syracuse-Hamilton County Municipal Airport (K3K3),K3K3.rss,K3K3.xml,KS,37.99858,-101.7476
+"Topeka, Forbes Field (KFOE)",KFOE.rss,KFOE.xml,KS,38.94139,-95.65056
+"Topeka, Philip Billard Municipal Airport (KTOP)",KTOP.rss,KTOP.xml,KS,39.0725,-95.62583
+Ulysses Airport (KULS),KULS.rss,KULS.xml,KS,37.604,-101.37356
+Wichita - Wichita Dwight D. Eisenhower National Airport (KICT),KICT.rss,KICT.xml,KS,37.64722,-97.42944
+Wichita Jabara Airport (KAAO),KAAO.rss,KAAO.xml,KS,37.74969,-97.21908
+"Winfield / Arkansas City, Strother Field (KWLD)",KWLD.rss,KWLD.xml,KS,37.16806,-97.03694
+Ashland Regional Airport (KDWU),KDWU.rss,KDWU.xml,KY,38.5545,-82.738
+Big Sandy Regional Airport (KSJS),KSJS.rss,KSJS.xml,KY,37.751,-82.6367
+"Bowling Green, Bowling Green-Warren County Regional Airport (KBWG)",KBWG.rss,KBWG.xml,KY,36.96444,-86.41944
+Central Kentucky Regional Airport (KRGA),KRGA.rss,KRGA.xml,KY,37.6308475,-84.3323372
+Cincinnati/Northern Kentucky International Airport (KCVG),KCVG.rss,KCVG.xml,KY,39.04456,-84.67229
+Clyde A. Thomas Regional Airport (KSYM),KSYM.rss,KSYM.xml,KY,38.215,-83.5874
+Elizabethtown Addington Field Airport (KEKX),KEKX.rss,KEKX.xml,KY,37.686,-85.925
+Flemingsburg Fleming-Mason Airport (KFGX),KFGX.rss,KFGX.xml,KY,38.5418,-83.7434
+Fort Campbell U. S. Army Airfield (KHOP),KHOP.rss,KHOP.xml,KY,36.66667,-87.5
+Fort Knox (KFTK),KFTK.rss,KFTK.xml,KY,37.9,-85.96667
+"Frankfort, Capital City Airport (KFFT)",KFFT.rss,KFFT.xml,KY,38.18472,-84.90333
+Georgetown Scott County Regional Airport (K27K),K27K.rss,K27K.xml,KY,38.23444,-84.43469
+"Glasgow, Glasgow Municipal Airport (KGLW)",KGLW.rss,KGLW.xml,KY,37.03167,-85.95361
+Hancock County Airport-Ron Lewis Field (KKY8),KKY8.rss,KKY8.xml,KY,37.953,-86.8592
+Harlan (KI35),KI35.rss,KI35.xml,KY,36.85933,-83.35847
+Henderson City (KEHR),KEHR.rss,KEHR.xml,KY,37.81667,-87.68333
+"Jackson, Carroll Airport (KJKL)",KJKL.rss,KJKL.xml,KY,37.59139,-83.31444
+Lexington Blue Grass Airport (KLEX),KLEX.rss,KLEX.xml,KY,38.0339,-84.61146
+"London, London-Corbin Airport-Magee Field (KLOZ)",KLOZ.rss,KLOZ.xml,KY,37.08944,-84.06861
+Louisville Muhammad Ali International Airport (KSDF),KSDF.rss,KSDF.xml,KY,38.17406,-85.7365
+"Louisville, Bowman Field Airport (KLOU)",KLOU.rss,KLOU.xml,KY,38.22778,-85.66361
+Madisonville Municipal Airport (K2I0),K2I0.rss,K2I0.xml,KY,37.35593,-87.39822
+Marion-crittenden County Airport (K5M9),K5M9.rss,K5M9.xml,KY,37.3363,-88.1097
+Mayfield Graves County Airport (KM25),KM25.rss,KM25.xml,KY,36.7691,-88.5847
+"Middlesboro, Middlesboro-Bell County Airport (K1A6)",K1A6.rss,K1A6.xml,KY,36.61056,-83.73722
+"Monticello, Wayne County Airport (KEKQ)",KEKQ.rss,KEKQ.xml,KY,36.85528,-84.85611
+Mount Sterling-Montgomery County Airport (KIOB),KIOB.rss,KIOB.xml,KY,38.0575,-83.9829
+Muhlenberg County Airport (KM21),KM21.rss,KM21.xml,KY,37.2262,-87.1564
+"Murray Kyle Oakley Field, KY (KCEY)",KCEY.rss,KCEY.xml,KY,36.6646,-88.3728
+"Owensboro, Owensboro-Daviess County Airport (KOWB)",KOWB.rss,KOWB.xml,KY,37.74,-87.16667
+"Paducah, Barkley Regional Airport (KPAH)",KPAH.rss,KPAH.xml,KY,37.05639,-88.77389
+Pikeville Pike County Airport and Hatcher Field (KPBX),KPBX.rss,KPBX.xml,KY,37.5587,-82.5674
+Samuels Field Airport (KBRY),KBRY.rss,KBRY.xml,KY,37.81433,-85.49964
+"Somerset, Somerset-Pulaski County - J.T. Wilson Field Airport (KSME)",KSME.rss,KSME.xml,KY,37.05417,-84.615
+Stuart Powell Field Airport (KDVK),KDVK.rss,KDVK.xml,KY,37.5775751,-84.7694978
+Taylor County Airport (KAAS),KAAS.rss,KAAS.xml,KY,37.35828,-85.30942
+Wendell H Ford Airport (KCPF),KCPF.rss,KCPF.xml,KY,37.38736,-83.26161
+Williamsburg-Whitley County Airport (KBYL),KBYL.rss,KBYL.xml,KY,36.79541,-84.20127
+Abbeville Chris Crusta Memorial Airport (KIYA),KIYA.rss,KIYA.xml,LA,29.97578,-92.08422
+Acadiana Regional Airport (KARA),KARA.rss,KARA.xml,LA,30.02918,-91.88451
+Alexandria Esler Regional Airport (KESF),KESF.rss,KESF.xml,LA,31.39634,-92.28273
+"Alexandria, Alexandria International Airport (KAEX)",KAEX.rss,KAEX.xml,LA,31.33472,-92.55861
+Barksdale Air Force Base (KBAD),KBAD.rss,KBAD.xml,LA,32.5,-93.66667
+"Bastrop, Morehouse Memorial Airport (KBQP)",KBQP.rss,KBQP.xml,LA,32.75583,-91.88056
+"Baton Rouge, Baton Rouge Metropolitan, Ryan Field (KBTR)",KBTR.rss,KBTR.xml,LA,30.53722,-91.14694
+"Bogalusa, George R Carr Memorial Air Field (KBXA)",KBXA.rss,KBXA.xml,LA,30.81361,-89.86472
+Boothville Heliport (KLNQ),KLNQ.rss,KLNQ.xml,LA,29.35414,-89.43591
+Chenault Airpark (KCWF),KCWF.rss,KCWF.xml,LA,30.21667,-93.15
+De Quincy Industrial Airpark (K5R8),K5R8.rss,K5R8.xml,LA,30.4412,-93.4735
+"De Ridder, Beauregard Parish Airport (KDRI)",KDRI.rss,KDRI.xml,LA,30.83167,-93.33972
+"Fort Polk, Polk AAF Ft Polk (KPOE)",KPOE.rss,KPOE.xml,LA,31.05,-93.19389
+Ft. Polk - Fullerton Landing Strip (KBKB),KBKB.rss,KBKB.xml,LA,31.0217,-92.9107
+Ft. Polk - Peason Ridge (KAQV),KAQV.rss,KAQV.xml,LA,31.4,-93.2833
+"Galliano, South Lafourche Airport (KGAO)",KGAO.rss,KGAO.xml,LA,29.44472,-90.26111
+GB172/Salsa (Shell E-P) (KGHB),KGHB.rss,KGHB.xml,LA,27.84,-91.988
+Green Canyon 338 Front Runner (KGRY),KGRY.rss,KGRY.xml,LA,27.625,-90.441
+"Hammond, Hammond Municipal Airport (KHDC)",KHDC.rss,KHDC.xml,LA,30.52083,-90.4175
+Houma-Terrebonne Airport (KHUM),KHUM.rss,KHUM.xml,LA,29.56341,-90.66283
+Jennings Airport (K3R7),K3R7.rss,K3R7.xml,LA,30.2427,-92.6735
+"Lafayette, Lafayette Regional Airport (KLFT)",KLFT.rss,KLFT.xml,LA,30.20222,-91.99306
+Lake Charles Regional Airport (KLCH),KLCH.rss,KLCH.xml,LA,30.12556,-93.22767
+Louisiana Regional Airport (KREG),KREG.rss,KREG.xml,LA,30.1714,-90.9404
+Main Pass 140B (Apache Corp) (KMIS),KMIS.rss,KMIS.xml,LA,29.296,-88.842
+Main Pass 289C (Apache Corp) (KVKY),KVKY.rss,KVKY.xml,LA,29.248,-88.441
+Mansfield - C E Rusty Williams Airport (K3F3),K3F3.rss,K3F3.xml,LA,32.0717,-93.764
+MISS CANYON OIL PLATFORM (KMDJ),KMDJ.rss,KMDJ.xml,LA,28.65,-89.8
+Mississippi Canyon (KDSF),KDSF.rss,KDSF.xml,LA,28.35,-88.26667
+Monroe Regional Airport (KMLU),KMLU.rss,KMLU.xml,LA,32.51557,-92.02995
+"Natchitoches, Natchitoches Regional Airport (KIER)",KIER.rss,KIER.xml,LA,31.73583,-93.09917
+New Orleans - Superdome (K7N0),K7N0.rss,K7N0.xml,LA,29.95,-90.06667
+New Orleans Naval Air Station - Alvin Callender Field (KNBG),KNBG.rss,KNBG.xml,LA,29.83736,-90.02445
+"New Orleans, New Orleans International Airport (KMSY)",KMSY.rss,KMSY.xml,LA,29.99278,-90.25083
+"New Orleans, New Orleans Lakefront Airport (KNEW)",KNEW.rss,KNEW.xml,LA,30.04944,-90.02889
+New Roads False River Regional Airport (KHZR),KHZR.rss,KHZR.xml,LA,30.7183,-91.4787
+"Oakdale, Allen Parish Airport (KACP)",KACP.rss,KACP.xml,LA,30.75056,-92.68861
+Opelousas St Landry Parish Airport (KOPL),KOPL.rss,KOPL.xml,LA,30.5584,-92.0994
+Patterson Memorial (KPTN),KPTN.rss,KPTN.xml,LA,29.71667,-91.33333
+Port of South Louisiana Executive Regional Airport (KAPS),KAPS.rss,KAPS.xml,LA,30.08747,-90.58283
+S MARSH268 OIL PLATFORM (KSCF),KSCF.rss,KSCF.xml,LA,29.12,-91.87
+Salt Point (KP92),KP92.rss,KP92.xml,LA,29.55903,-91.52498
+"Shreveport, Shreveport Downtown Airport (KDTN)",KDTN.rss,KDTN.xml,LA,32.5425,-93.74472
+"Shreveport, Shreveport Regional Airport (KSHV)",KSHV.rss,KSHV.xml,LA,32.44694,-93.82417
+"Slidell, Slidell Airport (KASD)",KASD.rss,KASD.xml,LA,30.34306,-89.82194
+Southland Field (KUXL),KUXL.rss,KUXL.xml,LA,30.1314,-93.3761
+"Vicksburg, Vicksburg / Tallulah Regional Airport (KTVR)",KTVR.rss,KTVR.xml,LA,32.34806,-91.03
+Vidalia Concordia Parish (K0R4),K0R4.rss,K0R4.xml,LA,31.562,-91.5065
+VK 786/Petronius (Chevron) (KVOA),KVOA.rss,KVOA.xml,LA,29.229,-87.781
+Auburn-Lewiston (KLEW),KLEW.rss,KLEW.xml,ME,44.05,-70.28333
+"Augusta, Augusta State Airport (KAUG)",KAUG.rss,KAUG.xml,ME,44.32056,-69.79722
+"Bangor, Bangor International Airport (KBGR)",KBGR.rss,KBGR.xml,ME,44.79722,-68.81861
+"Bar Harbor, Hancock County-Bar Harbor Airport (KBHB)",KBHB.rss,KBHB.xml,ME,44.45,-68.36667
+"Caribou, Caribou Municipal Airport (KCAR)",KCAR.rss,KCAR.xml,ME,46.86722,-68.01333
+Clayton Lake (K40B),K40B.rss,K40B.xml,ME,46.61667,-69.53333
+"Frenchville, Northern Aroostook Regional Airport (KFVE)",KFVE.rss,KFVE.xml,ME,47.285,-68.30722
+"Fryeburg, Eastern Slopes Regional Airport (KIZG)",KIZG.rss,KIZG.xml,ME,43.98917,-70.95028
+Greenville (KGNR),KGNR.rss,KGNR.xml,ME,45.46462,-69.5538
+"Houlton, Houlton International Airport (KHUL)",KHUL.rss,KHUL.xml,ME,46.12306,-67.79194
+"Millinocket, Millinocket Municipal Airport (KMLT)",KMLT.rss,KMLT.xml,ME,45.64778,-68.69194
+"Portland, Portland International Jetport (KPWM)",KPWM.rss,KPWM.xml,ME,43.64222,-70.30444
+Presque Isle (KPQI),KPQI.rss,KPQI.xml,ME,46.68333,-68.05
+"Rockland, Knox County Regional Airport (KRKD)",KRKD.rss,KRKD.xml,ME,44.06667,-69.1
+"Sanford, Sanford Regional Airport (KSFM)",KSFM.rss,KSFM.xml,ME,43.4,-70.71667
+Steven A Bean Municipal Airport (K8B0),K8B0.rss,K8B0.xml,ME,44.99,-70.6623
+"Waterville, Waterville Robert LaFleur Airport (KWVL)",KWVL.rss,KWVL.xml,ME,44.53333,-69.68333
+Wiscasset Airport (KIWI),KIWI.rss,KIWI.xml,ME,43.96401,-69.71076
+"Annapolis, United States Naval Academy (KNAK)",KNAK.rss,KNAK.xml,MD,38.99125,-76.48907
+Baltimore / Martin (KMTN),KMTN.rss,KMTN.xml,MD,39.33333,-76.41667
+"Baltimore, Baltimore-Washington International Airport (KBWI)",KBWI.rss,KBWI.xml,MD,39.17329,-76.68404
+Cambridge-Dorchester Airport (KCGE),KCGE.rss,KCGE.xml,MD,38.5393,-76.0304
+Camp David (KRSP),KRSP.rss,KRSP.xml,MD,39.645,-77.468
+Camp Springs / Andrews Air Force Base (KADW),KADW.rss,KADW.xml,MD,38.81667,-76.85
+Carroll County Regional Jack B Poage Field (KDMW),KDMW.rss,KDMW.xml,MD,39.6083,-77.0077
+College Park Airport (KCGS),KCGS.rss,KCGS.xml,MD,38.9806,-76.9223
+Easton / Newman Field (KESN),KESN.rss,KESN.xml,MD,38.8,-76.06667
+Fort Meade / Tipton (KFME),KFME.rss,KFME.xml,MD,39.08333,-76.76667
+Frederick Municipal Airport (KFDK),KFDK.rss,KFDK.xml,MD,39.41775,-77.36982
+Gaithersburg - Montgomery County Airport (KGAI),KGAI.rss,KGAI.xml,MD,39.16957,-77.16551
+Garrett County Airport (K2G4),K2G4.rss,K2G4.xml,MD,39.5803,-79.3394
+"Hagerstown, Washington County Regional Airport (KHGR)",KHGR.rss,KHGR.xml,MD,39.70583,-77.73
+"Ocean City, Ocean City Municipal Airport (KOXB)",KOXB.rss,KOXB.xml,MD,38.31056,-75.12389
+"Patuxent River, Naval Air Station (KNHK)",KNHK.rss,KNHK.xml,MD,38.27861,-76.41389
+Phillips Army Air Field / Aberdeen (KAPG),KAPG.rss,KAPG.xml,MD,39.46667,-76.16667
+"Salisbury, Salisbury-Ocean City Wicomico County Regional Airport (KSBY)",KSBY.rss,KSBY.xml,MD,38.34056,-75.51028
+St Marys County Airport (K2W6),K2W6.rss,K2W6.xml,MD,38.3154,-76.5501
+"St. Inigoes, Webster Field, Naval Electronic Systems Engineering Activity (KNUI)",KNUI.rss,KNUI.xml,MD,38.14889,-76.42
+"Beverly, Beverly Municipal Airport (KBVY)",KBVY.rss,KBVY.xml,MA,42.58361,-70.91639
+"Boston, Logan International Airport (KBOS)",KBOS.rss,KBOS.xml,MA,42.36056,-71.01056
+"Chatham, Chatham Municipal Airport (KCQX)",KCQX.rss,KCQX.xml,MA,41.6875,-69.99333
+Chicopee Falls / Westover Air Force Base (KCEF),KCEF.rss,KCEF.xml,MA,42.2,-72.53333
+East Milton (KMQE),KMQE.rss,KMQE.xml,MA,42.21222,-71.11472
+"Fitchburg, Fitchburg Municipal Airport (KFIT)",KFIT.rss,KFIT.xml,MA,42.55194,-71.75583
+"Hyannis, Barnstable Municipal-Boardman Airport (KHYA)",KHYA.rss,KHYA.xml,MA,41.67194,-70.26972
+Laurence G Hanscom Field Airport (KBED),KBED.rss,KBED.xml,MA,42.46811,-71.29463
+Lawrence Municipal Airport (KLWM),KLWM.rss,KLWM.xml,MA,42.7126,-71.12553
+Marshfield Airport (KGHG),KGHG.rss,KGHG.xml,MA,42.0983,-70.6722
+Marthas Vineyard Airport (KMVY),KMVY.rss,KMVY.xml,MA,41.39298,-70.61588
+"Nantucket, Nantucket Memorial Airport (KACK)",KACK.rss,KACK.xml,MA,41.25389,-70.05972
+"New Bedford, New Bedford Regional Airport (KEWB)",KEWB.rss,KEWB.xml,MA,41.67528,-70.95694
+North Adams Harriman-and-West Airport (KAQW),KAQW.rss,KAQW.xml,MA,42.69731,-73.16955
+"Norwood, Norwood Memorial Airport (KOWD)",KOWD.rss,KOWD.xml,MA,42.19083,-71.17389
+Orange Municipal Airport (KORE),KORE.rss,KORE.xml,MA,42.57,-72.28693
+Otis Air National Guard Base (KFMH),KFMH.rss,KFMH.xml,MA,41.65,-70.51667
+Pittsfield Municipal Airport (KPSF),KPSF.rss,KPSF.xml,MA,42.42691,-73.28897
+"Plymouth, Plymouth Municipal Airport (KPYM)",KPYM.rss,KPYM.xml,MA,41.90861,-70.72806
+Provincetown Municipal Airport (KPVC),KPVC.rss,KPVC.xml,MA,42.07436,-70.21816
+"Taunton, Taunton Municipal Airport (KTAN)",KTAN.rss,KTAN.xml,MA,41.87556,-71.02111
+"Westfield, Barnes Municipal Airport (KBAF)",KBAF.rss,KBAF.xml,MA,42.15972,-72.71278
+"Worcester, Worcester Regional Airport (KORH)",KORH.rss,KORH.xml,MA,42.27056,-71.87306
+"Adrian, Lenawee County Airport (KADG)",KADG.rss,KADG.xml,MI,41.86778,-84.07944
+"Alma, Gratiot Community Airport (KAMN)",KAMN.rss,KAMN.xml,MI,43.32194,-84.68778
+"Alpena, Alpena County Regional Airport (KAPN)",KAPN.rss,KAPN.xml,MI,45.07167,-83.56444
+"Ann Arbor, Ann Arbor Municipal Airport (KARB)",KARB.rss,KARB.xml,MI,42.22389,-83.74
+Battle Creek Executive Airport (KBTL),KBTL.rss,KBTL.xml,MI,42.31197,-85.24144
+"Beaver Island, Beaver Island Airport (KSJX)",KSJX.rss,KSJX.xml,MI,45.69222,-85.56639
+"Bellaire, Antrim County Airport (KACB)",KACB.rss,KACB.xml,MI,44.98833,-85.19833
+"Big Rapids, Roben-Hood Airport (KRQB)",KRQB.rss,KRQB.xml,MI,43.7225,-85.50417
+Branch County Memorial Airport (KOEB),KOEB.rss,KOEB.xml,MI,41.93085,-85.05429
+Brooks Field Airport (KRMY),KRMY.rss,KRMY.xml,MI,42.25238,-84.95253
+Capital Region International Airport (KLAN),KLAN.rss,KLAN.xml,MI,42.77616,-84.5997
+"Caro, Tuscola Area Airport (KCFS)",KCFS.rss,KCFS.xml,MI,43.45861,-83.44528
+"Charlevoix, Charlevoix Municipal Airport (KCVX)",KCVX.rss,KCVX.xml,MI,45.30472,-85.27472
+"Charlotte, Fitch H Beach Airport (KFPK)",KFPK.rss,KFPK.xml,MI,42.57444,-84.81139
+"Cheboygan, Cheboygan County Airport (KSLH)",KSLH.rss,KSLH.xml,MI,45.65361,-84.51917
+Cherry Capital Airport (KTVC),KTVC.rss,KTVC.xml,MI,44.73898,-85.56788
+Coleman A Young Municipal Airport (KDET),KDET.rss,KDET.xml,MI,42.40729,-83.00894
+Copper Harbor (KP59),KP59.rss,KP59.xml,MI,47.46694,-87.875
+Delta County Airport (KESC),KESC.rss,KESC.xml,MI,45.72268,-87.09372
+"Detroit, Detroit Metropolitan Wayne County Airport (KDTW)",KDTW.rss,KDTW.xml,MI,42.23139,-83.33083
+"Detroit, Willow Run Airport (KYIP)",KYIP.rss,KYIP.xml,MI,42.23667,-83.52611
+"Detroit/Grosse Ile, Grosse Ile Airport (KONZ)",KONZ.rss,KONZ.xml,MI,42.09861,-83.16111
+Drummond Island Airport (KDRM),KDRM.rss,KDRM.xml,MI,46.0072,-83.7427
+"Flint, Bishop International Airport (KFNT)",KFNT.rss,KFNT.xml,MI,42.96667,-83.74944
+"Frankfort, Frankfort Dow Memorial Field Airport (KFKS)",KFKS.rss,KFKS.xml,MI,44.625,-86.20056
+Fremont Municipal Airport (KFFX),KFFX.rss,KFFX.xml,MI,43.43933,-85.99483
+Gaylord Regional Airport (KGLR),KGLR.rss,KGLR.xml,MI,45.01658,-84.68937
+"Grand Rapids, Gerald R. Ford International Airport (KGRR)",KGRR.rss,KGRR.xml,MI,42.88083,-85.52278
+"Grayling, Grayling Army Airfield (KGOV)",KGOV.rss,KGOV.xml,MI,44.68028,-84.72889
+Haines Memorial Airport (KHAI),KHAI.rss,KHAI.xml,MI,41.9598,-85.5934
+"Harbor Springs, Harbor Springs Airport (KMGN)",KMGN.rss,KMGN.xml,MI,45.42556,-84.91333
+Hillsdale Municipal Airport (KJYM),KJYM.rss,KJYM.xml,MI,41.91972,-84.58528
+Holland - West Michigan Regional Airport (KBIV),KBIV.rss,KBIV.xml,MI,42.74611,-86.09667
+Houghton County Memorial Airport (KCMX),KCMX.rss,KCMX.xml,MI,47.16597,-88.48072
+"Houghton Lake, Roscommon County Airport (KHTL)",KHTL.rss,KHTL.xml,MI,44.35111,-84.67417
+"Howell, Livingston County Airport (KOZW)",KOZW.rss,KOZW.xml,MI,42.62944,-83.98417
+Huron County Memorial Airport (KBAX),KBAX.rss,KBAX.xml,MI,43.77741,-82.98271
+Ionia County Airport (KY70),KY70.rss,KY70.xml,MI,42.938,-85.0605
+"Iron Mountain / Kingsford, Ford Airport (KIMT)",KIMT.rss,KIMT.xml,MI,45.81417,-88.10889
+"Ironwood, Gogebic-Iron County Airport (KIWD)",KIWD.rss,KIWD.xml,MI,46.53333,-90.13333
+Jack Barstow Airport (KIKW),KIKW.rss,KIKW.xml,MI,43.6624,-84.26213
+Jackson County Airport - Reynolds Field (KJXN),KJXN.rss,KJXN.xml,MI,42.26171,-84.46147
+Kalamazoo/Battle Creek International Airport (KAZO),KAZO.rss,KAZO.xml,MI,42.2283,-85.54595
+"Lambertville, Toledo Suburban Airport (KDUH)",KDUH.rss,KDUH.xml,MI,41.73583,-83.65528
+Lapeer Dupont-lapeer (KD95),KD95.rss,KD95.xml,MI,43.0665,-83.2715
+"Ludington, Mason County Airport (KLDM)",KLDM.rss,KLDM.xml,MI,43.96667,-86.4
+Mackinac Island Airport (KMCD),KMCD.rss,KMCD.xml,MI,45.86628,-84.63437
+Manistee County - Blacker Airport (KMBL),KMBL.rss,KMBL.xml,MI,44.27142,-86.23773
+"Manistique, Schoolcraft County Airport (KISQ)",KISQ.rss,KISQ.xml,MI,45.97472,-86.17194
+"Marquette, Sawyer International Airport (KSAW)",KSAW.rss,KSAW.xml,MI,46.35361,-87.39528
+"Mason, Mason Jewett Field Airport (KTEW)",KTEW.rss,KTEW.xml,MI,42.56583,-84.42333
+MBS International Airport (KMBS),KMBS.rss,KMBS.xml,MI,43.5281,-84.08129
+Menominee - Marinette Twin County Airport (KMNM),KMNM.rss,KMNM.xml,MI,45.12628,-87.64438
+"Monroe, Custer Airport (KTTF)",KTTF.rss,KTTF.xml,MI,41.94,-83.43472
+"Mount Pleasant, Mount Pleasant Municipal Airport (KMOP)",KMOP.rss,KMOP.xml,MI,43.61667,-84.73333
+Munising - Munising Lakeshore Observation (KP53),KP53.rss,KP53.xml,MI,46.41167,-86.65083
+"Muskegon, Muskegon County Airport (KMKG)",KMKG.rss,KMKG.xml,MI,43.17111,-86.23667
+"Newberry, Luce County Airport (KERY)",KERY.rss,KERY.xml,MI,46.31111,-85.45722
+"Oscoda, Oscoda-Wurtsmith Airport (KOSC)",KOSC.rss,KOSC.xml,MI,44.45,-83.36667
+"Owosso, Owosso Community Airport (KRNP)",KRNP.rss,KRNP.xml,MI,42.99278,-84.13889
+Pellston Regional Airport of Emmet County (KPLN),KPLN.rss,KPLN.xml,MI,45.56443,-84.79287
+"Pontiac, Oakland County International Airport (KPTK)",KPTK.rss,KPTK.xml,MI,42.66306,-83.41
+Port Hope (KP58),KP58.rss,KP58.xml,MI,44.02194,-82.79306
+"Rogers City, Presque Isle County Airport (KPZQ)",KPZQ.rss,KPZQ.xml,MI,45.40694,-83.81278
+Saginaw County H W Browne Airport (KHYX),KHYX.rss,KHYX.xml,MI,43.43191,-83.86476
+"Sault Ste Marie, Chippewa County International Airport (KCIU)",KCIU.rss,KCIU.xml,MI,46.25,-84.46667
+Sault Ste. Marie (KANJ),KANJ.rss,KANJ.xml,MI,46.47944,-84.35722
+Selfridge Air National Guard Base (KMTC),KMTC.rss,KMTC.xml,MI,42.60458,-82.83528
+"South Haven, South Haven Area Regional Airport (KLWA)",KLWA.rss,KLWA.xml,MI,42.35083,-86.25611
+Southwest Michigan Regional Airport (KBEH),KBEH.rss,KBEH.xml,MI,42.12896,-86.41515
+St Clair County International Airport (KPHN),KPHN.rss,KPHN.xml,MI,42.91031,-82.53315
+"Sturgis, Kirsch Municipal Airport (KIRS)",KIRS.rss,KIRS.xml,MI,41.81278,-85.43917
+"Troy, Oakland/Troy Airport (KVLL)",KVLL.rss,KVLL.xml,MI,42.54278,-83.17778
+West Branch Community Airport (KY31),KY31.rss,KY31.xml,MI,44.2448,-84.1798
+Wexford County Airport (KCAD),KCAD.rss,KCAD.xml,MI,44.27847,-85.42069
+Aitkin Municipal Airport - Steve Kurtz Field (KAIT),KAIT.rss,KAIT.xml,MN,46.54899,-93.67573
+"Albert Lea, Albert Lea Municipal Airport (KAEL)",KAEL.rss,KAEL.xml,MN,43.68333,-93.36667
+"Alexandria, Chandler Field (KAXN)",KAXN.rss,KAXN.xml,MN,45.86861,-95.39417
+Appleton Municipal Airport (KAQP),KAQP.rss,KAQP.xml,MN,45.22488,-96.00412
+Austin Municipal (KAUM),KAUM.rss,KAUM.xml,MN,43.66667,-92.93333
+Baudette International Airport (KBDE),KBDE.rss,KBDE.xml,MN,48.72605,-94.61215
+Bemidji (KBJI),KBJI.rss,KBJI.xml,MN,47.50762,-94.92783
+Benson Municipal Airport (KBBB),KBBB.rss,KBBB.xml,MN,45.33098,-95.64692
+Bigfork Municipal Airport (KFOZ),KFOZ.rss,KFOZ.xml,MN,47.78317,-93.65326
+Brainerd - Crow Wing County Airport (KBRD),KBRD.rss,KBRD.xml,MN,46.40205,-94.12734
+"Buffalo, Buffalo Municipal Airport (KCFE)",KCFE.rss,KCFE.xml,MN,45.15889,-93.84306
+Cambridge Municipal Airport (KCBG),KCBG.rss,KCBG.xml,MN,45.56275,-93.26436
+Canby Airfield (KCNB),KCNB.rss,KCNB.xml,MN,44.7295,-96.266
+Chisholm-Hibbing Airport (KHIB),KHIB.rss,KHIB.xml,MN,47.38039,-92.83245
+Cloquet Carlton County Airport (KCOQ),KCOQ.rss,KCOQ.xml,MN,46.69869,-92.5034
+Cook Municipal Airport (KCQM),KCQM.rss,KCQM.xml,MN,47.81997,-92.68169
+Crane Lake - Scotts Seaplane Base (KCDD),KCDD.rss,KCDD.xml,MN,48.26014,-92.47485
+Crookston Municipal Field (KCKN),KCKN.rss,KCKN.xml,MN,47.84042,-96.6201
+Detroit Lakes Airport-Wething Field (KDTL),KDTL.rss,KDTL.xml,MN,46.82854,-95.88567
+Dodge Center Airport (KTOB),KTOB.rss,KTOB.xml,MN,44.02026,-92.8295
+Downtown Holman Field (KSTP),KSTP.rss,KSTP.xml,MN,44.93237,-93.05588
+Duluth - Sky Harbor Airport (KDYT),KDYT.rss,KDYT.xml,MN,46.72452,-92.04448
+Duluth International Airport (KDLH),KDLH.rss,KDLH.xml,MN,46.84347,-92.1866
+Elbow Lake Municipal Airport (KY63),KY63.rss,KY63.xml,MN,45.98837,-95.99353
+"Ely, Ely Municipal Airport (KELO)",KELO.rss,KELO.xml,MN,47.81667,-91.83333
+Eveleth-Virginia Municipal Airport (KEVM),KEVM.rss,KEVM.xml,MN,47.4274,-92.49717
+"Fairmont, Fairmont Municipal Airport (KFRM)",KFRM.rss,KFRM.xml,MN,43.65,-94.41667
+Falls International Airport (KINL),KINL.rss,KINL.xml,MN,48.55944,-93.39556
+"Faribault, Faribault Municipal Airport (KFBL)",KFBL.rss,KFBL.xml,MN,44.32983,-93.31186
+Fergus Falls Municipal Airport-Einar Mickel (KFFM),KFFM.rss,KFFM.xml,MN,46.28655,-96.15338
+Flag Island (KFGN),KFGN.rss,KFGN.xml,MN,49.31667,-94.9
+"Fosston, Fosston Municipal Airport (KFSE)",KFSE.rss,KFSE.xml,MN,47.59278,-95.77333
+Glencoe Municipal Airport (KGYL),KGYL.rss,KGYL.xml,MN,44.7588,-94.0905
+Glenwood Municipal Airport (KGHW),KGHW.rss,KGHW.xml,MN,45.64564,-95.31876
+"Grand Marais, The Bay of Grand Marais (KGNA)",KGNA.rss,KGNA.xml,MN,47.7472,-90.3444
+Grand Marais/Cook County Airport (KCKC),KCKC.rss,KCKC.xml,MN,47.83665,-90.38644
+"Grand Rapids, Grand Rapids/Itasca County Airport-Gordon Newstrom Field (KGPZ)",KGPZ.rss,KGPZ.xml,MN,47.21667,-93.51667
+"Granite Falls, Granite Falls Municipal Airport/Lenzen-Roe Memorial Field (KGDB)",KGDB.rss,KGDB.xml,MN,44.75306,-95.55583
+Hallock Municipal Airport (KHCO),KHCO.rss,KHCO.xml,MN,48.75245,-96.93759
+Hinckley Field of Dreams Airport (K04W),K04W.rss,K04W.xml,MN,46.02437,-92.89905
+"Hutchinson, Hutchinson Municipal Airport-Butler Field (KHCD)",KHCD.rss,KHCD.xml,MN,44.85961,-94.38551
+"Jackson, Jackson Municipal Airport (KMJQ)",KMJQ.rss,KMJQ.xml,MN,43.65,-94.98333
+Lake Elmo Airport (K21D),K21D.rss,K21D.xml,MN,45.0002,-92.8549
+Litchfield Municipal Airport (KLJF),KLJF.rss,KLJF.xml,MN,45.09485,-94.50837
+"Little Falls, Little Falls/Morrison County Airport-Lindbergh Field (KLXL)",KLXL.rss,KLXL.xml,MN,45.95,-94.35
+"Longville, Longville Municipal Airport (KXVG)",KXVG.rss,KXVG.xml,MN,46.99028,-94.20389
+"Madison, Madison-Lac Qui Parle County Airport (KDXX)",KDXX.rss,KDXX.xml,MN,44.98394,-96.17884
+Mahnomen County Airport (K3N8),K3N8.rss,K3N8.xml,MN,47.2605,-95.9281
+"Mankato, Mankato Regional Airport (KMKT)",KMKT.rss,KMKT.xml,MN,44.21667,-93.91667
+"Maple Lake, Maple Lake Municipal Airport (KMGG)",KMGG.rss,KMGG.xml,MN,45.23535,-93.98959
+"Marshall, Southwest Minnesota Regional Airport - Marshall/Ryan Field (KMML)",KMML.rss,KMML.xml,MN,44.45,-95.81667
+Mc Gregor - Isedor Iverson Airport (KHZX),KHZX.rss,KHZX.xml,MN,46.61904,-93.31267
+Minneapolis - Flying Cloud Airport (KFCM),KFCM.rss,KFCM.xml,MN,44.83217,-93.47051
+Minneapolis / Blaine (KANE),KANE.rss,KANE.xml,MN,45.14258,-93.21272
+"Minneapolis, Airlake Airport (KLVN)",KLVN.rss,KLVN.xml,MN,44.62778,-93.22806
+"Minneapolis, Crystal Airport (KMIC)",KMIC.rss,KMIC.xml,MN,45.0625,-93.35083
+"Minneapolis, Minneapolis-St. Paul International Airport (KMSP)",KMSP.rss,KMSP.xml,MN,44.88306,-93.22889
+Montevideo-Chippewa County Airport (KMVE),KMVE.rss,KMVE.xml,MN,44.96749,-95.71159
+Moorhead Municipal Airport (KJKJ),KJKJ.rss,KJKJ.xml,MN,46.8404,-96.65442
+Moose Lake Carlton County Airport (KMZH),KMZH.rss,KMZH.xml,MN,46.41632,-92.80491
+Mora Municipal Airport (KJMR),KJMR.rss,KJMR.xml,MN,45.88863,-93.26901
+"Morris, Morris Municipal Airport (KMOX)",KMOX.rss,KMOX.xml,MN,45.56667,-95.96667
+New Ulm Municipal Airport (KULM),KULM.rss,KULM.xml,MN,44.32274,-94.50244
+Olivia Regional Airport (KOVL),KOVL.rss,KOVL.xml,MN,44.77923,-95.03033
+Orr Regional Airport (KORB),KORB.rss,KORB.xml,MN,48.01707,-92.85376
+"Ortonville, Ortonville Muncipal-Martinson Field Airport (KVVV)",KVVV.rss,KVVV.xml,MN,45.30556,-96.42444
+Owatonna Degner Regional Airport (KOWA),KOWA.rss,KOWA.xml,MN,44.11907,-93.25687
+Park Rapids Municipal Airport (KPKD),KPKD.rss,KPKD.xml,MN,46.89968,-95.06681
+"Paynesville, Paynesville Municipal Airport (KPEX)",KPEX.rss,KPEX.xml,MN,45.37247,-94.73878
+Pine River Regional Airport (KPWC),KPWC.rss,KPWC.xml,MN,46.72654,-94.38485
+Pipestone Municipal Airport (KPQN),KPQN.rss,KPQN.xml,MN,43.98542,-96.29764
+"Preston, Fillmore County Airport (KFKA)",KFKA.rss,KFKA.xml,MN,43.67701,-92.17422
+Princeton (KPNM),KPNM.rss,KPNM.xml,MN,45.56425,-93.60801
+Quentin Aanenson Field Airport (KLYV),KLYV.rss,KLYV.xml,MN,43.62166,-96.21394
+Ray S Miller Army Airfield (KRYM),KRYM.rss,KRYM.xml,MN,46.08997,-94.35986
+Redwood Falls Municipal Airport (KRWF),KRWF.rss,KRWF.xml,MN,44.54828,-95.08042
+Rochester - St. Mary's Hospital Heliport (K9MN),K9MN.rss,K9MN.xml,MN,44.0206,-92.48286
+"Rochester, Rochester International Airport (KRST)",KRST.rss,KRST.xml,MN,43.90417,-92.49167
+"Roseau, Roseau Municipal Airport/Rudy Billberg Field (KROX)",KROX.rss,KROX.xml,MN,48.85,-95.7
+Rush City Regional Airport (KROS),KROS.rss,KROS.xml,MN,45.69628,-92.95424
+Sauk Centre Municipal Airport (KD39),KD39.rss,KD39.xml,MN,45.70566,-94.93084
+Silver Bay (KBFW),KBFW.rss,KBFW.xml,MN,47.25206,-91.40983
+Slayton Municipal Airport (KDVP),KDVP.rss,KDVP.xml,MN,43.99055,-95.78102
+South St. Paul Municipal-Richard E. Flemi (KSGS),KSGS.rss,KSGS.xml,MN,44.86006,-93.03203
+St. Cloud Regional Airport (KSTC),KSTC.rss,KSTC.xml,MN,45.54415,-94.05165
+St. James Municipal Airport (KJYG),KJYG.rss,KJYG.xml,MN,43.98558,-94.55299
+Stanton Airfield (KSYN),KSYN.rss,KSYN.xml,MN,44.47362,-93.01448
+"Staples, Staples Municipal Airport (KSAZ)",KSAZ.rss,KSAZ.xml,MN,46.38083,-94.80667
+"Thief River Falls, Thief River Falls Regional Airport (KTVF)",KTVF.rss,KTVF.xml,MN,48.06667,-96.18333
+Todd Field Airport (K14Y),K14Y.rss,K14Y.xml,MN,45.90171,-94.87275
+"Tracy, Tracy Municipal Airport (KTKC)",KTKC.rss,KTKC.xml,MN,44.24951,-95.61189
+Two Harbors (KTWM),KTWM.rss,KTWM.xml,MN,47.05,-91.75
+Wadena Municipal Airport (KADC),KADC.rss,KADC.xml,MN,46.45022,-95.21353
+Walker Municipal Airport (KY49),KY49.rss,KY49.xml,MN,47.1595,-94.6453
+Warroad International Memorial Airport (KRRT),KRRT.rss,KRRT.xml,MN,48.93183,-95.34046
+Waseca Municipal Airport (KACQ),KACQ.rss,KACQ.xml,MN,44.07024,-93.55342
+Waskish Municipal Airport (KVWU),KVWU.rss,KVWU.xml,MN,48.15014,-94.512
+Wheaton Municipal Airport (KETH),KETH.rss,KETH.xml,MN,45.78284,-96.54607
+Willmar Municipal Airport - John L. Rice Field (KBDH),KBDH.rss,KBDH.xml,MN,45.11113,-95.12583
+Windom Municipal Airport (KMWM),KMWM.rss,KMWM.xml,MN,43.90999,-95.10723
+"Winona, Winona Municipal Airport-Max Conrad Field (KONA)",KONA.rss,KONA.xml,MN,44.08333,-91.7
+"Worthington, Worthington Municipal Airport (KOTG)",KOTG.rss,KOTG.xml,MN,43.65,-95.58333
+Batesville Panola County (KPMU),KPMU.rss,KPMU.xml,MS,34.3635,-89.8929
+"Bay St. Louis, Stennis International Airport (KHSA)",KHSA.rss,KHSA.xml,MS,30.36778,-89.45472
+Brookhaven-Lincoln County Airport (K1R7),K1R7.rss,K1R7.xml,MS,31.6058,-90.4093
+Columbia-Marion County Airport (K0R0),K0R0.rss,K0R0.xml,MS,31.297,-89.8128
+Columbus Air Force Base (KCBM),KCBM.rss,KCBM.xml,MS,33.65,-88.45
+"Columbus/West Point/Starkville, Golden Triangle Regional Airport (KGTR)",KGTR.rss,KGTR.xml,MS,33.45,-88.58333
+Corinth (KCRX),KCRX.rss,KCRX.xml,MS,34.915,-88.6035
+"Fletcher Field, Clarksdale (KCKM)",KCKM.rss,KCKM.xml,MS,34.2997,-90.5123
+"George M Bryan Airport, Starkville (KSTF)",KSTF.rss,KSTF.xml,MS,33.4331,-88.8486
+"Greenville, Mid Delta Regional Airport (KGLH)",KGLH.rss,KGLH.xml,MS,33.48278,-90.98556
+"Greenwood, Greenwood-LeFlore Airport (KGWO)",KGWO.rss,KGWO.xml,MS,33.4925,-90.08361
+Gulfport - Gulfport-Biloxi International Airport (KGPT),KGPT.rss,KGPT.xml,MS,30.41194,-89.08083
+"Hattiesburg, Bobby L Chain Municipal Airport (KHBG)",KHBG.rss,KHBG.xml,MS,31.26945,-89.25613
+"Hattiesburg/Laurel, Hattiesburg-Laurel Regional Airport (KPIB)",KPIB.rss,KPIB.xml,MS,31.46667,-89.33333
+"Jackson, Hawkins Field Airport (KHKS)",KHKS.rss,KHKS.xml,MS,32.33472,-90.2225
+"Jackson, Jackson International Airport (KJAN)",KJAN.rss,KJAN.xml,MS,32.31972,-90.0775
+JB Williams Airport (KJVW),KJVW.rss,KJVW.xml,MS,32.30447,-90.41053
+Keesler Air Force Base / Biloxi (KBIX),KBIX.rss,KBIX.xml,MS,30.41667,-88.91667
+LAUREL/NOBLE FIELD (KLUL),KLUL.rss,KLUL.xml,MS,31.67,-89.17
+Madison Bruce Campbell Field Airport (KMBO),KMBO.rss,KMBO.xml,MS,32.4384,-90.1014
+"McComb, McComb / Pike County / John E Lewis Field Airport (KMCB)",KMCB.rss,KMCB.xml,MS,31.17833,-90.47194
+"Meridian, Key Field (KMEI)",KMEI.rss,KMEI.xml,MS,32.33806,-88.74778
+"Meridian, Meridian Naval Air Station - McCain Field (KNMM)",KNMM.rss,KNMM.xml,MS,32.55194,-88.55528
+Monroe County Airport (KM40),KM40.rss,KM40.xml,MS,33.87375,-88.489667
+Moss Point - Trent Lott International Airport (KPQL),KPQL.rss,KPQL.xml,MS,30.46305,-88.53155
+"Natchez, Hardy-Anders Field Natchez-Adams County Airport (KHEZ)",KHEZ.rss,KHEZ.xml,MS,31.61593,-91.29724
+"Olive Branch, Olive Branch Airport (KOLV)",KOLV.rss,KOLV.xml,MS,34.97889,-89.78694
+"Oxford, University-Oxford Airport (KUOX)",KUOX.rss,KUOX.xml,MS,34.38444,-89.53556
+Picayune Municipal Airport (KMJD),KMJD.rss,KMJD.xml,MS,30.48747,-89.65119
+"Tunica, Tunica Municipal Airport (KUTA)",KUTA.rss,KUTA.xml,MS,34.68083,-90.34639
+"Tupelo, Tupelo Regional Airport (KTUP)",KTUP.rss,KTUP.xml,MS,34.26806,-88.77
+Vicksburg Municipal (KVKS),KVKS.rss,KVKS.xml,MS,32.23333,-90.93333
+WEST DELTA OIL PLATFORM (KDLP),KDLP.rss,KDLP.xml,MS,29.12,-89.55
+Winona-Montgomery County Airport (K5A6),K5A6.rss,K5A6.xml,MS,33.465,-89.7302
+Branson (KBBG),KBBG.rss,KBBG.xml,MO,36.5321,-93.2005
+Branson West Muni - Emerson Field (KFWB),KFWB.rss,KFWB.xml,MO,36.6985,-93.4022
+Camdenton Memorial Airport (KOZS),KOZS.rss,KOZS.xml,MO,37.974,-92.6912
+Cameron Memorial Airport (KEZZ),KEZZ.rss,KEZZ.xml,MO,39.72756,-94.27639
+"Cape Girardeau, Cape Girardeau Regional Airport (KCGI)",KCGI.rss,KCGI.xml,MO,37.22556,-89.57833
+"Chillicothe, Chillicothe Agri-Science Center (KCDJ)",KCDJ.rss,KCDJ.xml,MO,39.81667,-93.58333
+"Clinton, MO (KGLY)",KGLY.rss,KGLY.xml,MO,38.3566,-93.6842
+"Columbia, Columbia Regional Airport (KCOU)",KCOU.rss,KCOU.xml,MO,38.81694,-92.21833
+Farmington Airport (KFAM),KFAM.rss,KFAM.xml,MO,37.76667,-90.43333
+Fort Leonard Wood (KTBN),KTBN.rss,KTBN.xml,MO,37.73333,-92.13333
+Hannibal Regional Airport (KHAE),KHAE.rss,KHAE.xml,MO,39.7252,-91.4439
+Harrisonville Lawrence Smith Memorial Airport (KLRY),KLRY.rss,KLRY.xml,MO,38.611,-94.3421
+"Jefferson City, Jefferson City Memorial Airport (KJEF)",KJEF.rss,KJEF.xml,MO,38.59444,-92.15583
+Jesse Viertel Memorial Airport (KVER),KVER.rss,KVER.xml,MO,38.94672,-92.68267
+"Joplin, Joplin Regional Airport (KJLN)",KJLN.rss,KJLN.xml,MO,37.15611,-94.50056
+"Kaiser Lake Ozark, Lee C Fine Memorial Airport (KAIZ)",KAIZ.rss,KAIZ.xml,MO,38.1,-92.55
+"Kansas City, Kansas City Downtown Airport (KMKC)",KMKC.rss,KMKC.xml,MO,39.12083,-94.59694
+"Kansas City, Kansas City International Airport (KMCI)",KMCI.rss,KMCI.xml,MO,39.29722,-94.73056
+Kennett - Kennett Memorial Airport (KTKX),KTKX.rss,KTKX.xml,MO,36.22256,-90.03671
+"Kirksville, Kirksville Regional Airport (KIRK)",KIRK.rss,KIRK.xml,MO,40.09722,-92.54333
+LEBANON (KLBO),KLBO.rss,KLBO.xml,MO,37.64833,-92.6525
+"Lee's Summit, Lee's Summit Municipal Airport (KLXT)",KLXT.rss,KLXT.xml,MO,38.95972,-94.37167
+Malden Municipal Airport (KMAW),KMAW.rss,KMAW.xml,MO,36.6005,-89.9922
+Marshall Memorial Municipal Airport (KMHL),KMHL.rss,KMHL.xml,MO,39.0955,-93.2028
+Maryville Northwest Missouri Regional Airport (KEVU),KEVU.rss,KEVU.xml,MO,40.3525,-94.915
+Mexico Memorial Airport (KMYJ),KMYJ.rss,KMYJ.xml,MO,39.1575,-91.8183
+Monett (KHFJ),KHFJ.rss,KHFJ.xml,MO,36.9062,-94.0128
+Mosby Midwest National Air Center Airport (KGPH),KGPH.rss,KGPH.xml,MO,39.3325,-94.3096
+Omar N Bradley Airport (KMBY),KMBY.rss,KMBY.xml,MO,39.46341,-92.42638
+Perryville Regional Airport (KPCD),KPCD.rss,KPCD.xml,MO,37.86867,-89.86214
+"Poplar Bluff, Poplar Bluff Municipal Airport (KPOF)",KPOF.rss,KPOF.xml,MO,36.77056,-90.32222
+"Rolla / Vichy, Rolla National Airport (KVIH)",KVIH.rss,KVIH.xml,MO,38.13194,-91.76528
+"Sedalia, Sedalia Memorial Airport (KDMO)",KDMO.rss,KDMO.xml,MO,38.71222,-93.17444
+Sikeston Memorial Municipal Airport (KSIK),KSIK.rss,KSIK.xml,MO,36.8989,-89.5618
+Skyhaven Airport (KRCM),KRCM.rss,KRCM.xml,MO,38.7842,-93.8029
+"Springfield, Springfield Regional Airport (KSGF)",KSGF.rss,KSGF.xml,MO,37.23972,-93.38972
+"St. Charles, St. Charles County Smartt Airport (KSET)",KSET.rss,KSET.xml,MO,38.93056,-90.4325
+"St. Joseph, Rosecrans Memorial Airport (KSTJ)",KSTJ.rss,KSTJ.xml,MO,39.76806,-94.90917
+St. Louis Lambert International Airport (KSTL),KSTL.rss,KSTL.xml,MO,38.7525,-90.37361
+"St. Louis, Spirit Of St. Louis Airport (KSUS)",KSUS.rss,KSUS.xml,MO,38.65722,-90.65583
+Warsaw Municipal Airport (KRAW),KRAW.rss,KRAW.xml,MO,38.3469,-93.3454
+Washington Regional Airport (KFYG),KFYG.rss,KFYG.xml,MO,38.5876,-90.9938
+"West Plains, West Plains Municipal Airport (KUNO)",KUNO.rss,KUNO.xml,MO,36.87917,-91.905
+Whiteman Air Force Base (KSZL),KSZL.rss,KSZL.xml,MO,38.73333,-93.55
+"Baker, Baker Municipal Airport (KBHK)",KBHK.rss,KBHK.xml,MT,46.34778,-104.2575
+Big Horn County Airport (K00U),K00U.rss,K00U.xml,MT,45.74439,-107.66044
+BIG TIMBER (K6S0),K6S0.rss,K6S0.xml,MT,45.8064,-109.9811
+"Billings, Billings Logan International Airport (KBIL)",KBIL.rss,KBIL.xml,MT,45.80694,-108.54222
+"Bozeman, Gallatin Field (KBZN)",KBZN.rss,KBZN.xml,MT,45.78806,-111.16083
+"Butte, Bert Mooney Airport (KBTM)",KBTM.rss,KBTM.xml,MT,45.95472,-112.4975
+"Cut Bank, Cut Bank Municipal Airport (KCTB)",KCTB.rss,KCTB.xml,MT,48.60833,-112.37611
+Delta (K1DM),K1DM.rss,K1DM.xml,MT,47.38,-109.82
+"Dillon, Dillon Airport (KDLN)",KDLN.rss,KDLN.xml,MT,45.2575,-112.55444
+Echo (K1EM),K1EM.rss,K1EM.xml,MT,47.4535,-109.4163
+Ennis - Big Sky Airport (KEKS),KEKS.rss,KEKS.xml,MT,45.27436,-111.64886
+Foxtrot (K1FM),K1FM.rss,K1FM.xml,MT,47.6,-112.3
+"Glasgow, Glasgow International Airport (KGGW)",KGGW.rss,KGGW.xml,MT,48.21389,-106.62139
+"Glendive, Dawson Community Airport (KGDV)",KGDV.rss,KGDV.xml,MT,47.13333,-104.8
+Golf (K1GM),K1GM.rss,K1GM.xml,MT,47.33,-112.1
+"Great Falls, Great Falls International Airport (KGTF)",KGTF.rss,KGTF.xml,MT,47.47333,-111.38222
+HAMILTON (K6S5),K6S5.rss,K6S5.xml,MT,46.25149,-114.12554
+"Havre, Havre City-County Airport (KHVR)",KHVR.rss,KHVR.xml,MT,48.54278,-109.76333
+Helena Regional Airport (KHLN),KHLN.rss,KHLN.xml,MT,46.60445,-111.9892
+Hotel (K1HM),K1HM.rss,K1HM.xml,MT,47.6975,-111.9429
+India (K1IM),K1IM.rss,K1IM.xml,MT,47.3,-111.5
+"Jordan, Jordan Airport (KJDN)",KJDN.rss,KJDN.xml,MT,47.32583,-106.9475
+"Kalispell, Glacier Park International Airport (KGPI)",KGPI.rss,KGPI.xml,MT,48.30417,-114.26361
+Kilo - Harlowton (K1KM),K1KM.rss,K1KM.xml,MT,46.5,-109.8
+LAURELMUNC (K6S8),K6S8.rss,K6S8.xml,MT,45.70308,-108.76108
+"Lewistown, Lewistown Municipal Airport (KLWT)",KLWT.rss,KLWT.xml,MT,47.04917,-109.46639
+"Livingston, Mission Field Airport (KLVM)",KLVM.rss,KLVM.xml,MT,45.69944,-110.44833
+Malmstrom Air Force Base (KGFA),KGFA.rss,KGFA.xml,MT,47.5,-111.18333
+Malta Airport (KM75),KM75.rss,KM75.xml,MT,48.36694,-107.91934
+"Miles City, Frank Wiley Field Airport (KMLS)",KMLS.rss,KMLS.xml,MT,46.42806,-105.88639
+"Missoula, Missoula International Airport (KMSO)",KMSO.rss,KMSO.xml,MT,46.92083,-114.0925
+"Mullan Pass, Mullan Pass Vor (KMLP)",KMLP.rss,KMLP.xml,MT,47.45417,-115.66972
+N BAR Ranch Airport (KMVH),KMVH.rss,KMVH.xml,MT,46.8381,-108.9368
+November (K1NM),K1NM.rss,K1NM.xml,MT,47.1,-109
+PLENTYWOOD (KPWD),KPWD.rss,KPWD.xml,MT,48.78863,-104.52317
+Raynesford (K1AM),K1AM.rss,K1AM.xml,MT,47.3,-110.8
+Roy (K1OM),K1OM.rss,K1OM.xml,MT,47.3,-108.9
+Ruby Valley Field Airport (KRVF),KRVF.rss,KRVF.xml,MT,45.53542,-112.30228
+Sidney-Richland (KSDY),KSDY.rss,KSDY.xml,MT,47.7,-104.2
+West Yellowstone (KWYS),KWYS.rss,KWYS.xml,MT,44.68333,-111.11667
+Windham (K1CM),K1CM.rss,K1CM.xml,MT,47.1,-110.2
+"Wolf Point, Clayton Airport (KOLF)",KOLF.rss,KOLF.xml,MT,48.09444,-105.57722
+Ainsworth Regional Airport (KANW),KANW.rss,KANW.xml,NE,42.57484,-99.99832
+Albion Municipal Airport (KBVN),KBVN.rss,KBVN.xml,NE,41.73016,-98.05453
+"Alliance, Alliance Municipal Airport (KAIA)",KAIA.rss,KAIA.xml,NE,42.05722,-102.8
+"Aurora, Aurora Municipal Airport (KAUH)",KAUH.rss,KAUH.xml,NE,40.89389,-97.99444
+Beatrice Municipal (KBIE),KBIE.rss,KBIE.xml,NE,40.3,-96.75
+Blair Municipal Airport (KBTA),KBTA.rss,KBTA.xml,NE,41.4148,-96.109
+Bravo (Pine Bluffs) (K1BW),K1BW.rss,K1BW.xml,NE,41.52,-104
+Brewster Field Airport (KHDE),KHDE.rss,KHDE.xml,NE,40.45,-99.33333
+"Broken Bow, Broken Bow Municipal Airport (KBBW)",KBBW.rss,KBBW.xml,NE,41.43333,-99.65
+"Chadron, Chadron Municipal Airport (KCDR)",KCDR.rss,KCDR.xml,NE,42.8375,-103.09528
+Charlie (Gering) (K1CW),K1CW.rss,K1CW.xml,NE,41.59,-103.67
+"Columbus, Columbus Municipal Airport (KOLU)",KOLU.rss,KOLU.xml,NE,41.45,-97.33333
+Delta - Kimball (K1DW),K1DW.rss,K1DW.xml,NE,41.37,-103.8
+"Falls City, Brenner Field Airport (KFNB)",KFNB.rss,KFNB.xml,NE,40.07889,-95.59194
+Fremont Municipal Airport (KFET),KFET.rss,KFET.xml,NE,41.45,-96.51667
+Gordon Municipal (KGRN),KGRN.rss,KGRN.xml,NE,42.8,-102.16667
+"Grand Island, Central Nebraska Regional Airport (KGRI)",KGRI.rss,KGRI.xml,NE,40.95833,-98.3125
+"Hastings, Hastings Municipal Airport (KHSI)",KHSI.rss,KHSI.xml,NE,40.60056,-98.42583
+"Hebron, Hebron Municipal Airport (KHJH)",KHJH.rss,KHJH.xml,NE,40.15222,-97.58694
+Hotel (Gurley) (K1HW),K1HW.rss,K1HW.xml,NE,41.32,-102.83
+"Imperial, Imperial Municipal Airport (KIML)",KIML.rss,KIML.xml,NE,40.51667,-101.61667
+"Kearney, Kearney Municipal Airport (KEAR)",KEAR.rss,KEAR.xml,NE,40.73333,-99
+Kilo (Dix) (K1KW),K1KW.rss,K1KW.xml,NE,41.13,-103.48
+"Kimball, Kimball Municipal Airport/Robert E Arraj Field (KIBM)",KIBM.rss,KIBM.xml,NE,41.18333,-103.66667
+"Lexington, Jim Kelly Field Airport (KLXN)",KLXN.rss,KLXN.xml,NE,40.79111,-99.77722
+"Lincoln, Lincoln Municipal Airport (KLNK)",KLNK.rss,KLNK.xml,NE,40.83111,-96.76444
+"McCook, McCook Municipal Airport (KMCK)",KMCK.rss,KMCK.xml,NE,40.20306,-100.58833
+"Nebraska City, Nebraska City Municipal Airport (KAFK)",KAFK.rss,KAFK.xml,NE,40.6,-95.85
+"Norfolk, Stefan Memorial Airport (KOFK)",KOFK.rss,KOFK.xml,NE,41.98056,-97.43694
+"North Platte, North Platte Regional Airport (KLBF)",KLBF.rss,KLBF.xml,NE,41.12194,-100.66833
+O'Neill / Baker Field (KONL),KONL.rss,KONL.xml,NE,42.46667,-98.68333
+"Ogallala, Searle Field Airport (KOGA)",KOGA.rss,KOGA.xml,NE,41.11972,-101.76889
+Omaha - Eppley Airfield (KOMA),KOMA.rss,KOMA.xml,NE,41.3119,-95.90185
+Omaha / Offutt Air Force Base (KOFF),KOFF.rss,KOFF.xml,NE,41.11667,-95.9
+"Omaha, Millard Airport (KMLE)",KMLE.rss,KMLE.xml,NE,41.19583,-96.11222
+"Ord, Evelyn Sharp Field Airport (KODX)",KODX.rss,KODX.xml,NE,41.62417,-98.9525
+"Plattsmouth, Plattsmouth Municipal Airport (KPMV)",KPMV.rss,KPMV.xml,NE,40.95,-95.91778
+"Scottsbluff, Heilig Field (KBFF)",KBFF.rss,KBFF.xml,NE,41.86694,-103.58583
+"Tekamah, Tekamah Municipal Airport (KTQE)",KTQE.rss,KTQE.xml,NE,41.76694,-96.17778
+"Thedford, Thomas County Airport (KTIF)",KTIF.rss,KTIF.xml,NE,41.96194,-100.56889
+"Valentine, Miller Field (KVTN)",KVTN.rss,KVTN.xml,NE,42.85861,-100.55139
+Wahoo (KAHQ),KAHQ.rss,KAHQ.xml,NE,41.2406,-96.5946
+"Wayne, Wayne Municipal Airport (KLCG)",KLCG.rss,KLCG.xml,NE,42.24167,-96.98139
+"York, York Municipal Airport (KJYR)",KJYR.rss,KJYR.xml,NE,40.89667,-97.62278
+Austin Airport (KTMT),KTMT.rss,KTMT.xml,NV,39.46794,-117.19745
+Battle Mountain - Lander County Airport (KBAM),KBAM.rss,KBAM.xml,NV,40.599,-116.8743
+Boulder City Municipal Airport (KBVU),KBVU.rss,KBVU.xml,NV,35.9475,-114.8611
+Carson City Airport (KCXP),KCXP.rss,KCXP.xml,NV,39.19056,-119.73191
+"Elko, Elko Regional Airport (KEKO)",KEKO.rss,KEKO.xml,NV,40.82404,-115.78635
+"Ely, Ely Airport (KELY)",KELY.rss,KELY.xml,NV,39.295,-114.84528
+Eureka Airport ASOS (KP68),KP68.rss,KP68.xml,NV,39.60139,-116.00556
+Eureka Airport AWOS (K05U),K05U.rss,K05U.xml,NV,39.60209,-116.00625
+"Fallon, Naval Air Station (KNFL)",KNFL.rss,KNFL.xml,NV,39.43222,-118.68556
+Hawthorne Industrial Airport (KHTH),KHTH.rss,KHTH.xml,NV,38.54482,-118.63137
+Las Vegas - Henderson Executive Airport (KHND),KHND.rss,KHND.xml,NV,35.97665,-115.13221
+"Las Vegas, McCarran International Airport (KLAS)",KLAS.rss,KLAS.xml,NV,36.07188,-115.1634
+"Las Vegas, North Las Vegas Airport (KVGT)",KVGT.rss,KVGT.xml,NV,36.21205,-115.19395
+"Lovelock, Derby Field Airport (KLOL)",KLOL.rss,KLOL.xml,NV,40.0684,-118.57017
+"Mercury, Desert Rock Airport (KDRA)",KDRA.rss,KDRA.xml,NV,36.6207,-116.02868
+Minden-Tahoe Airport (KMEV),KMEV.rss,KMEV.xml,NV,38.9963,-119.75
+Nellis AFB - Indian Springs Auxiliary Airfield (KINS),KINS.rss,KINS.xml,NV,36.58573,-115.69008
+Nellis Air Force Base (KLSV),KLSV.rss,KLSV.xml,NV,36.23333,-115.03333
+"Reno, Reno Tahoe International Airport (KRNO)",KRNO.rss,KRNO.xml,NV,39.50776,-119.76819
+Reno/Stead (KRTS),KRTS.rss,KRTS.xml,NV,39.6682,-119.8764
+"Tonopah, Tonopah Airport (KTPH)",KTPH.rss,KTPH.xml,NV,38.06028,-117.08722
+"Winnemucca, Winnemucca Municipal Airport (KWMC)",KWMC.rss,KWMC.xml,NV,40.90194,-117.80722
+"Berlin, Berlin Municipal Airport (KBML)",KBML.rss,KBML.xml,NH,44.57611,-71.17861
+Concord Municipal Airport (KCON),KCON.rss,KCON.xml,NH,43.20489,-71.50257
+Jaffrey Airport-Silver Ranch (KAFN),KAFN.rss,KAFN.xml,NH,42.80667,-72.00127
+"Keene, Dillant-Hopkins Airport (KEEN)",KEEN.rss,KEEN.xml,NH,42.9,-72.26667
+"Laconia, Laconia Municipal Airport (KLCI)",KLCI.rss,KLCI.xml,NH,43.56667,-71.41667
+Lebanon Municipal Airport (KLEB),KLEB.rss,KLEB.xml,NH,43.6271,-72.30537
+Manchester Airport (KMHT),KMHT.rss,KMHT.xml,NH,42.92964,-71.43559
+Mount Washington (KMWN),KMWN.rss,KMWN.xml,NH,44.27086,-71.30337
+Nashua - Boire Field Airport (KASH),KASH.rss,KASH.xml,NH,42.77981,-71.51409
+Pease Air Force Base / Portsmouth (KPSM),KPSM.rss,KPSM.xml,NH,43.08333,-70.81667
+Plymouth Municipal Airport (K1P1),K1P1.rss,K1P1.xml,NH,43.77714,-71.75598
+Rochester - Skyhaven Airport (KDAW),KDAW.rss,KDAW.xml,NH,43.27939,-70.92426
+Whitefield - Mount Washington Regional Airport (KHIE),KHIE.rss,KHIE.xml,NH,44.36595,-71.55218
+"Andover, Aeroflex-Andover Airport (K12N)",K12N.rss,K12N.xml,NJ,41.00928,-74.73628
+"Atlantic City, Atlantic City International Airport (KACY)",KACY.rss,KACY.xml,NJ,39.45202,-74.56699
+Belmar-Farmingdale (KBLM),KBLM.rss,KBLM.xml,NJ,40.18333,-74.13333
+"Caldwell, Essex County Airport (KCDW)",KCDW.rss,KCDW.xml,NJ,40.87639,-74.28306
+Lakehurst Naval Air Station (KNEL),KNEL.rss,KNEL.xml,NJ,40.03661,-74.35251
+Linden Airport (KLDJ),KLDJ.rss,KLDJ.xml,NJ,40.6174,-74.2446
+Mcguire Air Force Base (KWRI),KWRI.rss,KWRI.xml,NJ,40.01667,-74.6
+Miller Air Park (KMJX),KMJX.rss,KMJX.xml,NJ,39.927,-74.292
+"Millville, Millville Municipal Airport (KMIV)",KMIV.rss,KMIV.xml,NJ,39.36623,-75.0778
+Morristown Municipal (KMMU),KMMU.rss,KMMU.xml,NJ,40.8,-74.41667
+"Mount Holly, South Jersey Regional Airport (KVAY)",KVAY.rss,KVAY.xml,NJ,39.94076,-74.84071
+"Newark, Newark International Airport (KEWR)",KEWR.rss,KEWR.xml,NJ,40.6825,-74.16944
+"Somerville, Somerset Airport (KSMQ)",KSMQ.rss,KSMQ.xml,NJ,40.62405,-74.66898
+"Sussex, Sussex Airport (KFWN)",KFWN.rss,KFWN.xml,NJ,41.19925,-74.62594
+"Teterboro, Teterboro Airport (KTEB)",KTEB.rss,KTEB.xml,NJ,40.85889,-74.05667
+"Trenton, Mercer County Airport (KTTN)",KTTN.rss,KTTN.xml,NJ,40.27639,-74.81639
+"Wildwood, Cape May County Airport (KWWD)",KWWD.rss,KWWD.xml,NJ,39.01667,-74.91667
+Alamogordo-White (KALM),KALM.rss,KALM.xml,NM,32.83512,-105.99408
+"Albuquerque, Albuquerque International Airport (KABQ)",KABQ.rss,KABQ.xml,NM,35.04167,-106.61472
+"Albuquerque, Double Eagle II Airport (KAEG)",KAEG.rss,KAEG.xml,NM,35.145,-106.795
+Angel Fire Airport (KAXX),KAXX.rss,KAXX.xml,NM,36.42586,-105.29028
+Artesia Municipal Airport (KATS),KATS.rss,KATS.xml,NM,32.85239,-104.46444
+Belen Regional Airport (KBRG),KBRG.rss,KBRG.xml,NM,34.64586,-106.83634
+Cannon Air Force Base / Clovis (KCVS),KCVS.rss,KCVS.xml,NM,34.38333,-103.31667
+"Carlsbad, Cavern City Air Terminal Airport (KCNM)",KCNM.rss,KCNM.xml,NM,32.3375,-104.26333
+Clayton Municipal Airpark (KCAO),KCAO.rss,KCAO.xml,NM,36.44834,-103.15367
+Clines Corners (KCQC),KCQC.rss,KCQC.xml,NM,35,-105.66667
+Clovis Municipal Airport (KCVN),KCVN.rss,KCVN.xml,NM,34.42274,-103.0802
+Deming Municipal Airport (KDMN),KDMN.rss,KDMN.xml,NM,32.25927,-107.72051
+"Dona Ana County Jetport, Santa Teresa (KDNA)",KDNA.rss,KDNA.xml,NM,31.87495,-106.69385
+"Farmington, Four Corners Regional Airport (KFMN)",KFMN.rss,KFMN.xml,NM,36.74361,-108.22917
+Gallup Municipal Airport (KGUP),KGUP.rss,KGUP.xml,NM,35.50859,-108.79316
+Grant County Airport (KSVC),KSVC.rss,KSVC.xml,NM,32.63099,-108.14658
+"Grants, Grants-Milan Municipal Airport (KGNT)",KGNT.rss,KGNT.xml,NM,35.16528,-107.90222
+Hobbs / Lea County (KHOB),KHOB.rss,KHOB.xml,NM,32.68333,-103.21667
+Holloman Air Force Base (KHMN),KHMN.rss,KHMN.xml,NM,32.85,-106.1
+"Las Cruces, Las Cruces International Airport (KLRU)",KLRU.rss,KLRU.xml,NM,32.28944,-106.92194
+Las Vegas Municipal Airport (KLVS),KLVS.rss,KLVS.xml,NM,35.65584,-105.13852
+Los Alamos Airport (KLAM),KLAM.rss,KLAM.xml,NM,35.87969,-106.26869
+Moriarty Municipal Airport (K0E0),K0E0.rss,K0E0.xml,NM,34.98374,-105.99576
+Raton Municipal - Crews Field Airport (KRTN),KRTN.rss,KRTN.xml,NM,36.741528,-104.502183
+Roswell International Air Center Airport (KROW),KROW.rss,KROW.xml,NM,33.30737,-104.50816
+Santa Fe County Municipal Airport (KSAF),KSAF.rss,KSAF.xml,NM,35.61097,-106.09573
+Santa Rosa Route 66 Airport (KSXU),KSXU.rss,KSXU.xml,NM,34.93567,-104.64256
+Sierra Blanca Regional Airport (KSRR),KSRR.rss,KSRR.xml,NM,33.46677,-105.52778
+Socorro Municipal Airport (KONM),KONM.rss,KONM.xml,NM,34.02633,-106.90372
+Spaceport America AWOS (K0A0),K0A0.rss,K0A0.xml,NM,32.99,-106.96739
+"Taos, Taos Regional Airport (KSKX)",KSKX.rss,KSKX.xml,NM,36.45,-105.66667
+"Truth Or Consequences, Truth Or Consequences Municipal Airport (KTCS)",KTCS.rss,KTCS.xml,NM,33.23667,-107.26806
+Tucumcari Municipal Airport (KTCC),KTCC.rss,KTCC.xml,NM,35.18053,-103.60145
+Albany International Airport (KALB),KALB.rss,KALB.xml,NY,42.74722,-73.79912
+"Binghamton, Binghamton Regional Airport (KBGM)",KBGM.rss,KBGM.xml,NY,42.20778,-75.98139
+"Buffalo, Greater Buffalo International Airport (KBUF)",KBUF.rss,KBUF.xml,NY,42.93998,-78.73604
+Cattaraugus County-Olean Airport (KOLE),KOLE.rss,KOLE.xml,NY,42.24119,-78.37136
+Cortland County-Chase Field (KN03),KN03.rss,KN03.xml,NY,42.5926,-76.2149
+"Dansville, Dansville Municipal Airport (KDSV)",KDSV.rss,KDSV.xml,NY,42.56944,-77.71444
+"Dunkirk, Chautauqua County / Dunkirk Airport (KDKK)",KDKK.rss,KDKK.xml,NY,42.49306,-79.27583
+"East Hampton, East Hampton Airport (KHTO)",KHTO.rss,KHTO.xml,NY,40.95944,-72.25194
+"Elmira, Elmira / Corning Regional Airport (KELM)",KELM.rss,KELM.xml,NY,42.15639,-76.90278
+Farmingdale - Republic Airport (KFRG),KFRG.rss,KFRG.xml,NY,40.73443,-73.41639
+Fort Drum / Wheeler-Sack U. S. Army Airfield (KGTB),KGTB.rss,KGTB.xml,NY,44.05,-75.73333
+Fulton County Airport (KNY0),KNY0.rss,KNY0.xml,NY,42.99819,-74.32955
+"Fulton, Oswego County Airport (KFZY)",KFZY.rss,KFZY.xml,NY,43.35083,-76.38806
+Genesee County Airport (KGVQ),KGVQ.rss,KGVQ.xml,NY,43.03175,-78.16967
+"Glens Falls, Floyd Bennett Memorial Airport (KGFL)",KGFL.rss,KGFL.xml,NY,43.34111,-73.61056
+Griffiss Air Force Base / Rome (KRME),KRME.rss,KRME.xml,NY,43.23333,-75.4
+Hamilton Municipal Airport (KVGC),KVGC.rss,KVGC.xml,NY,42.84344,-75.56119
+"Islip, Long Island Mac Arthur Airport (KISP)",KISP.rss,KISP.xml,NY,40.79389,-73.10167
+"Ithaca, Ithaca Tompkins Regional Airport (KITH)",KITH.rss,KITH.xml,NY,42.49083,-76.45833
+"Jamestown, Chautauqua County/Jamestown Airport (KJHW)",KJHW.rss,KJHW.xml,NY,42.15,-79.26667
+"Massena, Massena International-Richards Field (KMSS)",KMSS.rss,KMSS.xml,NY,44.93583,-74.84556
+"Montauk, Montauk Airport (KMTP)",KMTP.rss,KMTP.xml,NY,41.07306,-71.92333
+"Montgomery, Orange County Airport (KMGJ)",KMGJ.rss,KMGJ.xml,NY,41.50917,-74.265
+"Monticello, Sullivan County International Airport (KMSV)",KMSV.rss,KMSV.xml,NY,41.7,-74.8
+"New York City, Central Park (KNYC)",KNYC.rss,KNYC.xml,NY,40.78333,-73.96667
+New York Downtown Manhattan (KJRB),KJRB.rss,KJRB.xml,NY,40.7012,-74.009
+"New York, Kennedy International Airport (KJFK)",KJFK.rss,KJFK.xml,NY,40.63915,-73.76393
+"New York, La Guardia Airport (KLGA)",KLGA.rss,KLGA.xml,NY,40.77917,-73.88
+Newburgh / Stewart (KSWF),KSWF.rss,KSWF.xml,NY,41.5,-74.1
+"Niagara Falls, Niagara Falls International Airport (KIAG)",KIAG.rss,KIAG.xml,NY,43.10829,-78.93818
+Ogdensburg International Airport (KOGS),KOGS.rss,KOGS.xml,NY,44.68186,-75.4655
+"Penn Yan, Penn Yan Airport (KPEO)",KPEO.rss,KPEO.xml,NY,42.64306,-77.04944
+Plattsburgh International Airport  (KPBG),KPBG.rss,KPBG.xml,NY,44.65,-73.46667
+Potsdam Municipal Airport/Damon Field (KPTD),KPTD.rss,KPTD.xml,NY,44.67667,-74.94844
+"Poughkeepsie, Dutchess County Airport (KPOU)",KPOU.rss,KPOU.xml,NY,41.62667,-73.88417
+"Rochester, Greater Rochester International Airport (KROC)",KROC.rss,KROC.xml,NY,43.11667,-77.67667
+"Saranac Lake, Adirondack Regional Airport (KSLK)",KSLK.rss,KSLK.xml,NY,44.39306,-74.20278
+Schenectady Airport (KSCH),KSCH.rss,KSCH.xml,NY,42.85,-73.93333
+"Shirley, Brookhaven Airport (KHWV)",KHWV.rss,KHWV.xml,NY,40.82167,-72.86889
+Skaneateles Aero Drome (K6B9),K6B9.rss,K6B9.xml,NY,42.914,-76.4408
+"Syracuse, Syracuse Hancock International Airport (KSYR)",KSYR.rss,KSYR.xml,NY,43.10917,-76.10333
+The Gabreski Airport (KFOK),KFOK.rss,KFOK.xml,NY,40.85053,-72.61927
+"Watertown, Watertown International Airport (KART)",KART.rss,KART.xml,NY,43.99194,-76.02167
+"Wellsville, Wellsville Municipal Airport (KELZ)",KELZ.rss,KELZ.xml,NY,42.1075,-77.98444
+White Plains - Westchester County Airport (KHPN),KHPN.rss,KHPN.xml,NY,41.06237,-73.70456
+Williamson-Sodus Airport (KSDC),KSDC.rss,KSDC.xml,NY,43.23459,-77.11946
+"Ahoskie, Tri-County Airport (KASJ)",KASJ.rss,KASJ.xml,NC,36.2975,-77.17083
+"Albemarle, Stanly County Airport (KVUJ)",KVUJ.rss,KVUJ.xml,NC,35.41667,-80.15083
+Andrews-Murphy Airport (KRHP),KRHP.rss,KRHP.xml,NC,35.19394,-83.86182
+Anson County Airport (KAFP),KAFP.rss,KAFP.xml,NC,35.01944,-80.07836
+"Asheboro, Asheboro Municipal Airport (KHBI)",KHBI.rss,KHBI.xml,NC,35.65389,-79.895
+"Asheville, Asheville Regional Airport (KAVL)",KAVL.rss,KAVL.xml,NC,35.43194,-82.5375
+Beaufort Smith Field (KMRH),KMRH.rss,KMRH.xml,NC,34.73259,-76.6566
+Bogue Field Marine Corps Auxiliary Field (KNJM),KNJM.rss,KNJM.xml,NC,34.69403,-77.02945
+Brunswick County Airport (KSUT),KSUT.rss,KSUT.xml,NC,33.92921,-78.07223
+Burlington Alamance Regional Airport (KBUY),KBUY.rss,KBUY.xml,NC,36.04753,-79.47375
+"Charlotte, Charlotte / Douglas International Airport (KCLT)",KCLT.rss,KCLT.xml,NC,35.21333,-80.94861
+Cherry Point Marine Corps Air Station (KNKT),KNKT.rss,KNKT.xml,NC,34.89719,-76.88135
+Concord Regional Airport (KJQF),KJQF.rss,KJQF.xml,NC,35.38963,-80.70735
+"Currituck, Currituck County Airport (KONX)",KONX.rss,KONX.xml,NC,36.39889,-76.01611
+Curtis L Brown Jr. Field Airport (KEYF),KEYF.rss,KEYF.xml,NC,34.60418,-78.57902
+Dare County Gunnery Range (K2DP),K2DP.rss,K2DP.xml,NC,35.66667,-75.9
+Duplin County Airport (KDPL),KDPL.rss,KDPL.xml,NC,34.99942,-77.97995
+"Edenton, Northeastern Regional Airport (KEDE)",KEDE.rss,KEDE.xml,NC,36.02778,-76.56722
+Elizabeth City C/G Regional Airport (KECG),KECG.rss,KECG.xml,NC,36.25771,-76.1716
+"Erwin, Harnett County Airport (KHRJ)",KHRJ.rss,KHRJ.xml,NC,35.37861,-78.73361
+"Fayetteville, Fayetteville Regional Airport (KFAY)",KFAY.rss,KFAY.xml,NC,34.98944,-78.88
+Fort Bragg / Simmons Army Airfield (KFBG),KFBG.rss,KFBG.xml,NC,35.1314,-78.93158
+Franklin County Airport (KLHZ),KLHZ.rss,KLHZ.xml,NC,36.02288,-78.33405
+Gastonia Municipal Airport (KAKH),KAKH.rss,KAKH.xml,NC,35.19687,-81.15545
+"Goldsboro, Goldsboro-Wayne Municipal Airport (KGWW)",KGWW.rss,KGWW.xml,NC,35.46056,-77.965
+"Greensboro, Piedmont Triad International Airport (KGSO)",KGSO.rss,KGSO.xml,NC,36.0975,-79.94361
+Halifax-Northampton Regional Airport (KIXA),KIXA.rss,KIXA.xml,NC,36.33,-77.635
+"Hatteras, Mitchell Field (KHSE)",KHSE.rss,KHSE.xml,NC,35.23222,-75.6225
+Henderson-Oxford Airport (KHNZ),KHNZ.rss,KHNZ.xml,NC,36.36352,-78.52889
+"Hickory, Hickory Regional Airport (KHKY)",KHKY.rss,KHKY.xml,NC,35.74222,-81.38222
+Hyde County Airport (K7W6),K7W6.rss,K7W6.xml,NC,35.56204,-75.95566
+Jackson County Airport (K24A),K24A.rss,K24A.xml,NC,35.3159,-83.2071
+"Jacksonville, Albert J Ellis Airport (KOAJ)",KOAJ.rss,KOAJ.xml,NC,34.83333,-77.61667
+"Kill Devil Hills, First Flight Airport (KFFA)",KFFA.rss,KFFA.xml,NC,36.01667,-75.66667
+"Kinston, Kinston Regional Jetport at Stallings Field (KISO)",KISO.rss,KISO.xml,NC,35.33333,-77.61667
+Laurinburg Maxton Airport (KMEB),KMEB.rss,KMEB.xml,NC,34.79132,-79.3683
+"Lexington, Davidson County Airport (KEXX)",KEXX.rss,KEXX.xml,NC,35.78111,-80.30389
+"Lincolnton, Lincolnton-Lincoln County Regional Airport (KIPJ)",KIPJ.rss,KIPJ.xml,NC,35.48306,-81.16139
+Mackall U. S. Army Airfield (KHFF),KHFF.rss,KHFF.xml,NC,35.03333,-79.5
+Macon County Airport (K1A5),K1A5.rss,K1A5.xml,NC,35.22277,-83.41497
+Manteo / Dare County Regional (KMQI),KMQI.rss,KMQI.xml,NC,35.91667,-75.7
+MCAS New River (KNCA),KNCA.rss,KNCA.xml,NC,34.70627,-77.44066
+"Monroe, Monroe Airport (KEQY)",KEQY.rss,KEQY.xml,NC,35.01694,-80.62056
+Morganton-Lenoir Airport (KMRN),KMRN.rss,KMRN.xml,NC,35.81922,-81.60971
+Mount Airy/Surry County Airport (KMWK),KMWK.rss,KMWK.xml,NC,36.45675,-80.55483
+"New Bern, Craven County Regional Airport (KEWN)",KEWN.rss,KEWN.xml,NC,35.0675,-77.04722
+"North Wilkesboro, Wilkes County Airport (KUKF)",KUKF.rss,KUKF.xml,NC,36.21667,-81.08333
+"Pinehurst/Southern Pines, Moore County Airport (KSOP)",KSOP.rss,KSOP.xml,NC,35.23333,-79.4
+"Piney Island, Bt-11 Bombing Range (KNBT)",KNBT.rss,KNBT.xml,NC,35.02222,-76.4625
+Pitt-Greenville Airport (KPGV),KPGV.rss,KPGV.xml,NC,35.63742,-77.38506
+Pope Air Force Base (KPOB),KPOB.rss,KPOB.xml,NC,35.17531,-79.00771
+"Raleigh / Durham, Raleigh-Durham International Airport (KRDU)",KRDU.rss,KRDU.xml,NC,35.89223,-78.78185
+"Reidsville, Rockingham County NC Shiloh Airport (KSIF)",KSIF.rss,KSIF.xml,NC,36.43722,-79.85083
+Rockingham-Hamlet Airport (KRCZ),KRCZ.rss,KRCZ.xml,NC,34.89545,-79.75755
+"Rocky Mount, Rocky Mount-Wilson Regional Airport (KRWI)",KRWI.rss,KRWI.xml,NC,35.855,-77.89306
+Rowan County Airport (KRUQ),KRUQ.rss,KRUQ.xml,NC,35.64417,-80.52359
+"Roxboro, Person County Airport (KTDF)",KTDF.rss,KTDF.xml,NC,36.285,-78.98417
+"Rutherfordton, Rutherford County-Marchman Field Airport (KFQD)",KFQD.rss,KFQD.xml,NC,35.42833,-81.935
+Sampson County Airport (KCTZ),KCTZ.rss,KCTZ.xml,NC,34.97522,-78.36276
+"Sanford, Sanford-Lee County Regional Airport (KTTA)",KTTA.rss,KTTA.xml,NC,35.5825,-79.10139
+Seymour-Johnson Air Force Base (KGSB),KGSB.rss,KGSB.xml,NC,35.34457,-77.94583
+Shelby Municipal Airport (KEHO),KEHO.rss,KEHO.xml,NC,35.25563,-81.59858
+Siler City Municipal Airport (KSCR),KSCR.rss,KSCR.xml,NC,35.7043,-79.5043
+"Smithfield, Johnston County Airport (KJNX)",KJNX.rss,KJNX.xml,NC,35.54083,-78.39028
+Statesville Municipal Airport (KSVH),KSVH.rss,KSVH.xml,NC,35.76362,-80.9473
+Tarboro-Edgecombe Airport (KETC),KETC.rss,KETC.xml,NC,35.9373,-77.54648
+"Washington, Warren Field Airport (KOCW)",KOCW.rss,KOCW.xml,NC,35.57056,-77.04972
+Watauga County Hospital Heliport (KTNB),KTNB.rss,KTNB.xml,NC,36.19856,-81.65171
+"Whiteville, Columbus County Municipal Airport (KCPC)",KCPC.rss,KCPC.xml,NC,34.27278,-78.715
+Wilmington International Airport (KILM),KILM.rss,KILM.xml,NC,34.26681,-77.89987
+"Winston Salem, Smith Reynolds Airport (KINT)",KINT.rss,KINT.xml,NC,36.13333,-80.22472
+BEACH (K20U),K20U.rss,K20U.xml,ND,46.93,-103.98
+"Bismarck, Bismarck Municipal Airport (KBIS)",KBIS.rss,KBIS.xml,ND,46.7825,-100.75722
+Bowman Regional Airport (KBWW),KBWW.rss,KBWW.xml,ND,46.16551,-103.30074
+CANDO (K9D7),K9D7.rss,K9D7.xml,ND,48.48,-99.23
+CARRINGTON (K46D),K46D.rss,K46D.xml,ND,47.45,-99.15
+CAVALIER (K2C8),K2C8.rss,K2C8.xml,ND,48.78377,-97.62964
+Cooperstown (KS32),KS32.rss,KS32.xml,ND,47.4228,-98.1059
+CROSBY (KD50),KD50.rss,KD50.xml,ND,48.93,-103.3
+"Devils Lake, Devils Lake Municipal Airport (KDVL)",KDVL.rss,KDVL.xml,ND,48.11667,-98.91667
+"Dickinson, Dickinson Municipal Airport (KDIK)",KDIK.rss,KDIK.xml,ND,46.79722,-102.80194
+"Fargo, Hector International Airport (KFAR)",KFAR.rss,KFAR.xml,ND,46.92528,-96.81111
+Garrison (KN60),KN60.rss,KN60.xml,ND,47.64583,-101.43944
+Glen Ullin Regional Airport (KD57),KD57.rss,KD57.xml,ND,46.8128,-101.8602
+GRAFTON (KGAF),KGAF.rss,KGAF.xml,ND,48.4,-97.37
+Grand Forks Air Force Base (KRDR),KRDR.rss,KRDR.xml,ND,47.96667,-97.4
+"Grand Forks, Grand Forks International Airport (KGFK)",KGFK.rss,KGFK.xml,ND,47.94806,-97.1825
+Gwinner (KGWR),KGWR.rss,KGWR.xml,ND,46.2187,-97.6435
+Harvey Municipal Airport (K5H4),K5H4.rss,K5H4.xml,ND,47.7912,-99.9317
+HAZEN (KHZE),KHZE.rss,KHZE.xml,ND,47.28,-101.58
+"Hettinger, Hettinger Municipal Airport (KHEI)",KHEI.rss,KHEI.xml,ND,46.01056,-102.64972
+"Jamestown, Jamestown Municipal Airport (KJMS)",KJMS.rss,KJMS.xml,ND,46.92972,-98.67833
+Langdon (KD55),KD55.rss,KD55.xml,ND,48.7531,-98.3937
+LINTON (K7L2),K7L2.rss,K7L2.xml,ND,46.22,-100.25
+MANDAN (KY19),KY19.rss,KY19.xml,ND,46.77,-100.9
+Minot Air Force Base (KMIB),KMIB.rss,KMIB.xml,ND,48.41667,-101.35
+Minot International Airport (KMOT),KMOT.rss,KMOT.xml,ND,48.25203,-101.2689
+Oakes Municipal Airport (K2D5),K2D5.rss,K2D5.xml,ND,46.1731,-98.0799
+ROLLA (K06D),K06D.rss,K06D.xml,ND,48.88,-99.62
+RUGBY (KRUG),KRUG.rss,KRUG.xml,ND,48.38,-100.02
+Stanley Municipal Airport (K08D),K08D.rss,K08D.xml,ND,48.3008,-102.4064
+TIOGA (KD60),KD60.rss,KD60.xml,ND,48.38,-102.9
+Valley City (KBAC),KBAC.rss,KBAC.xml,ND,46.9412,-98.018
+Walhalla Municipal Airport (K96D),K96D.rss,K96D.xml,ND,48.94017,-97.90528
+WATFORD CITY (KS25),KS25.rss,KS25.xml,ND,47.8,-103.25
+Williston Basin International Airport (KXWA),KXWA.rss,KXWA.xml,ND,48.26086,-103.75114
+"Rota Island, N. Mariana Is, Rota International Airport (PGRO)",PGRO.rss,PGRO.xml,MP,14.18333,145.25
+"Saipan Island, Saipan International Airport (PGSN)",PGSN.rss,PGSN.xml,MP,15.11667,145.73333
+"Tinian Island, N. Mariana Is, West Tinian Airport (PGWT)",PGWT.rss,PGWT.xml,MP,14.98333,145.61667
+Akron Canton Regional Airport (KCAK),KCAK.rss,KCAK.xml,OH,40.91811,-81.44343
+"Akron, Akron Fulton International Airport (KAKR)",KAKR.rss,KAKR.xml,OH,41.0375,-81.46417
+Ashtabula - Northeast Ohio Regional Airport (KHZY),KHZY.rss,KHZY.xml,OH,41.77944,-80.69667
+Batavia Clermont County Airport (KI69),KI69.rss,KI69.xml,OH,39.0784,-84.2102
+Bellefontaine Regional Airport (KEDJ),KEDJ.rss,KEDJ.xml,OH,40.3723,-83.8192
+Butler County Regional Airport (KHAO),KHAO.rss,KHAO.xml,OH,39.36121,-84.52061
+Cambridge Municipal Airport (KCDI),KCDI.rss,KCDI.xml,OH,39.975,-81.5776
+Chillicothe Ross County Airport (KRZT),KRZT.rss,KRZT.xml,OH,39.4404,-83.0231
+Cincinnati W Airport (KI67),KI67.rss,KI67.xml,OH,39.2589,-84.7743
+"Cincinnati, Cincinnati Municipal Airport Lunken Field (KLUK)",KLUK.rss,KLUK.xml,OH,39.10583,-84.41583
+Cleveland / Cuyahoga (KCGF),KCGF.rss,KCGF.xml,OH,41.56667,-81.48333
+Cleveland Hopkins International Airport (KCLE),KCLE.rss,KCLE.xml,OH,41.40569,-81.85193
+"Cleveland, Burke Lakefront Airport (KBKL)",KBKL.rss,KBKL.xml,OH,41.52556,-81.66889
+"Columbus, Bolton Field Airport (KTZR)",KTZR.rss,KTZR.xml,OH,39.90083,-83.13722
+"Columbus, Ohio State University Airport (KOSU)",KOSU.rss,KOSU.xml,OH,40.07806,-83.07806
+Dayton / Wright-Patterson Air Force Base (KFFO),KFFO.rss,KFFO.xml,OH,39.83333,-84.05
+"Dayton, Cox Dayton International Airport (KDAY)",KDAY.rss,KDAY.xml,OH,39.90611,-84.21861
+"Dayton, Dayton-Wright Brothers Airport (KMGY)",KMGY.rss,KMGY.xml,OH,39.58889,-84.22472
+"Defiance, Defiance Memorial Airport (KDFI)",KDFI.rss,KDFI.xml,OH,41.33639,-84.42944
+Delaware Municipal Airport (KDLZ),KDLZ.rss,KDLZ.xml,OH,40.2797,-83.1148
+Fayette County Airport (KI23),KI23.rss,KI23.xml,OH,39.5704,-83.4205
+"Findlay, Findlay Airport (KFDY)",KFDY.rss,KFDY.xml,OH,41.01361,-83.66861
+Greater Portsmouth Regional Airport (KPMH),KPMH.rss,KPMH.xml,OH,38.84047,-82.84731
+Hook Field Municipal Airport (KMWO),KMWO.rss,KMWO.xml,OH,39.531,-84.3953
+James A Rhodes Airport (KI43),KI43.rss,KI43.xml,OH,38.98136,-82.57785
+John Glenn Columbus International Airport (KCMH),KCMH.rss,KCMH.xml,OH,39.9907,-82.87691
+Knox County Airfield (K4I3),K4I3.rss,K4I3.xml,OH,40.3289,-82.5261
+"Lancaster, Fairfield County Airport (KLHQ)",KLHQ.rss,KLHQ.xml,OH,39.75722,-82.66333
+Lewis A. Jackson Regional Airport (KI19),KI19.rss,KI19.xml,OH,39.69352,-83.98958
+"Lima, Lima Allen County Airport (KAOH)",KAOH.rss,KAOH.xml,OH,40.70806,-84.02139
+London Madison County Airport (KUYF),KUYF.rss,KUYF.xml,OH,39.9327,-83.462
+"Lorain / Elyria, Lorain County Regional Airport (KLPR)",KLPR.rss,KLPR.xml,OH,41.34611,-82.17944
+Mansfield - Mansfield Lahm Regional Airport (KMFD),KMFD.rss,KMFD.xml,OH,40.82028,-82.51778
+"Marion, Marion Municipal Airport (KMNN)",KMNN.rss,KMNN.xml,OH,40.61667,-83.06833
+Marysville Union County Airport (KMRT),KMRT.rss,KMRT.xml,OH,40.2247,-83.3516
+Miami University Airport (KOXD),KOXD.rss,KOXD.xml,OH,39.50225,-84.78436
+Neil Armstrong Airport (KAXV),KAXV.rss,KAXV.xml,OH,40.49356,-84.29808
+"New Philadelphia, Harry Clever Field (KPHD)",KPHD.rss,KPHD.xml,OH,40.47194,-81.42361
+"Newark, Newark Heath Airport (KVTA)",KVTA.rss,KVTA.xml,OH,40.02278,-82.4625
+OHIO U/ATHEN-ALBANY (KUNI),KUNI.rss,KUNI.xml,OH,39.22,-82.23
+Ottawa Putnam County Airport (KOWX),KOWX.rss,KOWX.xml,OH,41.0356,-83.982
+Port Clinton Carl R Keller Field Airport (KPCW),KPCW.rss,KPCW.xml,OH,41.5163,-82.8687
+Portage County Airport (KPOV),KPOV.rss,KPOV.xml,OH,41.21,-81.252
+Rickenbacker Air National Guard Base (KLCK),KLCK.rss,KLCK.xml,OH,39.81667,-82.93333
+"Springfield, Springfield-Beckley Municipal Airport (KSGH)",KSGH.rss,KSGH.xml,OH,39.84028,-83.84
+Toledo - Toledo Executive Airport (KTDZ),KTDZ.rss,KTDZ.xml,OH,41.56306,-83.47639
+Toledo - Toledo Express Airport (KTOL),KTOL.rss,KTOL.xml,OH,41.58704,-83.80539
+Urbana Grimes Field (KI74),KI74.rss,KI74.xml,OH,40.1326,-83.7534
+Van Wert County Airport (KVNW),KVNW.rss,KVNW.xml,OH,40.86383,-84.60636
+Versailles Darke County Airport (KVES),KVES.rss,KVES.xml,OH,40.2044,-84.5319
+Warren County Airport (KI68),KI68.rss,KI68.xml,OH,39.46217,-84.25184
+Wauseon Fulton County Airport (KUSE),KUSE.rss,KUSE.xml,OH,41.6101,-84.1272
+Willoughby (KLNN),KLNN.rss,KLNN.xml,OH,41.68333,-81.38333
+"Wilmington, Airborne Airpark Airport (KILN)",KILN.rss,KILN.xml,OH,39.42833,-83.77917
+"Wooster, Wayne County Airport (KBJJ)",KBJJ.rss,KBJJ.xml,OH,40.87306,-81.88667
+"Youngstown, Youngstown-Warren Regional Airport (KYNG)",KYNG.rss,KYNG.xml,OH,41.25444,-80.67389
+"Zanesville, Zanesville Municipal Airport (KZZV)",KZZV.rss,KZZV.xml,OH,39.94444,-81.89222
+"Ada, Ada Municipal Airport (KADH)",KADH.rss,KADH.xml,OK,34.80444,-96.67139
+Altus Air Force Base (KLTS),KLTS.rss,KLTS.xml,OK,34.65,-99.26667
+"Altus, Altus/Quartz Mountain Regional Airport (KAXS)",KAXS.rss,KAXS.xml,OK,34.69861,-99.33806
+"Alva, Alva Regional Airport (KAVK)",KAVK.rss,KAVK.xml,OK,36.77306,-98.67
+"Ardmore, Ardmore Downtown Executive Airport (K1F0)",K1F0.rss,K1F0.xml,OK,34.14694,-97.1225
+"Ardmore, Ardmore Municipal Airport (KADM)",KADM.rss,KADM.xml,OK,34.30306,-97.01944
+"Bartlesville, Bartlesville Municipal Airport (KBVO)",KBVO.rss,KBVO.xml,OK,36.76833,-96.02611
+Blackwell-Tonkawa Municipal Airport (KBKN),KBKN.rss,KBKN.xml,OK,36.74511,-97.34958
+"Chandler, Chandler Municipal Airport (KCQB)",KCQB.rss,KCQB.xml,OK,35.72389,-96.82028
+"Chickasha, Chickasha Municipal Airport (KCHK)",KCHK.rss,KCHK.xml,OK,35.09611,-97.96611
+"Claremore, Claremore Regional Airport (KGCM)",KGCM.rss,KGCM.xml,OK,36.29444,-95.47972
+Clarence E Page Municipal Airport (KRCE),KRCE.rss,KRCE.xml,OK,35.48808,-97.82356
+"Clinton, Clinton Regional Airport (KCLK)",KCLK.rss,KCLK.xml,OK,35.53806,-98.92139
+"Clinton, Clinton-Sherman Airport (KCSM)",KCSM.rss,KCSM.xml,OK,35.35667,-99.20361
+"Cushing, Cushing Municipal Airport (KCUH)",KCUH.rss,KCUH.xml,OK,35.94972,-96.77278
+"Duncan, Halliburton Field Airport (KDUC)",KDUC.rss,KDUC.xml,OK,34.47083,-97.96
+"Durant, Eaker Field Airport (KDUA)",KDUA.rss,KDUA.xml,OK,33.94222,-96.39444
+"El Reno, El Reno Regional Airport (KRQO)",KRQO.rss,KRQO.xml,OK,35.4725,-98.00556
+Elk City Regional Business Airport (KELK),KELK.rss,KELK.xml,OK,35.4308,-99.3943
+"Enid, Enid Woodring Regional Airport (KWDG)",KWDG.rss,KWDG.xml,OK,36.37917,-97.79111
+Fort Sill (KFSI),KFSI.rss,KFSI.xml,OK,34.6,-98.4
+"Frederick, Frederick Municipal Airport (KFDR)",KFDR.rss,KFDR.xml,OK,34.34444,-98.98306
+"Gage, Gage Airport (KGAG)",KGAG.rss,KGAG.xml,OK,36.29667,-99.76889
+"Grove, Grove Municipal Airport (KGMJ)",KGMJ.rss,KGMJ.xml,OK,36.60528,-94.73861
+"Guthrie, Guthrie Municipal Airport (KGOK)",KGOK.rss,KGOK.xml,OK,35.85194,-97.4075
+Guymon / Guymon Municipal Airport (KGUY),KGUY.rss,KGUY.xml,OK,36.68167,-101.50528
+"Hobart, Hobart Municipal Airport (KHBR)",KHBR.rss,KHBR.xml,OK,34.98944,-99.0525
+"Idabel, Mc Curtain County Regional Airport (K4O4)",K4O4.rss,K4O4.xml,OK,33.90917,-94.85917
+"Lawton, Lawton Municipal Airport (KLAW)",KLAW.rss,KLAW.xml,OK,34.5575,-98.41667
+"McAlester, McAlester Regional Airport (KMLC)",KMLC.rss,KMLC.xml,OK,34.88222,-95.78306
+Miami Regional Airport (KMIO),KMIO.rss,KMIO.xml,OK,36.90922,-94.8875
+Mid-America Industrial Airport (KH71),KH71.rss,KH71.xml,OK,36.22538,-95.33005
+Muskogee-Davis Regional Airport (KMKO),KMKO.rss,KMKO.xml,OK,35.65694,-95.35972
+Norman / Max Westheimer (KOUN),KOUN.rss,KOUN.xml,OK,35.2435,-97.4708
+"Oklahoma City, Wiley Post Airport (KPWA)",KPWA.rss,KPWA.xml,OK,35.54111,-97.64667
+"Oklahoma City, Will Rogers World Airport (KOKC)",KOKC.rss,KOKC.xml,OK,35.38861,-97.60028
+"Okmulgee, Okmulgee Municipal Airport (KOKM)",KOKM.rss,KOKM.xml,OK,35.66806,-95.94861
+"Pauls Valley, Pauls Valley Municipal Airport (KPVJ)",KPVJ.rss,KPVJ.xml,OK,34.71111,-97.22333
+"Ponca City, Ponca City Municipal Airport (KPNC)",KPNC.rss,KPNC.xml,OK,36.73056,-97.09972
+"Poteau, Robert S Kerr Airport (KRKR)",KRKR.rss,KRKR.xml,OK,35.02167,-94.62139
+"Sallisaw, Sallisaw Municipal Airport (KJSV)",KJSV.rss,KJSV.xml,OK,35.43806,-94.80278
+"Seminole, Seminole Municipal Airport (KSRE)",KSRE.rss,KSRE.xml,OK,35.27444,-96.675
+"Shawnee, Shawnee Municipal Airport (KSNL)",KSNL.rss,KSNL.xml,OK,35.35722,-96.94278
+Stigler (KGZL),KGZL.rss,KGZL.xml,OK,35.2891,-95.0939
+"Stillwater, Stillwater Regional Airport (KSWO)",KSWO.rss,KSWO.xml,OK,36.16222,-97.08917
+Sundance Airport (KHSD),KHSD.rss,KHSD.xml,OK,35.60183,-97.70616
+"Tahlequah, Tahlequah Municipal Airport (KTQH)",KTQH.rss,KTQH.xml,OK,35.92889,-95.00444
+Tinker Air Force Base (KTIK),KTIK.rss,KTIK.xml,OK,35.41667,-97.38333
+Tulsa - Jones Jr. Airport (KRVS),KRVS.rss,KRVS.xml,OK,36.04255,-95.99005
+"Tulsa, Tulsa International Airport (KTUL)",KTUL.rss,KTUL.xml,OK,36.1975,-95.88639
+Vance Air Force Base / Enid (KEND),KEND.rss,KEND.xml,OK,36.33333,-97.91667
+"Watonga, Watonga Airport (KJWG)",KJWG.rss,KJWG.xml,OK,35.86472,-98.42083
+"Weatherford, Thomas P Stafford Airport (KOJA)",KOJA.rss,KOJA.xml,OK,35.54472,-98.66833
+William R Pogue Municipal Airport (KOWP),KOWP.rss,KOWP.xml,OK,36.1753,-96.1518
+"Woodward, West Woodward Airport (KWWR)",KWWR.rss,KWWR.xml,OK,36.43667,-99.52111
+"Astoria, Astoria Regional Airport (KAST)",KAST.rss,KAST.xml,OR,46.15694,-123.8825
+Aurora State Airport (KUAO),KUAO.rss,KUAO.xml,OR,45.24658,-122.77095
+Baker Municipal Airport (KBKE),KBKE.rss,KBKE.xml,OR,44.84302,-117.80987
+Bend Airport AWOS (KBDN),KBDN.rss,KBDN.xml,OR,44.0948,-121.2006
+"Brookings, Brookings Airport (KBOK)",KBOK.rss,KBOK.xml,OR,42.07444,-124.29
+Burns Municipal Airport (KBNO),KBNO.rss,KBNO.xml,OR,43.59488,-118.95791
+"Corvallis, Corvallis Municipal Airport (KCVO)",KCVO.rss,KCVO.xml,OR,44.5,-123.28333
+Eastern Oregon Regional Airport at Pendleton (KPDT),KPDT.rss,KPDT.xml,OR,45.69757,-118.83444
+"Eugene, Mahlon Sweet Field (KEUG)",KEUG.rss,KEUG.xml,OR,44.13333,-123.21444
+Florence Municipal Airport (K6S2),K6S2.rss,K6S2.xml,OR,43.9828,-124.1114
+Gold Beach Municipal Airport (K4S1),K4S1.rss,K4S1.xml,OR,42.41536,-124.42492
+Grant County Regional Airport (KGCD),KGCD.rss,KGCD.xml,OR,44.40287,-118.96715
+Grants Pass Airport (K3S8),K3S8.rss,K3S8.xml,OR,42.51011,-123.38798
+"Hermiston, Hermiston Municipal Airport (KHRI)",KHRI.rss,KHRI.xml,OR,45.82583,-119.26111
+Hobby Field Airport (K77S),K77S.rss,K77S.xml,OR,43.93075,-123.00667
+Joseph State Airport AWOS (KJSY),KJSY.rss,KJSY.xml,OR,45.355889,-117.254083
+Ken Jernstedt Airfield (K4S2),K4S2.rss,K4S2.xml,OR,45.67457,-121.53493
+Klamath Falls International Airport (KLMT),KLMT.rss,KLMT.xml,OR,42.14703,-121.72548
+La Grande/Union County Airport (KLGD),KLGD.rss,KLGD.xml,OR,45.29066,-118.00884
+Lake County Airport (KLKV),KLKV.rss,KLKV.xml,OR,42.15664,-120.39721
+Madras Municipal Airport (KS33),KS33.rss,KS33.xml,OR,44.6653,-121.1564
+"McMinnville, McMinnville Municipal Airport (KMMV)",KMMV.rss,KMMV.xml,OR,45.19611,-123.13222
+Meacham (KMEH),KMEH.rss,KMEH.xml,OR,45.51176,-118.42466
+"Newport, Newport Municipal Airport (KONP)",KONP.rss,KONP.xml,OR,44.58028,-124.05806
+Ontario Municipal Airport (KONO),KONO.rss,KONO.xml,OR,44.01424,-117.00808
+"Portland, Portland International Airport (KPDX)",KPDX.rss,KPDX.xml,OR,45.59578,-122.60917
+"Portland, Portland-Troutdale Airport (KTTD)",KTTD.rss,KTTD.xml,OR,45.55111,-122.40889
+Portland-Hillsboro Airport (KHIO),KHIO.rss,KHIO.xml,OR,45.54765,-122.95568
+Prineville Airport (KS39),KS39.rss,KS39.xml,OR,44.287,-120.9038
+Redmond Roberts Field (KRDM),KRDM.rss,KRDM.xml,OR,44.25588,-121.14059
+Rogue Valley International Airport (KMFR),KMFR.rss,KMFR.xml,OR,42.37503,-122.87696
+Rome (KREO),KREO.rss,KREO.xml,OR,42.59018,-117.86458
+Roseburg Regional Airport (KRBG),KRBG.rss,KRBG.xml,OR,43.23368,-123.3577
+Salem - McNary Field (KSLE),KSLE.rss,KSLE.xml,OR,44.90493,-123.00096
+Scappoose Industrial Airpark (KSPB),KSPB.rss,KSPB.xml,OR,45.7691,-122.86365
+Sexton Summit (KSXT),KSXT.rss,KSXT.xml,OR,42.6,-123.3656
+Southwest Oregon Regional Airport (KOTH),KOTH.rss,KOTH.xml,OR,43.41948,-124.2437
+Sunriver (KS21),KS21.rss,KS21.xml,OR,43.88333,-121.45
+"Tillamook, Tillamook Airport (KTMK)",KTMK.rss,KTMK.xml,OR,45.41806,-123.81444
+Allentown Queen City Municipal Airport (KXLL),KXLL.rss,KXLL.xml,PA,40.57,-75.488
+"Allentown, Lehigh Valley International Airport (KABE)",KABE.rss,KABE.xml,PA,40.64985,-75.44771
+Altoona - Blair County Airport (KAOO),KAOO.rss,KAOO.xml,PA,40.29994,-78.3168
+Beaver County Airport (KBVI),KBVI.rss,KBVI.xml,PA,40.77351,-80.38248
+"Bedford, Bedford County Airport (KHMZ)",KHMZ.rss,KHMZ.xml,PA,40.08528,-78.51222
+Bradford Regional Airport (KBFD),KBFD.rss,KBFD.xml,PA,41.79838,-78.63539
+Brandywine Regional Airport (KOQN),KOQN.rss,KOQN.xml,PA,39.99011,-75.5819
+"Butler, Butler County Airport/K W Scholter Field (KBTP)",KBTP.rss,KBTP.xml,PA,40.78333,-79.95
+Chester County Airport (KMQS),KMQS.rss,KMQS.xml,PA,39.98333,-75.86667
+"Clearfield, Clearfield-Lawrence Airport (KFIG)",KFIG.rss,KFIG.xml,PA,41.04667,-78.41167
+Du Bois - Jefferson County Airport (KDUJ),KDUJ.rss,KDUJ.xml,PA,41.17948,-78.89326
+"Erie, Erie International Airport (KERI)",KERI.rss,KERI.xml,PA,42.08,-80.1825
+"Franklin, Venango Regional Airport (KFKL)",KFKL.rss,KFKL.xml,PA,41.38333,-79.86667
+"Harrisburg, Capital City Airport (KCXY)",KCXY.rss,KCXY.xml,PA,40.21843,-76.8552
+"Harrisburg, Harrisburg International Airport (KMDT)",KMDT.rss,KMDT.xml,PA,40.19361,-76.76333
+Indiana / Stewart Field (KIDI),KIDI.rss,KIDI.xml,PA,40.63333,-79.1
+Johnstown - Cambria County Airport (KJST),KJST.rss,KJST.xml,PA,40.3149,-78.83074
+"Lancaster, Lancaster Airport (KLNS)",KLNS.rss,KLNS.xml,PA,40.12058,-76.29446
+Latrobe / Westmoreland (KLBE),KLBE.rss,KLBE.xml,PA,40.2731,-79.41033
+Lehighton Jake Arner Memorial Airport (K22N),K22N.rss,K22N.xml,PA,40.8095,-75.7615
+"Mount Pocono, Pocono Mountains Municipal Airport (KMPO)",KMPO.rss,KMPO.xml,PA,41.13821,-75.37971
+Muir Army Air Field / Indiantown (KMUI),KMUI.rss,KMUI.xml,PA,40.43808,-76.56434
+"New Castle, New Castle Municipal Airport (KUCP)",KUCP.rss,KUCP.xml,PA,41.02528,-80.41333
+Pennridge Airport (KCKZ),KCKZ.rss,KCKZ.xml,PA,40.38919,-75.29047
+Philadelphia - Wings Field Airport (KLOM),KLOM.rss,KLOM.xml,PA,40.13758,-75.2684
+"Philadelphia, Northeast Philadelphia Airport (KPNE)",KPNE.rss,KPNE.xml,PA,40.07889,-75.01361
+"Philadelphia, Philadelphia International Airport (KPHL)",KPHL.rss,KPHL.xml,PA,39.87327,-75.22678
+Pittsburgh - Allegheny County Airport (KAGC),KAGC.rss,KAGC.xml,PA,40.35521,-79.92144
+"Pittsburgh, Pittsburgh International Airport (KPIT)",KPIT.rss,KPIT.xml,PA,40.50389,-80.26639
+Port Meadville Airport (KGKJ),KGKJ.rss,KGKJ.xml,PA,41.62584,-80.21231
+"Pottstown, Pottstown Limerick Airport (KPTW)",KPTW.rss,KPTW.xml,PA,40.23802,-75.55487
+Quakertown Airport (KUKT),KUKT.rss,KUKT.xml,PA,40.4368,-75.38016
+"Reading, Reading Regional Airport (KRDG)",KRDG.rss,KRDG.xml,PA,40.37333,-75.95944
+Reedsville / Mifflin (KRVL),KRVL.rss,KRVL.xml,PA,40.68333,-77.63333
+Selinsgrove Penn Valley Airport (KSEG),KSEG.rss,KSEG.xml,PA,40.81929,-76.86582
+Somerset County Airport (K2G9),K2G9.rss,K2G9.xml,PA,40.0389,-79.015
+St Marys Municipal Airport (KOYM),KOYM.rss,KOYM.xml,PA,41.41248,-78.50263
+State College - University Park Airport (KUNV),KUNV.rss,KUNV.xml,PA,40.85344,-77.8401
+Washington - Washington County Airport (KAFJ),KAFJ.rss,KAFJ.xml,PA,40.13333,-80.28333
+Wellsboro Johnston Airport (KN38),KN38.rss,KN38.xml,PA,41.72789,-77.3965
+"Wilkes-Barre - Scranton, Wilkes-Barre / Scranton International Airport (KAVP)",KAVP.rss,KAVP.xml,PA,41.33889,-75.72667
+Williamsport - Lycoming County Airport (KIPT),KIPT.rss,KIPT.xml,PA,41.24298,-76.92173
+"York, York Airport (KTHV)",KTHV.rss,KTHV.xml,PA,39.91944,-76.87694
+Zelienople Municipal Airport (KPJC),KPJC.rss,KPJC.xml,PA,40.80197,-80.16086
+"Aquadilla, Rafael Hernandez Airport (TJBQ)",TJBQ.rss,TJBQ.xml,PR,18.5,-67.13333
+"Roosevelt Roads, Roosevelt Roads Naval Station, Ofstie Field (TJNR)",TJNR.rss,TJNR.xml,PR,18.25528,-65.64333
+San Juan Fernando Luis Ribas Dominicci (TJIG),TJIG.rss,TJIG.xml,PR,18.4568,-66.0981
+"San Juan, Luis Munoz Marin International Airport (TJSJ)",TJSJ.rss,TJSJ.xml,PR,18.45,-66
+Block Island State Airport (KBID),KBID.rss,KBID.xml,RI,41.16947,-71.57873
+N. Kingston / Quonset (KOQU),KOQU.rss,KOQU.xml,RI,41.6,-71.41667
+"Newport, Newport State Airport (KUUU)",KUUU.rss,KUUU.xml,RI,41.53,-71.28361
+"Pawtucket, North Central State Airport (KSFZ)",KSFZ.rss,KSFZ.xml,RI,41.91667,-71.5
+"Providence, Theodore Francis Green State Airport (KPVD)",KPVD.rss,KPVD.xml,RI,41.72249,-71.43247
+"Westerly, Westerly State Airport (KWST)",KWST.rss,KWST.xml,RI,41.34972,-71.79889
+Aiken Municipal Airport (KAIK),KAIK.rss,KAIK.xml,SC,33.649,-81.685
+Allendale County Airport (KAQX),KAQX.rss,KAQX.xml,SC,32.9951,-81.2703
+"Anderson, Anderson County Airport (KAND)",KAND.rss,KAND.xml,SC,34.49778,-82.70972
+Barnwell Regional Airport (KBNL),KBNL.rss,KBNL.xml,SC,33.258,-81.388
+Beaufort County Airport (KARW),KARW.rss,KARW.xml,SC,32.412,-80.634
+"Beaufort, Marine Corps Air Station (KNBC)",KNBC.rss,KNBC.xml,SC,32.49361,-80.70306
+Camden Woodward Field (KCDN),KCDN.rss,KCDN.xml,SC,34.284,-80.565
+Charleston Executive Airport (KJZI),KJZI.rss,KJZI.xml,SC,32.701,-80.003
+"Charleston, Charleston Air Force Base (KCHS)",KCHS.rss,KCHS.xml,SC,32.89889,-80.04056
+Cheraw Municipal Lynch Bellinger Field (KCQW),KCQW.rss,KCQW.xml,SC,34.713,-79.957
+Chester Catawba Regional Airport (KDCM),KDCM.rss,KDCM.xml,SC,34.789,-81.196
+"Clemson, Clemson-Oconee County Airport (KCEU)",KCEU.rss,KCEU.xml,SC,34.67222,-82.88139
+Columbia - Jim Hamilton L.B. Owens Airport (KCUB),KCUB.rss,KCUB.xml,SC,33.97083,-80.99444
+"Columbia, Columbia Metropolitan Airport (KCAE)",KCAE.rss,KCAE.xml,SC,33.94194,-81.11806
+Conway Horry County Airport (KHYW),KHYW.rss,KHYW.xml,SC,33.829,-79.122
+"Darlington, Darlington County Jetport Airport (KUDG)",KUDG.rss,KUDG.xml,SC,34.44917,-79.89028
+Florence - Florence Regional Airport (KFLO),KFLO.rss,KFLO.xml,SC,34.18778,-79.73083
+Georgetown County Airport        (KGGE),KGGE.rss,KGGE.xml,SC,33.3117,-79.3196
+Greenville Downtown Airport (KGMU),KGMU.rss,KGMU.xml,SC,34.84873,-82.35004
+Greenville-Donaldson Center Airport (KGYH),KGYH.rss,KGYH.xml,SC,34.7583,-82.3764
+"Greenwood, Greenwood County Airport (KGRD)",KGRD.rss,KGRD.xml,SC,34.24722,-82.15472
+"Greer, Greenville-Spartanburg Airport (KGSP)",KGSP.rss,KGSP.xml,SC,34.88389,-82.22083
+Hartsville Regional Airport (KHVS),KHVS.rss,KHVS.xml,SC,34.403,-80.119
+"Hilton Head Island, Hilton Head Airport (KHXD)",KHXD.rss,KHXD.xml,SC,32.21667,-80.7
+Kingstree Williamsburg Regional Airport (KCKI),KCKI.rss,KCKI.xml,SC,33.717,-79.857
+Lancaster County-mc Whirter Field (KLKR),KLKR.rss,KLKR.xml,SC,34.723,-80.855
+Laurens County Airport (KLUX),KLUX.rss,KLUX.xml,SC,34.507,-81.947
+Manning / Cooper Regional (KMNI),KMNI.rss,KMNI.xml,SC,33.58333,-80.21667
+Marion County Airport (KMAO),KMAO.rss,KMAO.xml,SC,34.181,-79.335
+Marlboro County Jetport (KBBP),KBBP.rss,KBBP.xml,SC,34.622,-79.734
+McEntire Air National Guard Weather Facility Base (KMMT),KMMT.rss,KMMT.xml,SC,33.91667,-80.8
+Moncks Corner Berkeley County (KMKS),KMKS.rss,KMKS.xml,SC,33.1855,-80.0362
+Mount Pleasant Regional-Faison Field (KLRO),KLRO.rss,KLRO.xml,SC,32.898,-79.783
+Myrtle Beach International Airport (KMYR),KMYR.rss,KMYR.xml,SC,33.67975,-78.92833
+Newberry County Airport (KEOE),KEOE.rss,KEOE.xml,SC,34.309,-81.64
+North Myrtle Beach Grand Strand Airport (KCRE),KCRE.rss,KCRE.xml,SC,33.81619,-78.72043
+"Orangeburg, Orangeburg Municipal Airport (KOGB)",KOGB.rss,KOGB.xml,SC,33.46389,-80.85361
+Pickens County Airport (KLQK),KLQK.rss,KLQK.xml,SC,34.80997,-82.70289
+"Rock Hill, Rock Hill - York County Airport (KUZA)",KUZA.rss,KUZA.xml,SC,34.98389,-81.05583
+Shaw Air Force Base (KSSC),KSSC.rss,KSSC.xml,SC,33.96667,-80.48333
+Spartanburg Memorial (KSPA),KSPA.rss,KSPA.xml,SC,34.91667,-81.95
+Summerville Airport (KDYB),KDYB.rss,KDYB.xml,SC,33.063,-80.279
+Sumter Airport (KSMS),KSMS.rss,KSMS.xml,SC,33.995,-80.361
+Union County Airport - Troy Shelton Field (K35A),K35A.rss,K35A.xml,SC,34.68695,-81.64117
+Walterboro Lowcountry Regional Airport (KRBW),KRBW.rss,KRBW.xml,SC,32.921,-80.641
+Winnsboro/Fairfield County Airport (KFDW),KFDW.rss,KFDW.xml,SC,34.315,-81.109
+"Aberdeen, Aberdeen Regional Airport (KABR)",KABR.rss,KABR.xml,SD,45.44333,-98.41306
+"Brookings, Brookings Municipal Airport (KBKX)",KBKX.rss,KBKX.xml,SD,44.3,-96.81667
+Buffalo (K2WX),K2WX.rss,K2WX.xml,SD,45.60444,-103.54639
+"Chamberlain, Chamberlain Municipal Airport (K9V9)",K9V9.rss,K9V9.xml,SD,43.76667,-99.31833
+"Custer, Custer County Airport (KCUT)",KCUT.rss,KCUT.xml,SD,43.73306,-103.6175
+Ellsworth Air Force Base (KRCA),KRCA.rss,KRCA.xml,SD,44.15,-103.1
+Faith (KD07),KD07.rss,KD07.xml,SD,45.03194,-102.01917
+"Huron, Huron Regional Airport (KHON)",KHON.rss,KHON.xml,SD,44.38806,-98.22833
+Madison Municipal Airport (KMDS),KMDS.rss,KMDS.xml,SD,44.0164147,-97.0855992
+"Mitchell, Mitchell Municipal Airport (KMHE)",KMHE.rss,KMHE.xml,SD,43.76667,-98.03333
+"Mobridge, Mobridge Municipal Airport (KMBG)",KMBG.rss,KMBG.xml,SD,45.55,-100.40861
+"Philip, Philip Airport (KPHP)",KPHP.rss,KPHP.xml,SD,44.05111,-101.60111
+"Pierre, Pierre Regional Airport (KPIR)",KPIR.rss,KPIR.xml,SD,44.38278,-100.28583
+"Pine Ridge, Pine Ridge Airport (KIEN)",KIEN.rss,KIEN.xml,SD,43.02556,-102.52306
+"Rapid City, Rapid City Regional Airport (KRAP)",KRAP.rss,KRAP.xml,SD,44.04556,-103.05389
+"Sioux Falls, Foss Field (KFSD)",KFSD.rss,KFSD.xml,SD,43.57694,-96.75361
+"Sisseton, Sisseton Municipal Airport (K8D3)",K8D3.rss,K8D3.xml,SD,45.66889,-96.99139
+Spearfish / Clyde Ice (KSPF),KSPF.rss,KSPF.xml,SD,44.48333,-103.78333
+"Watertown, Watertown Municipal Airport (KATY)",KATY.rss,KATY.xml,SD,44.90472,-97.14944
+"Winner, Bob Wiley Field Airport (KICR)",KICR.rss,KICR.xml,SD,43.39056,-99.8425
+"Yankton, Chan Gurney Municipal Airport (KYKN)",KYKN.rss,KYKN.xml,SD,42.91667,-97.38333
+Athens McMinn County Airport (KMMI),KMMI.rss,KMMI.xml,TN,35.3973,-84.5626
+BOLIVAR/WILLIAM L WHITEHURST (KM08),KM08.rss,KM08.xml,TN,35.21,-89.04
+"Bristol / Johnson / Kingsport, Tri-City Regional Airport (KTRI)",KTRI.rss,KTRI.xml,TN,36.47972,-82.39889
+"Chattanooga, Lovell Field (KCHA)",KCHA.rss,KCHA.xml,TN,35.03333,-85.2
+Clarksville Outlaw Field (KCKV),KCKV.rss,KCKV.xml,TN,36.61689,-87.41174
+Cleveland Regional Jetport (KRZR),KRZR.rss,KRZR.xml,TN,35.2115,-84.7998
+Columbia / Maury County (KMRC),KMRC.rss,KMRC.xml,TN,35.55,-87.18333
+COVINGTON MUNI (KM04),KM04.rss,KM04.xml,TN,35.58,-89.59
+"Crossville, Crossville Memorial-Whitson Field Airport (KCSV)",KCSV.rss,KCSV.xml,TN,35.95139,-85.085
+Dayton (K2A0),K2A0.rss,K2A0.xml,TN,35.4817,-84.9322
+Dickson Municipal Airport (KM02),KM02.rss,KM02.xml,TN,36.1279,-87.4298
+"Dyersburg, Dyersburg Municipal Airport (KDYR)",KDYR.rss,KDYR.xml,TN,36,-89.4
+Elizabethton Municipal Airport (K0A9),K0A9.rss,K0A9.xml,TN,36.371,-82.173
+Ellington Airport (KLUG),KLUG.rss,KLUG.xml,TN,35.50697,-86.80389
+Fayetteville Municipal Airport (KFYM),KFYM.rss,KFYM.xml,TN,35.0597,-86.564
+Greeneville-Greene County Municipal Airport (KGCY),KGCY.rss,KGCY.xml,TN,36.19601,-82.81099
+Huntingdon Carroll County Airport (KHZD),KHZD.rss,KHZD.xml,TN,36.08896,-88.46538
+Jacksboro Campbell County Airport (KJAU),KJAU.rss,KJAU.xml,TN,36.3341,-84.163
+"Jackson, McKellar-Sipes Regional Airport (KMKL)",KMKL.rss,KMKL.xml,TN,35.59306,-88.91667
+John C Tune Airport (KJWN),KJWN.rss,KJWN.xml,TN,36.18521,-86.88331
+Knoxville Downtown Airport (KDKX),KDKX.rss,KDKX.xml,TN,35.96581,-83.87169
+"Knoxville, McGhee Tyson Airport (KTYS)",KTYS.rss,KTYS.xml,TN,35.81806,-83.98583
+Lawrenceburg-Lawrence County Airport (K2M2),K2M2.rss,K2M2.xml,TN,35.23431,-87.25794
+Lebanon Municipal Airport (KM54),KM54.rss,KM54.xml,TN,36.1904,-86.3157
+Lexington-Parsons Beech River Regional Airport (KPVE),KPVE.rss,KPVE.xml,TN,35.6564,-88.1954
+Livingston Municipal Airport (K8A3),K8A3.rss,K8A3.xml,TN,36.4135,-85.31044
+McMinnville Warren County Memorial Airport (KRNC),KRNC.rss,KRNC.xml,TN,35.6991,-85.8402
+Memphis International Airport (KMEM),KMEM.rss,KMEM.xml,TN,35.05644,-89.98634
+"Millington, Millington Municipal Airport (KNQA)",KNQA.rss,KNQA.xml,TN,35.35667,-89.87028
+Monroe County Airport (KMNV),KMNV.rss,KMNV.xml,TN,35.54522,-84.38039
+Murfreesboro Municipal Airport (KMBT),KMBT.rss,KMBT.xml,TN,35.87866,-86.37749
+"Nashville, Nashville International Airport (KBNA)",KBNA.rss,KBNA.xml,TN,36.11889,-86.68917
+Paris - Henry County Airport (KPHT),KPHT.rss,KPHT.xml,TN,36.34,-88.38
+Portland Municipal Airport (K1M5),K1M5.rss,K1M5.xml,TN,36.5929,-86.4769
+Pulaski Abernathy Field Airport (KGZS),KGZS.rss,KGZS.xml,TN,35.1537,-87.0568
+SAVANNAH/HARDIN CO (KSNH),KSNH.rss,KSNH.xml,TN,35.17,-88.22
+Scott Municipal Airport (KSCX),KSCX.rss,KSCX.xml,TN,36.45569,-84.58575
+SELMER/ROBERT SIBLEY (KSZY),KSZY.rss,KSZY.xml,TN,35.2,-88.5
+Sevierville Gatlinburg - Pigeon Forge Airport (KGKT),KGKT.rss,KGKT.xml,TN,35.85681,-83.53334
+Shelbyville Bomar Field & Shelbyville Municipal Airport (KSYI),KSYI.rss,KSYI.xml,TN,35.5594,-86.4425
+"Smyrna, Smyrna Airport (KMQY)",KMQY.rss,KMQY.xml,TN,36.00889,-86.52
+Somerville - Fayette County Airport (KFYE),KFYE.rss,KFYE.xml,TN,35.2061,-89.3929
+Sparta Upper Cumberland Regional Airport (KSRB),KSRB.rss,KSRB.xml,TN,36.0559,-85.5307
+Springfield Robertson County Airport (KM91),KM91.rss,KM91.xml,TN,36.5363,-86.9189
+Sumner County Regional Airport (KXNX),KXNX.rss,KXNX.xml,TN,36.37508,-86.40842
+Tullahoma Regional Airport/William Northern Field (KTHA),KTHA.rss,KTHA.xml,TN,35.38,-86.2467
+Union City - Everett-Stewart Regional Airport (KUCY),KUCY.rss,KUCY.xml,TN,36.38,-88.98
+Winchester Municipal Airport (KBGF),KBGF.rss,KBGF.xml,TN,35.1775,-86.0662
+"Abilene, Abilene Regional Airport (KABI)",KABI.rss,KABI.xml,TX,32.41028,-99.68167
+"Abilene, Dyess Air Force Base (KDYS)",KDYS.rss,KDYS.xml,TX,32.42,-99.85694
+Alaminos Canyon 25/H-D (ExxonMobil) (KHHV),KHHV.rss,KHHV.xml,TX,26.939,-94.689
+"Alice, Alice International Airport (KALI)",KALI.rss,KALI.xml,TX,27.74111,-98.02694
+"Alpine, Alpine-Casparis Municipal Airport (KE38)",KE38.rss,KE38.xml,TX,30.38417,-103.68333
+"Amarillo, Amarillo International Airport (KAMA)",KAMA.rss,KAMA.xml,TX,35.22,-101.71722
+Andrews County Airport (KE11),KE11.rss,KE11.xml,TX,32.3311,-102.5295
+"Angleton / Lake Jackson, Brazoria County Airport (KLBX)",KLBX.rss,KLBX.xml,TX,29.11536,-95.46323
+Arlington Municipal Airport (KGKY),KGKY.rss,KGKY.xml,TX,32.65829,-97.09509
+Athens Municipal Airport (KF44),KF44.rss,KF44.xml,TX,32.1638,-95.8284
+"Austin City, Austin Camp Mabry (KATT)",KATT.rss,KATT.xml,TX,30.31667,-97.76667
+Austin Executive Airport (KEDC),KEDC.rss,KEDC.xml,TX,30.3925,-97.5621
+Austin-Bergstrom International Airport (KAUS),KAUS.rss,KAUS.xml,TX,30.18304,-97.67987
+"Bay City, Bay City Municipal Airport (KBYY)",KBYY.rss,KBYY.xml,TX,28.97306,-95.86333
+Beaumont Municipal Airport (KBMT),KBMT.rss,KBMT.xml,TX,30.0702,-94.2151
+Beaumont/Port Arthur Southeast Texas Regional Airport (KBPT),KBPT.rss,KBPT.xml,TX,29.9521,-94.0261
+Beeville Municipal Airport (KBEA),KBEA.rss,KBEA.xml,TX,28.362,-97.791
+"Big Spring, Big Spring McMahon-Wrinkle Airport (KBPG)",KBPG.rss,KBPG.xml,TX,32.2,-101.51667
+Biggs Army Air Field - Fort Bliss (KBIF),KBIF.rss,KBIF.xml,TX,31.86119,-106.36916
+"Borger, Hutchinson County Airport (KBGD)",KBGD.rss,KBGD.xml,TX,35.695,-101.395
+Bowie Municipal Airport (K0F2),K0F2.rss,K0F2.xml,TX,33.6017,-97.7756
+"Brady, Curtis Field Airport (KBBD)",KBBD.rss,KBBD.xml,TX,31.17917,-99.32389
+BRAZOS 451 OIL PLATFORM (KBQX),KBQX.rss,KBQX.xml,TX,28.5,-95.72
+"Brenham, Brenham Municipal Airport (K11R)",K11R.rss,K11R.xml,TX,30.21889,-96.37417
+"Bridgeport, Bridgeport Municipal Airport (KXBP)",KXBP.rss,KXBP.xml,TX,33.17528,-97.82833
+"Brownsville, Brownsville / South Padre Island International Airport (KBRO)",KBRO.rss,KBRO.xml,TX,25.91417,-97.42306
+Bryan Coulter Field (KCFD),KCFD.rss,KCFD.xml,TX,30.7157,-96.3314
+"Burnet, Burnet Municipal Craddock Field (KBMQ)",KBMQ.rss,KBMQ.xml,TX,30.74056,-98.23528
+"Caldwell, Caldwell Municipal Airport (KRWV)",KRWV.rss,KRWV.xml,TX,30.51528,-96.70389
+Cameron (Milam Co) Municipal Airpark (KT35),KT35.rss,KT35.xml,TX,30.879356,-96.971097
+"Canadian, Hemphill County Airport (KHHF)",KHHF.rss,KHHF.xml,TX,35.9,-100.4
+Carrizo Springs Dimmit County Airport (KCZT),KCZT.rss,KCZT.xml,TX,28.5222,-99.8236
+Castroville Municipal Airport (KCVB),KCVB.rss,KCVB.xml,TX,29.34192,-98.8509
+Center Municipal Airport (KF17),KF17.rss,KF17.xml,TX,31.8316,-94.1564
+"Childress, Childress Municipal Airport (KCDS)",KCDS.rss,KCDS.xml,TX,34.4275,-100.28333
+"Cleburne, Cleburne Municipal Airport (KCPT)",KCPT.rss,KCPT.xml,TX,32.35361,-97.43361
+Cleveland (K6R3),K6R3.rss,K6R3.xml,TX,30.3567,-95.0083
+COLEMAN (KCOM),KCOM.rss,KCOM.xml,TX,31.84,-99.4
+"College Station, Easterwood Field (KCLL)",KCLL.rss,KCLL.xml,TX,30.58222,-96.36167
+"Comanche, Comanche County-City Airport (KMKN)",KMKN.rss,KMKN.xml,TX,31.91667,-98.60028
+"Conroe, Montgomery County Airport (KCXO)",KCXO.rss,KCXO.xml,TX,30.35667,-95.41389
+"Corpus Christi, Corpus Christi International Airport (KCRP)",KCRP.rss,KCRP.xml,TX,27.77306,-97.51278
+"Corpus Christi, Corpus Christi Naval Air Station/Truax Field (KNGP)",KNGP.rss,KNGP.xml,TX,27.6925,-97.29111
+"Corsicana, Campbell Field-Corsicana Municipal Airport (KCRS)",KCRS.rss,KCRS.xml,TX,32.03111,-96.39889
+"Cotulla, Cotulla-La Salle County Airport (KCOT)",KCOT.rss,KCOT.xml,TX,28.45833,-99.22028
+"Crockett, Houston County Airport (KDKR)",KDKR.rss,KDKR.xml,TX,31.30694,-95.40361
+Culberson County Airport (KVHN),KVHN.rss,KVHN.xml,TX,31.05783,-104.78381
+"Dalhart, Dalhart Municipal Airport (KDHT)",KDHT.rss,KDHT.xml,TX,36.02333,-102.54722
+Dallas / Addison Airport (KADS),KADS.rss,KADS.xml,TX,32.96667,-96.83333
+Dallas Love Field (KDAL),KDAL.rss,KDAL.xml,TX,32.85416,-96.85506
+"Dallas, Redbird Airport (KRBD)",KRBD.rss,KRBD.xml,TX,32.67583,-96.86389
+Dallas/Fort Worth International Airport (KDFW),KDFW.rss,KDFW.xml,TX,32.89743,-97.02196
+"Decatur, Decatur Municipal Airport (KLUD)",KLUD.rss,KLUD.xml,TX,33.25444,-97.58056
+"Del Rio, Del Rio International Airport (KDRT)",KDRT.rss,KDRT.xml,TX,29.37472,-100.92361
+Denton Enterprise Airport (KDTO),KDTO.rss,KDTO.xml,TX,33.20505,-97.20061
+Dryden - Terrell County Airport (K6R6),K6R6.rss,K6R6.xml,TX,30.04806,-102.21306
+"Dumas, Moore County Airport (KDUX)",KDUX.rss,KDUX.xml,TX,35.85778,-102.01306
+E BREAKS OIL PLATFORM (KEMK),KEMK.rss,KEMK.xml,TX,27.82,-94.32
+Eagle Pass - Maverick County Memorial International Airport (K5T9),K5T9.rss,K5T9.xml,TX,28.8571,-100.5135
+East Breaks 643/Boomvang Spar (KVAF),KVAF.rss,KVAF.xml,TX,27.354,-94.625
+Eastland Municipal Airport (KETN),KETN.rss,KETN.xml,TX,32.41489,-98.80969
+"Edinburg, Edinburg International Airport (KEBG)",KEBG.rss,KEBG.xml,TX,26.44194,-98.12944
+"El Paso, El Paso International Airport (KELP)",KELP.rss,KELP.xml,TX,31.81111,-106.37583
+"Falfurrias, Brooks County Airport (KBKS)",KBKS.rss,KBKS.xml,TX,27.20667,-98.12111
+"Fort Hood, Hood AAF Ft Hood (KHLR)",KHLR.rss,KHLR.xml,TX,31.13333,-97.7
+"Fort Hood, Robert Gray AAF Ft Hood (KGRK)",KGRK.rss,KGRK.xml,TX,31.06667,-97.81667
+"Fort Stockton, Fort Stockton-Pecos County Airport (KFST)",KFST.rss,KFST.xml,TX,30.91194,-102.91667
+Fort Worth Spinks Airport (KFWS),KFWS.rss,KFWS.xml,TX,32.56537,-97.30837
+"Fort Worth, Fort Worth Alliance Airport (KAFW)",KAFW.rss,KAFW.xml,TX,32.97333,-97.31806
+"Fort Worth, Meacham International Airport (KFTW)",KFTW.rss,KFTW.xml,TX,32.82528,-97.36417
+"Fort Worth, Naval Air Station (KNFW)",KNFW.rss,KNFW.xml,TX,32.76583,-97.43333
+"Fredericksburg, Gillespie County Airport (KT82)",KT82.rss,KT82.xml,TX,30.24361,-98.90944
+"Gainesville, Gainesville Municipal Airport (KGLE)",KGLE.rss,KGLE.xml,TX,33.65139,-97.19694
+"Galveston, Scholes Field (KGLS)",KGLS.rss,KGLS.xml,TX,29.27028,-94.86417
+"Gatesville, City-County Airport (KGOP)",KGOP.rss,KGOP.xml,TX,31.42111,-97.79694
+"Georgetown, Georgetown Municipal Airport (KGTU)",KGTU.rss,KGTU.xml,TX,30.68333,-97.68333
+"Giddings, Giddings-Lee County Airport (KGYB)",KGYB.rss,KGYB.xml,TX,30.16917,-96.98
+"Gilmer, Fox Stephens Field - Gilmer Municipal Airport (KJXI)",KJXI.rss,KJXI.xml,TX,32.69889,-94.94861
+Gonzales Roger M. Dreyer Memorial (KT20),KT20.rss,KT20.xml,TX,29.528,-97.4614
+"Granbury, Granbury Municipal Airport (KGDJ)",KGDJ.rss,KGDJ.xml,TX,32.44417,-97.81667
+"Grand Prairie, Grand Prairie Municipal Airport (KGPM)",KGPM.rss,KGPM.xml,TX,32.69861,-97.04667
+Greenville / Majors (KGVT),KGVT.rss,KGVT.xml,TX,33.06667,-96.06667
+Gregory M Simmons Memorial Airport (KGZN),KGZN.rss,KGZN.xml,TX,32.3658,-99.0237
+Hamilton Municipal Airport (KMNZ),KMNZ.rss,KMNZ.xml,TX,31.6659,-98.1486
+"Harlingen, Rio Grande Valley International Airport (KHRL)",KHRL.rss,KHRL.xml,TX,26.22972,-97.65528
+"Hearne, Hearne Municipal Airport (KLHB)",KLHB.rss,KLHB.xml,TX,30.87167,-96.62222
+"Hebbronville, Jim Hogg County Airport (KHBV)",KHBV.rss,KHBV.xml,TX,27.33333,-98.73333
+Hereford Municipal Airport (KHRX),KHRX.rss,KHRX.xml,TX,34.8578,-102.3264
+"Hillsboro, Hillsboro Municipal Airport (KINJ)",KINJ.rss,KINJ.xml,TX,32.08333,-97.09722
+"Hondo, Hondo Municipal Airport (KHDO)",KHDO.rss,KHDO.xml,TX,29.35944,-99.17417
+Horseshoe Bay Resort Airpark (KDZB),KDZB.rss,KDZB.xml,TX,30.5271,-98.3588
+Houston / Ellington (KEFD),KEFD.rss,KEFD.xml,TX,29.6,-95.16667
+Houston Executive Airport (KTME),KTME.rss,KTME.xml,TX,29.80717,-95.89791
+Houston Intercontinental Airport (KIAH),KIAH.rss,KIAH.xml,TX,29.9844,-95.36074
+Houston Southwest Airport (KAXH),KAXH.rss,KAXH.xml,TX,29.50613,-95.47692
+"Houston, Hooks Memorial Airport (KDWH)",KDWH.rss,KDWH.xml,TX,30.0675,-95.55611
+"Houston, Houston Hobby Airport (KHOU)",KHOU.rss,KHOU.xml,TX,29.6375,-95.2825
+"Houston, Pearland Regional Airport (KLVJ)",KLVJ.rss,KLVJ.xml,TX,29.52111,-95.24194
+"Houston, Sugar Land Municipal / Hull Field Airport (KSGR)",KSGR.rss,KSGR.xml,TX,29.62222,-95.65667
+"Huntsville, Huntsville Municipal Airport (KUTS)",KUTS.rss,KUTS.xml,TX,30.74389,-95.58611
+"Jacksonville, Cherokee County Airport (KJSO)",KJSO.rss,KJSO.xml,TX,31.86917,-95.21722
+"Jasper, Jasper County-Bell Field Airport (KJAS)",KJAS.rss,KJAS.xml,TX,30.88556,-94.03472
+John Dunn Helistop (KMCJ),KMCJ.rss,KMCJ.xml,TX,29.714,-95.395
+Jones Field - Bonham (KF00),KF00.rss,KF00.xml,TX,33.6131,-96.1793
+"Junction, Kimble County Airport (KJCT)",KJCT.rss,KJCT.xml,TX,30.51083,-99.76639
+Karnes County Airport (K2R9),K2R9.rss,K2R9.xml,TX,28.82499,-97.86557
+"Kerrville, Kerrville Municipal Airport/Louis Schreiner Field (KERV)",KERV.rss,KERV.xml,TX,29.96667,-99.08333
+Kickapoo Downtown Airport (KCWC),KCWC.rss,KCWC.xml,TX,33.8606,-98.4904
+"Killeen, Skylark Field Airport (KILE)",KILE.rss,KILE.xml,TX,31.08333,-97.68333
+"Kingsville, Naval Air Station (KNQI)",KNQI.rss,KNQI.xml,TX,27.50306,-97.81167
+Kleberg County Airport (KIKG),KIKG.rss,KIKG.xml,TX,27.5509,-98.0309
+"La Grange, Fayette Regional Air Center Airport (K3T5)",K3T5.rss,K3T5.xml,TX,29.90806,-96.95
+La Porte Municipal Airport (KT41),KT41.rss,KT41.xml,TX,29.6693,-95.0642
+"Lago Vista TX, Rusty Allen Airport (KRYW)",KRYW.rss,KRYW.xml,TX,30.4967,-97.9659
+Lajitas International Airport (KT89),KT89.rss,KT89.xml,TX,29.27713,-103.68579
+Lamesa Municipal Airport (KLUV),KLUV.rss,KLUV.xml,TX,32.75631,-101.92022
+"Lampasas, Lampasas Airport (KLZZ)",KLZZ.rss,KLZZ.xml,TX,31.10611,-98.19583
+Lancaster Airport (KLNC),KLNC.rss,KLNC.xml,TX,32.58323,-96.72091
+"Laredo, Laredo International Airport (KLRD)",KLRD.rss,KLRD.xml,TX,27.54361,-99.46139
+Laughlin Air Force Base Auxiliary Airfield (KDLF),KDLF.rss,KDLF.xml,TX,29.36652,-100.78469
+"Llano, Llano Municipal Airport (KAQO)",KAQO.rss,KAQO.xml,TX,30.78361,-98.66194
+Longview - East Texas Regional Airport (KGGG),KGGG.rss,KGGG.xml,TX,32.39056,-94.71389
+"Lubbock, Lubbock International Airport (KLBB)",KLBB.rss,KLBB.xml,TX,33.6675,-101.82139
+"Lufkin, Angelina County Airport (KLFK)",KLFK.rss,KLFK.xml,TX,31.23389,-94.75
+Major Samuel B Cornelius Field Airport (KE42),KE42.rss,KE42.xml,TX,36.221,-101.1945
+Marfa (KMRF),KMRF.rss,KMRF.xml,TX,30.36667,-104.01667
+Marshall (KASL),KASL.rss,KASL.xml,TX,32.5205,-94.3078
+Mc Campbell (KTFP),KTFP.rss,KTFP.xml,TX,27.913,-97.2115
+"McAllen, Miller International Airport (KMFE)",KMFE.rss,KMFE.xml,TX,26.17972,-98.24444
+McKinney - McKinney National Airport (KTKI),KTKI.rss,KTKI.xml,TX,33.17778,-96.59028
+Mesa Vista Ranch AP (KBPC),KBPC.rss,KBPC.xml,TX,35.889,-101.03
+"Mesquite, Mesquite Metro Airport (KHQZ)",KHQZ.rss,KHQZ.xml,TX,32.74694,-96.53028
+Mexia Limestone County Airport (KLXY),KLXY.rss,KLXY.xml,TX,31.6412,-96.5145
+Mid Valley Airport (KTXW),KTXW.rss,KTXW.xml,TX,26.17871,-97.97401
+"Midland, Midland Airpark (KMDD)",KMDD.rss,KMDD.xml,TX,32.03639,-102.10083
+"Midland, Midland International Airport (KMAF)",KMAF.rss,KMAF.xml,TX,31.94778,-102.20861
+"Midlothian/Waxahachie, Mid-Way Regional Airport (KJWY)",KJWY.rss,KJWY.xml,TX,32.45583,-96.91222
+"Mineola/Quitman, Wood County Airport (KJDD)",KJDD.rss,KJDD.xml,TX,32.74194,-95.49639
+"Mineral Wells, Mineral Wells Airport (KMWL)",KMWL.rss,KMWL.xml,TX,32.78167,-98.06028
+"Nacogdoches, A L Mangham Jr. Regional Airport (KOCH)",KOCH.rss,KOCH.xml,TX,31.58333,-94.71667
+New Braunfels Regional Airport (KBAZ),KBAZ.rss,KBAZ.xml,TX,29.70861,-98.04528
+"Odessa, Odessa-Schlemeyer Field (KODO)",KODO.rss,KODO.xml,TX,31.92139,-102.39167
+Orange Grove NALF (KNOG),KNOG.rss,KNOG.xml,TX,27.8947,-98.04251
+"Orange, Orange County Airport (KORG)",KORG.rss,KORG.xml,TX,30.06917,-93.80361
+Ozona Municipal Airport (KOZA),KOZA.rss,KOZA.xml,TX,30.7353,-101.203
+Palacios Municipal Airport (KPSX),KPSX.rss,KPSX.xml,TX,28.72485,-96.25347
+"Palestine, Palestine Municipal Airport (KPSN)",KPSN.rss,KPSN.xml,TX,31.77944,-95.70611
+"Pampa, Perry Lefors Field Airport (KPPA)",KPPA.rss,KPPA.xml,TX,35.61278,-100.99611
+Panola County Airport-Sharpe Field (K4F2),K4F2.rss,K4F2.xml,TX,32.17608,-94.29881
+Paris / Cox Field (KPRX),KPRX.rss,KPRX.xml,TX,33.63333,-95.45
+"Pecos, Pecos Municipal Airport (KPEQ)",KPEQ.rss,KPEQ.xml,TX,31.38222,-103.51056
+"Perryton, Perryton Ochiltree County Airport (KPYX)",KPYX.rss,KPYX.xml,TX,36.4,-100.73333
+"Pine Springs, Guadalupe Mountains National Park (KGDP)",KGDP.rss,KGDP.xml,TX,31.83111,-104.80889
+"Plainview, Hale County Airport (KPVW)",KPVW.rss,KPVW.xml,TX,34.16806,-101.71722
+Pleasanton Municipal Airport (KPEZ),KPEZ.rss,KPEZ.xml,TX,28.9562,-98.5184
+"Port Aransas, Mustang Beach Airport (KRAS)",KRAS.rss,KRAS.xml,TX,27.81167,-97.08861
+"Port Isabel, Port Isabel-Cameron County Airport (KPIL)",KPIL.rss,KPIL.xml,TX,26.15917,-97.3375
+Port Lavaca - Calhoun County Airport (KPKV),KPKV.rss,KPKV.xml,TX,28.65159,-96.68196
+Presidio Lely International Airport (KPRS),KPRS.rss,KPRS.xml,TX,29.6341,-104.3616
+Randolph Air Force Base (KRND),KRND.rss,KRND.xml,TX,29.53333,-98.28333
+Ranger (K6P9),K6P9.rss,K6P9.xml,TX,32.4301,-98.5946
+Reagan County Airport (KE41),KE41.rss,KE41.xml,TX,31.1989,-101.473
+Robert R Wells Jr Airport (K66R),K66R.rss,K66R.xml,TX,29.6411,-96.5158
+"Robstown, Nueces County Airport (KRBO)",KRBO.rss,KRBO.xml,TX,27.77833,-97.69028
+Rockport Aransas County Airport (KRKP),KRKP.rss,KRKP.xml,TX,28.08371,-97.04664
+"Rocksprings, Edwards County Airport (KECU)",KECU.rss,KECU.xml,TX,29.94667,-100.17361
+Rockwall Municipal Airport (KF46),KF46.rss,KF46.xml,TX,32.9322,-96.43484
+Rusk County Airport (KRFI),KRFI.rss,KRFI.xml,TX,32.1417,-94.8517
+"San Angelo, Mathis Field (KSJT)",KSJT.rss,KSJT.xml,TX,31.35139,-100.49389
+San Antonio - Kelly Field (KSKF),KSKF.rss,KSKF.xml,TX,29.38333,-98.58333
+San Antonio Boerne Stage Field (K5C1),K5C1.rss,K5C1.xml,TX,29.7239,-98.6946
+"San Antonio, San Antonio International Airport (KSAT)",KSAT.rss,KSAT.xml,TX,29.53278,-98.46361
+"San Antonio, Stinson Municipal Airport (KSSF)",KSSF.rss,KSSF.xml,TX,29.33889,-98.47167
+"San Marcos, San Marcos Municipal Airport (KHYI)",KHYI.rss,KHYI.xml,TX,29.89361,-97.86472
+San Saba County Municipal Airport (K81R),K81R.rss,K81R.xml,TX,31.23575,-98.7177
+Seguin - Randolph AFB Auxiliary Field (KSEQ),KSEQ.rss,KSEQ.xml,TX,29.56579,-97.90834
+"Seminole, Gaines County Airport (KGNC)",KGNC.rss,KGNC.xml,TX,32.67528,-102.6525
+"Sherman/Denison, Grayson County Airport (KGYI)",KGYI.rss,KGYI.xml,TX,33.71667,-96.66667
+"Snyder, Winston Field Airport (KSNK)",KSNK.rss,KSNK.xml,TX,32.69333,-100.95028
+"Sonora, Sonora Municipal Airport (KSOA)",KSOA.rss,KSOA.xml,TX,30.58556,-100.64833
+Spofford - Laughlin Air Force Base Auxiliary #1 (KT70),KT70.rss,KT70.xml,TX,29.11738,-100.47347
+Stephens County Airport (KBKD),KBKD.rss,KBKD.xml,TX,32.719,-98.891
+"Stephenville, Clark Field Municipal Airport (KSEP)",KSEP.rss,KSEP.xml,TX,32.21667,-98.18333
+"Sulphur Springs, Sulphur Springs Municipal Airport (KSLR)",KSLR.rss,KSLR.xml,TX,33.16111,-95.62111
+"Sweetwater, Avenger Field Airport (KSWW)",KSWW.rss,KSWW.xml,TX,32.46722,-100.46639
+Taylor Municipal Airport (KT74),KT74.rss,KT74.xml,TX,30.5726,-97.4432
+"Temple, Draughon-Miller Central Texas Regional Airport (KTPL)",KTPL.rss,KTPL.xml,TX,31.15,-97.4
+"Terrell, Terrell Municipal Airport (KTRL)",KTRL.rss,KTRL.xml,TX,32.71361,-96.26833
+"Tyler, Tyler Pounds Field (KTYR)",KTYR.rss,KTYR.xml,TX,32.35861,-95.40389
+"Uvalde, Garner Field Airport (KUVA)",KUVA.rss,KUVA.xml,TX,29.21111,-99.74333
+"Vernon, Wilbarger County Airport (KF05)",KF05.rss,KF05.xml,TX,34.22556,-99.28361
+"Victoria, Victoria Regional Airport (KVCT)",KVCT.rss,KVCT.xml,TX,28.8625,-96.92972
+"Waco, Mc Gregor Executive Airport (KPWG)",KPWG.rss,KPWG.xml,TX,31.48333,-97.31667
+"Waco, Waco Regional Airport (KACT)",KACT.rss,KACT.xml,TX,31.61722,-97.22778
+Waco-James Connally Airport (KCNW),KCNW.rss,KCNW.xml,TX,31.6378,-97.0741
+"Wharton, Wharton Regional Airport (KARM)",KARM.rss,KARM.xml,TX,29.25417,-96.15417
+"Wichita Falls, Sheppard Air Force Base (KSPS)",KSPS.rss,KSPS.xml,TX,33.97861,-98.49278
+"Wink, Winkler County Airport (KINK)",KINK.rss,KINK.xml,TX,31.77972,-103.20139
+"Zapata, TX (KAPY)",KAPY.rss,KAPY.xml,TX,26.969,-99.249
+Blanding Municipal Airport (KBDG),KBDG.rss,KBDG.xml,UT,37.586,-109.482
+Bolinder Field-Tooele Valley Airport (KTVY),KTVY.rss,KTVY.xml,UT,40.61269,-112.35362
+Brigham City Regional Airport (KBMC),KBMC.rss,KBMC.xml,UT,41.5464,-112.0601
+Bryce Canyon Airport (KBCE),KBCE.rss,KBCE.xml,UT,37.70128,-112.14897
+Cedar City Municipal Airport (KCDC),KCDC.rss,KCDC.xml,UT,37.70675,-113.09695
+"Delta, Delta Municipal Airport (KDTA)",KDTA.rss,KDTA.xml,UT,39.38333,-112.50967
+DUCHESNE (KU69),KU69.rss,KU69.xml,UT,40.1919,-110.38099
+Hanksville (KHVE),KHVE.rss,KHVE.xml,UT,38.418037,-110.704038
+Heber City Municipal-Russ McDonald Field Airport (KHCR),KHCR.rss,KHCR.xml,UT,40.47742,-111.43295
+Hill Air Force Base (KHIF),KHIF.rss,KHIF.xml,UT,41.11112,-111.96229
+KANAB MUNICIPAL AIRPORT (KKNB),KKNB.rss,KKNB.xml,UT,37.01,-112.53
+Logan-Cache Airport (KLGU),KLGU.rss,KLGU.xml,UT,41.78652,-111.85187
+Manti-Ephraim Airport (K41U),K41U.rss,K41U.xml,UT,39.33133,-111.61273
+Michael Army Airfield - Dugway Proving Ground (KDPG),KDPG.rss,KDPG.xml,UT,40.18376,-112.9217
+Milford Municipal Airport (KMLF),KMLF.rss,KMLF.xml,UT,38.42252,-113.01089
+"Moab, Canyonlands Field (KCNY)",KCNY.rss,KCNY.xml,UT,38.76,-109.74472
+Ogden-Hinckley Airport (KOGD),KOGD.rss,KOGD.xml,UT,41.19406,-112.01681
+Price - Carbon County Regional Airport (KPUC),KPUC.rss,KPUC.xml,UT,39.60886,-110.75548
+"Provo, Provo Municipal Airport (KPVU)",KPVU.rss,KPVU.xml,UT,40.21667,-111.71667
+ROOSEVELT (K74V),K74V.rss,K74V.xml,UT,40.28,-110.05
+"Salt Lake City, Salt Lake City International Airport (KSLC)",KSLC.rss,KSLC.xml,UT,40.77069,-111.96503
+"Salt Lake City, Salt Lake City Municipal 2 Airport (KU42)",KU42.rss,KU42.xml,UT,40.6196,-111.99016
+Spanish Fork Municipal Airport (KSPK),KSPK.rss,KSPK.xml,UT,40.145,-111.6677
+St George Municipal Airport (KSGU),KSGU.rss,KSGU.xml,UT,37.0451,-113.50561
+Vernal Airport (KVEL),KVEL.rss,KVEL.xml,UT,40.44295,-109.51273
+Wendover / Air Force Auxillary Field (KENV),KENV.rss,KENV.xml,UT,40.72056,-114.03583
+"Barre / Montpelier, Knapp State Airport (KMPV)",KMPV.rss,KMPV.xml,VT,44.20472,-72.56611
+Bennington Morse State Airport (KDDH),KDDH.rss,KDDH.xml,VT,42.89355,-73.2486
+"Burlington, Burlington International Airport (KBTV)",KBTV.rss,KBTV.xml,VT,44.46806,-73.15028
+Franklin County State Airport (KFSO),KFSO.rss,KFSO.xml,VT,44.9402808,-73.09746
+Middlebury State Airport (K6B0),K6B0.rss,K6B0.xml,VT,43.9848,-73.0959
+Morrisville-Stowe State Airport (KMVL),KMVL.rss,KMVL.xml,VT,44.53589,-72.61625
+Northeast Kingdom International Airport (KEFK),KEFK.rss,KEFK.xml,VT,44.88846,-72.23593
+Rutland-Southern Vermont Regional Airport (KRUT),KRUT.rss,KRUT.xml,VT,43.53333,-72.95
+"Springfield, Hartness State Springfield Airport (KVSF)",KVSF.rss,KVSF.xml,VT,43.3425,-72.52167
+St. Johnsbury - Fairbanks (K1V4),K1V4.rss,K1V4.xml,VT,44.4201,-72.0193
+"King Airport, St. Thomas (TIST)",TIST.rss,TIST.xml,VI,18.3373,-64.9734
+St. Croix (TISX),TISX.rss,TISX.xml,VI,17.7004,-64.806
+Abingdon (KVJI),KVJI.rss,KVJI.xml,VA,36.68333,-82.03333
+"Ashland, Hanover County Municipal Airport (KOFP)",KOFP.rss,KOFP.xml,VA,37.70806,-77.43444
+Bridgewater Air Park (KVBW),KVBW.rss,KVBW.xml,VA,38.36674,-78.96033
+Brookneal/Campbell County Airport (K0V4),K0V4.rss,K0V4.xml,VA,37.1417,-79.0164
+Charlottesville-Albemarle Airport (KCHO),KCHO.rss,KCHO.xml,VA,38.13738,-78.45516
+Chase City Municipal Airport (KCXE),KCXE.rss,KCXE.xml,VA,36.7883,-78.5016
+"Chesapeake, Chesapeake Municipal Airport (KCPK)",KCPK.rss,KCPK.xml,VA,36.66556,-76.32056
+Chesterfield County Airport (KFCI),KFCI.rss,KFCI.xml,VA,37.406444,-77.524833
+Clarksville / Marks (KW63),KW63.rss,KW63.xml,VA,36.6,-78.56667
+Crewe Municipal Airport (KW81),KW81.rss,KW81.xml,VA,37.181,-78.0983
+Culpeper Regional Airport (KCJR),KCJR.rss,KCJR.xml,VA,38.52607,-77.85738
+"Danville, Danville Regional Airport (KDAN)",KDAN.rss,KDAN.xml,VA,36.57278,-79.33611
+Dublin / New River Valley (KPSK),KPSK.rss,KPSK.xml,VA,37.13333,-80.68333
+Eagles Nest Airport (KW13),KW13.rss,KW13.xml,VA,38.0769,-78.9444
+"Emporia, Emporia-Greensville Regional Airport (KEMV)",KEMV.rss,KEMV.xml,VA,36.68694,-77.48278
+Farmville (KFVX),KFVX.rss,KFVX.xml,VA,37.35,-78.43333
+"Fentress, Naval Auxiliary Landing Field (KNFE)",KNFE.rss,KNFE.xml,VA,36.70083,-76.12833
+Fort Belvoir (KDAA),KDAA.rss,KDAA.xml,VA,38.71667,-77.18333
+Fort Eustis / Felker (KFAF),KFAF.rss,KFAF.xml,VA,37.13333,-76.61667
+Franklin / J B Rose (KFKN),KFKN.rss,KFKN.xml,VA,36.7,-76.9
+"Fredericksburg, Shannon Airport (KEZF)",KEZF.rss,KEZF.xml,VA,38.26667,-77.45
+Front Royal-warren County Airport (KFRR),KFRR.rss,KFRR.xml,VA,38.9175,-78.2535
+Ft. Pickett / Blackstone (KBKT),KBKT.rss,KBKT.xml,VA,37.08333,-77.95
+Gordonsville Municipal Airport (KGVE),KGVE.rss,KGVE.xml,VA,38.156,-78.1658
+Hillsville (KHLX),KHLX.rss,KHLX.xml,VA,36.76667,-80.81667
+Lake Anna Airport (K7W4),K7W4.rss,K7W4.xml,VA,37.9658,-77.7459
+Langley Air Force Base (KLFI),KLFI.rss,KLFI.xml,VA,37.08333,-76.35
+Lawrenceville/Brunswick Municipal Airport (KLVL),KLVL.rss,KLVL.xml,VA,36.7728,-77.7943
+Lee County Airport (K0VG),K0VG.rss,K0VG.xml,VA,36.65408,-83.21783
+Leesburg / Godfrey (KJYO),KJYO.rss,KJYO.xml,VA,39.08333,-77.56667
+"Louisa, Louisa County Airport/Freeman Field (KLKU)",KLKU.rss,KLKU.xml,VA,38.00972,-77.97028
+Lunenburg County Airport (KW31),KW31.rss,KW31.xml,VA,36.9601,-78.185
+Luray Caverns (KLUA),KLUA.rss,KLUA.xml,VA,38.6671,-78.5006
+"Lynchburg, Lynchburg Regional Airport (KLYH)",KLYH.rss,KLYH.xml,VA,37.32083,-79.20667
+"Manassas, Manassas Regional Airport/Harry P. Davis Field (KHEF)",KHEF.rss,KHEF.xml,VA,38.71667,-77.51667
+Marion / Wytheville (KMKJ),KMKJ.rss,KMKJ.xml,VA,36.9,-81.35
+Martinsville (KMTV),KMTV.rss,KMTV.xml,VA,36.63333,-80.01667
+Melfa / Accomack Airport (KMFV),KMFV.rss,KMFV.xml,VA,37.65,-75.76667
+New Kent County (KW96),KW96.rss,KW96.xml,VA,37.5032,-77.1255
+New Market Airport (K8W2),K8W2.rss,K8W2.xml,VA,38.6557,-78.7081
+"Newport News, Newport News / Williamsburg International Airport (KPHF)",KPHF.rss,KPHF.xml,VA,37.13194,-76.49306
+Norfolk Hampton Roads Executive Airport (KPVG),KPVG.rss,KPVG.xml,VA,36.7801,-76.4488
+"Norfolk, Naval Air Station (KNGU)",KNGU.rss,KNGU.xml,VA,36.93361,-76.29583
+"Norfolk, Norfolk International Airport (KORF)",KORF.rss,KORF.xml,VA,36.90361,-76.19194
+"Orange, Orange County Airport (KOMH)",KOMH.rss,KOMH.xml,VA,38.24722,-78.04556
+"Petersburg, Dinwiddie County Airport (KPTB)",KPTB.rss,KPTB.xml,VA,37.18333,-77.51667
+Quantico Marine Corps Airfield - Turner Field (KNYG),KNYG.rss,KNYG.xml,VA,38.50326,-77.30129
+"Richmond, Richmond International Airport (KRIC)",KRIC.rss,KRIC.xml,VA,37.51111,-77.32333
+"Roanoke, Roanoke Regional Airport (KROA)",KROA.rss,KROA.xml,VA,37.31694,-79.97417
+Saluda Hummel Field (KW75),KW75.rss,KW75.xml,VA,37.6024,-76.4467
+"South Hill, Mecklenburg-Brunswick Regional Airport (KAVC)",KAVC.rss,KAVC.xml,VA,36.68861,-78.05417
+"Stafford, Stafford Regional Airport (KRMN)",KRMN.rss,KRMN.xml,VA,38.39806,-77.45528
+Staunton / Shenandoah (KSHD),KSHD.rss,KSHD.xml,VA,38.26667,-78.9
+"Suffolk, Suffolk Municipal Airport (KSFQ)",KSFQ.rss,KSFQ.xml,VA,36.68222,-76.60194
+Tangier Island Airport (KTGI),KTGI.rss,KTGI.xml,VA,37.82587,-75.99766
+Tappahannock-Essex County Airport (KXSA),KXSA.rss,KXSA.xml,VA,37.859611,-76.894111
+Tazewell County Airport (KJFZ),KJFZ.rss,KJFZ.xml,VA,37.064,-81.798
+"Virginia Beach, Oceana, Naval Air Station (KNTU)",KNTU.rss,KNTU.xml,VA,36.82111,-76.02833
+Virginia Tech Airport (KBCB),KBCB.rss,KBCB.xml,VA,37.21667,-80.41667
+Wakefield Municipal Airport (KAKQ),KAKQ.rss,KAKQ.xml,VA,36.98274,-77.00137
+Wallops Flight Facility Airport (KWAL),KWAL.rss,KWAL.xml,VA,37.9372,-75.46619
+Warrenton-Fauquier Airport (KHWY),KHWY.rss,KHWY.xml,VA,38.58765,-77.71501
+"Washington/Dulles International Airport, DC (KIAD)",KIAD.rss,KIAD.xml,VA,38.93472,-77.4475
+"Washington/Reagan National Airport, DC (KDCA)",KDCA.rss,KDCA.xml,VA,38.84833,-77.03417
+"West Point, Middle Peninsula Regional Airport (KFYJ)",KFYJ.rss,KFYJ.xml,VA,37.52111,-76.76444
+William M Tuck Airport (KW78),KW78.rss,KW78.xml,VA,36.71,-78.848
+Williamsburg-Jamestown Airport (KJGG),KJGG.rss,KJGG.xml,VA,37.24157,-76.71672
+Winchester Regional (KOKV),KOKV.rss,KOKV.xml,VA,39.15,-78.15
+Wise / Lonesome Pine (KLNP),KLNP.rss,KLNP.xml,VA,36.98333,-82.53333
+Arlington Municipal Airport (KAWO),KAWO.rss,KAWO.xml,WA,48.1585,-122.15909
+"Bellingham, Bellingham International Airport (KBLI)",KBLI.rss,KBLI.xml,WA,48.79911,-122.54064
+Boeing Field - King County International Airport (KBFI),KBFI.rss,KBFI.xml,WA,47.54548,-122.3147
+"Bremerton, Bremerton National Airport (KPWT)",KPWT.rss,KPWT.xml,WA,47.5,-122.75
+"Burlington/Mount Vernon, Skagit Regional Airport (KBVS)",KBVS.rss,KBVS.xml,WA,48.47083,-122.42083
+Chehalis-Centralia Airport (KCLS),KCLS.rss,KCLS.xml,WA,46.677,-122.9827
+Colville Municipal Airport (K63S),K63S.rss,K63S.xml,WA,48.54417,-117.88353
+"Deer Park, Deer Park Airport (KDEW)",KDEW.rss,KDEW.xml,WA,47.97417,-117.42833
+"Eastsound, Orcas Island Airport (KORS)",KORS.rss,KORS.xml,WA,48.70806,-122.91028
+"Ellensburg, Ellensburg Bowers Field (KELN)",KELN.rss,KELN.xml,WA,47.03377,-120.53132
+"Ephrata, Ephrata Municipal Airport (KEPH)",KEPH.rss,KEPH.xml,WA,47.3075,-119.51583
+Everett Snohomish County (KPAE),KPAE.rss,KPAE.xml,WA,47.92331,-122.28305
+Fairchild Air Force Base (KSKA),KSKA.rss,KSKA.xml,WA,47.61667,-117.65
+Fort Lewis / Gray U. S. Army Airfield (KGRF),KGRF.rss,KGRF.xml,WA,47.11667,-122.55
+Friday Harbor Airport (KFHR),KFHR.rss,KFHR.xml,WA,48.52,-123.02637
+Grant County Airport (KMWH),KMWH.rss,KMWH.xml,WA,47.19299,-119.31451
+"Hoquiam, Bowerman Airport (KHQM)",KHQM.rss,KHQM.xml,WA,46.97111,-123.92
+Methow Valley (KS52),KS52.rss,KS52.xml,WA,48.42495,-120.14589
+"Olympia, Olympia Airport (KOLM)",KOLM.rss,KOLM.xml,WA,46.97333,-122.90333
+Omak Airport (KOMK),KOMK.rss,KOMK.xml,WA,48.46116,-119.52086
+Pearson Airfield (KVUO),KVUO.rss,KVUO.xml,WA,45.62103,-122.65419
+Pierce County-Thun Field (KPLU),KPLU.rss,KPLU.xml,WA,47.104,-122.287
+Port Angeles Coast Guard Air Station (KNOW),KNOW.rss,KNOW.xml,WA,48.13333,-123.4
+Port Angeles Fairchild International Airport (KCLM),KCLM.rss,KCLM.xml,WA,48.12194,-123.50661
+Port Townsend Jefferson County International Airport (K0S9),K0S9.rss,K0S9.xml,WA,48.05517,-122.81159
+Pullman / Moscow Regional Airport (KPUW),KPUW.rss,KPUW.xml,WA,46.74377,-117.11579
+"Quillayute, Quillayute State Airport (KUIL)",KUIL.rss,KUIL.xml,WA,47.9375,-124.555
+Renton Municipal Airport (KRNT),KRNT.rss,KRNT.xml,WA,47.49509,-122.21437
+Richland Airport (KRLD),KRLD.rss,KRLD.xml,WA,46.30859,-119.3058
+"Seattle, Seattle-Tacoma International Airport (KSEA)",KSEA.rss,KSEA.xml,WA,47.44472,-122.31361
+"Shelton, Shelton Sanderson Field (KSHN)",KSHN.rss,KSHN.xml,WA,47.23806,-123.14083
+Southwest Washington Regional Airport (KKLS),KKLS.rss,KKLS.xml,WA,46.11553,-122.89273
+"Spokane, Felts Field (KSFF)",KSFF.rss,KSFF.xml,WA,47.68556,-117.32028
+"Spokane, Spokane International Airport (KGEG)",KGEG.rss,KGEG.xml,WA,47.62139,-117.52778
+Stampede Pass (KSMP),KSMP.rss,KSMP.xml,WA,47.27648,-121.33817
+Sunnyside Municipal Airport (K1S5),K1S5.rss,K1S5.xml,WA,46.3271,-119.9704
+Tacoma / McChord Air Force Base (KTCM),KTCM.rss,KTCM.xml,WA,47.15,-122.48333
+"Tacoma, Tacoma Narrows Airport (KTIW)",KTIW.rss,KTIW.xml,WA,47.2675,-122.57611
+The Dalles Municipal Airport (KDLS),KDLS.rss,KDLS.xml,WA,45.61901,-121.16572
+Tri-Cities Airport (KPSC),KPSC.rss,KPSC.xml,WA,46.26955,-119.11813
+Vagabond Army Airfield (K1YT),K1YT.rss,K1YT.xml,WA,46.6667,-120.45
+Walla Walla Regional Airport (KALW),KALW.rss,KALW.xml,WA,46.09462,-118.2858
+Wenatchee - Pangborn Memorial Airport (KEAT),KEAT.rss,KEAT.xml,WA,47.39749,-120.20121
+Whidbey Island Naval Air Station - Ault Field (KNUW),KNUW.rss,KNUW.xml,WA,48.35525,-122.66352
+Yakima Air Terminal - McAllister Field (KYKM),KYKM.rss,KYKM.xml,WA,46.56402,-120.53484
+"Beckley, Raleigh County Memorial Airport (KBKW)",KBKW.rss,KBKW.xml,WV,37.795,-81.12472
+"Bluefield, Mercer County Airport (KBLF)",KBLF.rss,KBLF.xml,WV,37.29583,-81.20778
+"Buckhannon, Upshur County Regional Airport (KW22)",KW22.rss,KW22.xml,WV,39,-80.26667
+"Charleston, Yeager Airport (KCRW)",KCRW.rss,KCRW.xml,WV,38.37944,-81.59139
+"Clarksburg, Clarksburg Benedum Airport (KCKB)",KCKB.rss,KCKB.xml,WV,39.3,-80.22472
+"Cumberland, Greater Cumberland Regional Airport (KCBE)",KCBE.rss,KCBE.xml,WV,39.61528,-78.76083
+Eastern WV Regional Airport/Shepherd Field (KMRB),KMRB.rss,KMRB.xml,WV,39.40372,-77.975
+"Elkins, Elkins-Randolph County-Jennings Randolph Field (KEKN)",KEKN.rss,KEKN.xml,WV,38.88528,-79.85278
+"Huntington, Tri-State Airport (KHTS)",KHTS.rss,KHTS.xml,WV,38.365,-82.555
+Lewisburg / Greenbrier (KLWB),KLWB.rss,KLWB.xml,WV,37.86667,-80.4
+Logan County Airport (K6L4),K6L4.rss,K6L4.xml,WV,37.8557,-81.9159
+Morgantown Municipal-Hart Field (KMGW),KMGW.rss,KMGW.xml,WV,39.64985,-79.92065
+"Parkersburg, Mid-Ohio Valley Regional Airport (KPKB)",KPKB.rss,KPKB.xml,WV,39.345,-81.43917
+"Petersburg, Grant County Airport (KW99)",KW99.rss,KW99.xml,WV,38.98333,-79.13333
+"Pineville, Kee Field Airport (KI16)",KI16.rss,KI16.xml,WV,37.60028,-81.55917
+"Point Pleasant, Mason County Airport (K3I2)",K3I2.rss,K3I2.xml,WV,38.91444,-82.09833
+"Wheeling, Wheeling Ohio County Airport (KHLG)",KHLG.rss,KHLG.xml,WV,40.17028,-80.64444
+Appleton-Outagamie (KATW),KATW.rss,KATW.xml,WI,44.2595,-88.51567
+Baraboo Wisconsin Dells Airport (KDLL),KDLL.rss,KDLL.xml,WI,43.52372,-89.77345
+Black River Falls Area Airport (KBCK),KBCK.rss,KBCK.xml,WI,44.24996,-90.84999
+"Boscobel, Boscobel Airport (KOVS)",KOVS.rss,KOVS.xml,WI,43.15611,-90.6775
+Burlington Municipal Airport (KBUU),KBUU.rss,KBUU.xml,WI,42.69088,-88.308
+Chetek Municipal Southworth Airport (KY23),KY23.rss,KY23.xml,WI,45.3106,-91.6381
+Chippewa Valley Regional Airport (KEAU),KEAU.rss,KEAU.xml,WI,44.86668,-91.488
+Clintonville Municipal Airport (KCLI),KCLI.rss,KCLI.xml,WI,44.61526,-88.73129
+Cumberland (KUBE),KUBE.rss,KUBE.xml,WI,45.506,-91.9811
+Door County Cherryland Airport (KSUE),KSUE.rss,KSUE.xml,WI,44.83941,-87.42188
+Eagle River Union Airport (KEGV),KEGV.rss,KEGV.xml,WI,45.93093,-89.26702
+East Troy Municipal Airport (K57C),K57C.rss,K57C.xml,WI,42.7972,-88.3726
+Ephraim-Gibraltar Airport (K3D2),K3D2.rss,K3D2.xml,WI,45.1357,-87.1881
+Fond Du Lac County Airport (KFLD),KFLD.rss,KFLD.xml,WI,43.76955,-88.49072
+"Green Bay, Austin Straubel International Airport (KGRB)",KGRB.rss,KGRB.xml,WI,44.47944,-88.13667
+Iowa County Airport (KMRJ),KMRJ.rss,KMRJ.xml,WI,42.88754,-90.23147
+Janesville-Rock County (KJVL),KJVL.rss,KJVL.xml,WI,42.62135,-89.04186
+John F Kennedy Memorial Airport (KASX),KASX.rss,KASX.xml,WI,46.54679,-90.91841
+"Juneau, Dodge County Airport (KUNU)",KUNU.rss,KUNU.xml,WI,43.42667,-88.70333
+"Kenosha, Kenosha Regional Airport (KENW)",KENW.rss,KENW.xml,WI,42.595,-87.93806
+L O Simenstad Municipal Airport (KOEO),KOEO.rss,KOEO.xml,WI,45.31084,-92.6948
+La Crosse - La Crosse Regional Airport (KLSE),KLSE.rss,KLSE.xml,WI,43.87944,-91.25667
+La Pointe - Major Gilbert Field (K4R5),K4R5.rss,K4R5.xml,WI,46.7887,-90.7587
+Ladysmith - Rusk County Airport (KRCX),KRCX.rss,KRCX.xml,WI,45.4935,-90.9985
+"Land O' Lakes, Kings Land O' Lakes Airport (KLNL)",KLNL.rss,KLNL.xml,WI,46.15389,-89.21194
+Langlade County Airport (KAIG),KAIG.rss,KAIG.xml,WI,45.15659,-89.11144
+Lone Rock Tri-County Regional Airport (KLNR),KLNR.rss,KLNR.xml,WI,43.21108,-90.18735
+"Madison, Dane County Regional-Truax Field (KMSN)",KMSN.rss,KMSN.xml,WI,43.14056,-89.34528
+Manitowish Waters Airport (KD25),KD25.rss,KD25.xml,WI,46.12035,-89.88016
+"Manitowoc, Manitowoc County Airport (KMTW)",KMTW.rss,KMTW.xml,WI,44.13333,-87.68333
+"Marshfield, Marshfield Municipal Airport (KMFI)",KMFI.rss,KMFI.xml,WI,44.63806,-90.1875
+Menomonie Municipal Airport-Score Field (KLUM),KLUM.rss,KLUM.xml,WI,44.89363,-91.86652
+"Merrill, Merrill Municipal Airport (KRRL)",KRRL.rss,KRRL.xml,WI,45.19844,-89.70996
+Middleton Muni - Morey Field (KC29),KC29.rss,KC29.xml,WI,43.1142699,-89.5315336
+"Milwaukee, General Mitchell International Airport (KMKE)",KMKE.rss,KMKE.xml,WI,42.955,-87.90444
+Milwaukee-Timmerman (KMWC),KMWC.rss,KMWC.xml,WI,43.10961,-88.03048
+"Minocqua/Woodruff, Lakeland Airport/Noble F. Lee Memorial Field (KARV)",KARV.rss,KARV.xml,WI,45.93333,-89.73333
+Monroe Municipal Airport (KEFT),KEFT.rss,KEFT.xml,WI,42.61959,-89.59309
+Mosinee (KCWA),KCWA.rss,KCWA.xml,WI,44.77944,-89.67098
+New Lisbon Mauston Airport (K82C),K82C.rss,K82C.xml,WI,43.8387,-90.1377
+New Richmond Municipal Airport (KRNH),KRNH.rss,KRNH.xml,WI,45.14762,-92.53349
+Oconto J. Douglas Bake Municipal Airport (KOCQ),KOCQ.rss,KOCQ.xml,WI,44.8742,-87.9096
+Phillips / Price County (KPBH),KPBH.rss,KPBH.xml,WI,45.7,-90.4
+Platteville Municipal Airport (KPVB),KPVB.rss,KPVB.xml,WI,42.69092,-90.44124
+Prairie Du Chien Municipal Airport (KPDC),KPDC.rss,KPDC.xml,WI,43.01938,-91.12112
+"Racine, Batten International Airport (KRAC)",KRAC.rss,KRAC.xml,WI,42.75861,-87.81778
+Red Wing - Red Wing Regional Airport (KRGK),KRGK.rss,KRGK.xml,WI,44.5926,-92.48439
+Reedsburg Municipal Airport (KC35),KC35.rss,KC35.xml,WI,43.5259,-89.9832
+"Rhinelander, Rhinelander-Oneida County Airport (KRHI)",KRHI.rss,KRHI.xml,WI,45.63167,-89.48222
+"Rice Lake, Rice Lake Regional-Carl's Field Airport (KRPD)",KRPD.rss,KRPD.xml,WI,45.41806,-91.77361
+Richard I. Bong Airport (KSUW),KSUW.rss,KSUW.xml,WI,46.68335,-92.09254
+Shawano Municipal Airport (KEZS),KEZS.rss,KEZS.xml,WI,44.787,-88.56
+Sheboygan County Memorial Airport (KSBM),KSBM.rss,KSBM.xml,WI,43.77483,-87.84897
+"Siren, Burnett County Airport (KRZN)",KRZN.rss,KRZN.xml,WI,45.82278,-92.3725
+Solon Springs Municipal Airport (KOLG),KOLG.rss,KOLG.xml,WI,46.3148,-91.8164
+"Sparta, Sparta / Fort McCoy Airport (KCMY)",KCMY.rss,KCMY.xml,WI,43.95833,-90.73778
+Stevens Point Municipal Airport (KSTE),KSTE.rss,KSTE.xml,WI,44.54371,-89.53468
+Taylor County Airport (KMDZ),KMDZ.rss,KMDZ.xml,WI,45.10462,-90.30253
+Tomahawk Regional Airport (KTKV),KTKV.rss,KTKV.xml,WI,45.46801,-89.80962
+Volk / Camp Douglas (KVOK),KVOK.rss,KVOK.xml,WI,43.93333,-90.26667
+Washington Island (K2P2),K2P2.rss,K2P2.xml,WI,45.3883,-86.924
+Watertown (KRYV),KRYV.rss,KRYV.xml,WI,43.17016,-88.72497
+Waukesha County Airport (KUES),KUES.rss,KUES.xml,WI,43.04245,-88.24607
+Waupaca Municipal Airport (KPCZ),KPCZ.rss,KPCZ.xml,WI,44.33425,-89.02023
+Wausau Downtown Airport (KAUW),KAUW.rss,KAUW.xml,WI,44.92759,-89.62512
+"Wautoma, Wautoma Municipal Airport (KY50)",KY50.rss,KY50.xml,WI,44.04139,-89.30444
+West Bend Municipal Airport (KETB),KETB.rss,KETB.xml,WI,43.42256,-88.1326
+"Wisconsin Rapids, Alexander Field South Wood County Airport (KISW)",KISW.rss,KISW.xml,WI,44.35917,-89.83694
+Wittman Regional Airport (KOSH),KOSH.rss,KOSH.xml,WI,43.96701,-88.55814
+Afton WY (KAFO),KAFO.rss,KAFO.xml,WY,42.71133,-110.94217
+Alpha (Burns) (K1AW),K1AW.rss,K1AW.xml,WY,41.33,-104.27
+Alpine (K46U),K46U.rss,K46U.xml,WY,43.1846,-111.0424
+Big Piney - Marbleton Airport (KBPI),KBPI.rss,KBPI.xml,WY,42.57805,-110.10972
+Boysen (KTBX),KTBX.rss,KTBX.xml,WY,43.4667,-108.2333
+Buffalo - Johnson County Airport (KBYG),KBYG.rss,KBYG.xml,WY,44.38122,-106.71947
+Camp Guernsey (KGUR),KGUR.rss,KGUR.xml,WY,42.2597,-104.7283
+"Casper, Natrona County International Airport (KCPR)",KCPR.rss,KCPR.xml,WY,42.8975,-106.47306
+"Cheyenne, Cheyenne Airport (KCYS)",KCYS.rss,KCYS.xml,WY,41.15789,-104.80812
+Cody (KCOD),KCOD.rss,KCOD.xml,WY,44.51667,-109.01667
+Cowley WY (KU68),KU68.rss,KU68.xml,WY,44.91167,-108.4455
+Dixon Airport (KDWX),KDWX.rss,KDWX.xml,WY,41.03704,-107.49976
+"Douglas, Converse County Airport (KDGW)",KDGW.rss,KDGW.xml,WY,42.79417,-105.38194
+Dubois Municipal Airport (KDUB),KDUB.rss,KDUB.xml,WY,43.5484,-109.6903
+Elk Mountain AWOS (KEHY),KEHY.rss,KEHY.xml,WY,41.7253,-106.4594
+"Evanston, Evanston-Uinta County Burns Field (KEVW)",KEVW.rss,KEVW.xml,WY,41.27306,-111.03056
+Fort Bridger WY (KFBR),KFBR.rss,KFBR.xml,WY,41.392,-110.40683
+Francis E Warren Air Force Base Heliport (KFEW),KFEW.rss,KFEW.xml,WY,41.13332,-104.86719
+"Gillette, Gillette-Campbell County Airport (KGCC)",KGCC.rss,KGCC.xml,WY,44.33944,-105.54194
+Hot Springs County Airport (KHSG),KHSG.rss,KHSG.xml,WY,43.7136,-108.3897
+Hulett Municipal Airport (KW43),KW43.rss,KW43.xml,WY,44.6629,-104.5678
+"Jackson, Jackson Hole Airport (KJAC)",KJAC.rss,KJAC.xml,WY,43.6,-110.73333
+KEMMERER (KEMM),KEMM.rss,KEMM.xml,WY,41.82,-110.56
+Lander (KLND),KLND.rss,KLND.xml,WY,42.81472,-108.72806
+Laramie Regional Airport (KLAR),KLAR.rss,KLAR.xml,WY,41.3165,-105.67287
+Mondell Field (KECS),KECS.rss,KECS.xml,WY,43.8854,-104.3179
+Phifer Airfield - Wheatland (KEAN),KEAN.rss,KEAN.xml,WY,42.05472,-104.93711
+Pine Bluffs Municipal Airport (K82V),K82V.rss,K82V.xml,WY,41.1533,-104.1302
+"Pinedale, Ralph Wenz Field Airport (KPNA)",KPNA.rss,KPNA.xml,WY,42.79528,-109.80694
+Powell Municipal Airport (KPOY),KPOY.rss,KPOY.xml,WY,44.8672,-108.7934
+Rawlins Municipal Airport (KRWL),KRWL.rss,KRWL.xml,WY,41.80648,-107.19516
+Riverton Regional Airport (KRIW),KRIW.rss,KRIW.xml,WY,43.06219,-108.44701
+"Rock Springs, Rock Springs-Sweetwater County Airport (KRKS)",KRKS.rss,KRKS.xml,WY,41.59417,-109.06528
+Saratoga WY (KSAA),KSAA.rss,KSAA.xml,WY,41.44483,-106.8235
+Sheridan County Airport (KSHR),KSHR.rss,KSHR.xml,WY,44.76031,-106.97411
+South Big Horn County Airport (KGEY),KGEY.rss,KGEY.xml,WY,44.5174,-108.0752
+South Pass (KFWZ),KFWZ.rss,KFWZ.xml,WY,42.5167,-108.7833
+Torrington Municipal Airport (KTOR),KTOR.rss,KTOR.xml,WY,42.06134,-104.15842
+"Worland, Worland Municipal Airport (KWRL)",KWRL.rss,KWRL.xml,WY,43.96583,-107.95083
+Yellowstone Lake (KP60),KP60.rss,KP60.xml,WY,44.54444,-110.42111
