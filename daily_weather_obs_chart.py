@@ -218,8 +218,8 @@ if __name__ == "__main__":
         else:
             if y[i] == y[i+1]:
                     if (len(z[i]) > 7 ):
-                        ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-60, -15),
-                          textcoords='offset pixels')
+                         ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(15, -35),ha='center',va='center', rotation=315,
+                           textcoords='offset pixels' )
                     else:
                         ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-30, -15),
                           textcoords='offset pixels')
