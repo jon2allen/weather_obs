@@ -19,6 +19,7 @@ from matplotlib.dates import DateFormatter
 import time
 import datetime
 import dateutil
+import json
 
 """
   This will find the last hour of the current day
@@ -74,6 +75,106 @@ def parse_date_from_station_csv( fname ):
     day = ds[3]
     day = day[-2:]
     return datetime.date(int(year), int(month), int(day))
+
+def trendline(index,data, order=1):
+    coeffs = np.polyfit(index, list(data), order)
+    slope = coeffs[-2]
+    return float(slope)
+
+
+def read_weather_obs_csv(target_csv):
+    """ read csv and return dataframe """
+    try:        
+        date_utc = lambda x: dateutil.parser.parse(x, ignoretz=True)
+        obs1 = pd.read_csv(target_csv,parse_dates=[9],date_parser=date_utc)
+    except:
+        print("file not found:  ", target_csv)
+        exit(16)
+    return obs1
+
+def weather_obs_subset( obs1, obs_col ):
+    """ returns a subset of data """
+    try:
+        obs_subset = obs1.iloc[:, obs_col ]  
+        return obs_subset  
+    except:
+        print("column out of range or other")
+        return obs1
+    
+def weather_obs_html_table( obs1, obs_col, file_f):
+    try:
+        obs_prn = obs1.iloc[:, obs_col ]
+        out_text = obs_prn.to_html()
+    except:
+        print("column out of range or other")
+        return False
+    try:
+        file_html = open(file_f, 'w') 
+    except:
+        print("error - cannot open", file_f )
+        return False
+    file_html.write(out_text)
+    print( out_text )
+    file_html.close()
+    return True
+
+def draw_obs_wind_chart(chart_date, fig_png, obs1):
+    """ draw chart to png file """
+    obs1['wind_gust_mph'] = pd.to_numeric(obs1['wind_gust_mph'], errors = 'coerce')
+    obs1['wind_mph'] = pd.to_numeric(obs1['wind_mph'], errors = 'coerce')
+    positions = []
+    labels = []
+    fig, ax = plt.subplots()
+    fig.set_size_inches(12,6)
+    x = obs1['observation_time']
+    y = obs1['wind_mph']
+    z = obs1['wind_dir']
+    chart_loc = obs1['location']
+    print("chart_loc: ", chart_loc[0])
+    ax.plot_date( x,y, linestyle = "solid")
+    plt.grid(True)
+    plt.title( str(chart_loc[0]) + " - " + chart_date , fontsize=15)
+    print("xlim: ", ax.get_xlim())
+    print("ylim: ", ax.get_ylim()) 
+    for  i in range(  x.size   ):
+        if (i == (x.size - 1 )):
+                ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-15, -15),textcoords='offset pixels')
+        else:
+            if y[i] == y[i+1]:
+                    if (len(z[i]) > 7 ):
+                         ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(15, -35),ha='center',va='center', rotation=315,
+                           textcoords='offset pixels' )
+                    else:
+                        ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-30, -15),
+                          textcoords='offset pixels')
+            else:
+                    ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-15, -15),
+                        textcoords='offset pixels')
+    fig.autofmt_xdate()
+    fig.text(0.04,0.5, 'Wind Speed - MPH', va='center', rotation='vertical', fontsize=18)
+    fig.text(0.5,0.05,  'Hour of day', va='center', fontsize=18)
+    # plt.xticks(positions,labels)
+    date_form = DateFormatter("%I")
+    ax.xaxis.set_major_formatter(date_form)
+    print(x)
+    print(y)
+    print(z)
+    print(x.size)
+    print(y.size)        
+    fig.savefig(fig_png, dpi=fig.dpi)
+    return True
+
+def obs_meta_date_json( station, obs1 ):
+    date_ser =  mdates.date2num(json_out['observation_time'])
+    y = json_out['wind_mph']
+    obs_data = {}
+    obs_data['station'] = station
+    obs_data['polyfit'] = trendline( date_ser, y)
+    obs_data['max'] = obs1['wind_mph'].max()
+    obs_data['min'] = obs1['wind_mph'].min()
+    
+    json_out2 = json.dumps(obs_data)
+    return json_out2
 
 if __name__ == "__main__":            
            
@@ -159,13 +260,10 @@ if __name__ == "__main__":
     if (args.file):
         target_csv = str(args.file)
         print("file input: ", target_csv)
+        station = target_csv[0:4]
+        print("station:", station )
     
-    try:        
-        date_utc = lambda x: dateutil.parser.parse(x, ignoretz=True)
-        obs1 = pd.read_csv(target_csv,parse_dates=[9],date_parser=date_utc)
-    except:
-        print("file not found:  ", target_csv)
-        exit(16)
+    obs1 = read_weather_obs_csv(target_csv)
 
     if( args.listcols ):
         x = 0
@@ -187,83 +285,38 @@ if __name__ == "__main__":
     #print(obs1.shape)
     #print(obs1.columns)
 
-    obs1['wind_gust_mph'] = pd.to_numeric(obs1['wind_gust_mph'], errors = 'coerce')
-    obs1['wind_mph'] = pd.to_numeric(obs1['wind_mph'], errors = 'coerce')
-    # obs1['observation_time'] = obs1['observation_time'].dt.hour
-
-    # print(obs1.dtypes)
-
-
-    # rows, cols = wind.shape
-    positions = []
-    labels = []
-    fig, ax = plt.subplots()
-    fig.set_size_inches(12,6)
-
-
-    x = obs1['observation_time']
-    y = obs1['wind_mph']
-    z = obs1['wind_dir']
-    chart_loc = obs1['location']
-    print("chart_loc: ", chart_loc[0])
-
-    ax.plot_date( x,y, linestyle = "solid")
-    plt.grid(True)
-    plt.title( str(chart_loc[0]) + " - " + chart_date , fontsize=15)
-    print("xlim: ", ax.get_xlim())
-    print("ylim: ", ax.get_ylim()) 
-    for  i in range(  x.size   ):
-        if (i == (x.size - 1 )):
-                ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-15, -15),textcoords='offset pixels')
-        else:
-            if y[i] == y[i+1]:
-                    if (len(z[i]) > 7 ):
-                         ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(15, -35),ha='center',va='center', rotation=315,
-                           textcoords='offset pixels' )
-                    else:
-                        ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-30, -15),
-                          textcoords='offset pixels')
-            else:
-                    ax.annotate(z[i], (mdates.date2num(x[i]), y[i]), xytext=(-15, -15),
-                        textcoords='offset pixels')
-    fig.autofmt_xdate()
-    fig.text(0.04,0.5, 'Wind Speed - MPH', va='center', rotation='vertical', fontsize=18)
-    fig.text(0.5,0.05,  'Hour of day', va='center', fontsize=18)
-    # plt.xticks(positions,labels)
-    date_form = DateFormatter("%I")
-    ax.xaxis.set_major_formatter(date_form)
-    print(x)
-    print(y)
-    print(z)
-    print(x.size)
-    print(y.size)        
-    fig.savefig(fig_png, dpi=fig.dpi)
+    draw_obs_wind_chart(chart_date, fig_png, obs1)
     
     # todo - make subroutine and pass list of columns by number from --tablecols
     # 9, 19, 17, 12 
-    def weather_obs_html_table( obs_col, file_f):
-        try:
-            obs_prn = obs1.iloc[:, obs_col ]
-            out_text = obs_prn.to_html()
-        except:
-            print("column out of range or other")
-            return False
-        try:
-            file_html = open(file_f, 'w') 
-        except:
-            print("error - cannot open", file_f )
-            return False
-        file_html.write(out_text)
-        print( out_text )
-        file_html.close()
-        return True
+
    
     if ( args.table):
-        weather_obs_html_table( table_col_list, args.table)
+        weather_obs_html_table( obs1, table_col_list, args.table)
         #default
     else:
-        weather_obs_html_table( table_col_list , 'wind_chart.html')
+        weather_obs_html_table( obs1,  table_col_list , 'wind_chart.html')
     
-    print(ax.axis())
-   
+    # print(ax.axis())
+    # date series.   
+
+    json_out = weather_obs_subset(obs1, table_col_list)
+    result = json_out.to_json(orient="split", date_format = "iso")
+    parsed = json.loads(result)
+    print(json.dumps(parsed, indent=4) )
     
+    date_ser =  mdates.date2num(json_out['observation_time'])
+    y = json_out['wind_mph']
+
+    print( "polyfit: ", str( trendline( date_ser, y )))
+    print( "Max wind speed: ", str(json_out['wind_mph'].max()))
+    print( "Min wind speed: ", str(json_out['wind_mph'].min()))
+    
+    json_out2 = obs_meta_date_json( station, obs1)
+    
+    print(json_out2)
+
+    
+
+    
+
