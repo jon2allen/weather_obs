@@ -84,8 +84,9 @@ def trendline(index,data, order=1):
 
 def read_weather_obs_csv(target_csv):
     """ read csv and return dataframe """
-    try:        
-        date_utc = lambda x: dateutil.parser.parse(x, ignoretz=True)
+    try: 
+        # ignore time zone for parse here - times local to observation       
+        date_utc = lambda x: dateutil.parser.parse(x[:20], ignoretz=True)
         obs1 = pd.read_csv(target_csv,parse_dates=[9],date_parser=date_utc)
     except:
         print("file not found:  ", target_csv)
