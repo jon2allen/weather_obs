@@ -8,10 +8,9 @@ from bs4 import BeautifulSoup
 import re
 from weather_obs import *
 import os
+import hashlib
+import obs_utils
 
-tidal_pt = 'https://www.ndbc.noaa.gov/data/Forecasts/FZUS51.KLWX.html'
-
-os.chdir('/var/www/html/weather_obs')
 
 class obs_collector:
      def __init__( self, url, id):
@@ -38,9 +37,27 @@ class obs_collector:
      def obs_collection_sequence(self):
          """ basic collection sequence - fetch, intpret, write """
          self.get_url_data()
-         self.find_station_data()               
+         self.find_station_data() 
          self.set_station_file_name()
-         self.write_station_data()
+         if ( self.obs_collection_duplicate_check() ):
+              print("duplicate:  exit")
+         else:
+              self.write_station_data()
+     def obs_collection_duplicate_check(self):
+         # note to get correct md5 checksum - binary file comparison 
+         self.write_station_data_custom( "dupcheck.txt")
+         with open(self.station_id + "_" + "dupcheck.txt", "rb") as fl:
+            blob1 = fl.read()
+            curr_md5 = str(hashlib.md5(blob1).hexdigest())
+            print("Curr_md5:", curr_md5)
+         last_file = obs_utils.hunt_for_noaa_files(".", self.station_id)
+         if ( len(last_file) > 0 ):
+              with open(last_file, "rb") as f2:
+                   blob2 = f2.read()
+                   test_md5 = str(hashlib.md5(blob2).hexdigest())              
+                   print("test_md5", test_md5)
+                   print("test_file ", last_file)
+         return (curr_md5 == test_md5 )
      def find_station_data(self):
           """ parse station data from noaa html page """
           f = BeautifulSoup(self.url_data.text,'lxml')
@@ -80,28 +97,48 @@ class obs_collector:
                     break
           r_station_data  =  BeautifulSoup(station_data,'lxml').text
           self.last_forcast = r_station_data
+          print(hashlib.md5(r_station_data.encode('utf-8')).hexdigest())
           return r_station_data
                     
 #
 #  init the collector
 #  run the collection sequnce
-#  1 additional custom write out of the data          
-
-obs_x = obs_collector( url = 'https://www.ndbc.noaa.gov/data/Forecasts/FZUS51.KLWX.html', id = "ANZ535")
+#  1 additional custom write out of the data 
 
 
+#TODO - check for duplicate - save output and check with MD5 on next run
+# html to noaa marine forcase page - change to what is require
 
-print( obs_x.show_collector())
+if __name__ == "__main__":
 
-obs_x.obs_collection_sequence()
+     tidal_pt = 'https://www.ndbc.noaa.gov/data/Forecasts/FZUS51.KLWX.html'
+
+     # change to your desirect dirctory
+     try:
+          os.chdir('/var/www/html/weather_obs')
+     except: 
+          pass
+
+     import logging
+     logger = logging.getLogger('weather_obs_f')         
+
+     obs_x = obs_collector( url = 'https://www.ndbc.noaa.gov/data/Forecasts/FZUS51.KLWX.html', id = "ANZ535")
 
 
-print(obs_x.obs_filename)
-# write out to "latest" for page pickup
-# saves effort on figuring out which file to open
-obs_x.write_station_data_custom( "latest.txt")
+
+     print( obs_x.show_collector())
+
+     obs_x.obs_collection_sequence()
 
 
-exit()    
+     print(obs_x.obs_filename)
+     # write out to "latest" for page pickup
+     # saves effort on figuring out which file to open
+     obs_x.write_station_data_custom( "latest.txt")
+
+    #  print(obs_x.obs_collection_duplicate_check())
+
+
+     exit()    
  
 
