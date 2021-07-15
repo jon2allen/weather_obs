@@ -8,6 +8,11 @@ from obs_utils import *
 #  Uses MD5 of file to find duplicate
 #
 ####################################################
+def summary_noaa_files(noaa_files, dupe_candidate):
+    print("**** SUMMARY *****")
+    print("Total number of files: ", str(len(noaa_files)))
+    print("Num of duplicates:" , str( len(dupe_candidate)))
+
 if __name__ == "__main__":
     noaa_files = get_noaa_text_files( ".", "ANZ535")
     dupe_candidate = []
@@ -27,12 +32,11 @@ if __name__ == "__main__":
     print("Duplicate candidate list")
     if ( len(dupe_candidate) == 0):
         print("No duplicates found")
+        summary_noaa_files(noaa_files, dupe_candidate)
         sys.exit(0)
     pprint.pprint(dupe_candidate)  
     print(type(dupe_candidate[0])) 
-    print("**** SUMMARY *****")
-    print("Total number of files: ", str(len(noaa_files)))
-    print("Num of duplicates:" , str( len(dupe_candidate)))
+    summary_noaa_files(noaa_files, dupe_candidate)
     
     ans = input("Proceed with delete: [y/n]: ")
     
