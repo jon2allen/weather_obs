@@ -50,7 +50,9 @@ def hunt_for_noaa_files(dir, station):
                logger.debug("Match day: %s", f)
                target_csv = f
             if  d1 < int(day):
+               # will return the oldest found
                logger.debug("In the past: %s" ,f)
+               target_csv = f
     return target_csv
 
 def construct_daily_cmd_call( file, obs_dir):
