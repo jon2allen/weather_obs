@@ -38,8 +38,11 @@ weather_obs.py  --station https://w1.weather.gov/xml/current_obs/KDCA.xml --cut 
 ** resume cut and collect after reboot. 
 
 Utilites:
-  * specific utilites - need some customization for other regions/waters                                                                                                                           
+  * specific utilites - need some customization for other regions/waters  
+                                                                                                                             
 -noaa_tidal_potomac.py -  program to pull from webscrape the marine forecase to text files
--noaa_duplicates.py - using md5 to detect duplicates                                                                                                                       
+                                                                                                                             
+-noaa_duplicates.py - using md5 to detect duplicates     
+                                                                                                                             
 -daily_weather_chart_obs.py - program to create png chart of wind and table of data in html format      
                                                                                                                             
