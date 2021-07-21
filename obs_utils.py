@@ -2,10 +2,27 @@ import os
 import sys
 import glob
 import datetime
+from datetime import timedelta
 from pathlib import Path
+import functools
+import time
 
 import logging
 logger = logging.getLogger('weather_obs_f')
+
+def create_station_glob_filter( station = 'ANZ535', ext = 'txt', obs_time_stamp = 0):
+      """ 
+      create station glob filter from current time or time provided
+      ignore hour
+      for use with NOAA marine forcast data
+      """
+      if (obs_time_stamp == 0):
+          t_now = datetime.datetime.now()
+      else:
+          t_now = obs_time_stamp
+      year, month, day, hour, min = map(str, t_now.strftime("%Y %m %d %H %M").split())
+      file_n = station + '_Y' + year + '_M' + month + '_D' + day + '_H' 
+      return file_n
 
 def get_obs_csv_files(  dir ):
   glob_path = Path(dir)
@@ -25,12 +42,30 @@ def get_noaa_text_files(  dir, noaa_station ):
   final_l.sort()
   return final_l
 
-def hunt_for_noaa_files(dir, station):
-    station_file_list = get_noaa_text_files( dir, station)
+def hunt_for_noaa_files2(dir, station_glob_filter):
+    """
+    pass in a glob filter - it can be the station name. or a sub-filter
+    version #2 has to be used with a less greedy filter.
+    also - doesn't matter if you transition a year/month
+    have to glob for that up frong.
+    """
+    target_csv = ""
+    station_file_list = get_noaa_text_files( dir, station_glob_filter)
+    if ( len(station_file_list) > 0 ):
+           target_csv = station_file_list[-1]
+    return target_csv
+
+
+def hunt_for_noaa_files(dir, station_glob_filter):
+    """
+    pass in a glob filter - it can be the station name. or a sub-filter
+    """
+    station_file_list = get_noaa_text_files( dir, station_glob_filter)
     now = datetime.datetime.now()
     day = str(now.day)
+ 
     month = str(now.month)
-    dirlist = os.listdir()
+    #
     target_csv = ''
     for f in station_file_list:
         # print("file: ", f)
@@ -84,8 +119,40 @@ if __name__ == "__main__":
    
    print("NOAA files")
    print("")
+   first_test = hunt_for_noaa_files(".", "ANZ535")
    
-   print(get_noaa_text_files(".", "ANZ535"))
+   print("1st:  ", first_test)
    
    print("hunting")
-   print(hunt_for_noaa_files(".", "ANZ535"))
+
+
+   
+   tst4 = create_station_glob_filter("ANZ535", "txt", 0 )
+   
+   print("tst4 ", tst4)
+   
+   second_tst = hunt_for_noaa_files( ".", tst4)
+   
+   print(second_tst)
+
+   now = datetime.datetime.now()
+   today = str(now.day)
+   day_delta  =  datetime.timedelta( hours = 24)
+   prior_day = now - day_delta
+   yesterday = str(prior_day.day)
+   
+   print("today:", today)
+   print("yesterday:", yesterday)
+   
+   g1 = create_station_glob_filter("ANZ535", "txt", now)
+   g2 = create_station_glob_filter("ANZ535", "txt", prior_day)
+   
+   print("g1:" ,g1)
+   print("g2: ", g2)
+   
+   g3 = hunt_for_noaa_files2(".", g1)
+   g4 = hunt_for_noaa_files2(".", g2)
+   
+   print(g3)
+   print(g4)
+   

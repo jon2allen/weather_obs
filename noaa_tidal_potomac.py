@@ -10,6 +10,7 @@ from weather_obs import *
 import os
 import hashlib
 import obs_utils
+from datetime import datetime, timedelta
 
 
 class obs_collector:
@@ -45,12 +46,21 @@ class obs_collector:
               self.write_station_data()
      def obs_collection_duplicate_check(self):
          # note to get correct md5 checksum - binary file comparison 
+         # initialz test_md5 - preven error on fresh dir
+         test_md5 = " "
          self.write_station_data_custom( "dupcheck.txt")
          with open(self.station_id + "_" + "dupcheck.txt", "rb") as fl:
             blob1 = fl.read()
             curr_md5 = str(hashlib.md5(blob1).hexdigest())
             print("Curr_md5:", curr_md5)
-         last_file = obs_utils.hunt_for_noaa_files(".", self.station_id)
+         today = datetime.now()
+         day_1 = timedelta( hours = 24)
+         yesterday =  today - day_1
+         today_glob = obs_utils.create_station_glob_filter(self.station_id, "txt", today)
+         yesterday_glob = obs_utils.create_station_glob_filter( self.station_id, "txt", yesterday)
+         last_file = obs_utils.hunt_for_noaa_files2(".", today_glob)
+         if len(last_file) < 1:
+              last_file = obs_utils.hunt_for_noaa_files2(".", yesterday_glob)
          if ( len(last_file) > 0 ):
               with open(last_file, "rb") as f2:
                    blob2 = f2.read()
