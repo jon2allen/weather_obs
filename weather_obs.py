@@ -18,7 +18,7 @@
 """
 
 
-import sys
+import os,sys
 import argparse
 import csv
 import urllib.request
@@ -74,6 +74,7 @@ class ObsSetting:
         self.trace = True
         self.prior_obs_time = ""
         self.current_obs_time = ""
+        self.data_dir = "."
 
     def __str__(self):
         my_str = "ObsSetting: "
@@ -88,6 +89,16 @@ class ObsSetting:
         station = station_url[-8:]
         self.station_id = station[:4]
         self._trace("Station URL of XML - " + str(station_url))
+    def set_data_dir( self, args_dir):
+        self.data_dir = args_dir
+        t_dir = os.getcwd() + os.sep + self.data_dir  
+        self._trace("Data dir: " + str(t_dir))    
+        if (os.path.exists( t_dir)):
+            self._trace( "data dir exists: ", t_dir)
+        else:
+            self._trace( "Data dir does not exist")
+            os.mkdir( t_dir)
+            self._trace(1, " directory created")   
 
     def _trace(self,  s, *t1):
         jstr = ''.join(t1)
@@ -151,12 +162,12 @@ def get_obs_time(obs_date):
     trace_print(4, "get_obs_time return()")
     return obs_date
 
-# TODO - pass a time stamp instead of now.  chose now or some other time at top level
 
 
 def create_station_file_name(station='KDCA', ext='csv', obs_time_stamp=0):
     """ 
     create station file from current time or time provided
+    Year_Month_Day_Hour - smalles unit is hour. 
     """
     if (obs_time_stamp == 0):
         t_now = datetime.now()
@@ -209,7 +220,8 @@ def weather_obs_init():
         '-r', '--resume', help='resume append and cut', action="store_true")
     parser.add_argument('-j', '--json', help="generate json data to file")
     parser.add_argument(
-        '-f', '--file', help="read stations from file specifiec")
+        '-f', '--file', help="read stations from file specified")
+    parser.add_argument( '--dir', help = 'data directory offet- default is cwd ')
     args = parser.parse_args()
     trace_print(1, "parsing args...")
     # cannocial header
@@ -219,6 +231,15 @@ def weather_obs_init():
     def check_params2(obs_setting, args):
         obs_setting.station_file = create_station_file_name2(
             obs_setting.primary_station)
+        if( args.dir):
+            obs_setting.set_data_dir(args.dir)
+        #    obs_setting.data_dir = args.dir
+        #    if (os.path.exists( os.getcwd() + os.sep + obs_setting.data_dir)):
+        #        trace_print(4, "data dir exists: ", str(obs_setting.data_dir))
+        #    else:
+        #        trace_print(1, "Data dir does not exist")
+        #        os.mkdir( os.getcwd() + os.sep + obs_setting.data_dir)
+        #        trace_print(1, " directory created")   
         if (obs_setting.append_data_specified == False):
             trace_print(4, "Station filename: ", obs_setting.station_file)
         obs_setting.init_csv = True
@@ -424,7 +445,8 @@ def obs_sanity_check(obs1,  xml_data, data_row):
 
 def duplicate_observation(obs1, current_obs):
     """ test last line of csv for duplicate """
-    last_one = get_last_csv_row(obs1.station_file)
+    r_csv_file = get_obs_csv_path( obs1, obs1.station_file)
+    last_one = get_last_csv_row(r_csv_file)
     if (len(last_one) < 4):
         return False
     last_obs = last_one.split(',\"')
@@ -535,7 +557,7 @@ def get_data_from_NOAA_xml(xmldata):
 """
 
 
-def weather_csv_driver(mode, csv_file, w_header, w_row):
+def weather_csv_driver(obs1, mode, csv_file, w_header, w_row):
     """ write out csv data - mode is append, write or cut """
     cut_mode = False
     trace_print(4, 'csv_driver')
@@ -550,16 +572,17 @@ def weather_csv_driver(mode, csv_file, w_header, w_row):
         # denote the special mode and change it to write.
         cut_mode = True
         mode = 'w'
+    r_csv_file = get_obs_csv_path(obs1, csv_file)
     # newline parm so that excel in windows doesn't have blank line in csv
     # https://stackoverflow.com/questions/3348460/csv-file-written-with-python-has-blank-lines-between-each-row
-    with open(csv_file, mode, newline='') as weather_file:
+    with open(r_csv_file, mode, newline='') as weather_file:
         weather_writer = csv.writer(
             weather_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
         if (mode == 'w'):
-            trace_print(4, "csv_driver: header+row")
+            trace_print(4, "csv_driver: header")
             weather_writer.writerow(w_header)
             if (cut_mode == False):
-                trace_print(4, "csv_driver: header_only")
+                trace_print(4, "csv_driver: row_with_header")
                 weather_writer.writerow(w_row)
         elif (mode == 'a'):
             trace_print(4, "csv_drver: row_only")
@@ -569,6 +592,15 @@ def weather_csv_driver(mode, csv_file, w_header, w_row):
     trace_print(4, "csv_write_time: ",
                 csv_write_time.strftime("%A, %d. %B %Y %I:%M%p"))
     return True
+
+def get_obs_csv_path(obs1, csv_file):
+    if obs1.data_dir != '.':
+        s = os.sep
+        r_csv_file = os.path.join( os.getcwd() + s + obs1.data_dir + s + csv_file)
+        trace_print(4, "data_dir location: ", str(r_csv_file))                         
+    else:
+        r_csv_file = csv_file
+    return r_csv_file
 
 
 """
@@ -611,7 +643,7 @@ def weather_collect_driver(obs1):
     if (duplicate_observation(obs1, outdata[1])):
         trace_print(3, " duplicate in collect.  exiting...")
         return True
-    weather_csv_driver('a', obs1.station_file, outdata[0], outdata[1])
+    weather_csv_driver( obs1, 'a', obs1.station_file, outdata[0], outdata[1])
 
     obs1.obs_iteration = obs1.obs_iteration + 1
     dump_xml(obs1, xmldata, obs1.obs_iteration)
@@ -640,7 +672,7 @@ def weather_obs_app_start(obs1):
         trace_print(4, "current_obs_time(start):  ",
                     str(obs1.current_obs_time))
         trace_print(4, "prior_obs_time:(start) ", str(obs1.prior_obs_time))
-        weather_csv_driver('w', obs1.station_file, xmld1[0], xmld1[1])
+        weather_csv_driver( obs1, 'w', obs1.station_file, xmld1[0], xmld1[1])
         trace_print(4, "Initializing new file (app_start): ",
                     str(obs1.station_file))
         dump_xml(obs1,  content, datetime.now().minute)
@@ -679,7 +711,7 @@ def weather_obs_app_append(obs1):
         # error on double start
         obs1.prior_obs_time = obs1.current_obs_time
         return
-    weather_csv_driver('a', obs1.station_file, xmld1[0], xmld1[1])
+    weather_csv_driver(obs1, 'a', obs1.station_file, xmld1[0], xmld1[1])
     return
 #
 
@@ -760,7 +792,7 @@ def obs_cut_csv_file(obs1):
             obs1.current_obs_time = obs_cut_time
             trace_print(4, "New Station file (cut):", obs1.station_file)
             # create new file with cannocial headers
-            weather_csv_driver('c', obs1.station_file, csv_headers, [])
+            weather_csv_driver(obs1, 'c', obs1.station_file, csv_headers, [])
             # TODO - go back to clearing jobs by id
             schedule.cancel_job(obs1.job1)
             # we rassigned the next station file
