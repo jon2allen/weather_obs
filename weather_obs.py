@@ -98,7 +98,7 @@ class ObsSetting:
         else:
             self._trace( "Data dir does not exist")
             os.mkdir( t_dir)
-            self._trace(1, " directory created")   
+            self._trace(" directory created")   
 
     def _trace(self,  s, *t1):
         jstr = ''.join(t1)
