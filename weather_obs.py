@@ -371,9 +371,7 @@ def trace_print(i, s, *t1):
     """ central logging function """
     global trace
     global logger
-    jstr = ''.join(t1)
-    msg1 = s + jstr
-    out1 = msg1
+    out1 = s + ''.join(t1) 
     if (trace == True):
         if (i == 1):
             logger.debug(out1)
