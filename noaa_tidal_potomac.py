@@ -1,4 +1,15 @@
 #!/usr/bin/python
+#########################################################################
+# NOAA marine forcast collector
+#
+# Scrapes data from NOAA marine forecast site
+#
+# meant to be run periodically - say every 2 to 12 hours
+#
+# output - text file with forcast
+#
+#########################################################################
+
 import os,sys
 import hashlib
 import re
@@ -128,12 +139,20 @@ class ObsCollector:
 # html to noaa marine forcase page - change to what is require
 
 if __name__ == "__main__":
-
-    tidal_pt = 'https://www.ndbc.noaa.gov/data/Forecasts/FZUS51.KLWX.html'
+    
+#######################################################################
+# FORCASTURL is where the data resides
+# FORCASTID is the station forcast ( upper tidal potomac is ANZ535
+# The script changes wording directory and then writes
+# DATA_DIR
+#######################################################################
+    FORECASTURL = 'https://www.ndbc.noaa.gov/data/Forecasts/FZUS51.KLWX.html'
+    FORECASTID = 'ANZ535'
+    DATA_DIR = '/var/www/html/weather_obs/data'
 
     # change to your desirect dirctory
     try:
-        os.chdir('/var/www/html/weather_obs')
+        os.chdir(DATA_DIR)
     except:
         pass
 
@@ -141,7 +160,7 @@ if __name__ == "__main__":
     logger = logging.getLogger('weather_obs_f')
 
     obs_x = ObsCollector(
-        url='https://www.ndbc.noaa.gov/data/Forecasts/FZUS51.KLWX.html', id="ANZ535")
+        url=FORECASTURL, id=FORECASTID)
 
     print(obs_x.show_collector())
 
