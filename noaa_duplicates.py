@@ -10,7 +10,9 @@ from obs_utils import get_noaa_text_files
 #
 ####################################################
 
-
+# SET DIR to directory to find the data
+DIR = "./data/"
+# DIR = "." ( same dir as program 
 def summary_noaa_files(noaa_files, dupe_candidate):
     print("**** SUMMARY *****")
     print("Total number of files: ", str(len(noaa_files)))
@@ -18,13 +20,13 @@ def summary_noaa_files(noaa_files, dupe_candidate):
 
 
 if __name__ == "__main__":
-    noaa_files = get_noaa_text_files(".", "ANZ535")
+    noaa_files = get_noaa_text_files(DIR, "ANZ535")
     dupe_candidate = []
     last_md5 = ""
     for file in noaa_files:
         if "latest" in file:
             continue
-        with open(file, "rb") as fl:
+        with open(DIR +  file, "rb") as fl:
             blob1 = fl.read()
             curr_md5 = str(hashlib.md5(blob1).hexdigest())
             print("file: ", file, " md5:", curr_md5)
