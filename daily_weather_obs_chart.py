@@ -21,6 +21,7 @@ import time
 import datetime
 import dateutil
 import json
+from obs_utils import trendline, read_weather_obs_csv
 
 """
   This will find the last hour of the current day
@@ -78,25 +79,6 @@ def parse_date_from_station_csv(fname):
     day = ds[3]
     day = day[-2:]
     return datetime.date(int(year), int(month), int(day))
-
-
-def trendline(index, data, order=1):
-    coeffs = np.polyfit(index, list(data), order)
-    slope = coeffs[-2]
-    return float(slope)
-
-
-def read_weather_obs_csv(target_csv):
-    """ read csv and return dataframe """
-    try:
-        # ignore time zone for parse here - times local to observation
-        def date_utc(x): return dateutil.parser.parse(x[:20], ignoretz=True)
-        obs1 = pd.read_csv(target_csv, parse_dates=[9], date_parser=date_utc)
-    except:
-        print("file not found:  ", target_csv)
-        exit(16)
-    return obs1
-
 
 def weather_obs_subset(obs1, obs_col):
     """ returns a subset of data """
@@ -164,6 +146,10 @@ def draw_obs_wind_chart(chart_date, fig_png, obs1):
     fig.text(0.04, 0.5, 'Wind Speed - MPH', va='center',
              rotation='vertical', fontsize=18)
     fig.text(0.5, 0.05,  'Hour of day', va='center', fontsize=18)
+    if (len(y) > 2 ):
+         date_ser = mdates.date2num(x)
+         tr = trendline(date_ser, y)
+         fig.txt(0.1, 0.05, 'Polyfit: ' + str(tr), va='center', fontsize=16)
     # plt.xticks(positions,labels)
     date_form = DateFormatter("%I")
     ax.xaxis.set_major_formatter(date_form)

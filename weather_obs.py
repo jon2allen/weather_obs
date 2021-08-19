@@ -443,6 +443,7 @@ def obs_sanity_check(obs1,  xml_data, data_row):
 
 def duplicate_observation(obs1, current_obs):
     """ test last line of csv for duplicate """
+    """ finds observation times and compares"""
     r_csv_file = get_obs_csv_path( obs1, obs1.station_file)
     last_one = get_last_csv_row(r_csv_file)
     if (len(last_one) < 4):
