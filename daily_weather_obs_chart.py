@@ -128,6 +128,10 @@ def weather_obs_html_table(obs1, obs_col, file_f):
 
 def draw_obs_wind_chart(chart_date, fig_png, obs1):
     """ draw chart to png file """
+    print ("bshape", obs1.shape)
+    obs1.drop(obs1.index[obs1['wind_mph'] == "<no_value_provided>"], inplace = True)
+    obs1 = obs1.reset_index(drop=True)
+    print("shape", obs1.shape)
     obs1['wind_gust_mph'] = pd.to_numeric(
         obs1['wind_gust_mph'], errors='coerce')
     obs1['wind_mph'] = pd.to_numeric(obs1['wind_mph'], errors='coerce')
@@ -145,6 +149,10 @@ def draw_obs_wind_chart(chart_date, fig_png, obs1):
     plt.title(str(chart_loc[0]) + " - " + chart_date, fontsize=15)
     print("xlim: ", ax.get_xlim())
     print("ylim: ", ax.get_ylim())
+    print("len y ", len(y))
+    print("len x ", len(x)," ",  x.size )
+    print(x)
+    print(y)
     for i in range(x.size):
         if (i == (x.size - 1)):
             ax.annotate(z[i], (mdates.date2num(x[i]), y[i]),
@@ -164,6 +172,10 @@ def draw_obs_wind_chart(chart_date, fig_png, obs1):
     fig.text(0.04, 0.5, 'Wind Speed - MPH', va='center',
              rotation='vertical', fontsize=18)
     fig.text(0.5, 0.05,  'Hour of day', va='center', fontsize=18)
+    if (len(y) > 2 ):
+         date_ser = mdates.date2num(x)
+         tr = trendline(date_ser, y)
+         fig.text(0.1, 0.05, 'Polyfit: {:8.4f}'.format(tr), va='center', fontsize=16)
     # plt.xticks(positions,labels)
     date_form = DateFormatter("%I")
     ax.xaxis.set_major_formatter(date_form)
@@ -181,7 +193,9 @@ def obs_meta_date_json(station, obs1):
     y = json_out['wind_mph']
     obs_data = {}
     obs_data['station'] = station
-    obs_data['polyfit'] = trendline(date_ser, y)
+    obs_data['polyfit'] = 0
+    if len(y) > 1:
+       obs_data['polyfit'] = trendline(date_ser, y)
     obs_data['max'] = obs1['wind_mph'].max()
     obs_data['min'] = obs1['wind_mph'].min()
 
@@ -293,19 +307,31 @@ if __name__ == "__main__":
         except:
             print("html table list not column intergers")
 
-    # print(obs1.shape)
-    # print(obs1.columns)
-
-    draw_obs_wind_chart(chart_date, fig_png, obs1)
-
-    # todo - make subroutine and pass list of columns by number from --tablecols
-    # 9, 19, 17, 12
 
     if (args.table):
         weather_obs_html_table(obs1, table_col_list, args.table)
         # default
     else:
         weather_obs_html_table(obs1,  table_col_list, 'wind_chart.html')
+
+
+    # print(obs1.shape)
+
+    # print(obs1.columns)
+    print ("bshape", obs1.shape)
+    obs1.drop(obs1.index[obs1['wind_mph'] == "<no_value_provided>"], inplace = True)
+    obs1 = obs1.reset_index(drop=True)
+    print("shape", obs1.shape)
+
+    obs1['wind_gust_mph'] = pd.to_numeric(
+        obs1['wind_gust_mph'], errors='coerce')
+    obs1['wind_mph'] = pd.to_numeric(obs1['wind_mph'], errors='coerce')
+
+
+    obs2 = obs1.copy(deep=True)
+    draw_obs_wind_chart(chart_date, fig_png, obs2)
+
+
 
     # print(ax.axis())
     # date series.
@@ -318,7 +344,12 @@ if __name__ == "__main__":
     date_ser = mdates.date2num(json_out['observation_time'])
     y = json_out['wind_mph']
 
-    print("polyfit: ", str(trendline(date_ser, y)))
+    print("len date_ser: ", str(len(date_ser)))
+    print("len wind_mph(y): ", str(len(y)))
+    print(date_ser)
+    print(y)
+    if (len(y) > 1 ):
+         print("polyfit: ", str(trendline(date_ser, y)))
     print("Max wind speed: ", str(json_out['wind_mph'].max()))
     print("Min wind speed: ", str(json_out['wind_mph'].min()))
 
