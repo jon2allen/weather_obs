@@ -18,7 +18,8 @@
 """
 
 
-import os,sys
+import os
+import sys
 import argparse
 import csv
 import urllib.request
@@ -89,16 +90,17 @@ class ObsSetting:
         station = station_url[-8:]
         self.station_id = station[:4]
         self._trace("Station URL of XML - " + str(station_url))
-    def set_data_dir( self, args_dir):
+
+    def set_data_dir(self, args_dir):
         self.data_dir = args_dir
-        t_dir = os.getcwd() + os.sep + self.data_dir  
-        self._trace("Data dir: " + str(t_dir))    
-        if (os.path.exists( t_dir)):
-            self._trace( "data dir exists: ", t_dir)
+        t_dir = os.getcwd() + os.sep + self.data_dir
+        self._trace("Data dir: " + str(t_dir))
+        if (os.path.exists(t_dir)):
+            self._trace("data dir exists: ", t_dir)
         else:
-            self._trace( "Data dir does not exist")
-            os.mkdir( t_dir)
-            self._trace(" directory created")   
+            self._trace("Data dir does not exist")
+            os.mkdir(t_dir)
+            self._trace(" directory created")
 
     def _trace(self,  s, *t1):
         jstr = ''.join(t1)
@@ -163,7 +165,6 @@ def get_obs_time(obs_date):
     return obs_date
 
 
-
 def create_station_file_name(station='KDCA', ext='csv', obs_time_stamp=0):
     """ 
     create station file from current time or time provided
@@ -221,7 +222,7 @@ def weather_obs_init():
     parser.add_argument('-j', '--json', help="generate json data to file")
     parser.add_argument(
         '-f', '--file', help="read stations from file specified")
-    parser.add_argument( '--dir', help = 'data directory offet- default is cwd ')
+    parser.add_argument('--dir', help='data directory offet- default is cwd ')
     args = parser.parse_args()
     trace_print(1, "parsing args...")
     # cannocial header
@@ -231,7 +232,7 @@ def weather_obs_init():
     def check_params2(obs_setting, args):
         obs_setting.station_file = create_station_file_name2(
             obs_setting.primary_station)
-        if( args.dir):
+        if(args.dir):
             obs_setting.set_data_dir(args.dir)
         #    obs_setting.data_dir = args.dir
         #    if (os.path.exists( os.getcwd() + os.sep + obs_setting.data_dir)):
@@ -239,7 +240,7 @@ def weather_obs_init():
         #    else:
         #        trace_print(1, "Data dir does not exist")
         #        os.mkdir( os.getcwd() + os.sep + obs_setting.data_dir)
-        #        trace_print(1, " directory created")   
+        #        trace_print(1, " directory created")
         if (obs_setting.append_data_specified == False):
             trace_print(4, "Station filename: ", obs_setting.station_file)
         obs_setting.init_csv = True
@@ -253,6 +254,7 @@ def weather_obs_init():
                 trace_print(4, "resume here")
                 now = datetime.now()
                 file_id = obs_setting.station_id + "_Y" + str(now.year)
+                # TODO - resume not supporting data dir
                 obs_setting.station_file = hunt_for_csv(file_id)
                 if (len(obs_setting.station_file) < 4):
                     obs_setting.station_file = create_station_file_name2(
@@ -371,7 +373,7 @@ def trace_print(i, s, *t1):
     """ central logging function """
     global trace
     global logger
-    out1 = s + ''.join(t1) 
+    out1 = s + ''.join(t1)
     if (trace == True):
         if (i == 1):
             logger.debug(out1)
@@ -444,7 +446,7 @@ def obs_sanity_check(obs1,  xml_data, data_row):
 def duplicate_observation(obs1, current_obs):
     """ test last line of csv for duplicate """
     """ finds observation times and compares"""
-    r_csv_file = get_obs_csv_path( obs1, obs1.station_file)
+    r_csv_file = get_obs_csv_path(obs1, obs1.station_file)
     last_one = get_last_csv_row(r_csv_file)
     if (len(last_one) < 4):
         return False
@@ -592,11 +594,13 @@ def weather_csv_driver(obs1, mode, csv_file, w_header, w_row):
                 csv_write_time.strftime("%A, %d. %B %Y %I:%M%p"))
     return True
 
+
 def get_obs_csv_path(obs1, csv_file):
     if obs1.data_dir != '.':
         s = os.sep
-        r_csv_file = os.path.join( os.getcwd() + s + obs1.data_dir + s + csv_file)
-        trace_print(4, "data_dir location: ", str(r_csv_file))                         
+        r_csv_file = os.path.join(
+            os.getcwd() + s + obs1.data_dir + s + csv_file)
+        trace_print(4, "data_dir location: ", str(r_csv_file))
     else:
         r_csv_file = csv_file
     return r_csv_file
@@ -623,7 +627,6 @@ def weather_collect_driver(obs1):
     # data feed from noaa has unexpected output
     # check to see if wind is missing.
     obs_sanity_check(obs1, xmldata, outdata[1])
-    # TODO:  set data for last observation time.
     # use for cut logic.
     # if local time crossed midnight - cut a new file.
     # save prior - obs_time_prior
@@ -642,22 +645,16 @@ def weather_collect_driver(obs1):
     if (duplicate_observation(obs1, outdata[1])):
         trace_print(3, " duplicate in collect.  exiting...")
         return True
-    weather_csv_driver( obs1, 'a', obs1.station_file, outdata[0], outdata[1])
+    weather_csv_driver(obs1, 'a', obs1.station_file, outdata[0], outdata[1])
 
     obs1.obs_iteration = obs1.obs_iteration + 1
     dump_xml(obs1, xmldata, obs1.obs_iteration)
     return True
-# early test hardness code
-# import obstest
-
-# default is to schedule for now
-# TODO - need init the file. collect driver needs the file to exits
-# primitive_test_loop()
-
 
 def weather_obs_app_start(obs1):
     """ top level start of collection """
     # if appending and scheduling - skip over to collect
+    trace_print(4,"weather_obs_app_starT() enter ")
     if (obs1.append_data != True):
         content = get_weather_from_NOAA(obs1.primary_station)
         if (obs_check_xml_data(content) == False):
@@ -671,11 +668,14 @@ def weather_obs_app_start(obs1):
         trace_print(4, "current_obs_time(start):  ",
                     str(obs1.current_obs_time))
         trace_print(4, "prior_obs_time:(start) ", str(obs1.prior_obs_time))
-        weather_csv_driver( obs1, 'w', obs1.station_file, xmld1[0], xmld1[1])
+        weather_csv_driver(obs1, 'w', obs1.station_file, xmld1[0], xmld1[1])
         trace_print(4, "Initializing new file (app_start): ",
                     str(obs1.station_file))
         dump_xml(obs1,  content, datetime.now().minute)
     if (obs1.collect_data == True):
+        if obs1.job1:
+            trace_print(4, "schedule job set - exit()")
+            return
         trace_print(4, "schedule job @ ", str(obs1.primary_station),
                     " -> ", str(obs1.station_file))
         obs1.append_data = True
@@ -792,7 +792,6 @@ def obs_cut_csv_file(obs1):
             trace_print(4, "New Station file (cut):", obs1.station_file)
             # create new file with cannocial headers
             weather_csv_driver(obs1, 'c', obs1.station_file, csv_headers, [])
-            # TODO - go back to clearing jobs by id
             schedule.cancel_job(obs1.job1)
             # we rassigned the next station file
             # new writes should go there.
@@ -817,7 +816,38 @@ def main_obs_loop(obs1_list):
     time.sleep(60)
 
 
-if __name__ == "__main__":
+def weather_obs_app():
+    obs1_list = weather_obs_init()
+    # currently all options are same as first entry
+    obs1 = obs1_list[0]
+    if (obs1.init_csv == True):
+        trace_print(4, "Init... ")
+        foreach_obs(weather_obs_app_start, obs1_list)
+    if (obs1.append_data_specified == True):
+        if (obs1.resume == True):
+            trace_print(1, "resume - with append")
+        trace_print(1, "Appending data")
+        # resume sets init_csv - have to retest again
+        # resume sets thsi when a new file has to be created
+        # resume starts next day.
+        # try to resume same day - if not start a new day csv
+        if (obs1.init_csv == False):
+            trace_print(4, "Append processing start")
+            foreach_obs(weather_obs_app_append, obs1_list)
+    if (obs1.collect_data == True):
+        run_minutes = 0
+        t_begin = datetime.now()
+        trace_print(4, "starting time: ",
+                    t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
+        if (obs1.append_data_specified == True):
+            foreach_obs(weather_obs_app_start, obs1_list)
+        delay_t = 60 - t_begin.minute
+        trace_print(4, "minutes till the next hour: ", str(delay_t))
+        while True:
+            main_obs_loop(obs1_list)
+
+
+def obs_init_logger():
     # logging.basicConfig(handlers=[logging.NullHandler()],
     logging.basicConfig(stream=sys.stdout,
                         level=logging.DEBUG,
@@ -849,32 +879,9 @@ if __name__ == "__main__":
     schedule_logger = logging.getLogger('schedule')
     schedule_logger.setLevel(level=logging.DEBUG)
     schedule_logger.addHandler(fhandler)
+
+
+if __name__ == "__main__":
+    obs_init_logger()
 #
-    obs1_list = weather_obs_init()
-    # currently all options are same as first entry
-    obs1 = obs1_list[0]
-    if (obs1.init_csv == True):
-        trace_print(4, "Init... ")
-        foreach_obs(weather_obs_app_start, obs1_list)
-    if (obs1.append_data_specified == True):
-        if (obs1.resume == True):
-            trace_print(1, "resume - with append")
-        trace_print(1, "Appending data")
-        # resume sets init_csv - have to retest again
-        # resume sets thsi when a new file has to be created
-        # resume starts next day.
-        # try to resume same day - if not start a new day csv
-        if (obs1.init_csv == False):
-            trace_print(4, "Append processing start")
-            foreach_obs(weather_obs_app_append, obs1_list)
-    if (obs1.collect_data == True):
-        run_minutes = 0
-        t_begin = datetime.now()
-        trace_print(4, "starting time: ",
-                    t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
-        if (obs1.append_data_specified == True):
-            foreach_obs(weather_obs_app_start, obs1_list)
-        delay_t = 60 - t_begin.minute
-        trace_print(4, "minutes till the next hour: ", str(delay_t))
-        while True:
-            main_obs_loop(obs1_list)
+    weather_obs_app()
