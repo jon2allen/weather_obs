@@ -71,7 +71,7 @@ class ObsSetting:
         self.duration_interval = 0
         self.station_file = ""
         # schedule job
-        self.job1 = ""
+        self.job1 = None
         self.obs_iteration = 0
         self.trace = True
         self.prior_obs_time = ""
@@ -833,6 +833,7 @@ def run_cut_operation(obs1, obs_cut_time):
     schedule.cancel_job(obs1.job1)
             # we rassigned the next station file
             # new writes should go there.
+    obs1.job1 = None
     t_begin = datetime.now()
     trace_print(4, "Time of last cut:",
                         t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
