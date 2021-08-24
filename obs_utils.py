@@ -74,9 +74,9 @@ def create_station_yearly_glob_filter( station = 'ANZ535', ext = 'txt', gyear=20
     yearly_glob = file_n.replace('M01_D', "M")
     return yearly_glob
 
-def get_obs_csv_files(  dir ):
+def get_obs_csv_files(  dir, noaa_station ):
   glob_path = Path(dir)
-  file_list = [str(pp) for pp in glob_path.glob("*.csv")]
+  file_list = [str(pp) for pp in glob_path.glob(str(noaa_station+ "*.csv"))]
   final_l = []
   for f in file_list:
       final_l.append( os.path.split( f )[1])
@@ -138,6 +138,19 @@ def hunt_for_noaa_files2(dir, station_glob_filter):
            target_csv = station_file_list[-1]
     return target_csv
 
+def hunt_for_noaa_csv_files(dir, station_glob_filter):
+    """
+    pass in a glob filter - it can be the station name. or a sub-filter
+    version #2 has to be used with a less greedy filter.
+    also - doesn't matter if you transition a year/month
+    have to glob for that up frong.
+    """
+    target_csv = ""
+    station_file_list = get_obs_csv_files( dir, station_glob_filter)
+    if ( len(station_file_list) > 0 ):
+           target_csv = station_file_list[-1]
+    return target_csv
+
 
 def hunt_for_noaa_files(dir, station_glob_filter):
     """
@@ -191,7 +204,7 @@ if __name__ == "__main__":
    # change for unix
    obs_dir = r"C:\Users\jonallen\Documents\github\weather_obs"
    #obs_dir = r"/var/www/html/weather_obs"
-   flist = get_obs_csv_files( obs_dir)
+   flist = get_obs_csv_files( obs_dir, "")
 
    print(flist)
    
@@ -209,14 +222,19 @@ if __name__ == "__main__":
    print("hunting")
 
 
-   
+   # - means - create for now/today "Dxx_H"
    tst4 = create_station_glob_filter("ANZ535", "txt", 0 )
+   tst5 = create_station_glob_filter("KDCA", "csv", 0)
    
    print("tst4 ", tst4)
+   print("tst5 ", tst5)
    
    second_tst = hunt_for_noaa_files( ".", tst4)
+   third_tst = hunt_for_noaa_csv_files(".", tst5 )
    
    print(second_tst)
+   print("third")
+   print(third_tst)
 
    now = datetime.datetime.now()
    today = str(now.day)

@@ -32,6 +32,7 @@ import hashlib
 import inspect
 import traceback
 from daily_weather_obs_chart import hunt_for_csv
+from obs_utils import hunt_for_noaa_csv_files, create_station_glob_filter
 import logging
 from logging.handlers import TimedRotatingFileHandler
 """
@@ -41,7 +42,7 @@ testing
 #import unittest
 
 #freezer = freeze_time("2021-12-31 23:56:30", tick=True)
-# freezer.start()
+#freezer.start()
 obs_time_debug = False
 obs_debug_t_delta = 9
 
@@ -144,6 +145,16 @@ class ObsSetting:
         self.init_csv = True
         self.station_file = file
         self._trace("init_csv: file  ", self.station_file)
+    
+    def get_data_dir_path( self ):
+        if self.data_dir != '.':
+            s = os.sep
+            r_data_path = os.path.join(
+                os.getcwd() + s + self.data_dir + s )
+        else:
+            r_data_path = '.'         
+        return r_data_path
+        
 
 
 def get_obs_time(obs_date):
@@ -228,7 +239,21 @@ def weather_obs_init():
     # cannocial header
     # can't depend on xml feed to complete every value
     global csv_headers
-
+    
+    def check_resume_file(obs_setting ):
+        today = datetime.now()
+        day_1 = timedelta(hours=24)
+        tomorrow = today+ day_1
+        today_glob = create_station_glob_filter(
+            obs_setting.station_id, "csv", today)
+        # Guam or Hawaii might be actually ahead.
+        tomorrow_glob = create_station_glob_filter(
+            obs_setting.station_id, "csv", tomorrow)
+        last_file = hunt_for_noaa_csv_files(".", today_glob)
+        if len(last_file) < 1:
+            last_file = hunt_for_noaa_csv_files(".", tomorrow_glob) 
+        return last_file
+    
     def check_params2(obs_setting, args):
         obs_setting.station_file = create_station_file_name2(
             obs_setting.primary_station)
@@ -253,9 +278,16 @@ def weather_obs_init():
             if (obs_setting.resume == True):
                 trace_print(4, "resume here")
                 now = datetime.now()
-                file_id = obs_setting.station_id + "_Y" + str(now.year)
-                # TODO - resume not supporting data dir
-                obs_setting.station_file = hunt_for_csv(file_id)
+                #file_id = obs_setting.station_id + "_Y" + str(now.year)
+                file_id = obs_setting.station_id
+                # TODO - support yesterday, today, and tomorrow.
+                # Guam is actually tomorrow in many cases
+                # so resume will not work if just today and yesterday
+                # 24 hours +/- otherwise just create a new file
+                data_path = obs_setting.get_data_dir_path()
+                trace_print(3, "data path ", data_path)
+                obs_setting.station_file = check_resume_file( obs_setting)
+                trace_print(3, "station_file", obs_setting.station_file)
                 if (len(obs_setting.station_file) < 4):
                     obs_setting.station_file = create_station_file_name2(
                         obs_setting.primary_station)
@@ -588,6 +620,7 @@ def weather_csv_driver(obs1, mode, csv_file, w_header, w_row):
         elif (mode == 'a'):
             trace_print(4, "csv_drver: row_only")
             weather_writer.writerow(w_row)
+    # do I really need close??? with does this
     weather_file.close()
     csv_write_time = datetime.now()
     trace_print(4, "csv_write_time: ",
@@ -654,7 +687,7 @@ def weather_collect_driver(obs1):
 def weather_obs_app_start(obs1):
     """ top level start of collection """
     # if appending and scheduling - skip over to collect
-    trace_print(4,"weather_obs_app_starT() enter ")
+    trace_print(3,"weather_obs_app_starT() enter ")
     if (obs1.append_data != True):
         content = get_weather_from_NOAA(obs1.primary_station)
         if (obs_check_xml_data(content) == False):
@@ -780,26 +813,31 @@ def obs_cut_csv_file(obs1):
     if (obs1.cut_file == True):
         t_cut_time = datetime.now()
         obs_cut_time = obs1.current_obs_time + timedelta(minutes=10)
+        # cut time should be 10 minutes ahead 
+        # NOAA observations at at approx 50 minutes after the hour
         if (duration_cut_check2(obs1.prior_obs_time, obs_cut_time, obs1.duration_interval)):
-            trace_print(4, "running cut operation")
+            run_cut_operation(obs1, obs_cut_time)
+
+def run_cut_operation(obs1, obs_cut_time):
+    trace_print(4, "running cut operation")
             # sychronize obs_time for new day - so file name will be corrrect
             # last observation at 11:50 or so - add 10 minutes for file create.
-            obs1.station_file = create_station_file_name(
+    obs1.station_file = create_station_file_name(
                 obs1.station_id, "csv", obs_cut_time)
             # start a new day cycle
-            obs1.prior_obs_time = obs_cut_time
-            obs1.current_obs_time = obs_cut_time
-            trace_print(4, "New Station file (cut):", obs1.station_file)
+    obs1.prior_obs_time = obs_cut_time
+    obs1.current_obs_time = obs_cut_time
+    trace_print(4, "New Station file (cut):", obs1.station_file)
             # create new file with cannocial headers
-            weather_csv_driver(obs1, 'c', obs1.station_file, csv_headers, [])
-            schedule.cancel_job(obs1.job1)
+    weather_csv_driver(obs1, 'c', obs1.station_file, csv_headers, [])
+    schedule.cancel_job(obs1.job1)
             # we rassigned the next station file
             # new writes should go there.
-            t_begin = datetime.now()
-            trace_print(4, "Time of last cut:",
+    t_begin = datetime.now()
+    trace_print(4, "Time of last cut:",
                         t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
             # this will reschedule job with new file.
-            weather_obs_app_start(obs1)
+    weather_obs_app_start(obs1)
 
 
 def main_obs_loop(obs1_list):
