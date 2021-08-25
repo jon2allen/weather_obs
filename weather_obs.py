@@ -250,9 +250,9 @@ def weather_obs_init():
         # Guam or Hawaii might be actually ahead.
         tomorrow_glob = create_station_glob_filter(
             obs_setting.station_id, "csv", tomorrow)
-        last_file = hunt_for_noaa_csv_files(obs_setting.data_dir, today_glob)
-        if len(last_file) < 1:
-            last_file = hunt_for_noaa_csv_files(obs_setting.data_dir, tomorrow_glob) 
+        last_file = hunt_for_noaa_csv_files(obs_setting.data_dir, tomorrow_glob) 
+        if  len(last_file ) < 1:
+            last_file = hunt_for_noaa_csv_files(obs_setting.data_dir, today_glob)
         return last_file
     
     def check_params2(obs_setting, args):
