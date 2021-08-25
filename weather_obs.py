@@ -244,14 +244,15 @@ def weather_obs_init():
         today = datetime.now()
         day_1 = timedelta(hours=24)
         tomorrow = today+ day_1
+        trace_print(4, "station_id", obs_setting.station_id)    
         today_glob = create_station_glob_filter(
             obs_setting.station_id, "csv", today)
         # Guam or Hawaii might be actually ahead.
         tomorrow_glob = create_station_glob_filter(
             obs_setting.station_id, "csv", tomorrow)
-        last_file = hunt_for_noaa_csv_files(".", today_glob)
+        last_file = hunt_for_noaa_csv_files(obs_setting.data_dir, today_glob)
         if len(last_file) < 1:
-            last_file = hunt_for_noaa_csv_files(".", tomorrow_glob) 
+            last_file = hunt_for_noaa_csv_files(obs_setting.data_dir, tomorrow_glob) 
         return last_file
     
     def check_params2(obs_setting, args):
@@ -279,7 +280,7 @@ def weather_obs_init():
                 trace_print(4, "resume here")
                 now = datetime.now()
                 #file_id = obs_setting.station_id + "_Y" + str(now.year)
-                file_id = obs_setting.station_id
+                file_id = obs_setting.station_file
                 # TODO - support yesterday, today, and tomorrow.
                 # Guam is actually tomorrow in many cases
                 # so resume will not work if just today and yesterday
@@ -606,6 +607,7 @@ def weather_csv_driver(obs1, mode, csv_file, w_header, w_row):
         cut_mode = True
         mode = 'w'
     r_csv_file = get_obs_csv_path(obs1, csv_file)
+    trace_print(4, "data_dir location: ", str(r_csv_file))
     # newline parm so that excel in windows doesn't have blank line in csv
     # https://stackoverflow.com/questions/3348460/csv-file-written-with-python-has-blank-lines-between-each-row
     with open(r_csv_file, mode, newline='') as weather_file:
@@ -633,7 +635,6 @@ def get_obs_csv_path(obs1, csv_file):
         s = os.sep
         r_csv_file = os.path.join(
             os.getcwd() + s + obs1.data_dir + s + csv_file)
-        trace_print(4, "data_dir location: ", str(r_csv_file))
     else:
         r_csv_file = csv_file
     return r_csv_file
