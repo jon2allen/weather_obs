@@ -402,22 +402,22 @@ def dump_xml(obs1, xmldata, iteration):
 """
 
 
-def trace_print(i, s, *t1):
+def trace_print(level, first_string, *optional_strings):
     """ central logging function """
     global trace
     global logger
-    out1 = s + ''.join(t1)
+    trace_out = first_string + ''.join(optional_strings)
     if (trace == True):
-        if (i == 1):
-            logger.debug(out1)
-        elif (i == 2):
-            logger.critcal(out1)
-        elif (i == 3):
-            logger.warning(out1)
-        elif (i == 4):
-            logger.info(out1)
+        if (level == 1):
+            logger.debug(trace_out)
+        elif (level == 2):
+            logger.critcal(trace_out)
+        elif (level == 3):
+            logger.warning(trace_out)
+        elif (level == 4):
+            logger.info(trace_out)
         else:
-            print("level not known:  ", out1, flush=True)
+            print("level not known:  ", trace_out, flush=True)
 
 
 """
