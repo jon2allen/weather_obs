@@ -37,6 +37,32 @@ def trendline(index, data, order=1):
     slope = coeffs[-2]
     return float(slope)
 
+def month_to_num( my_month):
+    _month = {	'january': 1,
+		'february': 2,
+		'march': 3,
+		'april' : 4,
+		'may': 5,
+		'june': 6,
+		'july': 7,
+		'august': 8,
+		'september': 9,
+		'october': 10,
+		'november': 11,
+		'december': 12	}
+    return _month[my_month] 
+
+def parse_date_from_station_csv(fname):
+    csv_name = os.path.split(fname)
+    # just need the file name not the path
+    ds = re.split('[_.]', str(csv_name[1]))
+    year = ds[1]
+    year = year[-4:]
+    month = ds[2]
+    month = month[-2:]
+    day = ds[3]
+    day = day[-2:]
+    return datetime.date(int(year), int(month), int(day))   
 
 def create_station_glob_filter(station='ANZ535', ext='txt', obs_time_stamp=0):
     """ 
@@ -105,8 +131,26 @@ def get_noaa_text_files(dir, noaa_station):
 def diff_month(d1, d2):
     # stolen from Stackoverflow
     # https://stackoverflow.com/questions/4039879/best-way-to-find-the-months-between-two-dates
-    return (d1.year - d2.year) * 12 + d1.month - d2.month
+    return abs( (d1.year - d2.year) * 12 + d1.month - d2.month )
 
+def get_next_month_year(month, year):
+    i_month = month
+    i_year = year
+    while True:
+        if i_month == 12:
+            i_month = 1
+            i_year = i_year + 1
+        else:
+            i_month = i_month+1
+        yield (i_month, i_year )
+
+def file_exclusion_filter(f_name):
+    f_list = ['Range', 'Month', 'Year']
+    for f in f_list:
+        if f_name.find(f) > 0:
+            return True
+    return False
+        
 
 def gather_any_noaa_files(dir, noaa_station, ext, startdt, enddt):
     # startdt, enddt are datetime.
@@ -114,7 +158,28 @@ def gather_any_noaa_files(dir, noaa_station, ext, startdt, enddt):
     # logic will be if same month - then get all the month and filter.
     # if months different - calc difference in months.
     # then gather all the months, then filter.
-    pass
+    range_list = gather_monthly_noaa_files(dir, noaa_station, ext, startdt.year, startdt.month)
+    
+    num_months = diff_month( startdt, enddt)
+    
+    m_generator = get_next_month_year( startdt.month, startdt.year)
+    for n_month in range(num_months):
+        next_month = next(m_generator)
+        print( " searching year: ", str(next_month[1]), " month: ", str(next_month[0]))
+        month_list =  gather_monthly_noaa_files(dir, noaa_station, ext, next_month[1], next_month[0])
+        if len(month_list) > 0:
+            range_list = range_list + month_list 
+    final_list = []
+    startdt = startdt.date()
+    enddt = enddt.date()
+    while range_list:
+        csv_file = range_list.pop(0)
+        if file_exclusion_filter( csv_file):
+            continue
+        f_date = parse_date_from_station_csv(  csv_file )
+        if ( f_date >= startdt)  and ( f_date <= enddt):
+            final_list.append(csv_file)
+    return final_list
 
 
 def gather_monthly_noaa_files(dir, noaa_station, ext, tyear, tmonth):
@@ -135,11 +200,23 @@ def load_monthly_noaa_csv_files(dir, noaa_station, ext="csv", tyear=2021, tmonth
     month_df = pd.DataFrame()
     if len(file_list) > 0:
         for f in file_list:
+            if file_exclusion_filter(f):
+                continue
             obs1 = read_weather_obs_csv(f)
-            print(obs1.head())
+            print("loading:  ", f )
             month_df = month_df.append(obs1, ignore_index=True)
     return month_df
 
+def load_range_noaa_csv_files(dir, noaa_station, ext="csv", startdt=0, enddt=0):
+    file_list = gather_any_noaa_files(
+        dir, noaa_station, ext, startdt, enddt)
+    month_df = pd.DataFrame()
+    if len(file_list) > 0:
+        for f in file_list:
+            obs1 = read_weather_obs_csv(f)
+            print("loading:  ", f )
+            month_df = month_df.append(obs1, ignore_index=True)
+    return month_df
 
 def hunt_for_noaa_files2(dir, station_glob_filter):
     """
@@ -288,15 +365,23 @@ if __name__ == "__main__":
     print(gather_monthly_noaa_files(".", "KDCA", "csv", 2021, 4))
     print(gather_monthly_noaa_files(".", "KDCA", "csv", 2021, 9))
 
-    obs2 = load_monthly_noaa_csv_files(".", "KDCA", "csv", 2021, 4)
+   # obs2 = load_monthly_noaa_csv_files(".", "KDCA", "csv", 2021, 4)
 
-    print(obs2.shape)
+    #print(obs2.shape)
 
-    print(obs2.head(150))
+    #print(obs2.head(150))
 
     # obs2.to_csv("month_test.csv", index=False)
 
-    T1 = datetime.date(2020, 11, 1)
-    T2 = datetime.date(2021, 8, 1)
+    T1 = datetime.datetime(2021, 6, 12)
+    T2 = datetime.datetime(2021, 6, 14)
 
     print("diff_month: ", diff_month(T1, T2))
+
+    print(gather_any_noaa_files( ".", "KDCA", "csv", T1,T2))
+    
+    obs3 = load_range_noaa_csv_files(".", "KDCA", "csv", T1, T2)
+   
+    print( obs3.shape)
+    
+    print(obs3.head(150))
