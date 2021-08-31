@@ -31,7 +31,6 @@ import schedule
 import hashlib
 import inspect
 import traceback
-from daily_weather_obs_chart import hunt_for_csv
 from obs_utils import hunt_for_noaa_csv_files, create_station_glob_filter
 import logging
 from logging.handlers import TimedRotatingFileHandler
@@ -278,9 +277,9 @@ def weather_obs_init():
             obs_setting.init_csv = False
             if (obs_setting.resume == True):
                 trace_print(4, "resume here")
-                now = datetime.now()
+                #now = datetime.now()
                 #file_id = obs_setting.station_id + "_Y" + str(now.year)
-                file_id = obs_setting.station_file
+                # file_id = obs_setting.station_file
                 # TODO - support yesterday, today, and tomorrow.
                 # Guam is actually tomorrow in many cases
                 # so resume will not work if just today and yesterday
@@ -334,7 +333,7 @@ def weather_obs_init():
     else:
         trace_print(3, "Error: No station given - please use --station")
         trace_print(3, " see readme")
-        exit(4)
+        sys.exit(4)
     obs_setting_list = []
     obs_setting_list.append(obs_setting)
     return obs_setting_list
