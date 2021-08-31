@@ -21,7 +21,7 @@ import time
 import datetime
 import dateutil
 import json
-from obs_utils import trendline, read_weather_obs_csv
+from obs_utils import trendline, read_weather_obs_csv, parse_date_from_station_csv
 
 """
   This will find the last hour of the current day
@@ -68,17 +68,7 @@ def hunt_for_csv(file_id):
 """
 
 
-def parse_date_from_station_csv(fname):
-    csv_name = os.path.split(fname)
-    # just need the file name not the path
-    ds = re.split('[_.]', str(csv_name[1]))
-    year = ds[1]
-    year = year[-4:]
-    month = ds[2]
-    month = month[-2:]
-    day = ds[3]
-    day = day[-2:]
-    return datetime.date(int(year), int(month), int(day))
+
 
 def weather_obs_subset(obs1, obs_col):
     """ returns a subset of data """
