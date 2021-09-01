@@ -68,17 +68,8 @@ class obsCsvSetting:
             r_data_path = '.'         
         return r_data_path
     def get_data_dir_path( self ):
-        s = os.sep
-        # assume if has separtor that it is full path
-        # if not - then it is relative to current workdir
-        if (self.outdir.find(s) > 1):
-            return self.outdir + s
-        if self.outdir != '.':
-            r_data_path = os.path.join(
-                os.getcwd() + s + self.outdir + s )
-        else:
-            r_data_path = '.'         
-        return r_data_path
+        # should be fully qualified from set below      
+        return self.outdir
     def set_data_dir(self, args_dir):
         s = os.sep
         if ( args_dir.find(s) > 0 ):
@@ -206,8 +197,8 @@ class obsCsvSplit:
 
 
     def get_full_path_filename(self):
-        trace_print( 4, "outdir")
-        print(self.obs_setting.get_data_dir_path())
+        #trace_print( 1, "outdir")
+        #trace_print(1, self.obs_setting.get_data_dir_path())
         f_path = self.obs_setting.get_data_dir_path()
         if f_path == '.':
             return ""
@@ -223,11 +214,12 @@ class obsCsvSplit:
     def split_each_day(  self, station, year, month, obs_month):
         num_days = obs_month['day_of_month'].unique()
         for day in num_days:
+            
             obs3 = obs_month.loc[obs_month['day_of_month'] == day]
-            print ( "day ", day, "shape", obs3.shape )
+            trace_print( 4, "day ", str(day), "  shape ", str(obs3.shape) )
             f_name = self.create_station_name_from_date( station, year, month, day)
             f_path = self.get_full_path_filename()
-            print(f_path + f_name)
+            trace_print(4, f_path + f_name)
             obs3.to_csv( (f_path + f_name), index = False)     
             
     def split_each_month( self, station, year, obs2 ):
@@ -290,16 +282,16 @@ class obsCsvAPP:
         self.parser.add_argument('--combine', action="store_true", 
                             help='combine weather_obs CSV function ')
         self.parser.add_argument('--split', action="store_true", 
-                            help='split weather_obs CSV function ')
+                            help='split weather_obs CSV function - splits into daily file ')
         self.parser.add_argument("--infile", help='in file for split')
         self.parser.add_argument("--inputdir", help='input direcotry for combine')
-        self.parser.add_argument('--startdate', help='startdate  YYYY/MM/DD')
-        self.parser.add_argument("--enddate", help='enddate  YYYY/MM/DD')
+        self.parser.add_argument('--startdate', help='startdate  YYYY/MM/DD - combine only')
+        self.parser.add_argument("--enddate", help='enddate  YYYY/MM/DD - combine only')
         self.parser.add_argument("--outfile", help='outfile for combine')
         self.parser.add_argument("--station_prefix", help='4 character prefix \(ex. KDCA\)')
         self.parser.add_argument("--outdir", help='alternate dir to write date - split escpecially')
-        self.parser.add_argument("--force", help='force overwrite of files')
-        self.parser.add_argument("--month", help='month of data to act on')
+        self.parser.add_argument("--force", help='force overwrite of files - combine only')
+        self.parser.add_argument("--month", help='month of data to act on - combine only')
         self.parser.add_argument("--year", help='year of data to act on' )
     def set_app_arguments(self):
         args = self.parser.parse_args()
