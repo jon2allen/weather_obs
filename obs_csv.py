@@ -187,12 +187,13 @@ class obsCsvSplit:
         self.station_id = obs_setting.station_prefix
         self.outdir = obs_setting.outdir
         self.obs2 = read_weather_obs_csv( self.obs_setting.infile)
+        trace_print(4, "analyzing input...")
         self.obs2['day_of_month'] = self.obs2['observation_time'].dt.day
         self.obs2['month_num'] = self.obs2['observation_time'].dt.month
         self.obs2['year_obs'] = self.obs2['observation_time'].dt.year
-        print(self.obs2['day_of_month'].unique())
-        print(self.obs2['month_num'].unique())
-        print(self.obs2['year_obs'].unique())
+        trace_print(4, "list of days: ", str(self.obs2['day_of_month'].unique()))
+        trace_print(4, "list of months: ", str(self.obs2['month_num'].unique()))
+        trace_print(4, "list of years: " , str( self.obs2['year_obs'].unique()))
         #self.split_each_year(self.obs_setting.station_prefix, self.obs2)
 
 
@@ -219,8 +220,8 @@ class obsCsvSplit:
             trace_print( 4, "day ", str(day), "  shape ", str(obs3.shape) )
             f_name = self.create_station_name_from_date( station, year, month, day)
             f_path = self.get_full_path_filename()
-            trace_print(4, f_path + f_name)
-            obs3.to_csv( (f_path + f_name), index = False)     
+            trace_print(4, f_path + os.sep + f_name)
+            obs3.to_csv( (f_path + os.sep + f_name), index = False)
             
     def split_each_month( self, station, year, obs2 ):
         obs_temp_month = obs2.loc[(obs2['year_obs'] == year)]
