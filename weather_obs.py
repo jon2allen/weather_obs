@@ -32,6 +32,7 @@ import hashlib
 import inspect
 import traceback
 from obs_utils import hunt_for_noaa_csv_files, create_station_glob_filter
+from obs_utils import trace_print
 import logging
 from logging.handlers import TimedRotatingFileHandler
 """
@@ -42,8 +43,6 @@ testing
 
 #freezer = freeze_time("2021-12-31 23:56:30", tick=True)
 #freezer.start()
-obs_time_debug = False
-obs_debug_t_delta = 9
 
 
 logger = logging.getLogger('weather_obs_f')
@@ -358,9 +357,7 @@ def check_parms1(obs_setting, args):
     return True
 
 
-# default global vars.
-# iteration is for duration/repetitive hourly collection - so you know what index you are at.
-trace = True
+
 
 """
  function: dump_xml
@@ -401,22 +398,7 @@ def dump_xml(obs1, xmldata, iteration):
 """
 
 
-def trace_print(level, first_string, *optional_strings):
-    """ central logging function """
-    global trace
-    global logger
-    trace_out = first_string + ''.join(optional_strings)
-    if (trace == True):
-        if (level == 1):
-            logger.debug(trace_out)
-        elif (level == 2):
-            logger.critcal(trace_out)
-        elif (level == 3):
-            logger.warning(trace_out)
-        elif (level == 4):
-            logger.info(trace_out)
-        else:
-            print("level not known:  ", trace_out, flush=True)
+
 
 
 """
@@ -921,6 +903,13 @@ def obs_init_logger():
 
 
 if __name__ == "__main__":
+    global obs_time_debug, obs_debut_t_delta, trace
+    obs_time_debug = False
+    obs_debug_t_delta = 9
+    # default global vars.
+    # iteration is for duration/repetitive hourly collection - so you know what index you are at.
+    trace = True
+
     obs_init_logger()
 #
     weather_obs_app()

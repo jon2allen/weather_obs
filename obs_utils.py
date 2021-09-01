@@ -18,7 +18,24 @@ from matplotlib.dates import DateFormatter
 
 import logging
 logger = logging.getLogger('weather_obs_f')
+trace = True
 
+def trace_print(level, first_string, *optional_strings):
+    """ central logging function """
+    global trace
+    global logger
+    trace_out = first_string + ''.join(optional_strings)
+    if (trace == True):
+        if (level == 1):
+            logger.debug(trace_out)
+        elif (level == 2):
+            logger.critcal(trace_out)
+        elif (level == 3):
+            logger.warning(trace_out)
+        elif (level == 4):
+            logger.info(trace_out)
+        else:
+            print("level not known:  ", trace_out, flush=True)
 
 def read_weather_obs_csv(target_csv):
     """ read csv and return dataframe """
@@ -27,7 +44,7 @@ def read_weather_obs_csv(target_csv):
         def date_utc(x): return dateutil.parser.parse(x[:20], ignoretz=True)
         obs1 = pd.read_csv(target_csv, parse_dates=[9], date_parser=date_utc)
     except:
-        print("file not found:  ", target_csv)
+        trace_print( 4, "file not found:  ", target_csv)
         exit(16)
     return obs1
 
@@ -165,7 +182,7 @@ def gather_any_noaa_files(dir, noaa_station, ext, startdt, enddt):
     m_generator = get_next_month_year( startdt.month, startdt.year)
     for n_month in range(num_months):
         next_month = next(m_generator)
-        print( " searching year: ", str(next_month[1]), " month: ", str(next_month[0]))
+        trace_print( 4, "  searching year: ", str(next_month[1]), " month: ", str(next_month[0]))
         month_list =  gather_monthly_noaa_files(dir, noaa_station, ext, next_month[1], next_month[0])
         if len(month_list) > 0:
             range_list = range_list + month_list 
@@ -185,7 +202,8 @@ def gather_any_noaa_files(dir, noaa_station, ext, startdt, enddt):
 def gather_monthly_noaa_files(dir, noaa_station, ext, tyear, tmonth):
     glob_filter = create_station_monthly_glob_filter(
         noaa_station, ext, tyear, tmonth)
-    glob_path = Path(dir)
+    rdir =  r'{}'.format(dir)
+    glob_path = Path(rdir)
     file_list = [str(pp) for pp in glob_path.glob(str(glob_filter))]
     final_l = []
     for f in file_list:
@@ -197,13 +215,19 @@ def gather_monthly_noaa_files(dir, noaa_station, ext, tyear, tmonth):
 def load_monthly_noaa_csv_files(dir, noaa_station, ext="csv", tyear=2021, tmonth=0):
     file_list = gather_monthly_noaa_files(
         dir, noaa_station, ext, tyear, tmonth)
+    if dir == ".":
+        t_dir = ""
+        trace_print( 4, "Using Current working direcotry")
+    else:
+        t_dir = dir
+        trace_print( 4, " loading from dir: ", t_dir)
     month_df = pd.DataFrame()
     if len(file_list) > 0:
         for f in file_list:
             if file_exclusion_filter(f):
                 continue
-            obs1 = read_weather_obs_csv(f)
-            print("loading:  ", f )
+            obs1 = read_weather_obs_csv(t_dir + f)
+            trace_print( 4, "loading:  ", f )
             month_df = month_df.append(obs1, ignore_index=True)
     return month_df
 
@@ -211,10 +235,16 @@ def load_range_noaa_csv_files(dir, noaa_station, ext="csv", startdt=0, enddt=0):
     file_list = gather_any_noaa_files(
         dir, noaa_station, ext, startdt, enddt)
     month_df = pd.DataFrame()
+    if dir == ".":
+        t_dir = ""
+        trace_print( 4, "Using Current working direcotry")
+    else:
+        t_dir = dir
+        trace_print( 4, " loading from dir: ", t_dir)
     if len(file_list) > 0:
         for f in file_list:
-            obs1 = read_weather_obs_csv(f)
-            print("loading:  ", f )
+            obs1 = read_weather_obs_csv(t_dir + f)
+            trace_print( 4, "loading:  ", f )
             month_df = month_df.append(obs1, ignore_index=True)
     return month_df
 
@@ -258,14 +288,14 @@ def hunt_for_noaa_files(dir, station_glob_filter):
     #
     target_csv = ''
     for f in station_file_list:
-        # print("file: ", f)
+        # trace_print( 4, "file: ", f)
         if (f.find('latest') > 1) or (f.find('dupcheck') > 1):
             continue
         f_station, f_year, f_month, f_day, f_hour = f.split("_")
         m1 = int(f_month[1:3])
         d1 = int(f_day[1:3])
         h1 = int(f_day[1:3])
-        # print( "m1,d1,h1", str(m1), " ", str(d1), " ", str(h1))
+        # trace_print( 4, " "m1,d1,h1", str(m1), " ", str(d1), " ", str(h1))
         if m1 == int(now.month):
             logger.debug("match month")
             logger.debug("Month: %s ", str(m1))
