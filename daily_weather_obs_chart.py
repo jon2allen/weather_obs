@@ -83,7 +83,7 @@ def weather_obs_subset(obs1, obs_col):
 def weather_obs_html_table(obs1, obs_col, file_f):
     try:
         obs_prn = obs1.iloc[:, obs_col]
-        out_text = obs_prn.to_html()
+        out_text = obs_prn.to_html(na_rep = '<no_value_provided>')
     except:
         print("column out of range or other")
         return False

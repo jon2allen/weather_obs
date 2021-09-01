@@ -44,9 +44,9 @@ def read_weather_obs_csv(target_csv):
         # ignore time zone for parse here - times local to observation
         def date_utc(x): return dateutil.parser.parse(x[:20], ignoretz=True)
         obs1 = pd.read_csv(target_csv, parse_dates=[9], date_parser=date_utc,
-                           dtype = { 'wind_mph': 'float64'},
-                           na_values = "<no_value_provided>")
-    except:
+                            dtype = { 'wind_mph': 'float64'},
+                            na_values = "<no_value_provided>")
+    except OSError:
         trace_print( 4, "file not found:  ", target_csv)
         exit(16)
     return obs1

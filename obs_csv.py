@@ -186,6 +186,7 @@ class obsCsvSplit:
         # if outfile = blank.  create file for writing.
         self.station_id = obs_setting.station_prefix
         self.outdir = obs_setting.outdir
+        print(self.obs_setting.infile)
         self.obs2 = read_weather_obs_csv( self.obs_setting.infile)
         trace_print(4, "analyzing input...")
         self.obs2['day_of_month'] = self.obs2['observation_time'].dt.day
@@ -221,7 +222,8 @@ class obsCsvSplit:
             f_name = self.create_station_name_from_date( station, year, month, day)
             f_path = self.get_full_path_filename()
             trace_print(4, f_path + os.sep + f_name)
-            obs3.to_csv( (f_path + os.sep + f_name), index = False)
+            obs3.to_csv( (f_path + os.sep + f_name), index = False,
+                        na_rep = '<no_value_provided>')
             
     def split_each_month( self, station, year, obs2 ):
         obs_temp_month = obs2.loc[(obs2['year_obs'] == year)]
@@ -267,7 +269,7 @@ class obsCsvCombine:
             trace_print( 4, "Unable to find or load data - not writing CSV file")
         else:
             trace_print(4, "Writing out CSV: ", self.outfile)
-        obs1.to_csv(self.outfile, index=False)
+        obs1.to_csv(self.outfile, index=False, na_rep = '<no_value_provided>')
 
 
 #Class obsCsvApp
