@@ -292,6 +292,7 @@ if __name__ == "__main__":
     # print(obs1.columns)
     print ("bshape", obs1.shape)
     obs1.drop(obs1.index[obs1['wind_mph'] == "<no_value_provided>"], inplace = True)
+    obs1.dropna(how = 'all', subset = ['wind_mph'], inplace = True)
     obs1 = obs1.reset_index(drop=True)
     print("shape", obs1.shape)
 
