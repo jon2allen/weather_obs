@@ -216,7 +216,7 @@ class obsCsvSplit:
     def split_each_day(  self, station, year, month, obs_month):
         num_days = obs_month['day_of_month'].unique()
         for day in num_days:
-            
+            # todo - filter by station
             obs3 = obs_month.loc[obs_month['day_of_month'] == day]
             trace_print( 4, "day ", str(day), "  shape ", str(obs3.shape) )
             f_name = self.create_station_name_from_date( station, year, month, day)
@@ -234,10 +234,21 @@ class obsCsvSplit:
     def split_each_year( self, station, obs2 ):
         years = obs2['year_obs'].unique()
         for year in years:
-            self.split_each_month( station, year, obs2)   
+            self.split_each_month( station, year, obs2)
+    
+    def split_each_station( self, station, obs2):
+        stations = obs2['station_id'].unique()
+        # split each day/each station
+        if station == '*':
+            for st in stations:
+                self.split_each_year( st, obs2)
+        else:
+            # all stations in one daily file.
+            self.split_each_year( station, obs2)
     
     def do_split(self):
-        self.split_each_year( self.obs_setting.station_prefix, self.obs2)
+        self.split_each_station( self.obs_setting.station_prefix, self.obs2)
+        #self.split_each_year( self.obs_setting.station_prefix, self.obs2)
             
 #Class obsCsvCombine
 

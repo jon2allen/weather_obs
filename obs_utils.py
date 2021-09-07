@@ -196,7 +196,10 @@ def gather_any_noaa_files(dir, noaa_station, ext, startdt, enddt):
         csv_file = range_list.pop(0)
         if file_exclusion_filter( csv_file):
             continue
-        f_date = parse_date_from_station_csv(  csv_file )
+        try:
+            f_date = parse_date_from_station_csv(  csv_file )
+        except ValueError:
+            trace_print(4, "bad file name:", csv_file)
         if ( f_date >= startdt)  and ( f_date <= enddt):
             final_list.append(csv_file)
     return final_list
