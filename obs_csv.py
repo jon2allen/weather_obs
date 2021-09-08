@@ -178,6 +178,7 @@ class obsCsvSetting:
   
 
 #Class obsCsvSplit
+# after init - call do_split - the rest are internal functions.
 
 class obsCsvSplit:
     def __init__(self, obs_setting):
@@ -192,6 +193,7 @@ class obsCsvSplit:
         self.obs2['day_of_month'] = self.obs2['observation_time'].dt.day
         self.obs2['month_num'] = self.obs2['observation_time'].dt.month
         self.obs2['year_obs'] = self.obs2['observation_time'].dt.year
+        trace_print(4, "list of stations: ", str(self.obs2['station_id'].unique()))
         trace_print(4, "list of days: ", str(self.obs2['day_of_month'].unique()))
         trace_print(4, "list of months: ", str(self.obs2['month_num'].unique()))
         trace_print(4, "list of years: " , str( self.obs2['year_obs'].unique()))
@@ -237,14 +239,15 @@ class obsCsvSplit:
             self.split_each_month( station, year, obs2)
     
     def split_each_station( self, station, obs2):
-        stations = obs2['station_id'].unique()
+        stations = obs2['station_id'].unique()        
         # split each day/each station
         if station == '*':
             for st in stations:
                 self.split_each_year( st, obs2)
         else:
-            # all stations in one daily file.
-            self.split_each_year( station, obs2)
+            # only the specified station.
+            obs_temp_station= obs2.loc[(obs2['station_id'] == station)]
+            self.split_each_year( station, obs_temp_station)
     
     def do_split(self):
         self.split_each_station( self.obs_setting.station_prefix, self.obs2)
