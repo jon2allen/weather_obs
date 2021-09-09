@@ -33,8 +33,6 @@ class ObsCollector:
 
     def get_url_data(self):
         self.url_data = requests.get(self.station_url)
-        
-
 
     def show_url_data(self):
         """show Url data if desired"""
@@ -162,7 +160,7 @@ class ObsTideCollector( ObsCollector):
             return True
         return False
     def load_tidal_data(self, tidal_file):
-        self.df = pd.read_csv(tidal_file, index_col=None,
+        self.df = pd.read_csv(tidal_file, index_col=0,
                               parse_dates = [0], sep = '\s+', header = 12)
         #self.df = self.df.drop(columns = ['Time', 'Pred(Ft)', 'Pred(cm)'])
         print('my_df')
@@ -185,7 +183,7 @@ class ObsTideCollector( ObsCollector):
     def get_url_data(self):
         super().get_url_data()
         print("tide get url")
-        self.df = pd.read_csv(StringIO(self.url_data.text), index_col=None,
+        self.df = pd.read_csv(StringIO(self.url_data.text), index_col=0,
                               parse_dates = [0], sep = '\s+', header = 12)
         #self.df = self.df.drop(columns = ['Time', 'Pred(Ft)', 'Pred(cm)'])
         print('my_df')
@@ -201,7 +199,7 @@ class ObsTideCollector( ObsCollector):
         enddate = (today + three_days)
         print(str(today))
         #tide_table = self.df['2021-09'].iloc[:, :6]
-        tide_table = self.df.loc[today: enddate]
+        tide_table = self.df.loc[str(today): str(enddate)]
         tide_table.index.name = "Date"
         print("write tide table")
         print(tide_table.head(10)) 
