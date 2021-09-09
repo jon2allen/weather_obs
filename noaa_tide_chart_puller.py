@@ -1,12 +1,14 @@
 #!/usr/bin/python
 #########################################################################
-# NOAA marine forcast collector
+# NOAA marine tidal chart collector
 #
-# Scrapes data from NOAA marine forecast site
+# Scrapes data from NOAA marine tidal chart site
 #
-# meant to be run periodically - say every 2 to 12 hours
+# meant to be run periodically - once per day.
+#  data is cached once per week and refreshed.
+#  tidal forecast is "well known" in advance.
 #
-# output - text file with forcast
+# output - html file with tidal forcast .
 #
 #########################################################################
 
@@ -21,7 +23,11 @@ import obs_utils
 from weather_obs import create_station_file_name
 from io import StringIO
 import pandas as pd
+#from freezegun import freeze_time
+#import unittest
 
+#freezer = freeze_time("2021-12-30 23:56:30", tick=True)
+#freezer.start()
 
 class ObsCollector:
     def __init__(self, url, id):
@@ -140,12 +146,20 @@ class ObsTideCollector( ObsCollector):
     def __init__( self, url, id ):
         super().__init__(url, id)
         # use cache on disk first
+        # need test for end of year
+        # may need to get this year and next.
+        # merge df together. 
+        # need to write out to customre file - 
+        # alex_Y2022_data.txt
+        # need new functino that gets and reads this file.
+        # append this df_2022 to the df in the class
         self.df = pd.DataFrame()
         f_list = self.get_last_tidal_data()
         print("f_list:", f_list)
         if len(f_list) > 0:
             self.obs_filename = f_list.pop()
             self.load_tidal_data(self.obs_filename)
+            self.read_next_year_data()
     def find_station_data(self):
         self.last_forcast = str(self.url_data.text)
         return self.url_data
@@ -160,14 +174,18 @@ class ObsTideCollector( ObsCollector):
             return True
         return False
     def load_tidal_data(self, tidal_file):
-        self.df = pd.read_csv(tidal_file, index_col=0,
+        my_df = pd.read_csv(tidal_file, index_col=0,
                               parse_dates = [0], sep = '\s+', header = 12)
         #self.df = self.df.drop(columns = ['Time', 'Pred(Ft)', 'Pred(cm)'])
         print('my_df')
 
-        self.df['Date'] = self.df.apply(lambda x: x['Date'][:-8], axis = 1)
-        self.df['tide_time'] = self.df['Day'] + self.df['Time']
-        self.df = self.df.drop(columns = ['Date', 'Time', 'Day'])
+        my_df['Date'] = my_df.apply(lambda x: x['Date'][:-8], axis = 1)
+        my_df['tide_time'] = my_df['Day'] + my_df['Time']
+        my_df = my_df.drop(columns = ['Date', 'Time', 'Day'])
+        if self.df.empty:
+            self.df = my_df
+        else:
+            self.df = self.df.append(my_df, ignore_index=False)
     def get_last_tidal_data(self):
         today = datetime.now()
         day_7 = timedelta(hours=168)
@@ -179,6 +197,8 @@ class ObsTideCollector( ObsCollector):
     def obs_collection_sequence(self):
         if self.df.empty:
             super().obs_collection_sequence()
+            self.get_next_year_data()
+            self.read_next_year_data()
         self.write_tide_table_to_html()
     def get_url_data(self):
         super().get_url_data()
@@ -193,6 +213,24 @@ class ObsTideCollector( ObsCollector):
         self.df = self.df.drop(columns = ['Date', 'Time', 'Day'])
         #index = self.df.index
         #print(index)
+    def get_next_year_data(self):
+        today = datetime.now()
+        next_year = today.year + 1
+        bstring = "bdate=" + str(today.year)
+        nstring = "bdate=" + str(next_year)
+        print("bstring:", bstring)
+        print("nstring: ", nstring)
+        self.station_url = self.station_url.replace(bstring,nstring)
+        print("url: ", self.station_url)
+        self.get_url_data()
+        self.find_station_data()
+        self.write_station_data_custom("Y"+str(next_year)+".txt")
+    def read_next_year_data(self):
+        today = datetime.now()
+        next_year = today.year + 1
+        next_year_file = self.station_id + "_Y" + str(next_year) + ".txt"
+        self.load_tidal_data( next_year_file)
+        pass
     def write_tide_table_to_html(self):
         today = datetime.now().date()
         three_days = timedelta(hours=72)
@@ -264,6 +302,10 @@ if __name__ == "__main__":
     print(obs_t.df.shape)
     print(obs_t.df.describe())
     print(obs_t.df.dtypes)
-    
+    #print(obs_t.get_next_year_data())
+    #obs_t.read_next_year_data()
+    print(obs_t.df.shape)
+    print(obs_t.df.tail(1400))
+    obs_t.df.to_csv('alex_test.csv')
     
     sys.exit()
