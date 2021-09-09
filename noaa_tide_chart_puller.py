@@ -200,6 +200,10 @@ class ObsTideCollector( ObsCollector):
             self.get_next_year_data()
             self.read_next_year_data()
             self.write_tide_table_to_html()
+        else:
+            self.get_next_year_data()
+            self.read_next_year_data()
+            self.write_tide_table_to_html()
 
     def get_url_data(self):
         super().get_url_data()
@@ -247,8 +251,11 @@ class ObsTideCollector( ObsCollector):
         print("write tide table")
         print(tide_table.head(10)) 
         print(tide_table.columns)
-        
-        html_doc = tide_table.to_html(header=False)
+
+        html_doc = tide_table.to_html(header=False, justify='right')
+
+        #html_doc2 = tide_table.to_html()
+        print(html_doc)
         soup = BeautifulSoup(html_doc, 'html.parser')
 
         empty_cols = soup.find('thead').find_all(lambda tag: not tag.contents)
