@@ -199,18 +199,23 @@ class ObsTideCollector( ObsCollector):
             super().obs_collection_sequence()
             self.get_next_year_data()
             self.read_next_year_data()
-        self.write_tide_table_to_html()
+            self.write_tide_table_to_html()
+
     def get_url_data(self):
         super().get_url_data()
         print("tide get url")
-        self.df = pd.read_csv(StringIO(self.url_data.text), index_col=0,
+        my_df = pd.read_csv(StringIO(self.url_data.text), index_col=0,
                               parse_dates = [0], sep = '\s+', header = 12)
-        #self.df = self.df.drop(columns = ['Time', 'Pred(Ft)', 'Pred(cm)'])
+        #my_df = my_df.df.drop(columns = ['Time', 'Pred(Ft)', 'Pred(cm)'])
         print('my_df')
 
-        self.df['Date'] = self.df.apply(lambda x: x['Date'][:-8], axis = 1)
-        self.df['tide_time'] = self.df['Day'] + self.df['Time']
-        self.df = self.df.drop(columns = ['Date', 'Time', 'Day'])
+        my_df['Date'] = my_df.apply(lambda x: x['Date'][:-8], axis = 1)
+        my_df['tide_time'] = my_df['Day'] + my_df['Time']
+        my_df = my_df.drop(columns = ['Date', 'Time', 'Day'])
+        if self.df.empty:
+            self.df = my_df
+        else:
+            self.df = self.df.append(my_df, ignore_index=False)
         #index = self.df.index
         #print(index)
     def get_next_year_data(self):
@@ -230,12 +235,12 @@ class ObsTideCollector( ObsCollector):
         next_year = today.year + 1
         next_year_file = self.station_id + "_Y" + str(next_year) + ".txt"
         self.load_tidal_data( next_year_file)
-        pass
     def write_tide_table_to_html(self):
         today = datetime.now().date()
         three_days = timedelta(hours=72)
         enddate = (today + three_days)
         print(str(today))
+        print(str(enddate))
         #tide_table = self.df['2021-09'].iloc[:, :6]
         tide_table = self.df.loc[str(today): str(enddate)]
         tide_table.index.name = "Date"
@@ -306,6 +311,6 @@ if __name__ == "__main__":
     #obs_t.read_next_year_data()
     print(obs_t.df.shape)
     print(obs_t.df.tail(1400))
-    obs_t.df.to_csv('alex_test.csv')
+    obs_t.df.to_csv('alex_test.csv', mode ="w")
     
     sys.exit()
