@@ -201,7 +201,6 @@ class ObsTideCollector( ObsCollector):
             self.read_next_year_data()
             self.write_tide_table_to_html()
         else:
-            self.get_next_year_data()
             self.read_next_year_data()
             self.write_tide_table_to_html()
 
