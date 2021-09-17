@@ -156,12 +156,17 @@ def diff_month(d1, d2):
 def get_next_month_year(month, year):
     i_month = month
     i_year = year
+    first_pass = True
     while True:
         if i_month == 12:
             i_month = 1
             i_year = i_year + 1
         else:
             i_month = i_month+1
+        if first_pass:
+            i_month = month
+            i_year = year
+            first_pass = False
         yield (i_month, i_year )
 
 def file_exclusion_filter(f_name):
@@ -183,7 +188,7 @@ def gather_any_noaa_files(dir, noaa_station, ext, startdt, enddt):
     num_months = diff_month( startdt, enddt)
     
     m_generator = get_next_month_year( startdt.month, startdt.year)
-    for n_month in range(num_months):
+    for n_month in range(num_months + 1):
         next_month = next(m_generator)
         trace_print( 4, "  searching year: ", str(next_month[1]), " month: ", str(next_month[0]))
         month_list =  gather_monthly_noaa_files(dir, noaa_station, ext, next_month[1], next_month[0])
@@ -409,7 +414,7 @@ if __name__ == "__main__":
 
     # obs2.to_csv("month_test.csv", index=False)
 
-    T1 = datetime.datetime(2021, 6, 12)
+    T1 = datetime.datetime(2021, 1, 12)
     T2 = datetime.datetime(2021, 6, 14)
 
     print("diff_month: ", diff_month(T1, T2))
