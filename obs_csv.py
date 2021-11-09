@@ -61,7 +61,15 @@ def create_year_file_name(file_year, station='KDCA', ext='csv'):
         f_list = f_name.split('.')
         final_n = f_list[0] + "_Yearly" + "." + f_list[1]
         return final_n
-    pass
+    
+def write_obs_csv( f_name, obs1, force_flag):
+    if os.path.exists(f_name):
+        trace_print(4, "file exists - nothing written ")
+        if force_flag:
+           trace_print(4, "force flag set - overwriting file")
+           obs1.to_csv(f_name, index=False, na_rep='<no_value_provided>') 
+    else:
+        obs1.to_csv(f_name, index=False, na_rep='<no_value_provided>')
 
 # Class obsCsvSetting
 
@@ -272,8 +280,9 @@ class obsCsvSplit:
                 station, year, month, day)
             f_path = self.get_full_path_filename()
             trace_print(4, f_path + os.sep + f_name)
-            obs3.to_csv((f_path + os.sep + f_name), index=False,
-                        na_rep='<no_value_provided>')
+            write_obs_csv(f_path + os.sep + f_name, obs3, self.obs_setting.force)
+            #obs3.to_csv((f_path + os.sep + f_name), index=False,
+            #            na_rep='<no_value_provided>')
 
     def split_each_month(self, station, year, obs2):
         obs_temp_month = obs2.loc[(obs2['year_obs'] == year)]
@@ -338,7 +347,7 @@ class obsCsvCombine:
                 4, "Unable to find or load data - not writing CSV file")
         else:
             trace_print(4, "Writing out CSV: ", self.outfile)
-            obs1.to_csv(self.outfile, index=False, na_rep='<no_value_provided>')
+            write_obs_csv(self.outfile, obs1, self.obs_set.force)
 
 
 # Class obsCsvApp
@@ -369,7 +378,7 @@ class obsCsvAPP:
         self.parser.add_argument(
             "--outdir", help='alternate dir to write date - split escpecially')
         self.parser.add_argument(
-            "--force", help='force overwrite of files - combine only')
+            "--force", action="store_true",help='force overwrite of files - combine only')
         self.parser.add_argument(
             "--month", help='month of data to act on - combine only')
         self.parser.add_argument("--year", help='year of data to act on')
@@ -380,6 +389,7 @@ class obsCsvAPP:
         rng_date = False
         myr_check = False
         month_check = False
+        self.app_setting.force = False
         if args.combine:
             self.app_setting.action = "combine"
         if args.split:
@@ -412,6 +422,8 @@ class obsCsvAPP:
         else:
             trace_print(4, " --station must be specified.")
             sys.exit(8)
+        if args.force:
+            self.app_setting.force = True
         if args.outfile:
             self.app_setting.outfile = args.outfile
 
