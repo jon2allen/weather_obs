@@ -48,7 +48,8 @@ def read_weather_obs_csv(target_csv):
                             na_values = "<no_value_provided>")
     except OSError:
         trace_print( 4, "file not found:  ", target_csv)
-        obs1 = 0
+        # return empty dataframe
+        obs1 = pd.DataFrame()
     return obs1
 
 

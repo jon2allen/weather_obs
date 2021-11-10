@@ -264,7 +264,7 @@ if __name__ == "__main__":
 
     obs1 = read_weather_obs_csv(target_csv)
     
-    if obs1 == 0:
+    if obs1.empty:
         print("fata error - cannot read file")
         if sys.platform.startswith("linux"):
             from email_obs_err import *
