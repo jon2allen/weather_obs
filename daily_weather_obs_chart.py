@@ -263,6 +263,10 @@ if __name__ == "__main__":
         print("station:", station)
 
     obs1 = read_weather_obs_csv(target_csv)
+    
+    if obs1 == 0:
+        print("fata error - cannot read file")
+        exit(16)
 
     if(args.listcols):
         x = 0
@@ -329,3 +333,5 @@ if __name__ == "__main__":
     json_out2 = obs_meta_date_json(station, obs1)
 
     print(json_out2)
+    
+  

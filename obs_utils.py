@@ -48,7 +48,7 @@ def read_weather_obs_csv(target_csv):
                             na_values = "<no_value_provided>")
     except OSError:
         trace_print( 4, "file not found:  ", target_csv)
-        exit(16)
+        obs1 = 0
     return obs1
 
 
