@@ -12,9 +12,6 @@ import csv
 import re
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
-from matplotlib.dates import DateFormatter
 
 import logging
 logger = logging.getLogger('weather_obs_f')
