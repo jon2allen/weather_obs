@@ -184,14 +184,15 @@ def gather_any_noaa_files(dir, noaa_station, ext, startdt, enddt):
     range_list = gather_monthly_noaa_files(dir, noaa_station, ext, startdt.year, startdt.month)
     
     num_months = diff_month( startdt, enddt)
-    
-    m_generator = get_next_month_year( startdt.month, startdt.year)
-    for n_month in range(num_months + 1):
-        next_month = next(m_generator)
-        trace_print( 4, "  searching year: ", str(next_month[1]), " month: ", str(next_month[0]))
-        month_list =  gather_monthly_noaa_files(dir, noaa_station, ext, next_month[1], next_month[0])
-        if len(month_list) > 0:
-            range_list = range_list + month_list 
+    print("num_months: ", num_months)
+    if num_months > 1:
+        m_generator = get_next_month_year( startdt.month, startdt.year)
+        for n_month in range(num_months + 1):
+            next_month = next(m_generator)
+            trace_print( 4, "  searching year: ", str(next_month[1]), " month: ", str(next_month[0]))
+            month_list =  gather_monthly_noaa_files(dir, noaa_station, ext, next_month[1], next_month[0])
+            if len(month_list) > 0:
+                range_list = range_list + month_list 
     final_list = []
     startdt = startdt.date()
     enddt = enddt.date()
