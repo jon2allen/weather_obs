@@ -9,6 +9,7 @@ from obs_utils import *
 from weather_obs import create_station_file_name
 from obs_csv import obsCsvSetting,test_date_string
 import pprint
+from collections import Counter
 
 #
 #  program to audit range
@@ -53,14 +54,20 @@ class obsAuditAPP:
         prior = obs1['observation_time'][0]
         print("prior: ", prior )
         diff_time = 0
+        date_list = []
         for index, row in obs1.iterrows():
             curr_time = row['observation_time']
-            print( f'year: {curr_time.year} month: {curr_time.month} day: {curr_time.day}')
+            # print( f'year: {curr_time.year} month: {curr_time.month} day: {curr_time.day}')
+            date_t = (curr_time.year, curr_time.month, curr_time.day)
+            date_list.append(date_t)
             diff_time = curr_time - prior
             diff_time_hours = ((diff_time.total_seconds()/60)/60)
             if diff_time_hours != 1.0 and diff_time_hours != 0.0:   
                 print("index: " + str(index) + " row: " + str(row['observation_time']) + " diff: " + str(diff_time_hours))
             prior = row['observation_time']
+        date_c = Counter( date_list)
+        for date_e in date_c.keys():
+            print(f'date: {date_e}  count:  {date_c[date_e]}')
     def run(self):
         self.set_arg_parser()
         self.set_app_arguments()
