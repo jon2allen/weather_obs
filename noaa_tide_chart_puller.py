@@ -257,7 +257,7 @@ class ObsTideCollector( ObsCollector):
         tide_table = self.df.loc[str(today): str(enddate)]
         tide_table.index.name = "Date"
         print("write tide table")
-        print(tide_table.head(10)) 
+        #print(tide_table.head(10)) 
         print(tide_table.columns)
 
         html_doc = tide_table.to_html(header=False, justify='right')
@@ -273,12 +273,26 @@ class ObsTideCollector( ObsCollector):
 
         with open(self.station_id + "_tide_table.html", "w") as f:
             f.write(soup.decode_contents())
+            
+        print(tide_table.head(10))
 
         #tide_table.to_html('alex_tide_table.html', header=None)  
 
 
 # TODO - check for duplicate - save output and check with MD5 on next run
 # html to noaa marine forcase page - change to what is require
+
+def debug_out(obs_t, debug ):
+    if debug:
+        print(obs_t.df.head(40))
+        print(obs_t.df.columns)
+        print(obs_t.df.shape)
+        print(obs_t.df.describe())
+        print(obs_t.df.dtypes)
+        #print(obs_t.get_next_year_data())
+        #obs_t.read_next_year_data()
+        print(obs_t.df.shape)
+        print(obs_t.df.tail(1400))
 
 if __name__ == "__main__":
     
@@ -291,6 +305,7 @@ if __name__ == "__main__":
     TIDECHARTURL = 'https://tidesandcurrents.noaa.gov/cgi-bin/predictiondownload.cgi?&stnid=8594900&threshold=&thresholdDirection=greaterThan&bdate=2021&timezone=LST/LDT&datum=MLLW&clock=12hour&type=txt&annual=true'
     FORECASTID = 'alex'
     DATA_DIR = '/var/www/html/weather_obs/data'
+    DEBUG=False
 
     # change to your desirect dirctory
     try:
@@ -317,15 +332,7 @@ if __name__ == "__main__":
     
     print(obs_t.obs_filename)
     
-    print(obs_t.df.head(40))
-    print(obs_t.df.columns)
-    print(obs_t.df.shape)
-    print(obs_t.df.describe())
-    print(obs_t.df.dtypes)
-    #print(obs_t.get_next_year_data())
-    #obs_t.read_next_year_data()
-    print(obs_t.df.shape)
-    print(obs_t.df.tail(1400))
+    debug_out(obs_t, DEBUG)
     obs_t.df.to_csv('alex_test.csv', mode ="w")
     
     sys.exit()
