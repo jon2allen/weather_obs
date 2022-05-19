@@ -52,7 +52,6 @@ class obsAuditAPP:
             sys.exit(8)
     def process_audit( self, obs1):
         prior = obs1['observation_time'][0]
-        print("prior: ", prior )
         diff_time = 0
         date_list = []
         for index, row in obs1.iterrows():
@@ -63,11 +62,12 @@ class obsAuditAPP:
             diff_time = curr_time - prior
             diff_time_hours = ((diff_time.total_seconds()/60)/60)
             if diff_time_hours != 1.0 and diff_time_hours != 0.0:   
-                print("index: " + str(index) + " row: " + str(row['observation_time']) + " diff: " + str(diff_time_hours))
+                print(f"index: {index} row: {row['observation_time']}  diff:  {diff_time_hours}")
             prior = row['observation_time']
         date_c = Counter( date_list)
         for date_e in date_c.keys():
-            print(f'date: {date_e}  count:  {date_c[date_e]}')
+            if date_c[date_e] < 24:    
+                print(f'date: {date_e[1]}/{date_e[2]}/{date_e[0]}  count:  {date_c[date_e]} is less than 24 samples')
     def run(self):
         self.set_arg_parser()
         self.set_app_arguments()
@@ -77,7 +77,7 @@ class obsAuditAPP:
                                          "csv",
                                          self.app_setting.startdate,
                                          self.app_setting.enddate)
-        print(obs1.shape)
+        print(f"number of observations for analysis: {obs1.shape[0]}")
         self.process_audit(obs1)
         
         

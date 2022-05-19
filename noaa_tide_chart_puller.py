@@ -153,6 +153,15 @@ class ObsTideCollector( ObsCollector):
         # alex_Y2022_data.txt
         # need new functino that gets and reads this file.
         # append this df_2022 to the df in the class
+        today = datetime.now()
+        match = re.search('bdate=(\d+)', self.station_url)
+        print(f'match group 1 {match.group(1)}')
+        bstring = "bdate=" + str(match.group(1))
+        nstring = "bdate=" + str(today.year)
+        print("bstring:", bstring)
+        print("nstring: ", nstring)
+        print(f'match group 1 {match.group(1)}')
+        self.station_url = self.station_url.replace(bstring,nstring)
         self.df = pd.DataFrame()
         f_list = self.get_last_tidal_data()
         print("f_list:", f_list)
