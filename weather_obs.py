@@ -646,6 +646,7 @@ def weather_collect_driver(obs1):
     # if local time crossed midnight - cut a new file.
     # save prior - obs_time_prior
     # curent to - obs_time_curent.
+    trace_print(4, "station_id: ", str(obs1.station_id))
     trace_print(4, "current_obs_time(driver_before):  ",
                 str(obs1.current_obs_time))
     trace_print(4, "prior_obs_time(driver_before): ", str(obs1.prior_obs_time))
@@ -695,6 +696,8 @@ def weather_obs_app_start(obs1):
                     " -> ", str(obs1.station_file))
         obs1.append_data = True
         obs1.job1 = schedule.every().hour.at(":20").do(weather_collect_driver, obs1)
+        # execute every 20 minutes.   
+        # obs1.job1 = schedule.every(20).minutes.at(":20").do(weather_collect_driver, obs1)
     return
 #
 #
@@ -730,10 +733,11 @@ def weather_obs_app_append(obs1):
 #
 
 
-def duration_cut_check2(t_last, t_curr, hour_cycle):
+def duration_cut_check2(obs1, t_last, t_curr, hour_cycle):
     """ see if new file is to be created or cut """
     trace_print(1, "Duration check 2")
     t_now = t_curr
+    trace_print(1, "obseration: ", str(obs1.station_id))
     trace_print(1, "t_now: ", str(t_now))
     trace_print(1, "t_last: ", str(t_last))
     if t_now.year > t_last.year:
@@ -797,7 +801,7 @@ def obs_cut_csv_file(obs1):
         obs_cut_time = obs1.current_obs_time + timedelta(minutes=10)
         # cut time should be 10 minutes ahead 
         # NOAA observations at at approx 50 minutes after the hour
-        if (duration_cut_check2(obs1.prior_obs_time, obs_cut_time, obs1.duration_interval)):
+        if (duration_cut_check2(obs1, obs1.prior_obs_time, obs_cut_time, obs1.duration_interval)):
             run_cut_operation(obs1, obs_cut_time)
 
 def run_cut_operation(obs1, obs_cut_time):
