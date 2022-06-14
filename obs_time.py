@@ -1,14 +1,16 @@
 import time
 from datetime import datetime, timedelta
+from tzlocal import get_localzone
 from xml.dom import ValidationErr
 from dateutil import parser, tz
+
 
 class obsDateRfcHandler:
     def __init__(self, dt):
         self.obs_dt = parser.parse(dt)
         self.out_type = 'rfc'
     def _str( dt1):
-        rfc_time = dt1.strftime("%a, %b %d %Y %I:%M:%S %z")
+        rfc_time = dt1.strftime("%a, %b %d %Y %H:%M:%S %z")
         return rfc_time        
     def emit( dt1):
         return obsDateRfcHandler._str(dt1)
@@ -54,8 +56,28 @@ class ObsDate():
                 self.handler = obsDateRfcHandler(dt)
             else:
                 self.handler = obsDateRegHandler(dt)
+        self.seconds = self.handler.obs_dt.second
+        self.minute = self.handler.obs_dt.minute
+        self.hour = self.handler.obs_dt.hour
+        self.year = self.handler.obs_dt.year
+        self.month = self.handler.obs_dt.month
 
-
+    def strftime(self, fstr):
+        return self.handler.obs_dt.strftime(fstr)
+    
+    def replace( self, **kwargs):
+        return ObsDate(self.handler.obs_dt.replace(**kwargs))
+    
+    def __sub__(self, other):
+        return self.handler.obs_dt - other.handler.obs_dt
+    
+    def __add__(self, other):
+        return self.handler.obs_dt + other.handler.obs_dt
+    
+    def now():
+        local = get_localzone()
+        return ObsDate(datetime.now(local))
+        
     def add_one_hour(self):
         self.add_multi_hours(1)
 
@@ -97,6 +119,9 @@ class ObsDate():
         else:
             print(f"Not supportted out_type: {obs_fmt}")
             raise ValueError
+    
+
+
 
 
 if __name__ == "__main__":
@@ -145,3 +170,27 @@ if __name__ == "__main__":
     
     print(t1.is_future( t2.handler.obs_dt))
     print(t2.is_future(t1.handler.obs_dt))
+    
+    now = ObsDate(datetime.now())
+    midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    my_seconds = (now - midnight).seconds
+    print(midnight)
+    print(now)
+    #my_seconds =   now.seconds - midnight.seconds
+    print(f'seconds since midnight {my_seconds}')
+    
+    now2 = ObsDate.now()
+    
+    print(now2)
+    
+    now2.emit_type("rfc")
+    
+    print(f"now2: {now2}")
+    
+    now2.emit_type("reg")
+    
+    now2.add_one_hour()
+    
+    print(f"now2: {now2}")
+    
+    
