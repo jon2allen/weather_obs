@@ -105,7 +105,8 @@ class obsAuditAPP:
             diff_time_hours = ((diff_time.total_seconds()/60)/60)
             if diff_time_hours != 1.0 and diff_time_hours != 0.0:   
                 print(f"index: {index} row: {row['observation_time']}  diff:  {diff_time_hours}")
-                self.missing_time[date_t] = []
+                if date_t not in self.missing_time.keys():
+                    self.missing_time[date_t] = []
                 if ( diff_time_hours > 0 ):
                     for i in range(int(diff_time_hours -1 )):
                         m_time = prior + timedelta( hours = (i + 1))
