@@ -3,32 +3,65 @@ from datetime import datetime, timedelta
 from xml.dom import ValidationErr
 from dateutil import parser, tz
 
+class obsDateRfcHandler:
+    def __init__(self, dt):
+        self.obs_dt = parser.parse(dt)
+        self.out_type = 'rfc'
+    def _str( dt1):
+        rfc_time = dt1.strftime("%a, %b %d %Y %I:%M:%S %z")
+        return rfc_time        
+    def emit( dt1):
+        return obsDateRfcHandler._str(dt1)
+    def __repr__(self):
+        return obsDateRfcHandler._str(self.obs_dt)
+        # rfc_time = self.obs_dt.strftime("%a, %b %d %Y %I:%M:%S %z")
+        #return rfc_time
+
+class obsDateRegHandler:
+    def __init__(self,dt):
+        my_tz = tz.gettz(dt[-3:])
+        # print(my_tz)
+        # print(parser.parse(dt, tzinfos={dt[-3:]: my_tz}))
+        self.obs_dt = parser.parse(dt, tzinfos={dt[-3:]: my_tz})
+        self.out_type = 'reg'
+    def _str( dt1 ):
+        reg_time = dt1.strftime("%b %d %Y, %I:%M:%S %p %Z")
+        reg_time = reg_time.replace("PM", "pm")
+        reg_time = reg_time.replace("AM", "am")
+        return reg_time
+    def emit( dt1):
+        return obsDateRegHandler._str( dt1)
+    def __repr__(self):
+        return obsDateRegHandler._str( self.obs_dt)
+
+
+class obsDateDtHandler:
+    def __init__(self, dt):
+        self.obs_dt = dt
+        self.out_type = 'dt' 
+    def emit( dt1):
+        return str(dt1)
+    def __repr__(self):
+        return str(self.obs_dt)
+            
 
 class ObsDate():
     def __init__(self, dt):
         if isinstance(dt, datetime):
-            self.obs_dt = dt
-            self.out_type = 'dt'
+            self.handler = obsDateDtHandler(dt)
         if isinstance(dt, str):
             if '-' in dt:
-                # print("rfc")
-                # print(parser.parse(dt))
-                self.obs_dt = parser.parse(dt)
-                self.out_type = 'rfc'
+                self.handler = obsDateRfcHandler(dt)
             else:
-                print("regular")
-                # print(parser.parse(dt))
-                my_tz = tz.gettz(dt[-3:])
-                # print(my_tz)
-                # print(parser.parse(dt, tzinfos={dt[-3:]: my_tz}))
-                self.obs_dt = parser.parse(dt, tzinfos={dt[-3:]: my_tz})
-                self.out_type = 'reg'
+                self.handler = obsDateRegHandler(dt)
+
 
     def add_one_hour(self):
         self.add_multi_hours(1)
 
     def add_multi_hours(self, num_hours):
-        self.obs_dt = self._add_hours(num_hours, self.obs_dt)
+        my_obs_dt = self.handler.obs_dt
+        self.handler.obs_dt = self._add_hours(num_hours, my_obs_dt)
 
     def _add_hours(self, num_hours, date_time_var):
         dt_t = timedelta(hours=num_hours)
@@ -37,34 +70,37 @@ class ObsDate():
     
     def is_future( self, new_obs_dt):
         # must be greater than one hour ahead 
-        target_obs_dt = self._add_hours( 1, self.obs_dt)
-        if new_obs_dt > target_obs_dt:
+        # make into Naive dates
+        # only works for same timezone.
+        cmp1 = self.handler.obs_dt.replace(tzinfo=None)
+        target_obs_dt = self._add_hours( 1, new_obs_dt )
+        cmp2 = target_obs_dt.replace(tzinfo=None)
+        if cmp1 > cmp2:
+        #if new_obs_dt > target_obs_dt:
             return True
         else:
             return False
 
     def __repr__(self):
-        if self.out_type == 'dt':
-            return str(self.obs_dt)
-        if self.out_type == 'rfc':
-            rfc_time = self.obs_dt.strftime("%a, %b %d %Y %I:%M:%S %z")
-            return rfc_time
-        if self.out_type == 'reg':
-            # return self.obs_dt.strftime("%a, %M %b %Y %I:%M:%S %P %Z")
-            reg_time = self.obs_dt.strftime("%b %d %Y, %I:%M:%S %p %Z")
-            reg_time = reg_time.replace("PM", "pm")
-            reg_time = reg_time.replace("AM", "am")
-            return reg_time
-
+        return self.handler.__repr__()
+ 
     def emit_type(self, obs_fmt):
         if obs_fmt in ['dt', 'rfc', 'reg']:
-            self.out_type = obs_fmt
+            if obs_fmt == 'dt':
+                self.handler = obsDateDtHandler(self.handler.obs_dt)
+            if obs_fmt == 'rfc':
+                rfc_dt = obsDateRfcHandler.emit( self.handler.obs_dt)
+                self.handler = obsDateRfcHandler(rfc_dt)
+            if obs_fmt == 'reg':
+                reg_dt = obsDateRegHandler.emit(self.handler.obs_dt)
+                self.handler = obsDateRegHandler(reg_dt)
         else:
             print(f"Not supportted out_type: {obs_fmt}")
             raise ValueError
 
 
 if __name__ == "__main__":
+    # this is a internal test script if invoked as main
     obs_time = "Nov 16 2021, 11:52 am EST"
     obs_time_rfc = "Tue, 16 Nov 2021 11:52:00 -0500"
 
@@ -103,5 +139,9 @@ if __name__ == "__main__":
     print(f"t2: {t2}")
     print(f"t1: {t1}")
     
-    print(t1.is_future( t2.obs_dt))
-    print(t2.is_future(t1.obs_dt))
+    print( t2.handler.obs_dt)
+    print(t1.handler.obs_dt)
+
+    
+    print(t1.is_future( t2.handler.obs_dt))
+    print(t2.is_future(t1.handler.obs_dt))
