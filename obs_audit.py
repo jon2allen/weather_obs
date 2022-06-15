@@ -59,6 +59,10 @@ class obsAuditAPP:
         #append at end and then sort by date
         new_data = obs1.astype(obs1.dtypes.to_dict())
         new_data = new_data.iloc[0:1,:]
+        for col in new_data.columns:
+            if new_data[col].dtype ==  np.float64:
+                new_data[col].values[:] = np.NAN
+
         # print(new_data)
         #new_data = pd.DataFrame(obs1[-1:].values, columns=obs1.columns)
         #new_data = obs1.astype(obs1.dtypes.to_dict())
@@ -169,6 +173,7 @@ class obsAuditAPP:
         print(f"number of observations for analysis: {obs1.shape[0]}")
         obs_audit = self.process_audit(obs1)
         obs_audit.to_csv("audit_01.csv")
+        print(obs_audit.info())
         
         
         return

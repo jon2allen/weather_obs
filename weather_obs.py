@@ -27,6 +27,7 @@ import xml.etree.ElementTree as ET
 import time
 from datetime import datetime, timedelta
 from dateutil import parser
+from obs_time import ObsDate
 import schedule
 import hashlib
 import inspect
@@ -161,14 +162,16 @@ def get_obs_time(obs_date):
         trace_print(4, "Local observation time ( get_obs_time): ", t_str)
         # actual timezone is not important for obs file output.
         # obs_date = datetime.strptime( t_str[:20], "%b %d %Y, %I:%M %p ")
-        obs_date = parser.parse(t_str[:20])
+        obs_date = ObsDate(t_str[:20])
+        # obs_date = parser.parse(t_str[:20])
         # adjust stamp for specific test
         obs_date = obs_date + timedelta(hours=obs_debug_t_delta)
         trace_print(4, "Debug obs_date:", str(obs_date))
         return obs_date
     trace_print(4, "Local observation time ( get_obs_time): ", t_str)
     # actual timezone is not important for obs file output.
-    obs_date = parser.parse(t_str[:20])
+    obs_date = ObsDate(t_str[:20])
+    #obs_date = parser.parse(t_str[:20])
     # obs_date = datetime.strptime( t_str[:20], "%b %d %Y, %I:%M %p ")
     trace_print(4, "get_obs_time return()")
     return obs_date
@@ -180,7 +183,7 @@ def create_station_file_name(station='KDCA', ext='csv', obs_time_stamp=0):
     Year_Month_Day_Hour - smalles unit is hour. 
     """
     if (obs_time_stamp == 0):
-        t_now = datetime.now()
+        t_now =ObsDate.now()
     else:
         t_now = obs_time_stamp
     year, month, day, hour, min = map(
@@ -239,7 +242,7 @@ def weather_obs_init():
     global csv_headers
     
     def check_resume_file(obs_setting ):
-        today = datetime.now()
+        today = ObsDate.now()
         day_1 = timedelta(hours=24)
         tomorrow = today+ day_1
         trace_print(4, "station_id", obs_setting.station_id)    
@@ -276,7 +279,7 @@ def weather_obs_init():
             obs_setting.init_csv = False
             if (obs_setting.resume == True):
                 trace_print(4, "resume here")
-                #now = datetime.now()
+                #now = ObsDate.now()()
                 #file_id = obs_setting.station_id + "_Y" + str(now.year)
                 # file_id = obs_setting.station_file
                 # TODO - support yesterday, today, and tomorrow.
@@ -436,7 +439,7 @@ def obs_sanity_check(obs1,  xml_data, data_row):
     table_col_list = [9, 19, 17, 16]
     for col in table_col_list:
         if (data_row[col].startswith("<no") == True):
-            now = datetime.now()
+            now = ObsDate.now()
             midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
             seconds = (now - midnight).seconds
             obs1.dump_xml_flag = True
@@ -605,7 +608,7 @@ def weather_csv_driver(obs1, mode, csv_file, w_header, w_row):
             weather_writer.writerow(w_row)
     # do I really need close??? with does this
     weather_file.close()
-    csv_write_time = datetime.now()
+    csv_write_time = ObsDate.now()
     trace_print(4, "csv_write_time: ",
                 csv_write_time.strftime("%A, %d. %B %Y %I:%M%p"))
     return True
@@ -687,7 +690,7 @@ def weather_obs_app_start(obs1):
         weather_csv_driver(obs1, 'w', obs1.station_file, xmld1[0], xmld1[1])
         trace_print(4, "Initializing new file (app_start): ",
                     str(obs1.station_file))
-        dump_xml(obs1,  content, datetime.now().minute)
+        dump_xml(obs1,  content, ObsDate.now().minute)
     if (obs1.collect_data == True):
         if obs1.job1:
             trace_print(4, "schedule job set - exit()")
@@ -710,7 +713,7 @@ def weather_obs_app_append(obs1):
     if (obs_check_xml_data(content) == False):
         return False
     xmld1 = get_data_from_NOAA_xml(content)
-    dump_xml(obs1, content, datetime.now().minute)
+    dump_xml(obs1, content, ObsDate.now().minute)
 
     """
     test if last row and what is coming in are equal
@@ -769,7 +772,7 @@ def duration_cut_check2(obs1, t_last, t_curr, hour_cycle):
 def duration_cut_check(t_last, hour_cycle):
     """ see if new file is to be created or cut """
     trace_print(1, "Duration check")
-    t_now = datetime.now()
+    t_now = ObsDate.now()
     if t_now.year > t_last.year:
         trace_print(1, "Duration year check")
         return True
@@ -797,7 +800,7 @@ def foreach_obs(function, obs_list):
 def obs_cut_csv_file(obs1):
     """ determines if day transition has happened and starts a new CSV """
     if (obs1.cut_file == True):
-        t_cut_time = datetime.now()
+        t_cut_time = ObsDate.now()
         obs_cut_time = obs1.current_obs_time + timedelta(minutes=10)
         # cut time should be 10 minutes ahead 
         # NOAA observations at at approx 50 minutes after the hour
@@ -820,7 +823,7 @@ def run_cut_operation(obs1, obs_cut_time):
             # we rassigned the next station file
             # new writes should go there.
     obs1.job1 = None
-    t_begin = datetime.now()
+    t_begin = ObsDate.now()
     trace_print(4, "Time of last cut:",
                         t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
             # this will reschedule job with new file.
@@ -829,7 +832,7 @@ def run_cut_operation(obs1, obs_cut_time):
 
 def main_obs_loop(obs1_list):
     """ main loop - runs schedule and test for cut csv condition """
-    run_minutes = datetime.now().minute
+    run_minutes = ObsDate.now().minute
     if ((run_minutes == 59)):
         # every hour check to see if need to cut
         trace_print(1, "Num minutes running: ", str(run_minutes))
@@ -861,7 +864,7 @@ def weather_obs_app():
             foreach_obs(weather_obs_app_append, obs1_list)
     if (obs1.collect_data == True):
         run_minutes = 0
-        t_begin = datetime.now()
+        t_begin = ObsDate.now()
         trace_print(4, "starting time: ",
                     t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
         if (obs1.append_data_specified == True):

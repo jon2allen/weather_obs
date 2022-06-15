@@ -37,11 +37,40 @@ def trace_print(level, first_string, *optional_strings):
 def read_weather_obs_csv(target_csv):
     """ read csv and return dataframe """
     # handle no_value_provided as NAN
+    dtype_dict = {'temp_f': np.float64, 
+                  'temp_c': np.float64,
+                  'wind_mph': np.float64,
+                  'wind_kt': np.float64,
+                  'wind_gust': np.float64,
+                  'wind_gust_kt': np.float64,
+                  'pressure_mb': np.float64,
+                  'pressure_in': np.float64,
+                  'dewpoint_f': np.float64,
+                  'dewpoint_c': np.float64,
+                  'heat_index_f': np.float64,
+                  'heat_index_c': np.float64,
+                  'windchill_f': np.float64,
+                  'windchill_c': np.float64,
+                  'latitude': 'category',
+                  'longitude': 'category',
+                  'suggested_pickup_period': 'category',
+                  'credit': 'category',
+                  'credit_URL': 'category',
+                  'icon_url_base' : 'category',
+                  'two_day_history_url': 'category',
+                  'icon_url_name': 'category',
+                  'ob_url': 'category',
+                  'disclaimer_url': 'category',
+                  'copyright_url': 'category' , 
+                  'privacy_policy_url': 'category' 
+    }
+
+    
     try:
         # ignore time zone for parse here - times local to observation
         def date_utc(x): return dateutil.parser.parse(x[:20], ignoretz=True)
         obs1 = pd.read_csv(target_csv, parse_dates=[9], date_parser=date_utc,
-                            dtype = { 'wind_mph': 'float64'},
+                            dtype = dtype_dict,
                             na_values = "<no_value_provided>")
     except OSError:
         trace_print( 4, "file not found:  ", target_csv)

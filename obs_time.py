@@ -45,6 +45,8 @@ class obsDateDtHandler:
         return str(dt1)
     def __repr__(self):
         return str(self.obs_dt)
+
+        
             
 
 class ObsDate():
@@ -56,11 +58,14 @@ class ObsDate():
                 self.handler = obsDateRfcHandler(dt)
             else:
                 self.handler = obsDateRegHandler(dt)
-        self.seconds = self.handler.obs_dt.second
-        self.minute = self.handler.obs_dt.minute
-        self.hour = self.handler.obs_dt.hour
-        self.year = self.handler.obs_dt.year
-        self.month = self.handler.obs_dt.month
+        if self.handler:
+            self.seconds = self.handler.obs_dt.second
+            self.minute = self.handler.obs_dt.minute
+            self.hour = self.handler.obs_dt.hour
+            self.year = self.handler.obs_dt.year
+            self.month = self.handler.obs_dt.month
+        else:
+            print(f"error:  ObsDate invalid type {dt}")
 
     def strftime(self, fstr):
         return self.handler.obs_dt.strftime(fstr)
@@ -77,7 +82,8 @@ class ObsDate():
     def now():
         local = get_localzone()
         return ObsDate(datetime.now(local))
-        
+    def get_datetime(self):
+        return self.handler.obs_dt        
     def add_one_hour(self):
         self.add_multi_hours(1)
 
