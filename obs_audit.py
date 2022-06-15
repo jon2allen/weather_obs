@@ -5,12 +5,15 @@ from datetime import date, datetime, timedelta
 from dateutil import parser
 from dateutil.parser import ParserError
 import calendar
+
+from pandas import Timestamp
 from obs_utils import *
 from weather_obs import create_station_file_name
 from obs_csv import obsCsvSetting,test_date_string
 import pprint
 from collections import Counter
 from email.utils import format_datetime, parsedate_tz
+from obs_time import *
 
 #
 #  program to audit range
@@ -25,7 +28,7 @@ class obsAuditSetting(obsCsvSetting):
 class obsAuditAPP:
     def __init__(self):
         self.app_setting = obsAuditSetting()
-        self.start_time = datetime.datetime.now()
+        self.start_time = datetime.now()
         self.working_dir = os.getcwd()
         self.parser = argparse.ArgumentParser(description='obs_audit_utility')
     def set_arg_parser(self):
@@ -56,30 +59,39 @@ class obsAuditAPP:
         #append at end and then sort by date
         new_data = obs1.astype(obs1.dtypes.to_dict())
         new_data = new_data.iloc[0:1,:]
-        print(new_data)
+        # print(new_data)
         #new_data = pd.DataFrame(obs1[-1:].values, columns=obs1.columns)
         #new_data = obs1.astype(obs1.dtypes.to_dict())
         new_data = new_data.reset_index( drop=True)
         row = 0
-        new_data.at[row, 'observation_time' ]  = date_row_missing
-        new_data.at[row, 'observation_time_rfc822'] = format_datetime(date_row_missing)
+        print(f"date_row_missing: {date_row_missing}")
+        new_dt = ObsDate( date_row_missing)
+        new_dt.emit_type('reg')
+        new_data.at[row, 'observation_time' ]  = pd.Timestamp(new_dt.get_datetime())
+        new_dt.emit_type('rfc')
+        new_data.at[row, 'observation_time_rfc822'] = new_dt
         new_data.at[row, 'wind_dir'] = np.nan
         new_data.at[row, 'wind_mph'] = np.nan 
         new_data.at[row, 'wind_gust_mph'] = np.nan
         new_data.at[row, 'temp_f'] = np.nan
-        new_df = obs1.append(new_data)
-        new_df = new_df.sort_values(by='observation_time')
-        new_df = new_df.reset_index( drop=True)
-        return new_df
+        obs1 = obs1.append(new_data)
+        # new_df = new_df.sort_values(by='observation_time')
+        # new_df = new_df.reset_index( drop=True)
+        print("tail")
+        print(obs1.iloc[-5:, 10:])
+        return obs1
     def process_missing_list( self, obs1, missing_dates):
-        index = missing_dates.pop()
+        # index = missing_dates.pop()
+        print(f"len:  {len(missing_dates)}")
         for dt1 in missing_dates:
             print(f'list process')
-            new_df = self.process_missing_row( obs1, dt1) 
-        missing_dates.append(index)    
-        return new_df
+            if isinstance(dt1,Timestamp):
+                obs1 = self.process_missing_row( obs1, dt1) 
+        # missing_dates.append(index)    
+        obs1 = obs1.sort_values(by='observation_time')
+        obs1 = obs1.reset_index( drop=True)
+        return obs1
         
-        return
     def process_incorrect_row( self, obs1, row, correct_date):
         print(f'correct_date: {correct_date}')
         print(f'row: { row } ')
@@ -93,12 +105,16 @@ class obsAuditAPP:
                 
     def process_audit( self, obs1):
         prior = obs1['observation_time'][0]
+        if prior.hour > 0:
+            prior = prior.replace( hour = 0)
+            print(f'prior after replace: {prior}')
         diff_time = 0
         date_list = []
         self.missing_time = {}
         for index, row in obs1.iterrows():
             curr_time = row['observation_time']
             # print( f'year: {curr_time.year} month: {curr_time.month} day: {curr_time.day}')
+            print(f"processing row: { curr_time}")
             date_t = (curr_time.year, curr_time.month, curr_time.day)
             date_list.append(date_t)
             diff_time = curr_time - prior
@@ -116,6 +132,7 @@ class obsAuditAPP:
             prior = row['observation_time']
         date_c = Counter( date_list)
         problem_dates = self.missing_time.keys()
+        print(self.missing_time)
         # do incorrect dates first.
         # index will match up and just use at
         for date_e in date_c.keys():
@@ -123,7 +140,7 @@ class obsAuditAPP:
                 print("process incorrect dates")
                 
                 if date_e in problem_dates:
-                    print(f'procesing date: {date_e[1]}/{date_e[2]}/{date_e[0]} ')
+                    print(f'procesing incorrects date: {date_e[1]}/{date_e[2]}/{date_e[0]} ')
                     idx = self.missing_time[date_e].pop()
                     new_dt = self.missing_time[date_e].pop()
                     obs1 = self.process_incorrect_row(obs1, idx-1, new_dt )
@@ -138,6 +155,7 @@ class obsAuditAPP:
                 print( obs1.iloc[106:140,8:12])
      
         print(self.missing_time)
+        print(date_c)
         return obs1
     def run(self):
         self.set_arg_parser()
