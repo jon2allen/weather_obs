@@ -74,10 +74,16 @@ class ObsDate():
         return ObsDate(self.handler.obs_dt.replace(**kwargs))
     
     def __sub__(self, other):
-        return self.handler.obs_dt - other.handler.obs_dt
+        if isinstance( other, ObsDate):
+            return self.handler.obs_dt - other.handler.obs_dt
+        else:
+            return self.handler.obs_dt - other
     
     def __add__(self, other):
-        return self.handler.obs_dt + other.handler.obs_dt
+        if isinstance(other,ObsDate):
+            return self.handler.obs_dt + other.handler.obs_dt
+        else:
+            return self.handler.obs_dt + other
     
     def now():
         local = get_localzone()
@@ -198,5 +204,11 @@ if __name__ == "__main__":
     now2.add_one_hour()
     
     print(f"now2: {now2}")
+    
+    td1 = timedelta(minutes=10)
+    
+    print("timedelta: ", now2 + td1)
+    
+    print("timedelta2:", now2 - td1)
     
     
