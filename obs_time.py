@@ -64,6 +64,7 @@ class ObsDate():
             self.hour = self.handler.obs_dt.hour
             self.year = self.handler.obs_dt.year
             self.month = self.handler.obs_dt.month
+            self.day = self.handler.obs_dt.day
         else:
             print(f"error:  ObsDate invalid type {dt}")
 
