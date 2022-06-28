@@ -77,6 +77,9 @@ class ObsSetting:
         self.prior_obs_time = ""
         self.current_obs_time = ""
         self.data_dir = "."
+        self.sched_interval = ":20"
+        self.ignore_dup = False
+        self.collection_date = False
 
     def __str__(self):
         my_str = "ObsSetting: "
@@ -236,6 +239,9 @@ def weather_obs_init():
     parser.add_argument(
         '-f', '--file', help="read stations from file specified")
     parser.add_argument('--dir', help='data directory offet- default is cwd ')
+    parser.add_argument('--interval', help='interval for append')
+    parser.add_argument('--ignoredup', help='ignore duplicates', action="store_true")
+    parser.add_argument('--collectdate', help='add a collection date at end of CSV row', action="store_true")
     args = parser.parse_args()
     trace_print(1, "parsing args...")
     # cannocial header
@@ -301,9 +307,13 @@ def weather_obs_init():
             trace_print(4, "Station id ( append ): ", obs_setting.station_file)
         if (args.xml == True):
             obs_setting.set_xml_dump_flag(True)
+        if (args.ignoredup == True):
+            obs_setting.ignore_dup = True
+        if (args.collectdate == True):
+            obs_setting.collection_date = True
         if (args.collect):
             trace_print(4, "collect in station setting")
-            obs_setting. collect_data = True
+            obs_setting.collect_data = True
             if (obs_setting.init_csv == False) and (obs_setting.append_data_specified == False):
                 obs_setting.station_file = create_station_file_name2(
                     obs_setting.primary_station)
@@ -464,6 +474,9 @@ def obs_sanity_check(obs1,  xml_data, data_row):
 def duplicate_observation(obs1, current_obs):
     """ test last line of csv for duplicate """
     """ finds observation times and compares"""
+    if obs1.ignore_dup == True:
+        trace_print(3, "Ignore dup" )
+        return False  
     r_csv_file = get_obs_csv_path(obs1, obs1.station_file)
     last_one = get_last_csv_row(r_csv_file)
     if (len(last_one) < 4):
@@ -565,7 +578,15 @@ def get_data_from_NOAA_xml(xmldata):
     h1 = csv_headers
     return h1, r1_final
 
-
+def add_collection_time( w_header, w_row):
+    """
+       add collection entries at end of each row
+    """
+    w_header.append("collection time")
+    dt1 = ObsDate(datetime.now())
+    dt1.emit_type("reg")
+    w_row.append(str(dt1)) 
+    return w_header, w_row
 """
  function: weather_csv_driver
  inputs:
@@ -586,6 +607,10 @@ def weather_csv_driver(obs1, mode, csv_file, w_header, w_row):
     if (len(csv_file) < 4):
         print("CSV file must contain station name")
         return False
+    # add colleciton time.
+    if obs1.collection_date == True:
+        trace_print(3, "collection date added")
+        w_header, w_row = add_collection_time( w_header, w_row)
     if (mode == 'c'):
         # cut file request is active
         # denote the special mode and change it to write.
@@ -705,7 +730,7 @@ def weather_obs_app_start(obs1):
         trace_print(4, "schedule job @ ", str(obs1.primary_station),
                     " -> ", str(obs1.station_file))
         obs1.append_data = True
-        obs1.job1 = schedule.every().hour.at(":20").do(weather_collect_driver, obs1)
+        obs1.job1 = schedule.every().hour.at(obs1.sched_interval).do(weather_collect_driver, obs1)
         # execute every 20 minutes.   
         # obs1.job1 = schedule.every(20).minutes.at(":20").do(weather_collect_driver, obs1)
     return
