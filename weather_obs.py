@@ -71,6 +71,7 @@ class ObsSetting:
         self.station_file = ""
         # schedule job
         self.job1 = None
+        self.job2 = None
         self.obs_iteration = 0
         self.trace = True
         self.prior_obs_time = ""
@@ -624,8 +625,13 @@ def get_obs_csv_path(obs1, csv_file):
     return r_csv_file
 
 
+def weather_collect_ad_hoc( obs1 ) :
+    weather_collect_driver(obs1)
+    schedule.cancel_job(obs1.job2)
+    
+
 """
-function: weather_collet_driver
+function: weather_collect_driver
  inputs:
       xml_url = URL to station XML
       csv_out = output file
@@ -663,6 +669,7 @@ def weather_collect_driver(obs1):
     trace_print(4, "prior_obs_time(driver): ", str(obs1.prior_obs_time))
     if (duplicate_observation(obs1, outdata[1])):
         trace_print(3, " duplicate in collect.  exiting...")
+        obs1.job2 = schedule.every().hour.at(":40").do(weather_collect_ad_hoc, obs1)
         return True
     weather_csv_driver(obs1, 'a', obs1.station_file, outdata[0], outdata[1])
 
