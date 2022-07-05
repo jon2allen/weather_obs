@@ -241,9 +241,10 @@ def weather_obs_init():
     parser.add_argument('--dir', help='data directory offet- default is cwd ')
     parser.add_argument('--interval', help='interval for append')
     parser.add_argument('--ignoredup', help='ignore duplicates', action="store_true")
+    parser.add_argument('--nologging', help='no logging file', action="store_true")
     parser.add_argument('--collectdate', help='add a collection date at end of CSV row', action="store_true")
     args = parser.parse_args()
-    trace_print(1, "parsing args...")
+    # trace_print(1, "parsing args...")
     # cannocial header
     # can't depend on xml feed to complete every value
     global csv_headers
@@ -309,6 +310,7 @@ def weather_obs_init():
             obs_setting.set_xml_dump_flag(True)
         if (args.ignoredup == True):
             obs_setting.ignore_dup = True
+
         if (args.collectdate == True):
             obs_setting.collection_date = True
         if (args.collect):
@@ -320,6 +322,8 @@ def weather_obs_init():
                 trace_print(4, "Station filename (collect): ",
                             obs_setting.station_file)
         return True
+    if (args.nologging == True):
+            disable_logging_file()
     if (args.file):
         try:
             with open(args.file, "r") as obs_file1:
@@ -939,6 +943,17 @@ def obs_init_logger():
     schedule_logger = logging.getLogger('schedule')
     schedule_logger.setLevel(level=logging.DEBUG)
     schedule_logger.addHandler(fhandler)
+
+def disable_logging_file():
+    """
+    Disables logging 
+    still leave weather_obs.log with zero bytes.
+    https://stackoverflow.com/questions/27647077/fully-disable-python-logging
+    """
+    print(logging.getLogger('weather_obs_f').handlers)
+    logging.getLogger('weather_obs_f').setLevel(logging.CRITICAL + 1)
+    return
+
 
 
 if __name__ == "__main__":
