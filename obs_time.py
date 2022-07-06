@@ -143,7 +143,6 @@ class ObsDate():
                 self.handler = obsDateRegHandler(reg_dt)
             if obs_fmt == 'excel':
                 xls_dt = obsExcelDtHandler.emit(self.handler.obs_dt)
-                print("xls_dt:", xls_dt)
                 self.handler = obsExcelDtHandler(xls_dt)
         else:
             print(f"Not supportted out_type: {obs_fmt}")
@@ -241,5 +240,14 @@ if __name__ == "__main__":
     print("timedelta: ", now2 + td1)
     
     print("timedelta2:", now2 - td1)
+    
+    
+    td2 = ObsDate("6/28/2022 17:40")
+    
+    print("td2:", td2)
+    
+    td2.emit_type("excel")
+    
+    print("td2(excel:)", td2)
     
     
