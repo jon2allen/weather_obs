@@ -36,6 +36,7 @@ Goal:  find the minutes after tha hour when the observation gets posted.  Run me
 
 from collections import namedtuple
 import csv
+import obs_time
 
 def read_obs_csv():
     with open("jontest.csv", 'rU') as data:
@@ -61,7 +62,6 @@ if __name__ == "__main__":
         row = next(read_obs_csv())
         writer = csv.writer(d1)
         writer.writerow((list(row._fields)))
-        writer.writerow(list(row))
         i = 0
         prior = ""
         for row in read_obs_csv():
@@ -69,6 +69,9 @@ if __name__ == "__main__":
                 print("prior: ", prior)
                 print(row.observation_time)
                 if prior != "":
+                    obs1 = obs_time.ObsDate(row.collection_time)
+                    obs1.emit_type('excel')
+                    row = row._replace(collection_time = str(obs1))
                     writer.writerow(list(row))
                 prior = row.observation_time
             i = i+1

@@ -46,6 +46,18 @@ class obsDateDtHandler:
     def __repr__(self):
         return str(self.obs_dt)
 
+class obsExcelDtHandler:
+    def __init__(self, dt):
+        self.obs_dt = dt
+        self.out_type = 'Excel'
+        if isinstance(dt, str):
+            self.obs_dt = parser.parse(dt)
+    def emit( dt1 ):
+        return str(dt1)
+    def __repr__(self):
+        return str(self.obs_dt.strftime('%x %X'))
+
+
         
             
 
@@ -120,7 +132,7 @@ class ObsDate():
         return self.handler.__repr__()
  
     def emit_type(self, obs_fmt):
-        if obs_fmt in ['dt', 'rfc', 'reg']:
+        if obs_fmt in ['dt', 'rfc', 'reg', 'excel']:
             if obs_fmt == 'dt':
                 self.handler = obsDateDtHandler(self.handler.obs_dt)
             if obs_fmt == 'rfc':
@@ -129,6 +141,10 @@ class ObsDate():
             if obs_fmt == 'reg':
                 reg_dt = obsDateRegHandler.emit(self.handler.obs_dt)
                 self.handler = obsDateRegHandler(reg_dt)
+            if obs_fmt == 'excel':
+                xls_dt = obsExcelDtHandler.emit(self.handler.obs_dt)
+                print("xls_dt:", xls_dt)
+                self.handler = obsExcelDtHandler(xls_dt)
         else:
             print(f"Not supportted out_type: {obs_fmt}")
             raise ValueError
@@ -201,6 +217,20 @@ if __name__ == "__main__":
     print(f"now2: {now2}")
     
     now2.emit_type("reg")
+    
+    now2.add_one_hour()
+    
+    print(f"now2: {now2}")
+    
+    td1 = timedelta(minutes=10)
+    
+    print("timedelta: ", now2 + td1)
+    
+    print("timedelta2:", now2 - td1)
+    
+    now2.emit_type("excel")
+    
+    print("excel compatbile dates")
     
     now2.add_one_hour()
     
