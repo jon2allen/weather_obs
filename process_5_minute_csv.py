@@ -38,8 +38,8 @@ from collections import namedtuple
 import csv
 import obs_time
 
-def read_obs_csv():
-    with open("jontest.csv", 'rU') as data:
+def read_obs_csv(file_name):
+    with open(file_name, 'rU') as data:
         h1 = data.readline().split(",")
         print( h1 )
        # obs_header = namedtuple('obs_heder', data.readline().strip('\" \''))
@@ -57,14 +57,15 @@ def read_obs_csv():
             yield row
 
 if __name__ == "__main__":
-
-    with open("jontest_out.csv", "w", newline='') as d1:
-        row = next(read_obs_csv())
+    OBS_INPUT = "jontest.csv"
+    OBS_OUTPUT = "jontest_out.csv"
+    with open(OBS_OUTPUT, "w", newline='') as d1:
+        row = next(read_obs_csv(OBS_INPUT))
         writer = csv.writer(d1)
         writer.writerow((list(row._fields)))
         i = 0
         prior = ""
-        for row in read_obs_csv():
+        for row in read_obs_csv(OBS_INPUT):
             if prior != str(row.observation_time):
                 print("prior: ", prior)
                 print(row.observation_time)
