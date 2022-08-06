@@ -93,7 +93,7 @@ class obsCsvSetting:
         s = os.sep
         # assume if has separtor that it is full path
         # if not - then it is relative to current workdir
-        if (self.inputdir.find(s) > 1):
+        if (self.inputdir.find(s) >= 0):
             return self.inputdir + s
         if self.inputdir != '.':
             r_data_path = os.path.join(
