@@ -77,6 +77,7 @@ class ObsDate():
             self.year = self.handler.obs_dt.year
             self.month = self.handler.obs_dt.month
             self.day = self.handler.obs_dt.day
+            self.tzinfo = self.handler.obs_dt.tzinfo
         else:
             print(f"error:  ObsDate invalid type {dt}")
 
