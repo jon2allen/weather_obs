@@ -74,8 +74,13 @@ class ObsCsvToXml:
                 el = xml_tmp_root.find(k)
                 el.text = str(obs_temp)
             else:
-                el = xml_tmp_root.find(k)
-                el.text = str(upt_dict[k])
+                try:
+                    el = xml_tmp_root.find(k)
+                    el.text = str(upt_dict[k])
+                except:
+                    trace_print(4, "error: ",  "k: ", k)
+                    # most likely - csvfile was edited post creation
+                    # columns added. or some other column error.
         for child in xml_tmp_root:
             # defer updates to end. 
             # very bad to update xml data struct while iterating it.
@@ -104,10 +109,38 @@ class ObsCsvToXml:
     def run(self):
         self.read_csv()
         self.set_time_zone()
-        for i in range(1,myapp.df.shape[0]):
-            myapp.update_template(myapp.df.columns, myapp.df.loc[i])
+        for i in range(1,self.df.shape[0]):
+            self.update_template(self.df.columns, self.df.loc[i])
         
-        
+class obsXMLAPP:
+    def __init__(self):
+        self.start_time = datetime.datetime.now()
+        self.working_dir = os.getcwd()
+        self.parser = argparse.ArgumentParser(description='obs_csv_to_xml_utility')
+
+    def set_arg_parser(self):
+        self.parser.add_argument("--csvfile", help='csvfile to covert')
+        self.parser.add_argument("--outdir", help='dir to write xml data')
+    
+    def set_app_arguments(self):
+        args = self.parser.parse_args()
+        if args.csvfile:
+            self.csvfile = args.csvfile
+        else:
+            trace_print(4, "no csvfile specified")
+            sys.exit(8)
+        if args.outdir:
+            self.outdir = args.outdir
+        else:
+            trace_print(4, "no outdir specified")
+            sys.exit(8)
+    
+    def run(self):
+        self.set_arg_parser()
+        self.set_app_arguments()
+        my_instance = ObsCsvToXml(self.csvfile, self.outdir)
+        my_instance.run()
+             
          
 
             
@@ -118,9 +151,9 @@ if __name__ == "__main__":
                         level=logging.INFO,
                         format='obs_csv_to_xml.py - %(message)s')
     logger = logging.getLogger('weather_obs_f')
-    print("testing...")
+
     
-    myapp = ObsCsvToXml("KDCA_Y2022_M06_D12_H00.csv", ".")
+    myapp = obsXMLAPP()
     myapp.run()
          
    
