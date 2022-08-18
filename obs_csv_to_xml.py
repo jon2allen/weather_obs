@@ -19,10 +19,12 @@ class ObsCsvToXml:
         self.csv_file = csv_file
         self.xml_path = xml_path
         self.df = None
+        self.xmlprint = False
         self.xml_template = xml.etree.ElementTree.parse('template.xml')
         self.xml_template_root = self.xml_template.getroot()
 
     def read_csv( self):
+        trace_print(4, "reading: ", self.csv_file)
         self.df = read_weather_obs_csv(self.csv_file)
     
     def set_time_zone( self):
@@ -78,24 +80,34 @@ class ObsCsvToXml:
             # defer updates to end. 
             # very bad to update xml data struct while iterating it.
             if (str(upt_dict[child.tag]).strip()) == "nan":
-                print("removing:", child.tag)
+                trace_print(1, "remove queue:", child.tag)
                 remove_lst.append(child)
         while remove_lst:
             c_ptr = remove_lst.pop()
-            print("removing ", c_ptr.tag)
+            trace_print(1, "removing ", c_ptr.tag)
             xml_tmp_root.remove(c_ptr)
             
         xml_file = self.create_xml_file(upt_dict["station_id"], obs_t)
+        trace_print(4, "writing xml: ", xml_file)
         xml_tmp.write(xml_file)
-        self.test_xml( xml_file)
+        if self.xmlprint == True:
+            self.test_xml( xml_file)
         
     def test_xml(self, file):
         print("testing...", file)
         xml_tmp = xml.etree.ElementTree.parse(file)
         xml_tmp_root = xml_tmp.getroot()
         for child in xml_tmp_root:
-            print("tag: ", child.tag)
-            print("text: ", child.text)
+            trace_print(1, "tag: ", child.tag)
+            trace_print(1, "text: ", child.text)
+    
+    def run(self):
+        self.read_csv()
+        self.set_time_zone()
+        for i in range(1,myapp.df.shape[0]):
+            myapp.update_template(myapp.df.columns, myapp.df.loc[i])
+        
+        
          
 
             
@@ -103,21 +115,13 @@ class ObsCsvToXml:
         
 if __name__ == "__main__":
     logging.basicConfig(stream=sys.stdout,
-                        level=logging.DEBUG,
+                        level=logging.INFO,
                         format='obs_csv_to_xml.py - %(message)s')
     logger = logging.getLogger('weather_obs_f')
     print("testing...")
     
     myapp = ObsCsvToXml("KDCA_Y2022_M06_D12_H00.csv", ".")
-    
-    myapp.read_csv()
-    
-    print(myapp.df.head())
-    
-    myapp.set_time_zone()
-    
-    for i in range(1,5):
-         myapp.update_template(myapp.df.columns, myapp.df.loc[i])
+    myapp.run()
          
    
     
