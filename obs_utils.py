@@ -360,6 +360,8 @@ def construct_daily_cmd_call(file, obs_dir):
         r"daily_weather_obs_chart.py" + c_file + c_chart + c_table + c_dir
     return cmd
 
+def knots( mph):
+    return float(mph * 0.868976)
 
 if __name__ == "__main__":
 
@@ -454,3 +456,7 @@ if __name__ == "__main__":
     print( obs3.shape)
     
     print(obs3.head(150))
+    
+    print("testing knots")
+    
+    print( f"10 mph is { knots(10)} knots")
