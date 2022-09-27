@@ -44,7 +44,8 @@ class ObsCollector:
         return self.url_data.text
 
     def set_station_file_name(self):
-        self.obs_filename = create_station_file_name(self.station_id, self.filetype)
+        if not self.obs_filename:
+            self.obs_filename = create_station_file_name(self.station_id, self.filetype)
 
     def _write_station_data( self, fname):
         obs_file = open(fname, "w")
@@ -214,6 +215,7 @@ class ObsCollector3dayhourly( ObsCollector3day):
         else:
             self.appendflag = True
             self.allowdup = True
+            self.obs_filename = target
         
         return 
 
