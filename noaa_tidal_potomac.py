@@ -22,9 +22,12 @@ from weather_obs import create_station_file_name
 
 
 class ObsCollector:
-    def __init__(self, url, id):
+    def __init__(self, url, id, filetype):
         self.station_url = url
         self.station_id = id
+        self.filetype = filetype
+        self.allowdup = False
+        self.appendflag = False
 
     def show_collector(self):
         return str(self.station_id + "@" + self.station_url)
@@ -37,18 +40,28 @@ class ObsCollector:
         return self.url_data.text
 
     def set_station_file_name(self):
-        self.obs_filename = create_station_file_name(self.station_id, "txt")
+        self.obs_filename = create_station_file_name(self.station_id, self.filetype)
 
+    def _write_station_data( self, fname):
+        obs_file = open(fname, "w")
+        obs_file.write(self.last_forcast)
+        obs_file.close()
+    
+    def _append_station_date( self, fname):
+        obs_file = open(fname, "a")
+        obs_file.write(self.last_forcast)
+        obs_file.close()
+        
     def write_station_data(self):
         """write out last forcast"""
-        obs_file = open(self.obs_filename, "w")
-        obs_file.write(self.last_forcast)
-        obs_file.close()
+        if self.appendflag == True:
+           self._append_station_date( self.obs_filename)
+        else:
+           self._write_station_data(self.obs_filename)
 
     def write_station_data_custom(self, ending_text):
-        obs_file = open(self.station_id + "_" + ending_text, "w")
-        obs_file.write(self.last_forcast)
-        obs_file.close()
+        self._write_station_data(self.station_id + "_" + ending_text ) 
+
 
     def obs_collection_sequence(self):
         """ basic collection sequence - fetch, intpret, write """
@@ -63,6 +76,8 @@ class ObsCollector:
     def obs_collection_duplicate_check(self):
         # note to get correct md5 checksum - binary file comparison
         # initialz test_md5 - preven error on fresh dir
+        if self.allowdup == True:
+            return False
         test_md5 = " "
         self.write_station_data_custom("dupcheck.txt")
         with open(self.station_id + "_" + "dupcheck.txt", "rb") as fl:
@@ -160,7 +175,7 @@ if __name__ == "__main__":
     logger = logging.getLogger('weather_obs_f')
 
     obs_x = ObsCollector(
-        url=FORECASTURL, id=FORECASTID)
+        url=FORECASTURL, id=FORECASTID, filetype='txt')
 
     print(obs_x.show_collector())
 
