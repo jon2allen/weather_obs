@@ -226,6 +226,8 @@ def weather_obs_init():
     parser = argparse.ArgumentParser(description='NOAA weather obsevation')
     parser.add_argument('--init', help='Initialize CSV')
     parser.add_argument('--station', help='URL of station')
+    parser.add_argument('--station_id', help='station id')
+    parser.add_argument('--xmldata', help='location of file xmldata - for testing')
     parser.add_argument(
         '--collect', help='Run collectiion in background - Y/N', action="store_true")
     parser.add_argument('--append', help='Append data to CSV file - specifed')

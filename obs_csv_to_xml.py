@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+"""
+ Program:  obs_csv_to_mxl
+ Author:   Jon Allen
+ Purpose:  To take NOAA weather csv and convert to individual xml files.
+ Command args:   
+          
+"""
 import os
 import argparse
 from datetime import date, datetime, timedelta
