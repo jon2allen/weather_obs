@@ -156,6 +156,7 @@ def create_station_yearly_glob_filter(station='ANZ535', ext='txt', gyear=2021):
 
 
 def get_obs_csv_files(dir, noaa_station):
+    # get csv only
     glob_path = Path(dir)
     file_list = [str(pp) for pp in glob_path.glob(str(noaa_station + "*.csv"))]
     final_l = []
@@ -166,8 +167,19 @@ def get_obs_csv_files(dir, noaa_station):
 
 
 def get_noaa_text_files(dir, noaa_station):
+    # get txt files only
     glob_path = Path(dir)
     file_list = [str(pp) for pp in glob_path.glob(str(noaa_station+"*.txt"))]
+    final_l = []
+    for f in file_list:
+        final_l.append(os.path.split(f)[1])
+    final_l.sort()
+    return final_l
+
+def get_noaa_any_files(dir, noaa_station, ext):
+    #  Generic get any ext
+    glob_path = Path(dir)
+    file_list = [str(pp) for pp in glob_path.glob(str(noaa_station+  '*.' + ext))]
     final_l = []
     for f in file_list:
         final_l.append(os.path.split(f)[1])
@@ -296,6 +308,19 @@ def hunt_for_noaa_files2(dir, station_glob_filter):
     """
     target_csv = ""
     station_file_list = get_noaa_text_files(dir, station_glob_filter)
+    if (len(station_file_list) > 0):
+        target_csv = station_file_list[-1]
+    return target_csv
+
+def hunt_for_noaa_files3(dir, station_glob_filter, ext):
+    """
+    pass in a glob filter - it can be the station name. or a sub-filter
+    version #2 has to be used with a less greedy filter.
+    also - doesn't matter if you transition a year/month
+    have to glob for that up frong.
+    """
+    target_csv = ""
+    station_file_list = get_noaa_any_files(dir, station_glob_filter, ext)
     if (len(station_file_list) > 0):
         target_csv = station_file_list[-1]
     return target_csv
