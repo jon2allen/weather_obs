@@ -23,13 +23,15 @@ import pandas as pd
 import numpy as np
 
 
+
 class ObsCollector:
     def __init__(self, url, id, filetype):
         self.station_url = url
         self.station_id = id
         self.filetype = filetype
-        self.allowdup = False
-        self.appendflag = False
+        self.allowdup = True
+        self.appendflag = True
+        self.obsday = 0
 
     def show_collector(self):
         return str(self.station_id + "@" + self.station_url)
@@ -53,11 +55,20 @@ class ObsCollector:
         obs_file = open(fname, "a")
         obs_file.write(self.last_forcast)
         obs_file.close()
+    
+    def _transform_station_data( self):
+        pass
+    
+    def _post_process_station_data( self ):
+        pass
+    
+    def _pre_process_station_data( self ):
+        pass
         
     def write_station_data(self):
         """write out last forcast"""
         if self.appendflag == True:
-           self._append_station_date( self.obs_filename)
+           self._append_station_data( self.obs_filename)
         else:
            self._write_station_data(self.obs_filename)
 
@@ -67,17 +78,22 @@ class ObsCollector:
 
     def obs_collection_sequence(self):
         """ basic collection sequence - fetch, intpret, write """
+        self._pre_process_station_data()
         self.get_url_data()
-        self.find_station_data()
+        self._find_station_data()
         self.set_station_file_name()
+        self._transform_station_data()
         if (self.obs_collection_duplicate_check()):
             print("duplicate:  exit")
         else:
             self.write_station_data()
+        self._post_process_station_data()
+        return
 
     def obs_collection_duplicate_check(self):
         # note to get correct md5 checksum - binary file comparison
         # initialz test_md5 - preven error on fresh dir
+        print("base class")
         if self.allowdup == True:
             return False
         test_md5 = " "
@@ -106,7 +122,7 @@ class ObsCollector:
                 print("test_file ", last_file)
         return (curr_md5 == test_md5)
 
-    def find_station_data(self):
+    def _find_station_data(self):
         """ parse station data from noaa html page """
         f = BeautifulSoup(self.url_data.text, 'lxml')
         my_content = f.find(id="contentarea")
@@ -149,7 +165,7 @@ class ObsCollector:
         return r_station_data
 
 class ObsCollector3day( ObsCollector):
-    def find_station_data(self):
+    def _find_station_data(self):
         #print(self.url_data.text)
         tables1 = pd.read_html( self.url_data.text)
         obs_a = tables1[3]
@@ -159,21 +175,58 @@ class ObsCollector3day( ObsCollector):
         return obs_a
     
     def _write_station_data(self, fname):
-        self.last_forcast.to_csv( fname )
+        self.last_forcast.to_csv( fname, index=False, header=True )
 
     def _append_station_data(self, fname):
-        self.last_forcast.to_csv( fname ) 
+        self.last_forcast.to_csv( fname, index=False) 
         
-    def obs_collection_sequence(self):
-        """ basic collection sequence - fetch, intpret, write """
-        self.get_url_data()
-        self.find_station_data()
-        self.set_station_file_name()
-        if (self.obs_collection_duplicate_check()):
-            print("duplicate:  exit")
+    def obs_collection_duplicate_check(self):
+        print("I am here in 3 day")
+        return super().obs_collection_duplicate_check()
+    
+class ObsCollector3dayhourly( ObsCollector3day):
+    def _find_station_data(self):
+        print("hourly")
+        obs1 = super()._find_station_data()
+        obs_c = obs1.drop( obs1.index[1:obs1.shape[0]])
+        print(obs_c)
+        self.last_forcast = obs_c
+        return obs_c
+    
+    def _append_station_data(self, fname):
+        self.last_forcast.to_csv( fname, header=False, index=False , mode='a' )
+        return
+    
+    def _post_process_station_data(self):
+        self.obsday = self.last_forcast['Date'].values[0] 
+        print( f"Current date: { self.obsday } ")
+        return 
+    
+    def _pre_process_station_data(self):
+        now = datetime.now()
+        g1 = obs_utils.create_station_glob_filter("KDCA_3_day", "csv", now)
+        print(f"G1: {g1}" )
+        target = obs_utils.hunt_for_noaa_files3( '.', g1, 'csv' )
+        print(f"target: { target }")
+        if len(target) < 3:
+            self.appendflag = False
+            self.allowdup = False
         else:
-            self.write_station_data()
-        return    
+            self.appendflag = True
+            self.allowdup = True
+        
+        return 
+
+#    def obs_collection_sequence(self):
+#       """ basic collection sequence - fetch, intpret, write """
+#        self.get_url_data()
+#        self.find_station_data()
+#        self.set_station_file_name()
+#        if (self.obs_collection_duplicate_check()):
+#            print("duplicate:  exit")
+#        else:
+#            self.write_station_data()
+#        return    
 #
 #  init the collector
 #  run the collection sequnce
@@ -204,7 +257,7 @@ if __name__ == "__main__":
     import logging
     logger = logging.getLogger('weather_obs_f')
 
-    obs_x = ObsCollector3day(
+    obs_x = ObsCollector3dayhourly(
         url=FORECASTURL, id=FORECASTID, filetype='csv')
 
     print(obs_x.show_collector())
