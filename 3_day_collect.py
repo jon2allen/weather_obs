@@ -32,6 +32,7 @@ class ObsCollector:
         self.allowdup = True
         self.appendflag = True
         self.obsday = 0
+        self.obs_filename = None
 
     def show_collector(self):
         return str(self.station_id + "@" + self.station_url)
