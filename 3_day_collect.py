@@ -206,7 +206,9 @@ class ObsCollector3dayhourly( ObsCollector3day):
     
     def _pre_process_station_data(self):
         now = datetime.now()
-        g1 = obs_utils.create_station_glob_filter("KDCA_3_day", "csv", now)
+        obs_cut_time = now - timedelta(minutes=30)
+        # set time before - data at :52 and retrieved at 20 after hour
+        g1 = obs_utils.create_station_glob_filter("KDCA_3_day", "csv", obs_cut_time)
         print(f"G1: {g1}" )
         target = obs_utils.hunt_for_noaa_files3( '.', g1, 'csv' )
         print(f"target: { target }")
