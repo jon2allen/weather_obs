@@ -3,7 +3,9 @@
 # 3 day collector
 #
 # Scrapes data from station 3 day
-#
+# Made to be called hourly on :20
+#  Each new entry at 1st row written into csv with stationid prefix
+#  At midnight - new csv will be created.
 #
 #
 # output - csv with 3 day data
@@ -222,30 +224,11 @@ class ObsCollector3dayhourly( ObsCollector3day):
         
         return 
 
-#    def obs_collection_sequence(self):
-#       """ basic collection sequence - fetch, intpret, write """
-#        self.get_url_data()
-#        self.find_station_data()
-#        self.set_station_file_name()
-#        if (self.obs_collection_duplicate_check()):
-#            print("duplicate:  exit")
-#        else:
-#            self.write_station_data()
-#        return    
-#
-#  init the collector
-#  run the collection sequnce
-#  1 additional custom write out of the data
-
-
-# TODO - check for duplicate - save output and check with MD5 on next run
-# html to noaa marine forcase page - change to what is require
-
 if __name__ == "__main__":
     
 #######################################################################
 # FORCASTURL is where the data resides
-# FORCASTID is the station forcast ( upper tidal potomac is ANZ535
+# FORCASTID is the station forcast 
 # The script changes wording directory and then writes
 # DATA_DIR
 #######################################################################
