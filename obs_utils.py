@@ -388,6 +388,36 @@ def construct_daily_cmd_call(file, obs_dir):
 def knots( mph):
     return float(mph * 0.868976)
 
+def cardinal_points( dir ):
+    # returns -1 on failure
+    points = {
+        "N" : 0,
+        "NORTH" : 0,
+        "NE"  : 45,
+        "NORTEAST" : 45,
+        "E" : 90,
+        "EAST" : 90,
+        "SE" : 135,
+        "SOUTHEAST" : 135,
+        "S" : 180,
+        "SOUTH": 180,
+        "SW": 225,
+        "SOUTHWEST" : 225,
+        "W" : 270,
+        "WEST": 270,
+        "NW": 315,
+        "NORTHWEST": 315
+    }
+    mydir = str(dir.upper())
+    
+    try:
+        my_point = points[mydir]
+    except:
+        print(f"unknown cardinal point: {mydir}")
+        my_point = -1
+        
+    return my_point
+
 if __name__ == "__main__":
 
     import logging
@@ -485,3 +515,11 @@ if __name__ == "__main__":
     print("testing knots")
     
     print( f"10 mph is { knots(10)} knots")
+    
+    print("testing cardinal points")
+    
+    test_pnts = ["South", "NW", "Southwest", "bat" ]
+    for pnt in test_pnts:
+        my_pnt = cardinal_points(pnt)
+        print(f"{pnt} is { my_pnt } degrees")
+    
