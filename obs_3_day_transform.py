@@ -28,7 +28,13 @@ class ThreeDayTransform:
             'wind_kt' : [ 'func', self.get_wind_knots ],
             'temp_f' : ['func', self.get_temp_F],
             'temp_c' : ['func', self.get_temp_C],
-            'temprature_string': ['func', self.get_temp_str]
+            'temprature_string': ['func', self.get_temp_str],
+            'relative_humidity': [ 'func', self.get_humidity ],
+            'wind_gust': ['func', self.get_gust_speed ],
+            'wind_gust_kt': ['func', self.get_gust_knots ],
+            'pressure_mb' : ['func', self.get_pressure_mb ],
+            'pressure_in' : ['func', self.get_pressure_in ],
+            'pressure_string' : ['func', self.get_pressure_str ]
         }
     def get_observation_time(self):
         print ( self.df3['Year'].values[0], '/', self.df3['Month'].values[0])
@@ -62,9 +68,20 @@ class ThreeDayTransform:
         # 69.1 F (20.6 C)
         temp_f = self.get_temp_F()
         temp_c = self.get_temp_C()
-        return f"{ temp_f} F ({temp_c:2} C)"
+        return f"{ temp_f} F ({temp_c} C)"
     
-        
+    def get_humidity(self):
+        return self.df3['RelativeHumidity'].values[0] 
+    
+    def get_pressure_in(self):
+        return self.df3["altimeter(in)"].values[0]
+    
+    def get_pressure_mb(self):
+        return self.df3["sea level(mb)"].values[0]
+    
+    def get_pressure_str(self):
+        return self.get_pressure_mb() + " mb"
+  
         
     def process_transform(self):
         for key in self.transform_dict:
