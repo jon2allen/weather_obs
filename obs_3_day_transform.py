@@ -44,7 +44,9 @@ class ThreeDayTransform:
             'pressure_string' : ['func', self.get_pressure_str ],
             'dewpoint_f': ['func', self.get_dewpoint_f ],
             'dewpoint_c' : ['func', self.get_dewpoint_c ],
-            'dewpoint_string': ['func', self.get_dewpoint_str ]
+            'dewpoint_string': ['func', self.get_dewpoint_str ],
+            'heat_index_f' : [ 'func', self.get_heatindex_f ],
+            'windchill_f' : [ 'func', self.get_windchill_f ]
             #'heat_index_string', 'heat_index_f', 'heat_index_c'
             #'windchill_string', 'windchill_f', 'windchill_c'
             #'visibility_mi', 'icon_url_base', 'two_day_history_url', 
@@ -73,7 +75,7 @@ class ThreeDayTransform:
         if self.gust == True:
             current_gust = self.get_gust_speed()
             current_gust_knots = self.get_gust_knots()
-            format1 = f"from the {current_dir} at {curent_wind_speed} gusting to {current_gust} \
+            format1 = f"from the {current_dir} at {current_wind_speed} gusting to {current_gust} \
             MPH ({current_wind_knots} gusting to { current_gust_knots} KT)"
         else:   
             format1 = f"{current_dir} at {current_wind_speed} MPH ({current_wind_knots} KT)"
@@ -81,13 +83,13 @@ class ThreeDayTransform:
     
     def get_gust_speed(self):
         if self.gust == False:
-            return "<no_value_provided>"
+            return obs_null_value
         if len(self.wind_parts) > 2:
             return self.wind_parts[3]
         
     def get_gust_knots(self):
         if self.gust == False:
-            return "<no_value_provided>"
+            return obs_null_value
         return obs_utils.knots(float(self.get_gust_speed()))
     
     def get_temp_F(self):
@@ -125,6 +127,17 @@ class ThreeDayTransform:
         dew_c = self.get_dewpoint_c()
         format1 = f"{dew_f} F ({dew_c} C)"
         return format1
+    
+    def get_windchill_f(self):
+        if self.df3["WindChill(°F)"].isnull().values.any():
+            return obs_null_value
+        return self.df3["WindChill(°F)"].values[0]
+    
+    def get_heatindex_f(self):
+        if self.df3["HeatIndex(°F)"].isnull().values.any():
+            return obs_null_value
+        return self.df3["HeatIndex(°F)"].values[0]
+        
   
         
     def process_transform(self):
