@@ -1,14 +1,12 @@
+#!/usr/bin/python3
 
-from asyncio.proactor_events import _ProactorBaseWritePipeTransport
 import os,sys
 import hashlib
 import re
 from datetime import datetime, timedelta
 import calendar
-from cv2 import filterHomographyDecompByVisibleRefpoints
 import requests
 from bs4 import BeautifulSoup
-from zmq import THREAD_AFFINITY_CPU_REMOVE
 # from weather_obs import *
 import obs_utils
 from weather_obs import create_station_file_name, obs_sanity_check
@@ -16,6 +14,7 @@ import pandas as pd
 import numpy as np
 import obs_3_day_collect
 import obs_time
+import csv
 
 class ThreeDayTransform:
     def __init__(self, df3):
@@ -29,18 +28,26 @@ class ThreeDayTransform:
         self.transform_dict = {
             'credit':  [ 'text', "NOAA's National Weather Service" ],
             'credit_URL' : ['text', "https://weather.gov/" ],
+            'image': ['text', "                                                                      " ],
+            'suggested_pickup' : [ 'text', "15 minutes after the hour"],
+            'suggested_pickup_period' : [ 'text', "60"],
+            'location' : [ 'text', "Washington/Reagan National Airport, DC, VA"],
+            'station_id' : ['text', "KDCA"], 
+            'latitude' : ['text', "38.84833" ],
+            'longitude' : ['text', "-77.03417" ],
             'observation_time': [ 'func',  self.get_observation_time ],
             'observation_time_rfc822' : [ 'func', self.get_observation_time_rfc ],
-            'wind+string' : ['func', self.get_wind_str ],
+            'weather': ['func', self.get_weather_statement],
+            'wind_string' : ['func', self.get_wind_str ],
             'wind_dir' : [ 'func', self.get_wind_dir ] ,
             'wind_degrees' : ['func', self.get_wind_degrees ],
             'wind_mph': [ 'func', self.get_wind_speed ],
             'wind_kt' : [ 'func', self.get_wind_knots ],
             'temp_f' : ['func', self.get_temp_F],
             'temp_c' : ['func', self.get_temp_C],
-            'temprature_string': ['func', self.get_temp_str],
+            'temperature_string': ['func', self.get_temp_str],
             'relative_humidity': [ 'func', self.get_humidity ],
-            'wind_gust': ['func', self.get_gust_speed ],
+            'wind_gust_mph': ['func', self.get_gust_speed ],
             'wind_gust_kt': ['func', self.get_gust_knots ],
             'pressure_mb' : ['func', self.get_pressure_mb ],
             'pressure_in' : ['func', self.get_pressure_in ],
@@ -51,11 +58,30 @@ class ThreeDayTransform:
             'heat_index_f' : [ 'func', self.get_heatindex_f ],
             'windchill_f' : [ 'func', self.get_windchill_f ],
             'heat_index_c' : ['func', self.get_windchill_c ],
-            'windchill_c'  :  [ 'func', self.get_windchill_c]
-            #'visibility_mi', 'icon_url_base', 'two_day_history_url', 
-            # 'icon_url_name', 'ob_url', 'disclaimer_url', 'copyright_url', 'privacy_policy_url']
-            
+            'windchill_c'  :  [ 'func', self.get_windchill_c],
+            'heat_index_string' : ['func', self.get_headindex_str],
+            'windchill_string' : ['fund', self.get_windchill_str],
+            'visibility_mi' : [ 'func', self.get_visiblity ],
+            'icon_url_base' : ['text', 
+                               "https://forecast.weather.gov/images/wtf/small/"],
+            'two_day_history_url': ['text',
+                                    "https://www.weather.gov/data/obhistory/KDCA.html"],
+            "ob_url": ['text',
+                        "https://www.weather.gov/data/METAR/KDCA.1.txt"],
+            'icon_url_name': ['text', 'some.png'],
+            'disclaimer_url' : ['text', 
+                               "https://www.weather.gov/disclaimer.html"],
+            'copyright_url' : ['text', "https://www.weather.gov/disclaimer.html"],
+            'privacy_policy_url' : ['text', "https://www.weather.gov/notice.html"]      
+             
         }
+        
+    def get_visiblity(self):
+        return self.df3['Vis.(mi.)'].values[0]
+    
+    def get_weather_statement(self):
+        return self.df3['Weather'].values[0]
+    
     def get_observation_time(self):
         _Year = self.df3['Year'].values[0]
         _Month = self.df3['Month'].values[0]
@@ -157,6 +183,13 @@ class ThreeDayTransform:
             return obs_null_value
         return ((float(self.get_windchill_f()) - 32) * .5556)
     
+    def get_windchill_str(self):
+        wc_f = self.get_windchill_f()
+        if wc_f == obs_null_value:
+            return obs_null_value
+        wc_c = self.get_windchill_c()
+        return f'{wc_f} F ({wc_c}C)'
+    
        
     def get_heatindex_f(self):
         if self.df3["HeatIndex(°F)"].isnull().values.any():
@@ -167,10 +200,27 @@ class ThreeDayTransform:
         if self.df3["HeatIndex(°F)"].isnull().values.any():
             return obs_null_value
         return ((float(self.get_heatindex_f()) - 32) * .5556)
+    
+    def get_headindex_str(self):
+        hi_f = self.get_heatindex_f()
+        if hi_f == obs_null_value:
+            return obs_null_value
+        hi_c = self.get_headindex_c()
+        return f'{hi_f} F ({hi_c}C)'
         
   
         
     def process_transform(self):
+        global csv_headers
+        df1 = pd.DataFrame()
+        for hd1 in csv_headers[::-1]:
+            item = self.transform_dict[hd1]
+            if item[0] == 'text':
+                df1.insert(0,hd1, [item[1]])
+            if item[0] == 'func':
+                df1.insert(0,hd1, [item[1]()])
+        print(df1)
+        return df1
         for key in self.transform_dict:
             mylist = self.transform_dict[key]
             if mylist[0] == 'text':
@@ -222,7 +272,7 @@ if __name__ == "__main__":
     
     transformer.get_observation_time()
     
-    transformer.process_transform()
+    my_df = transformer.process_transform()
 
 
-
+    my_df.to_csv('transform.csv', index=False, header=True, quotechar='"',quoting=csv.QUOTE_NONNUMERIC)
