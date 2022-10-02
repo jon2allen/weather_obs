@@ -1,5 +1,6 @@
 import time
 from datetime import datetime, timedelta
+from numpy import dtype
 from tzlocal import get_localzone
 from xml.dom import ValidationErr
 from dateutil import parser, tz
@@ -7,7 +8,10 @@ from dateutil import parser, tz
 
 class obsDateRfcHandler:
     def __init__(self, dt):
-        self.obs_dt = parser.parse(dt)
+        if isinstance(dt, datetime):
+            self.obs_dt = dt
+        else:
+            self.obs_dt = parser.parse(dt)  
         self.out_type = 'rfc'
     def _str( dt1):
         rfc_time = dt1.strftime("%a, %b %d %Y %H:%M:%S %z")
@@ -21,10 +25,11 @@ class obsDateRfcHandler:
 
 class obsDateRegHandler:
     def __init__(self,dt):
-        my_tz = tz.gettz(dt[-3:])
+        self.my_tz = tz.gettz(dt[-3:])
         # print(my_tz)
         # print(parser.parse(dt, tzinfos={dt[-3:]: my_tz}))
-        self.obs_dt = parser.parse(dt, tzinfos={dt[-3:]: my_tz})
+        #self.obs_dt = parser.parse(dt)
+        self.obs_dt = parser.parse(dt, tzinfos={dt[-3:]: self.my_tz})
         self.out_type = 'reg'
     def _str( dt1 ):
         reg_time = dt1.strftime("%b %d %Y, %I:%M:%S %p %Z")

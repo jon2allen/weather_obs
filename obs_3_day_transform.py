@@ -4,6 +4,7 @@ import os,sys
 import hashlib
 import re
 from datetime import datetime, timedelta
+import calendar
 from cv2 import filterHomographyDecompByVisibleRefpoints
 import requests
 from bs4 import BeautifulSoup
@@ -14,6 +15,7 @@ from weather_obs import create_station_file_name, obs_sanity_check
 import pandas as pd
 import numpy as np
 import obs_3_day_collect
+import obs_time
 
 class ThreeDayTransform:
     def __init__(self, df3):
@@ -28,6 +30,7 @@ class ThreeDayTransform:
             'credit':  [ 'text', "NOAA's National Weather Service" ],
             'credit_URL' : ['text', "https://weather.gov/" ],
             'observation_time': [ 'func',  self.get_observation_time ],
+            'observation_time_rfc822' : [ 'func', self.get_observation_time_rfc ],
             'wind+string' : ['func', self.get_wind_str ],
             'wind_dir' : [ 'func', self.get_wind_dir ] ,
             'wind_degrees' : ['func', self.get_wind_degrees ],
@@ -49,14 +52,28 @@ class ThreeDayTransform:
             'windchill_f' : [ 'func', self.get_windchill_f ],
             'heat_index_c' : ['func', self.get_windchill_c ],
             'windchill_c'  :  [ 'func', self.get_windchill_c]
-            #'heat_index_string', 'heat_index_f', 'heat_index_c'
-            #'windchill_string', 'windchill_f', 'windchill_c'
             #'visibility_mi', 'icon_url_base', 'two_day_history_url', 
             # 'icon_url_name', 'ob_url', 'disclaimer_url', 'copyright_url', 'privacy_policy_url']
             
         }
     def get_observation_time(self):
-        print ( self.df3['Year'].values[0], '/', self.df3['Month'].values[0])
+        _Year = self.df3['Year'].values[0]
+        _Month = self.df3['Month'].values[0]
+        _day = self.df3['Date'].values[0]
+        _time = self.df3['Time(edt)'].values[0]
+        d_1 =  datetime.strptime(_time, "%H:%M")
+        _cal_month = calendar.month_name[int(_Month)]
+     
+       
+        format1 = f'{_cal_month} {_day} {_Year}, {d_1.strftime("%I:%M %p")} EDT'
+        return format1
+    
+    def get_observation_time_rfc(self):
+        date1 = obs_time.ObsDate(self.get_observation_time())
+        print("date1: ", date1)
+        date1.emit_type('rfc')
+        print(date1)
+        return date1
     
     def get_wind_speed(self):
         return self.wind_parts[1]
