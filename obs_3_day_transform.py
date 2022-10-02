@@ -46,7 +46,9 @@ class ThreeDayTransform:
             'dewpoint_c' : ['func', self.get_dewpoint_c ],
             'dewpoint_string': ['func', self.get_dewpoint_str ],
             'heat_index_f' : [ 'func', self.get_heatindex_f ],
-            'windchill_f' : [ 'func', self.get_windchill_f ]
+            'windchill_f' : [ 'func', self.get_windchill_f ],
+            'heat_index_c' : ['func', self.get_windchill_c ],
+            'windchill_c'  :  [ 'func', self.get_windchill_c]
             #'heat_index_string', 'heat_index_f', 'heat_index_c'
             #'windchill_string', 'windchill_f', 'windchill_c'
             #'visibility_mi', 'icon_url_base', 'two_day_history_url', 
@@ -133,10 +135,21 @@ class ThreeDayTransform:
             return obs_null_value
         return self.df3["WindChill(°F)"].values[0]
     
+    def get_windchill_c(self):
+        if self.df3["WindChill(°F)"].isnull().values.any():
+            return obs_null_value
+        return ((float(self.get_windchill_f()) - 32) * .5556)
+    
+       
     def get_heatindex_f(self):
         if self.df3["HeatIndex(°F)"].isnull().values.any():
             return obs_null_value
         return self.df3["HeatIndex(°F)"].values[0]
+    
+    def get_heatindex_c(self):
+        if self.df3["HeatIndex(°F)"].isnull().values.any():
+            return obs_null_value
+        return ((float(self.get_heatindex_f()) - 32) * .5556)
         
   
         
