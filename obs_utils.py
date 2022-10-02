@@ -418,6 +418,36 @@ def cardinal_points( dir ):
         
     return my_point
 
+def wind_text( dir ):
+    points = {
+        "N" : 'North',
+         0:  "North",
+        "NE"  : "NorthEast",
+         45 :  "NorthEast",
+        "E" : "East",
+         90: "East",
+        "SE" : "SouthEast",
+         135: "SouthEast",
+        "S" : "South",
+         180: "South",
+        "SW" :  "SouthWest",
+         225 : "SouthWest",
+        "W" : "West",
+         270 : "West",
+        "NW": "NorthWest",
+         315 : "NorthWest"
+    }
+    mydir = str(dir.upper())
+    
+    try:
+        my_text = points[mydir]
+    except:
+        print(f"unknown text direction: {mydir}")
+        my_text = -1
+        
+    return my_text
+    
+
 if __name__ == "__main__":
 
     import logging
@@ -522,4 +552,11 @@ if __name__ == "__main__":
     for pnt in test_pnts:
         my_pnt = cardinal_points(pnt)
         print(f"{pnt} is { my_pnt } degrees")
+        
+    test_dir = ["S", "SW", "N", "NW", "NE", "E" ]
+    
+    for tdir in test_dir:
+        my_cardinal_dir = wind_text(tdir)
+        print(f'The text for {tdir} is {my_cardinal_dir} ')
+    
     

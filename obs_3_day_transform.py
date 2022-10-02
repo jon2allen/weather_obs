@@ -4,8 +4,10 @@ import os,sys
 import hashlib
 import re
 from datetime import datetime, timedelta
+from cv2 import filterHomographyDecompByVisibleRefpoints
 import requests
 from bs4 import BeautifulSoup
+from zmq import THREAD_AFFINITY_CPU_REMOVE
 # from weather_obs import *
 import obs_utils
 from weather_obs import create_station_file_name, obs_sanity_check
@@ -17,11 +19,16 @@ class ThreeDayTransform:
     def __init__(self, df3):
         self.df3 = df3
         self.wind_parts = self.df3['Wind(mph)'].values[0].split()
+        if len(self.wind_parts) < 3:
+            self.gust = False
+        else:
+            self.gust = True
         print("wind_parts: ", self.wind_parts)
         self.transform_dict = {
             'credit':  [ 'text', "NOAA's National Weather Service" ],
             'credit_URL' : ['text', "https://weather.gov/" ],
             'observation_time': [ 'func',  self.get_observation_time ],
+            'wind+string' : ['func', self.get_wind_str ],
             'wind_dir' : [ 'func', self.get_wind_dir ] ,
             'wind_degrees' : ['func', self.get_wind_degrees ],
             'wind_mph': [ 'func', self.get_wind_speed ],
@@ -34,7 +41,15 @@ class ThreeDayTransform:
             'wind_gust_kt': ['func', self.get_gust_knots ],
             'pressure_mb' : ['func', self.get_pressure_mb ],
             'pressure_in' : ['func', self.get_pressure_in ],
-            'pressure_string' : ['func', self.get_pressure_str ]
+            'pressure_string' : ['func', self.get_pressure_str ],
+            'dewpoint_f': ['func', self.get_dewpoint_f ],
+            'dewpoint_c' : ['func', self.get_dewpoint_c ],
+            'dewpoint_string': ['func', self.get_dewpoint_str ]
+            #'heat_index_string', 'heat_index_f', 'heat_index_c'
+            #'windchill_string', 'windchill_f', 'windchill_c'
+            #'visibility_mi', 'icon_url_base', 'two_day_history_url', 
+            # 'icon_url_name', 'ob_url', 'disclaimer_url', 'copyright_url', 'privacy_policy_url']
+            
         }
     def get_observation_time(self):
         print ( self.df3['Year'].values[0], '/', self.df3['Month'].values[0])
@@ -51,11 +66,28 @@ class ThreeDayTransform:
     def get_wind_degrees(self):
         return obs_utils.cardinal_points(self.get_wind_dir())
     
+    def get_wind_str(self):
+        current_dir = obs_utils.wind_text(self.get_wind_dir())
+        current_wind_speed = self.get_wind_speed()
+        current_wind_knots = self.get_wind_knots()
+        if self.gust == True:
+            current_gust = self.get_gust_speed()
+            current_gust_knots = self.get_gust_knots()
+            format1 = f"from the {current_dir} at {curent_wind_speed} gusting to {current_gust} \
+            MPH ({current_wind_knots} gusting to { current_gust_knots} KT)"
+        else:   
+            format1 = f"{current_dir} at {current_wind_speed} MPH ({current_wind_knots} KT)"
+        return format1
+    
     def get_gust_speed(self):
+        if self.gust == False:
+            return "<no_value_provided>"
         if len(self.wind_parts) > 2:
             return self.wind_parts[3]
         
     def get_gust_knots(self):
+        if self.gust == False:
+            return "<no_value_provided>"
         return obs_utils.knots(float(self.get_gust_speed()))
     
     def get_temp_F(self):
@@ -81,6 +113,18 @@ class ThreeDayTransform:
     
     def get_pressure_str(self):
         return self.get_pressure_mb() + " mb"
+    
+    def get_dewpoint_f(self):
+        return self.df3['Dwpt'].values[0]
+    
+    def get_dewpoint_c(self):
+        return ((float(self.get_dewpoint_f()) - 32) * .5556)
+    
+    def get_dewpoint_str(self):
+        dew_f = self.get_dewpoint_f()
+        dew_c = self.get_dewpoint_c()
+        format1 = f"{dew_f} F ({dew_c} C)"
+        return format1
   
         
     def process_transform(self):
