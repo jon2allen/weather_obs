@@ -219,7 +219,7 @@ class ObsCollector3dayhourly( ObsCollector3day):
         now = datetime.now()
         obs_cut_time = now - timedelta(minutes=30)
         # set time before - data at :52 and retrieved at 20 after hour
-        g1 = obs_utils.create_station_glob_filter("KDCA_3_day", "csv", obs_cut_time)
+        g1 = obs_utils.create_station_glob_filter(self.station_id, "csv", obs_cut_time)
         print(f"G1: {g1}" )
         target = obs_utils.hunt_for_noaa_files3( '.', g1, 'csv' )
         print(f"target: { target }")
@@ -254,7 +254,7 @@ if __name__ == "__main__":
 # DATA_DIR
 #######################################################################
     FORECASTURL = 'https://w1.weather.gov/data/obhistory/KDCA.html'
-    FORECASTID = 'KDCA_3_day'
+    FORECASTID = 'KDCA_3_day_csv'
     DATA_DIR = '/var/www/html/weather_obs/data'
 
     # change to your desirect dirctory
@@ -276,7 +276,7 @@ if __name__ == "__main__":
     print(obs_x.obs_filename)
     # write out to "latest" for page pickup
     # saves effort on figuring out which file to open
-    obs_x.write_station_data_custom("latest.csv")
+    # obs_x.write_station_data_custom("latest.csv")
 
 
     sys.exit()
