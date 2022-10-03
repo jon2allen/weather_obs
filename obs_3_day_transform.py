@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from multiprocessing.sharedctypes import Value
 import os,sys
 import hashlib
 import re
@@ -88,10 +89,13 @@ class ThreeDayTransform:
         _day = self.df3['Date'].values[0]
         _time = self.df3['Time(edt)'].values[0]
         d_1 =  datetime.strptime(_time, "%H:%M")
-        _cal_month = calendar.month_name[int(_Month)]
+        _cal_month = calendar.month_abbr[int(_Month)]
      
-       
-        format1 = f'{_cal_month} {_day} {_Year}, {d_1.strftime("%I:%M %p")} EDT'
+        try:
+            format1 = f'{_cal_month} {_day} {_Year}, {d_1.strftime("%-I:%M %p")} EDT'
+        except ValueError:
+            format1 = f'{_cal_month} {_day} {_Year}, {d_1.strftime("%#I:%M %p")} EDT'
+            
         return format1
     
     def get_observation_time_rfc(self):
