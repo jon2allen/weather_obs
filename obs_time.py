@@ -36,7 +36,10 @@ class obsDateRegHandler:
         self.obs_dt = parser.parse(dt, tzinfos={dt[-3:]: self.my_tz})
         self.out_type = 'reg'
     def _str( dt1 ):
-        reg_time = dt1.strftime("%b %d %Y, %I:%M:%S %p %Z")
+        try:
+            reg_time = dt1.strftime("%b %d %Y, %-I:%M:%S %p %Z")
+        except:
+            reg_time = dt1.strftime("%b %d %Y, %#I:%M:%S %p %Z")        
         reg_time = reg_time.replace("PM", "pm")
         reg_time = reg_time.replace("AM", "am")
         return reg_time
