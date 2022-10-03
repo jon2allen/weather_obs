@@ -14,7 +14,11 @@ class obsDateRfcHandler:
             self.obs_dt = parser.parse(dt)  
         self.out_type = 'rfc'
     def _str( dt1):
-        rfc_time = dt1.strftime("%a, %b %d %Y %H:%M:%S %z")
+        try:
+            rfc_time = dt1.strftime("%a, %b %d %Y %-H:%M:%S %z")
+        except:
+            rfc_time = dt1.strftime("%a, %b %d %Y %#H:%M:%S %z")
+            
         return rfc_time        
     def emit( dt1):
         return obsDateRfcHandler._str(dt1)
