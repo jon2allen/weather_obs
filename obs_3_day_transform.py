@@ -188,7 +188,8 @@ class ThreeDayTransform:
         if wc_f == obs_null_value:
             return obs_null_value
         wc_c = self.get_windchill_c()
-        return f'{wc_f} F ({wc_c}C)'
+        format1 = f'{wc_f} F ({wc_c}C)'
+        return format1
     
        
     def get_heatindex_f(self):
@@ -206,7 +207,8 @@ class ThreeDayTransform:
         if hi_f == obs_null_value:
             return obs_null_value
         hi_c = self.get_headindex_c()
-        return f'{hi_f} F ({hi_c}C)'
+        format1 = f'{hi_f} F ({hi_c}C)'
+        return format1
         
   
         
@@ -219,7 +221,7 @@ class ThreeDayTransform:
                 df1.insert(0,hd1, [item[1]])
             if item[0] == 'func':
                 df1.insert(0,hd1, [item[1]()])
-        print(df1)
+        print(df1.columns)
         return df1
         for key in self.transform_dict:
             mylist = self.transform_dict[key]
