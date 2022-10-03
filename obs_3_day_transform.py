@@ -60,7 +60,7 @@ class ThreeDayTransform:
             'heat_index_c' : ['func', self.get_windchill_c ],
             'windchill_c'  :  [ 'func', self.get_windchill_c],
             'heat_index_string' : ['func', self.get_headindex_str],
-            'windchill_string' : ['fund', self.get_windchill_str],
+            'windchill_string' : ['func', self.get_windchill_str],
             'visibility_mi' : [ 'func', self.get_visiblity ],
             'icon_url_base' : ['text', 
                                "https://forecast.weather.gov/images/wtf/small/"],
@@ -216,6 +216,7 @@ class ThreeDayTransform:
         global csv_headers
         df1 = pd.DataFrame()
         for hd1 in csv_headers[::-1]:
+            print(hd1)
             item = self.transform_dict[hd1]
             if item[0] == 'text':
                 df1.insert(0,hd1, [item[1]])
