@@ -35,7 +35,9 @@ class ObsCsvToXml:
         self.df = read_weather_obs_csv(self.csv_file)
     
     def set_time_zone( self):
-        row = self.df.loc[1].to_list()
+        print(self.df)
+        print(self.df.shape)
+        row = self.df.loc[0].to_list()
         tf = TimezoneFinder()
         # print("row values", row[8], row[7])
         t_tz = tf.timezone_at(lng=float(row[8]), lat=float(row[7]))
@@ -98,13 +100,17 @@ class ObsCsvToXml:
             c_ptr = remove_lst.pop()
             trace_print(1, "removing ", c_ptr.tag)
             xml_tmp_root.remove(c_ptr)
-            
+        trace_print(4, "write_out_file")
+        self.write_out_file(xml_tmp, upt_dict, obs_t)
+        
+       
+    def write_out_file( self, xml, upt_dict, obs_t):
         xml_file = self.create_xml_file(upt_dict["station_id"], obs_t)
         trace_print(4, "writing xml: ", xml_file)
-        xml_tmp.write(xml_file)
+        xml.write(xml_file)
         if self.xmlprint == True:
             self.test_xml( xml_file)
-        
+           
     def test_xml(self, file):
         print("testing...", file)
         xml_tmp = xml.etree.ElementTree.parse(file)
@@ -116,7 +122,8 @@ class ObsCsvToXml:
     def run(self):
         self.read_csv()
         self.set_time_zone()
-        for i in range(1,self.df.shape[0]):
+        for i in range(0,self.df.shape[0]):
+            trace_print(4, "update_template()")
             self.update_template(self.df.columns, self.df.loc[i])
         
 class obsXMLAPP:
@@ -138,9 +145,24 @@ class obsXMLAPP:
             sys.exit(8)
         if args.outdir:
             self.outdir = args.outdir
+            self.set_data_dir(self.outdir)
         else:
             trace_print(4, "no outdir specified")
             sys.exit(8)
+            
+    def set_data_dir(self, args_dir):
+        s = os.sep
+        if (args_dir.find(s) > 0):
+            t_dir = args_dir
+        else:
+            t_dir = os.getcwd() + s + self.outdir
+            self.outdir = t_dir
+        if (os.path.exists(t_dir)):
+            trace_print(4, "data dir exists: ", t_dir)
+        else:
+            trace_print(4, "Data dir does not exist")
+            os.mkdir(t_dir)
+            trace_print(4, " directory created:", t_dir)
     
     def run(self):
         self.set_arg_parser()
