@@ -22,9 +22,10 @@ import pytz
 import copy
 
 class ObsCsvToXml:
-    def __init__( self, csv_file, xml_path ):
+    def __init__( self, csv_file, xml_path, xml_file):
         self.csv_file = csv_file
-        self.xml_path = xml_path
+        self.outdir = xml_path
+        self.xml_file = xml_file
         self.df = None
         self.xmlprint = False
         self.xml_template = xml.etree.ElementTree.parse('template.xml')
@@ -35,8 +36,6 @@ class ObsCsvToXml:
         self.df = read_weather_obs_csv(self.csv_file)
     
     def set_time_zone( self):
-        print(self.df)
-        print(self.df.shape)
         row = self.df.loc[0].to_list()
         tf = TimezoneFinder()
         # print("row values", row[8], row[7])
@@ -105,11 +104,29 @@ class ObsCsvToXml:
         
        
     def write_out_file( self, xml, upt_dict, obs_t):
-        xml_file = self.create_xml_file(upt_dict["station_id"], obs_t)
+        my_path = self.get_data_dir_path()
+        if len(self.xml_file) > 4:
+            xml_file = self.xml_file
+            trace_print(4, "file name set per arg")
+        else: 
+            xml_file = self.create_xml_file(upt_dict["station_id"], obs_t)
+        if my_path[-1] == '.':
+            my_path = my_path[0:-2]
+        xml_file = my_path + os.sep + xml_file
         trace_print(4, "writing xml: ", xml_file)
         xml.write(xml_file)
         if self.xmlprint == True:
             self.test_xml( xml_file)
+            
+    def get_data_dir_path(self):
+        # should be fully qualified from app
+        return self.outdir
+        f_path = self.outdir
+        if f_path == '.':
+            return ""
+        else:
+            return f_path
+        
            
     def test_xml(self, file):
         print("testing...", file)
@@ -130,11 +147,13 @@ class obsXMLAPP:
     def __init__(self):
         self.start_time = datetime.datetime.now()
         self.working_dir = os.getcwd()
+        self.outfile = ""
         self.parser = argparse.ArgumentParser(description='obs_csv_to_xml_utility')
 
     def set_arg_parser(self):
         self.parser.add_argument("--csvfile", help='csvfile to covert')
         self.parser.add_argument("--outdir", help='dir to write xml data')
+        self.parser.add_argument("--outfile", help='specific name of xml file')
     
     def set_app_arguments(self):
         args = self.parser.parse_args()
@@ -149,6 +168,8 @@ class obsXMLAPP:
         else:
             trace_print(4, "no outdir specified")
             sys.exit(8)
+        if args.outfile:
+            self.outfile = args.outfile
             
     def set_data_dir(self, args_dir):
         s = os.sep
@@ -167,7 +188,7 @@ class obsXMLAPP:
     def run(self):
         self.set_arg_parser()
         self.set_app_arguments()
-        my_instance = ObsCsvToXml(self.csvfile, self.outdir)
+        my_instance = ObsCsvToXml(self.csvfile, self.outdir, self.outfile)
         my_instance.run()
              
          
