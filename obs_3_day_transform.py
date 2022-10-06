@@ -22,11 +22,14 @@ import csv
 class ThreeDayTransform:
     def __init__(self, df3):
         self.df3 = df3
+        self.calm = False
         self.wind_parts = self.df3['Wind(mph)'].values[0].split()
         if len(self.wind_parts) < 3:
             self.gust = False
         else:
             self.gust = True
+        if self.wind_parts[0] == "Calm":
+            self.calm = True
         print("wind_parts: ", self.wind_parts)
         self.transform_dict = {
             'credit':  ['text', "NOAA's National Weather Service"],
@@ -108,13 +111,19 @@ class ThreeDayTransform:
         return date1
 
     def get_wind_speed(self):
-        return self.wind_parts[1]
+        if self.calm:
+            return 0
+        else: 
+            return self.wind_parts[1]
 
     def get_wind_knots(self):
         return obs_utils.knots(float(self.get_wind_speed()))
 
     def get_wind_dir(self):
-        return self.wind_parts[0]
+        if self.calm:
+            return "Calm"
+        else:
+            return self.wind_parts[0]
 
     def get_wind_degrees(self):
         return obs_utils.cardinal_points(self.get_wind_dir())
