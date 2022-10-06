@@ -136,12 +136,22 @@ class ObsCsvToXml:
             trace_print(1, "tag: ", child.tag)
             trace_print(1, "text: ", child.text)
     
+    def write_rows(self):
+        if self.lastrowonly:
+            last_row = self.df.shape[0] - 1
+            trace_print(4, "only processing lastrow: ", str(last_row))
+            self.update_template(self.df.columns, self.df.loc[last_row])
+        else:
+            for i in range(0,self.df.shape[0]):
+                trace_print(4, "update_template()")
+                self.update_template(self.df.columns, self.df.loc[i])
+        
+    
     def run(self):
         self.read_csv()
         self.set_time_zone()
-        for i in range(0,self.df.shape[0]):
-            trace_print(4, "update_template()")
-            self.update_template(self.df.columns, self.df.loc[i])
+        self.write_rows()
+
         
 class obsXMLAPP:
     def __init__(self):
@@ -154,6 +164,8 @@ class obsXMLAPP:
         self.parser.add_argument("--csvfile", help='csvfile to covert')
         self.parser.add_argument("--outdir", help='dir to write xml data')
         self.parser.add_argument("--outfile", help='specific name of xml file')
+        self.parser.add_argument("--lastrowonly",  action="store_true",
+                                 help="only do last row of csv file")
     
     def set_app_arguments(self):
         args = self.parser.parse_args()
@@ -170,6 +182,10 @@ class obsXMLAPP:
             sys.exit(8)
         if args.outfile:
             self.outfile = args.outfile
+        if args.lastrowonly:
+            self.lastrowonly = True
+        else:
+            self.lastrowonly = False
             
     def set_data_dir(self, args_dir):
         s = os.sep
@@ -189,6 +205,7 @@ class obsXMLAPP:
         self.set_arg_parser()
         self.set_app_arguments()
         my_instance = ObsCsvToXml(self.csvfile, self.outdir, self.outfile)
+        my_instance.lastrowonly = self.lastrowonly
         my_instance.run()
              
          
