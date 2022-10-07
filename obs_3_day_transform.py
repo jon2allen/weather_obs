@@ -216,11 +216,11 @@ class ThreeDayTransform:
             return obs_null_value
         return ((float(self.get_heatindex_f()) - 32) * .5556)
 
-    def get_headindex_str(self):
+    def get_heatindex_str(self):
         hi_f = self.get_heatindex_f()
         if hi_f == obs_null_value:
             return obs_null_value
-        hi_c = self.get_headindex_c()
+        hi_c = self.get_heatindex_c()
         format1 = f'{hi_f} F ({hi_c}C)'
         return format1
 
