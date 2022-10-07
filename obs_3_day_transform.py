@@ -65,7 +65,7 @@ class ThreeDayTransform:
             'windchill_f': ['func', self.get_windchill_f],
             'heat_index_c': ['func', self.get_windchill_c],
             'windchill_c':  ['func', self.get_windchill_c],
-            'heat_index_string': ['func', self.get_headindex_str],
+            'heat_index_string': ['func', self.get_heatindex_str],
             'windchill_string': ['func', self.get_windchill_str],
             'visibility_mi': ['func', self.get_visiblity],
             'icon_url_base': ['text',
