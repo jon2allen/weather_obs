@@ -23,6 +23,7 @@ class ThreeDayTransform:
     def __init__(self, df3):
         self.df3 = df3
         self.calm = False
+        self.vrbl = False
         self.wind_parts = self.df3['Wind(mph)'].values[0].split()
         if len(self.wind_parts) < 3:
             self.gust = False
@@ -30,6 +31,8 @@ class ThreeDayTransform:
             self.gust = True
         if self.wind_parts[0] == "Calm":
             self.calm = True
+        if self.wind_parts[0] == "Vrbl":
+            self.vrbl = True
         print("wind_parts: ", self.wind_parts)
         self.transform_dict = {
             'credit':  ['text', "NOAA's National Weather Service"],
@@ -122,6 +125,8 @@ class ThreeDayTransform:
     def get_wind_dir(self):
         if self.calm:
             return "North"
+        if self.vrbl:
+            return "Variable"
         else:
             return self.wind_parts[0]
 
