@@ -121,7 +121,7 @@ class ThreeDayTransform:
 
     def get_wind_dir(self):
         if self.calm:
-            return "Calm"
+            return "North"
         else:
             return self.wind_parts[0]
 
