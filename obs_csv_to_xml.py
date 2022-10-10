@@ -189,7 +189,7 @@ class obsXMLAPP:
             
     def set_data_dir(self, args_dir):
         s = os.sep
-        if (args_dir.find(s) > 0):
+        if (args_dir.find(s) > -1):
             t_dir = args_dir
         else:
             t_dir = os.getcwd() + s + self.outdir
