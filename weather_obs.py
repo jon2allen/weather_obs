@@ -60,6 +60,7 @@ class ObsSetting:
         self.set_station(station_url)
         # set defaults
         self.alt_processing = False
+        self.ad_hoc = False
         self.use_alt_only = False
         self.run_minutes = 0
         self.dump_xml_flag = False
@@ -679,10 +680,15 @@ def weather_collect_ad_hoc( obs1 ) :
     trace_print(4, "primary station: ", str(temp_station))
     try:
         obs1.primary_station = obs1.alt_station
+        trace_print(4, "alt station used:", str(obs1.primary_station))
     except:
         trace_print(4, "no alt station set")
+        return
+    obs1.ad_hoc = True
+    # set a flag instead another parm )
     weather_collect_driver(obs1)
-    obs1.priary_station = temp_station
+    obs1.primary_station = temp_station
+    obs1.ad_hoc = False
     schedule.cancel_job(obs1.job2)
     trace_print(4, "exit ad hoc")
     return
@@ -727,8 +733,11 @@ def weather_collect_driver(obs1):
     trace_print(4, "prior_obs_time(driver): ", str(obs1.prior_obs_time))
     if (duplicate_observation(obs1, outdata[1])):
         trace_print(3, " duplicate in collect.  exiting...")
-        if obs1.alt_procesing == True:
-             obs1.job2 = schedule.every().hour.at(":40").do(weather_collect_ad_hoc, obs1)
+        if (obs1.alt_processing == True and obs1.ad_hoc == False):
+             trace_print(4, "scheduling ad_hoc @:25")
+             obs1.job2 = schedule.every().hour.at(":25").do(weather_collect_ad_hoc, obs1)
+             trace_print(4, "Alt schedule job @ ", str(obs1.alt_station),
+                " -> ", str(obs1.station_file))
         return True
     weather_csv_driver(obs1, 'a', obs1.station_file, outdata[0], outdata[1])
 
