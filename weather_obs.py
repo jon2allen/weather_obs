@@ -59,6 +59,8 @@ class ObsSetting:
     def __init__(self, station_url):
         self.set_station(station_url)
         # set defaults
+        self.alt_processing = False
+        self.use_alt_only = False
         self.run_minutes = 0
         self.dump_xml_flag = False
         self.init_csv = False
@@ -94,6 +96,14 @@ class ObsSetting:
         station = station_url[-8:]
         self.station_id = station[:4]
         self._trace("Station URL of XML - " + str(station_url))
+        
+    def set_alt_station(self, station_url):
+        self.alt_processing = True
+        self.alt_station = station_url
+        station = station_url[-8:]
+        self.alt_station_id = station[:4]
+        self._trace("alt_station:   ", str(self.alt_station_id))
+        self._trace("alt URL of alt XML - " + str(self.alt_station))
 
     def set_data_dir(self, args_dir):
         self.data_dir = args_dir
@@ -227,6 +237,8 @@ def weather_obs_init():
     parser.add_argument('--init', help='Initialize CSV')
     parser.add_argument('--station', help='URL of station')
     parser.add_argument('--station_id', help='station id')
+    parser.add_argument('--alt_station_id', help='alternate source converted to xml')
+    parser.add_argument('--alt_only', help='alt stationid only', action="store_true")
     parser.add_argument('--xmldata', help='location of file xmldata - for testing')
     parser.add_argument(
         '--collect', help='Run collectiion in background - Y/N', action="store_true")
@@ -323,6 +335,11 @@ def weather_obs_init():
                     obs_setting.primary_station)
                 trace_print(4, "Station filename (collect): ",
                             obs_setting.station_file)
+        if (args.alt_station_id):
+            obs_setting.set_alt_station(str(args.alt_station_id))
+        if (args.alt_only):
+            obs_setting.use_alt_only = True
+            trace_print(4, "use alt only set")
         return True
     if (args.nologging == True):
             disable_logging_file()
@@ -432,11 +449,11 @@ def dump_xml(obs1, xmldata, iteration):
 def get_last_csv_row(st_file):
     """ helper function to get last row of csv file """
     try:
-        with open(st_file, "r", encoding="utf-8", errors="ignore") as csv_1:
-            final_line = csv_1.readlines()[-1]
-            trace_print(1, "final line:", final_line)
-            csv_1.close()
-            return final_line
+        with open(st_file) as csv_file:
+            csv_reader = csv.reader(csv_file, delimiter=',')
+            for row in csv_reader:
+                pass
+            return row
     except:
         trace_print(3, "csv file not found... continue...")
         return ""
@@ -487,13 +504,12 @@ def duplicate_observation(obs1, current_obs):
     last_one = get_last_csv_row(r_csv_file)
     if (len(last_one) < 4):
         return False
-    last_obs = last_one.split(',\"')
-    last_obs_dt = last_obs[7]
-    last_obs_dt = last_obs_dt[:-1]
+    last_obs_dt = last_one[10]
+    # last_obs_dt = last_obs_dt[:-1]
     trace_print(1, "last_obs:", last_obs_dt, "len ", str(len(last_obs_dt)))
-    trace_print(1, "current_obs: ", current_obs[6], " ", current_obs[9], "len ", str(
-        len(current_obs[9])))
-    if (current_obs[9] == last_obs_dt):
+    trace_print(1, "current_obs: ", current_obs[6], "  ", current_obs[10], "len ", str(
+        len(current_obs[10])))
+    if (current_obs[10] == last_obs_dt):
         trace_print(1, "Is equal")
         return True
     return False
@@ -657,8 +673,19 @@ def get_obs_csv_path(obs1, csv_file):
 
 
 def weather_collect_ad_hoc( obs1 ) :
+    trace_print(4, "collect _ad_hoc")
+    # swap alt and primary?
+    temp_station = obs1.primary_station
+    trace_print(4, "primary station: ", str(temp_station))
+    try:
+        obs1.primary_station = obs1.alt_station
+    except:
+        trace_print(4, "no alt station set")
     weather_collect_driver(obs1)
+    obs1.priary_station = temp_station
     schedule.cancel_job(obs1.job2)
+    trace_print(4, "exit ad hoc")
+    return
     
 
 """
@@ -700,7 +727,8 @@ def weather_collect_driver(obs1):
     trace_print(4, "prior_obs_time(driver): ", str(obs1.prior_obs_time))
     if (duplicate_observation(obs1, outdata[1])):
         trace_print(3, " duplicate in collect.  exiting...")
-        obs1.job2 = schedule.every().hour.at(":40").do(weather_collect_ad_hoc, obs1)
+        if obs1.alt_procesing == True:
+             obs1.job2 = schedule.every().hour.at(":40").do(weather_collect_ad_hoc, obs1)
         return True
     weather_csv_driver(obs1, 'a', obs1.station_file, outdata[0], outdata[1])
 
@@ -711,6 +739,9 @@ def weather_collect_driver(obs1):
 def weather_obs_app_start(obs1):
     """ top level start of collection """
     # if appending and scheduling - skip over to collect
+    if obs1.use_alt_only == True:
+        trace_print(4, "setting station id to alt")
+        obs1.primary_station = obs1.alt_station 
     trace_print(3,"weather_obs_app_starT() enter ")
     if (obs1.append_data != True):
         content = get_weather_from_NOAA(obs1.primary_station)
@@ -733,12 +764,18 @@ def weather_obs_app_start(obs1):
         if obs1.job1:
             trace_print(4, "schedule job set - exit()")
             return
+       
+        obs1.append_data = True
+        if obs1.use_alt_only == True:
+             obs1.primary_station = obs1.alt_station
+             trace_print(4, "alt only....")
+             obs1.job1 = schedule.every().hour.at(obs1.sched_interval).do(weather_collect_ad_hoc, obs1)
+        else:
+             trace_print(4, "regular")
+             obs1.job1 = schedule.every().hour.at(obs1.sched_interval).do(weather_collect_driver, obs1)
         trace_print(4, "schedule job @ ", str(obs1.primary_station),
                     " -> ", str(obs1.station_file))
-        obs1.append_data = True
-        obs1.job1 = schedule.every().hour.at(obs1.sched_interval).do(weather_collect_driver, obs1)
         # execute every 20 minutes.   
-        # obs1.job1 = schedule.every(20).minutes.at(":20").do(weather_collect_driver, obs1)
     return
 #
 #
