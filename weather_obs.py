@@ -449,12 +449,16 @@ def dump_xml(obs1, xmldata, iteration):
 
 def get_last_csv_row(st_file):
     """ helper function to get last row of csv file """
+    row_count = 0
     try:
         with open(st_file) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             for row in csv_reader:
-                pass
-            return row
+                row_count +=1
+            if row_count > 1:
+                return row
+            else:
+                return " "
     except:
         trace_print(3, "csv file not found... continue...")
         return ""
