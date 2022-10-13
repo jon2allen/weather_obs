@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-from multiprocessing.sharedctypes import Value
 import os
 import sys
 import hashlib

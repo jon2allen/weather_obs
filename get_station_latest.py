@@ -7,7 +7,7 @@
 #
 #
 #
-# output - csv with 3 day data
+# output - last file by current day.
 #
 #########################################################################
 import os,sys

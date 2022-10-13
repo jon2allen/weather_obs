@@ -33,7 +33,7 @@ import hashlib
 import inspect
 import traceback
 from obs_utils import hunt_for_noaa_csv_files, create_station_glob_filter
-from obs_utils import trace_print
+from obs_utils import trace_print, parse_date_from_station_csv
 import logging
 from logging.handlers import TimedRotatingFileHandler
 """
@@ -890,6 +890,14 @@ def foreach_obs(function, obs_list):
     """ foreach loop """
     for obs in obs_list:
         function(obs)
+        
+def obs_already_cut_today( station_file):
+    file_dt = parse_date_from_station_csv( station_file )
+    dt_now = ObsDate.now()
+    if file_dt.day == dt_now.day:
+        return True
+    else:
+        return False
 
 
 def obs_cut_csv_file(obs1):
@@ -899,6 +907,9 @@ def obs_cut_csv_file(obs1):
         obs_cut_time = obs1.current_obs_time + timedelta(minutes=10)
         # cut time should be 10 minutes ahead 
         # NOAA observations at at approx 50 minutes after the hour
+        if obs_already_cut_today( obs1.station_file):
+            trace_print(4, "Already cut: ", str(obs1.station_file))
+            return
         if (duration_cut_check2(obs1, obs1.prior_obs_time, obs_cut_time, obs1.duration_interval)):
             run_cut_operation(obs1, obs_cut_time)
 
