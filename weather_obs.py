@@ -895,10 +895,9 @@ def foreach_obs(function, obs_list):
     for obs in obs_list:
         function(obs)
         
-def obs_already_cut_today( station_file):
-    file_dt = parse_date_from_station_csv( station_file )
-    dt_now = ObsDate.now()
-    if file_dt.day == dt_now.day:
+def obs_already_cut_today( station_file_name, current_time):
+    file_dt = parse_date_from_station_csv( station_file_name)
+    if file_dt.day == current_time.day:
         return True
     else:
         return False
@@ -911,14 +910,14 @@ def obs_cut_csv_file(obs1):
         obs_cut_time = obs1.current_obs_time + timedelta(minutes=10)
         # cut time should be 10 minutes ahead 
         # NOAA observations at at approx 50 minutes after the hour
-        if obs_already_cut_today( obs1.station_file):
-            trace_print(4, "Already cut: ", str(obs1.station_file))
-            return
         if (duration_cut_check2(obs1, obs1.prior_obs_time, obs_cut_time, obs1.duration_interval)):
             run_cut_operation(obs1, obs_cut_time)
 
 def run_cut_operation(obs1, obs_cut_time):
     trace_print(4, "running cut operation")
+    if obs_already_cut_today(obs1.station_file, obs_cut_time):
+        trace_print(4, "already cut - return")
+        return
             # sychronize obs_time for new day - so file name will be corrrect
             # last observation at 11:50 or so - add 10 minutes for file create.
     obs1.station_file = create_station_file_name(
