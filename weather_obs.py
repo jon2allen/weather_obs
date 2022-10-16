@@ -351,6 +351,7 @@ def weather_obs_init():
                 trace_print(4, str(obs_entry_list))
         except:
             print("Unable to open: ", args.file)
+            sys.exit(4)
         setting_list = []
         # entries must be on the first 47 lines - no more or less - discard \n or other stuff
         for entry in obs_entry_list:
