@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
  Program:  daily_weather_obs_chart
  Author:   Jon Allen

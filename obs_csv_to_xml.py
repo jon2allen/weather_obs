@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
  Program:  obs_csv_to_mxl
  Author:   Jon Allen
