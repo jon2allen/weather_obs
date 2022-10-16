@@ -521,6 +521,9 @@ def duplicate_observation(obs1, current_obs):
     last_obs = ObsDate( last_obs_dt).get_datetime()
     trace_print(4, "curr_obs", str( cur_obs))
     trace_print(4, "last_obs", str(last_obs))
+    if cur_obs == last_obs:
+        trace_print(4, "Is equal by datetime")
+        return True
     if cur_obs < last_obs:
         trace_print(4, "cur_obs before last_obs")
         return True
