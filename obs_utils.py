@@ -104,12 +104,13 @@ def parse_date_from_station_csv(fname):
     csv_name = os.path.split(fname)
     # just need the file name not the path
     ds = re.split('[_.]', str(csv_name[1]))
-    year = ds[1]
-    year = year[-4:]
-    month = ds[2]
-    month = month[-2:]
-    day = ds[3]
-    day = day[-2:]
+    for item in ds:
+        if item[0:1] == 'Y':
+            year = item[-4:]
+        if item[0:1] == 'M':
+            month = item[-2:]
+        if item[0:1] == 'D':
+            day =  item[-2:]
     return datetime.date(int(year), int(month), int(day))   
 
 def create_station_glob_filter(station='ANZ535', ext='txt', obs_time_stamp=0):
