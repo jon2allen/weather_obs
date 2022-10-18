@@ -137,12 +137,12 @@ class ThreeDayTransform:
         current_wind_speed = self.get_wind_speed()
         current_wind_knots = self.get_wind_knots()
         if self.gust == True:
-            current_gust = self.get_gust_speed()
+            current_gust = self.get_gust_speed().strip()
             current_gust_knots = self.get_gust_knots()
-            format1 = f"from the {current_dir} at {current_wind_speed} gusting to {current_gust} \
-            MPH ({current_wind_knots} gusting to { current_gust_knots} KT)"
+            format1 = f"from the {current_dir} at {current_wind_speed:4} gusting to {current_gust:4} \
+            MPH ({current_wind_knots:4.2f} gusting to { current_gust_knots:4.2f} KT)"
         else:
-            format1 = f"{current_dir} at {current_wind_speed} MPH ({current_wind_knots} KT)"
+            format1 = f"{current_dir} at {current_wind_speed:4} MPH ({current_wind_knots:4.2f} KT)"
         return format1
 
     def get_gust_speed(self):
