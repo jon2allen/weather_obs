@@ -134,15 +134,15 @@ class ThreeDayTransform:
 
     def get_wind_str(self):
         current_dir = obs_utils.wind_text(self.get_wind_dir())
-        current_wind_speed = self.get_wind_speed()
+        current_wind_speed = self.get_wind_speed().strip()
         current_wind_knots = self.get_wind_knots()
         if self.gust == True:
             current_gust = self.get_gust_speed().strip()
-            current_gust_knots = self.get_gust_knots()
-            format1 = f"from the {current_dir} at {current_wind_speed:4} gusting to {current_gust:4} \
-            MPH ({current_wind_knots:4.2f} gusting to { current_gust_knots:4.2f} KT)"
+            current_gust_knots = str(self.get_gust_knots()).strip()
+            format1 = f"from the {current_dir} at {current_wind_speed} gusting to {current_gust}"
+            format1 = format1 + f" MPH ({current_wind_knots} KT gusting to {current_gust_knots} KT)"
         else:
-            format1 = f"{current_dir} at {current_wind_speed:4} MPH ({current_wind_knots:4.2f} KT)"
+            format1 = f"{current_dir} at {current_wind_speed} MPH ({current_wind_knots} KT)"
         return format1
 
     def get_gust_speed(self):
@@ -240,15 +240,6 @@ class ThreeDayTransform:
                 df1.insert(0, hd1, [item[1]()])
         print(df1.columns)
         return df1
-        for key in self.transform_dict:
-            mylist = self.transform_dict[key]
-            if mylist[0] == 'text':
-                print(mylist[0])
-                print(mylist[1])
-            if mylist[0] == 'func':
-                print(mylist[0])
-                x = mylist[1]()
-                print(x)
 # loop through CSV headers
 # create empty DF.  use df.insert(0, 'column_name', 'value' from transform functin) to add these.
 
