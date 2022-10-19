@@ -41,7 +41,14 @@ class ObsCollector:
         return str(self.station_id + "@" + self.station_url)
 
     def get_url_data(self):
-        self.url_data = requests.get(self.station_url)
+        try:
+            self.url_data = requests.get(self.station_url)
+        except:
+            print("get url data - trying again 1 second")
+            os.sleep(2)
+            self.url_data = requests.get(self.station_url)
+            
+        
 
     def show_url_data(self):
         """show Url data if desired"""
