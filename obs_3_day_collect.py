@@ -73,8 +73,10 @@ class ObsCollector:
     def write_station_data(self):
         """write out last forcast"""
         if self.writeflag == False:
+            print("Write flag is off")
             return
         if self.appendflag == True:
+           print("append flag set")
            self._append_station_data( self.obs_filename)
         else:
            self._write_station_data(self.obs_filename)
@@ -172,6 +174,9 @@ class ObsCollector:
         return r_station_data
 
 class ObsCollector3day( ObsCollector):
+    def __init__( self, url, id, filetype):
+        print("3day: ", id)
+        super().__init__(url, id, filetype)
     def _find_station_data(self):
         #print(self.url_data.text)
         tables1 = pd.read_html( self.url_data.text)
@@ -193,7 +198,13 @@ class ObsCollector3day( ObsCollector):
         return super().obs_collection_duplicate_check()
     
 class ObsCollector3dayhourly( ObsCollector3day):
+    def __init__( self, url, id, filetype):
+        print("3dayhour:",  id )
+        super().__init__(url, id, filetype)
+        
     def _find_station_data(self):
+        if hasattr(self, "row_num"):
+            print("row_num: " , self.row_num) 
         print("hourly")
         obs1 = super()._find_station_data()
         obs_c = obs1.drop( obs1.index[1:obs1.shape[0]])
@@ -204,6 +215,16 @@ class ObsCollector3dayhourly( ObsCollector3day):
         self.last_forcast = obs_c
         return obs_c
     
+    def _drop_all_but_row( self, df1, row_num):
+        data_r = df1.iloc[row_num]
+        new_df = df1.drop( df1.index[0:df1.shape[0]])
+        # append is depreciated
+        new_df = pd.concat([new_df,data_r.to_frame().T],ignore_index=True)
+        return new_df
+    
+    def _set_row( self, row_num):
+        self.row_num = row_num
+        
     def _append_station_data(self, fname):
         self.last_forcast.to_csv( fname, header=False, index=False , mode='a',
                                   quotechar='"',quoting=csv.QUOTE_NONNUMERIC)
@@ -218,7 +239,7 @@ class ObsCollector3dayhourly( ObsCollector3day):
         now = datetime.now()
         obs_cut_time = now - timedelta(minutes=30)
         # set time before - data at :52 and retrieved at 20 after hour
-        g1 = obs_utils.create_station_glob_filter("KDCA_3_day", "csv", obs_cut_time)
+        g1 = obs_utils.create_station_glob_filter(self.station_id, "csv", obs_cut_time)
         print(f"G1: {g1}" )
         target = obs_utils.hunt_for_noaa_files3( '.', g1, 'csv' )
         print(f"target: { target }")
@@ -255,6 +276,8 @@ if __name__ == "__main__":
 
     obs_x = ObsCollector3dayhourly(
         url=FORECASTURL, id=FORECASTID, filetype='csv')
+    
+    
 
     print(obs_x.show_collector())
 
