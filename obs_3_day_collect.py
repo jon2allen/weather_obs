@@ -44,11 +44,21 @@ class ObsCollector:
         try:
             self.url_data = requests.get(self.station_url)
         except:
-            print("get url data - trying again 1 second")
-            os.sleep(2)
-            self.url_data = requests.get(self.station_url)
+            print("get url data - trying again")
+            self._retry( 5 )
+        return 
             
         
+    def _retry(self, times):
+        for index in range(times):
+            print("retry loop:  ", index)
+            os.sleep(2)
+            try:
+                self.url_data = requests.get(self.station_url)
+                return
+            except:
+                print(" retry:", index)
+                continue
 
     def show_url_data(self):
         """show Url data if desired"""
