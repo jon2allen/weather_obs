@@ -15,6 +15,7 @@
 import os,sys
 import hashlib
 import re
+import time
 from datetime import datetime, timedelta
 import requests
 from bs4 import BeautifulSoup
@@ -52,7 +53,7 @@ class ObsCollector:
     def _retry(self, times):
         for index in range(times):
             print("retry loop:  ", index)
-            os.sleep(2)
+            time.sleep(2)
             try:
                 self.url_data = requests.get(self.station_url)
                 return
