@@ -423,21 +423,29 @@ def cardinal_points( dir ):
 def wind_text( dir ):
     points = {
         "N" : 'North',
+        "NORTH": 'North',
          0:  "North",
+         "NORTHEAST": "NorthEast",
         "NE"  : "NorthEast",
          45 :  "NorthEast",
         "E" : "East",
          90: "East",
+         "EAST" : "East",
         "SE" : "SouthEast",
          135: "SouthEast",
+         "SOUTHEAST" : "SouthEast",
         "S" : "South",
          180: "South",
+         "SOUTH" : "South",
         "SW" :  "SouthWest",
          225 : "SouthWest",
+         "SOUTHWEST" : "SouthWest",
         "W" : "West",
          270 : "West",
+         "WEST":  "West",
         "NW": "NorthWest",
-         315 : "NorthWest"
+         315 : "NorthWest",
+         "NORTHWEST":  "NorthWest"
     }
     mydir = str(dir.upper())
     
