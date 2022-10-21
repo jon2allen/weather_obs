@@ -114,7 +114,7 @@ class ThreeDayTransform:
 
     def get_wind_speed(self):
         if self.calm:
-            return 0
+            return "0"
         else: 
             return self.wind_parts[1]
 
