@@ -713,9 +713,10 @@ def weather_collect_ad_hoc( obs1 ) :
     weather_collect_driver(obs1)
     obs1.primary_station = temp_station
     obs1.ad_hoc = False
-    schedule.cancel_job(obs1.job2)
+    # schedule.cancel_job(obs1.job2)
     trace_print(4, "exit ad hoc")
-    return
+    return schedule.CancelJob
+
     
 
 """
