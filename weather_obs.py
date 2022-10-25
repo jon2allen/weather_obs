@@ -208,22 +208,25 @@ def create_station_file_name(station='KDCA', ext='csv', obs_time_stamp=0):
     return file_n
 
 
-def create_station_file_name2(station="https://w1.weather.gov/xml/current_obs/KDCA.xml", ext='csv'):
+#def create_station_file_name2(station="https://w1.weather.gov/xml/current_obs/KDCA.xml", ext='csv'):
+def create_station_file_name2(obs1, ext='csv'):
     """ 
     create_station_file from observation time 
     """
-    w_xml = get_weather_from_NOAA(station)
+    w_xml = get_weather_from_NOAA(obs1.primary_station)
     if (obs_check_xml_data(w_xml) == False):
         return ""
     headers, row = get_data_from_NOAA_xml(w_xml)
     obs_date = get_obs_time(row[9])
+    
+    obs1.station_file_time = obs_date
 
-    station_id = station[-8:-4]
+    station_id = obs1.primary_station[-8:-4]
     year, month, day, hour, min, am = map(
         str, obs_date.strftime("%Y %m %d %H %M %p").split())
     file_n = station_id + '_Y' + year + '_M' + \
         month + '_D' + day + '_H' + hour + "." + ext
-    trace_print(4, "my_p", str(am))
+    trace_print(4, "file name2 : obs_date: ", str(obs_date))
     return file_n
 
 
@@ -281,7 +284,8 @@ def weather_obs_init():
     
     def check_params2(obs_setting, args):
         obs_setting.station_file = create_station_file_name2(
-            obs_setting.primary_station)
+            obs_setting)
+        trace_print(3, "station file time: ", str(obs_setting.station_file_time) )
         if(args.dir):
             obs_setting.set_data_dir(args.dir)
         #    obs_setting.data_dir = args.dir
@@ -310,12 +314,14 @@ def weather_obs_init():
                 # so resume will not work if just today and yesterday
                 # 24 hours +/- otherwise just create a new file
                 data_path = obs_setting.get_data_dir_path()
-                trace_print(3, "data path ", data_path)
+                trace_print(3, "data path: ", data_path)
                 obs_setting.station_file = check_resume_file( obs_setting)
-                trace_print(3, "station_file", obs_setting.station_file)
+                obs_setting.station_file_time = parse_date_from_station_csv(obs_setting.station_file)
+                trace_print(3, "station file time: ", str(obs_setting.station_file_time))
+                trace_print(3, "station_file: ", obs_setting.station_file)
                 if (len(obs_setting.station_file) < 4):
                     obs_setting.station_file = create_station_file_name2(
-                        obs_setting.primary_station)
+                        obs_setting)
                     obs_setting.init_csv = True
                     obs_setting.append_data = False
                     obs_setting.append_data_specified = True
@@ -333,7 +339,7 @@ def weather_obs_init():
             obs_setting.collect_data = True
             if (obs_setting.init_csv == False) and (obs_setting.append_data_specified == False):
                 obs_setting.station_file = create_station_file_name2(
-                    obs_setting.primary_station)
+                    obs_setting)
                 trace_print(4, "Station filename (collect): ",
                             obs_setting.station_file)
         if (args.alt_station_id):
@@ -515,18 +521,21 @@ def duplicate_observation(obs1, current_obs):
     trace_print(1, "last_obs:", last_obs_dt, "len ", str(len(last_obs_dt)))
     trace_print(1, "current_obs: ", current_obs[6], "  ", current_obs[10], "len ", str(
         len(current_obs[10])))
-    if (current_obs[10] == last_obs_dt):
-        trace_print(1, "Is equal")
-        return True
     cur_obs = ObsDate( current_obs[10]).get_datetime()
     last_obs = ObsDate( last_obs_dt).get_datetime()
     trace_print(4, "curr_obs", str( cur_obs))
     trace_print(4, "last_obs", str(last_obs))
+    if obs1.station_file_time > cur_obs.date():
+        trace_print(4, "current obs older than file date")
+        return True
     if cur_obs == last_obs:
         trace_print(4, "Is equal by datetime")
         return True
     if cur_obs < last_obs:
         trace_print(4, "cur_obs before last_obs")
+        return True
+    if (current_obs[10] == last_obs_dt):
+        trace_print(1, "Is equal")
         return True
     return False
 
@@ -923,6 +932,7 @@ def run_cut_operation(obs1, obs_cut_time):
     obs1.station_file = create_station_file_name(
                 obs1.station_id, "csv", obs_cut_time)
             # start a new day cycle
+    obs1.station_file_time = obs_cut_time
     obs1.prior_obs_time = obs_cut_time
     obs1.current_obs_time = obs_cut_time
     trace_print(4, "New Station file (cut):", obs1.station_file)
