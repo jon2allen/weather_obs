@@ -114,6 +114,10 @@ class ObsDate():
     def now():
         local = get_localzone()
         return ObsDate(datetime.now(local))
+    
+    def date(self):
+        return self.handler.obs_dt.date()
+    
     def get_datetime(self):
         return self.handler.obs_dt        
     def add_one_hour(self):
@@ -262,5 +266,10 @@ if __name__ == "__main__":
     td2.emit_type("excel")
     
     print("td2(excel:)", td2)
+    
+
+    print("testing date: " ,  td2.date())
+    
+
     
     
