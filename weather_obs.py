@@ -759,8 +759,8 @@ def weather_collect_driver(obs1):
     if (duplicate_observation(obs1, outdata[1])):
         trace_print(3, " duplicate in collect.  exiting...")
         if (obs1.alt_processing == True and obs1.ad_hoc == False):
-             trace_print(4, "scheduling ad_hoc @:25")
-             obs1.job2 = schedule.every().hour.at(":25").do(weather_collect_ad_hoc, obs1)
+             trace_print(4, "scheduling ad_hoc @:41")
+             obs1.job2 = schedule.every().hour.at(":41").do(weather_collect_ad_hoc, obs1)
              trace_print(4, "Alt schedule job @ ", str(obs1.alt_station),
                 " -> ", str(obs1.station_file))
         return True
@@ -961,6 +961,11 @@ def main_obs_loop(obs1_list):
         trace_print(1, "run pending")
         schedule.run_pending()
         # schedule.run_all()
+        # print out jobs every 5 minutes
+        if run_minutes % 5 == 0:
+            all_jobs = schedule.get_jobs()
+            for j in all_jobs:
+                trace_print(1,  str(j))
     time.sleep(60)
 
 
