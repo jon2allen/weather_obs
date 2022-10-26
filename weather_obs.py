@@ -316,9 +316,6 @@ def weather_obs_init():
                 data_path = obs_setting.get_data_dir_path()
                 trace_print(3, "data path: ", data_path)
                 obs_setting.station_file = check_resume_file( obs_setting)
-                obs_setting.station_file_time = parse_date_from_station_csv(obs_setting.station_file)
-                trace_print(3, "station file time: ", str(obs_setting.station_file_time))
-                trace_print(3, "station_file: ", obs_setting.station_file)
                 if (len(obs_setting.station_file) < 4):
                     obs_setting.station_file = create_station_file_name2(
                         obs_setting)
@@ -326,6 +323,11 @@ def weather_obs_init():
                     obs_setting.append_data = False
                     obs_setting.append_data_specified = True
                     trace_print(3, "Resume - No file file on current day")
+                c_date = parse_date_from_station_csv(obs_setting.station_file)
+                obs_setting.station_file_time = datetime(c_date.year, c_date.month, c_date.day, 0, 0)
+                trace_print(3, "station file time: ", str(obs_setting.station_file_time))
+                trace_print(3, "station_file: ", obs_setting.station_file)
+
             trace_print(4, "Station id ( append ): ", obs_setting.station_file)
         if (args.xml == True):
             obs_setting.set_xml_dump_flag(True)
@@ -710,7 +712,10 @@ def weather_collect_ad_hoc( obs1 ) :
         return
     obs1.ad_hoc = True
     # set a flag instead another parm )
-    weather_collect_driver(obs1)
+    if weather_collect_driver(obs1):
+        trace_print(4, "ad hoc No duplicate")
+    else:
+        trace_print(4, "ad hoc duplicate")
     obs1.primary_station = temp_station
     obs1.ad_hoc = False
     # schedule.cancel_job(obs1.job2)
@@ -763,7 +768,7 @@ def weather_collect_driver(obs1):
              obs1.job2 = schedule.every().hour.at(":41").do(weather_collect_ad_hoc, obs1)
              trace_print(4, "Alt schedule job @ ", str(obs1.alt_station),
                 " -> ", str(obs1.station_file))
-        return True
+        return False
     weather_csv_driver(obs1, 'a', obs1.station_file, outdata[0], outdata[1])
 
     obs1.obs_iteration = obs1.obs_iteration + 1
