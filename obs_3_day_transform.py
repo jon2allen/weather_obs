@@ -127,7 +127,7 @@ class ThreeDayTransform:
         if self.vrbl:
             return "Variable"
         else:
-            return self.wind_parts[0]
+            return obs_utils.wind_text(self.wind_parts[0])
 
     def get_wind_degrees(self):
         return obs_utils.cardinal_points(self.get_wind_dir())
