@@ -94,7 +94,7 @@ class ThreeDayTransform:
         _Year = self.df3['Year'].values[0]
         _Month = self.df3['Month'].values[0]
         _day = self.df3['Date'].values[0]
-        _time = self.df3['Time(edt)'].values[0]
+        _time = self.df3['Time'].values[0]
         d_1 = datetime.strptime(_time, "%H:%M")
         _cal_month = calendar.month_abbr[int(_Month)]
 
@@ -247,7 +247,7 @@ class ThreeDayTransform:
 csv_headers = ['credit', 'credit_URL', 'image', 'suggested_pickup', 'suggested_pickup_period', 'location', 'station_id', 'latitude', 'longitude', 'observation_time', 'observation_time_rfc822', 'weather', 'temperature_string', 'temp_f', 'temp_c', 'relative_humidity', 'wind_string', 'wind_dir', 'wind_degrees', 'wind_mph', 'wind_kt', 'wind_gust_mph',
                'wind_gust_kt', 'pressure_string', 'pressure_mb', 'pressure_in', 'dewpoint_string', 'dewpoint_f', 'dewpoint_c', 'heat_index_string', 'heat_index_f', 'heat_index_c', 'windchill_string', 'windchill_f', 'windchill_c', 'visibility_mi', 'icon_url_base', 'two_day_history_url', 'icon_url_name', 'ob_url', 'disclaimer_url', 'copyright_url', 'privacy_policy_url']
 
-three_day_headers = ['Date', 'Time(edt)', 'Wind(mph)', 'Vis.(mi.)', 'Weather', 'Sky Cond.', 'Air', 'Dwpt', 'Max.', 'Min.',
+three_day_headers = ['Date', 'Time', 'Wind(mph)', 'Vis.(mi.)', 'Weather', 'Sky Cond.', 'Air', 'Dwpt', 'Max.', 'Min.',
                      'RelativeHumidity', 'WindChill(°F)', 'HeatIndex(°F)', 'altimeter(in)', 'sea level(mb)', '1 hr', '3 hr', '6 hr']
 
 obs_null_value = "<no_value_provided>"

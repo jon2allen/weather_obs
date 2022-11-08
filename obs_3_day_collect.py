@@ -226,6 +226,8 @@ class ObsCollector3dayhourly( ObsCollector3day):
         print("hourly")
         obs1 = super()._find_station_data()
         obs_c = obs1.drop( obs1.index[1:obs1.shape[0]])
+        obs_c.rename(columns={ obs_c.columns[1]: "Time" }, inplace = True)
+        print(obs_c.columns)
         now = datetime.now()
         obs_c.insert(0, 'Month', str(now.month))
         obs_c.insert(0, 'Year', str(now.year))
