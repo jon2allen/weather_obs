@@ -241,7 +241,7 @@ if __name__ == "__main__":
     print("chart_date: ", chart_date)
 
     if (args.file):
-        dt = parse_date_from_station_csv(args.file)
+        dt = obs_utils.parse_date_from_station_csv(args.file)
         chart_date = dt.strftime("%b %d, %Y")
         print(" new chart_date: ", chart_date)
 
