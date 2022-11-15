@@ -224,6 +224,7 @@ if __name__ == "__main__":
         # todo - doesn't work on windows
         try:
             os.chdir('/var/www/html/weather_obs')
+            csv_dir = '/var/www/html/weather_obs'
         except:
             csv_dir = '.'
             pass
