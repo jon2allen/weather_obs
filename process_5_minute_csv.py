@@ -41,7 +41,7 @@ import csv
 import obs_time
 
 def read_obs_csv(file_name):
-    with open(file_name, 'rU') as data:
+    with open(file_name, 'r') as data:
         h1 = data.readline().split(",")
         print( h1 )
        # obs_header = namedtuple('obs_heder', data.readline().strip('\" \''))

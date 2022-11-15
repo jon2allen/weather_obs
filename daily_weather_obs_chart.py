@@ -23,13 +23,26 @@ import time
 import datetime
 import dateutil
 import json
-from obs_utils import trendline, read_weather_obs_csv, parse_date_from_station_csv
+# from obs_utils import trendline, read_weather_obs_csv, parse_date_from_station_csv
+import obs_utils
 
 """
   This will find the last hour of the current day
   if you want a specific file - specify --file
 """
 logger = logging.getLogger('weather_obs_f')
+
+
+def get_target_name( dir, station_id, ext):
+        now = datetime.datetime.now()
+        obs_cut_time = now
+        # set time before - data at :52 and retrieved at 20 after hour
+        g1 = obs_utils.create_station_glob_filter(station_id, ext, obs_cut_time)
+        print(f"G1: {g1}" )
+        target = obs_utils.hunt_for_noaa_files3( dir , g1, 'csv' )
+        print(f"target: { target }")
+        return target
+
 
 
 def hunt_for_csv(file_id):
@@ -148,7 +161,7 @@ def draw_obs_wind_chart(chart_date, fig_png, obs1):
     fig.text(0.5, 0.05,  'Hour of day', va='center', fontsize=18)
     if (len(y) > 2 ):
          date_ser = mdates.date2num(x)
-         tr = trendline(date_ser, y)
+         tr = obs_utils.trendline(date_ser, y)
          fig.text(0.1, 0.05, 'Polyfit: {:8.4f}'.format(tr), va='center', fontsize=16)
     # plt.xticks(positions,labels)
     date_form = DateFormatter("%I")
@@ -169,7 +182,7 @@ def obs_meta_date_json(station, obs1):
     obs_data['station'] = station
     obs_data['polyfit'] = 0
     if len(y) > 1:
-       obs_data['polyfit'] = trendline(date_ser, y)
+       obs_data['polyfit'] = obs_utils.trendline(date_ser, y)
     obs_data['max'] = obs1['wind_mph'].max()
     obs_data['min'] = obs1['wind_mph'].min()
 
@@ -199,10 +212,12 @@ if __name__ == "__main__":
         print("args.dir: ", args.dir)
         try:
             os.chdir(args.dir)
+            csv_dir = args.dir
         except:
             try:
                 print("trying /var/www/html/weather_obs")
                 os.chdir('/var/www/html/weather_obs')
+                csv_dir = '/var/www/html/weather_obs'
             except:
                 print("using start directory")
     else:
@@ -210,9 +225,10 @@ if __name__ == "__main__":
         try:
             os.chdir('/var/www/html/weather_obs')
         except:
+            csv_dir = '.'
             pass
     station = ""
-    csv_dir = ""
+    #csv_dir = ""
     graph_out_dir = ""
     now = datetime.datetime.now()
 
@@ -247,7 +263,8 @@ if __name__ == "__main__":
     station_file_list = []
     target_csv = ""
 
-    file_id = station + "_Y" + str(now.year)
+    file_id = station
+    # file_id = station + "_Y" + str(now.year)
     fig_png = station + '_current' + '.png'
 
     if (args.chart):
@@ -255,7 +272,7 @@ if __name__ == "__main__":
 
     print("file_id:", file_id)
 
-    target_csv = hunt_for_csv(file_id)
+    target_csv = get_target_name(csv_dir, file_id, 'csv')
     print("target_csv: ", target_csv)
 
     if (args.file):
@@ -264,7 +281,7 @@ if __name__ == "__main__":
         station = target_csv[0:4]
         print("station:", station)
 
-    obs1 = read_weather_obs_csv(target_csv)
+    obs1 = obs_utils.read_weather_obs_csv(target_csv)
     
     if obs1.empty:
         print("fata error - cannot read file")
@@ -331,7 +348,7 @@ if __name__ == "__main__":
     print(date_ser)
     print(y)
     if (len(y) > 1 ):
-         print("polyfit: ", str(trendline(date_ser, y)))
+         print("polyfit: ", str(obs_utils.trendline(date_ser, y)))
     print("Max wind speed: ", str(json_out['wind_mph'].max()))
     print("Min wind speed: ", str(json_out['wind_mph'].min()))
 
