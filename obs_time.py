@@ -115,6 +115,10 @@ class ObsDate():
         local = get_localzone()
         return ObsDate(datetime.now(local))
     
+    def local_now(self):
+        return ObsDate(datetime.now(self.tzinfo))
+    
+    
     def date(self):
         return self.handler.obs_dt.date()
     
@@ -252,6 +256,10 @@ if __name__ == "__main__":
     
     print(f"now2: {now2}")
     
+    print("""
+          adding 10 minutes
+          """)    
+    
     td1 = timedelta(minutes=10)
     
     print("timedelta: ", now2 + td1)
@@ -263,6 +271,10 @@ if __name__ == "__main__":
     
     print("td2:", td2)
     
+    print("""
+          Excel tsts
+          """)
+    
     td2.emit_type("excel")
     
     print("td2(excel:)", td2)
@@ -270,6 +282,26 @@ if __name__ == "__main__":
 
     print("testing date: " ,  td2.date())
     
+    print("Hawaii tests: ")
+    
+    print("""
+          Add one hour
+          print time with local timezone
+          """)
+    
+    td_hawaii = ObsDate("Nov 20 2022, 7:54 pm HST")
+    
+    print(td_hawaii)
+    
+    td_hawaii.add_one_hour()
+    
+    print(td_hawaii)
+    
+    print(td_hawaii.tzinfo)
+    
+    print(datetime.now(td_hawaii.tzinfo))
+    
+    print(td_hawaii.local_now())
 
     
     
