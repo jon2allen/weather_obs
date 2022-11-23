@@ -4,6 +4,7 @@ from numpy import dtype
 from tzlocal import get_localzone
 from xml.dom import ValidationErr
 from dateutil import parser, tz
+import csv
 
 
 class obsDateRfcHandler:
@@ -29,13 +30,28 @@ class obsDateRfcHandler:
 
 class obsDateRegHandler:
     def __init__(self,dt):
-        self.my_tz = tz.gettz(dt[-3:])
-        # print(my_tz)
-        # print(parser.parse(dt, tzinfos={dt[-3:]: my_tz}))
+        #print\("reg date: ", dt )
+        dt1 = dt[-4:]
+        dt1 = dt1.strip()
+        self.cannicol_tz = None
+        #print\("td1: ", dt1, "len:", len(dt1) )
+        self.my_tz = tz.gettz(dt1)
+        #print\("regdate+tz1:", self.my_tz)
+        if self.my_tz is None:
+            self.my_tz = self._wiki_tz_search( dt1 )
+            if self.my_tz is None:
+                self.cannicol_tz = None
+            else:
+                self.cannicol_tz = dt1
+        else:
+            self.cannicol_tz = self.my_tz
+        # #print\(parser.parse(dt, tzinfos={dt[-3:]: my_tz}))
         #self.obs_dt = parser.parse(dt)
-        self.obs_dt = parser.parse(dt, tzinfos={dt[-3:]: self.my_tz})
+        self.obs_dt = parser.parse(dt, tzinfos={dt1 : self.my_tz})
+        #print\("regdate+tz:", self.my_tz)
+        #print\("regdate+obs:", self.obs_dt)
         self.out_type = 'reg'
-    def _str( dt1 ):
+    def _str ( dt1 ):
         try:
             reg_time = dt1.strftime("%b %d %Y, %-I:%M:%S %p %Z")
         except:
@@ -43,10 +59,47 @@ class obsDateRegHandler:
         reg_time = reg_time.replace("PM", "pm")
         reg_time = reg_time.replace("AM", "am")
         return reg_time
-    def emit( dt1):
+    def _str2( dt1, tz_txt):
+        try:
+            reg_time = dt1.strftime("%b %d %Y, %-I:%M:%S %p")
+        except:
+            reg_time = dt1.strftime("%b %d %Y, %#I:%M:%S %p")        
+        reg_time = reg_time.replace("PM", "pm")
+        reg_time = reg_time.replace("AM", "am")
+        if isinstance(tz_txt, tz.tzfile):
+            try:
+                reg_time = dt1.strftime("%b %d %Y, %-I:%M:%S %p %Z")
+            except:
+                reg_time = dt1.strftime("%b %d %Y, %#I:%M:%S %p %Z")   
+            return reg_time
+            
+        return reg_time + " " + str(tz_txt)
+    def emit(  dt1):
         return obsDateRegHandler._str( dt1)
     def __repr__(self):
-        return obsDateRegHandler._str( self.obs_dt)
+        #print( "__repr__", self.obs_dt )
+        #print( self.cannicol_tz)
+        #self.obs_dt = self.obs_dt.replace( tzinfo = tz.tzstr(self.cannicol_tz))
+        #print( "cannicol: ", self.cannicol_tz)
+        if self.cannicol_tz is None:
+            return obsDateRegHandler._str( self.obs_dt)
+        else: 
+            return obsDateRegHandler._str2( self.obs_dt, self.cannicol_tz)
+    def _wiki_tz_search(self, dt1 ):
+        # don't search for timezone
+        if dt1.lower() == 'pm' or dt1.lower() == 'am':
+            return None
+        if dt1.isdecimal():
+            return None
+        dt2 = dt1.upper()
+        #print\("tzserach")
+        with open('timezone_table_wiki.csv') as csvfile:
+            tzreader = csv.reader(csvfile, delimiter=',', quotechar='"')
+            for row in tzreader:
+                # #print\( "row:", row )
+                if row[0].find(dt2) > -1:
+                    return tz.gettz(row[2])
+                
 
 
 class obsDateDtHandler:
@@ -90,6 +143,10 @@ class ObsDate():
             self.month = self.handler.obs_dt.month
             self.day = self.handler.obs_dt.day
             self.tzinfo = self.handler.obs_dt.tzinfo
+            try:
+                self.cannicol_tz = self.handler.cannicol_tz
+            except:
+                self.cannicol_tz = None
         else:
             print(f"error:  ObsDate invalid type {dt}")
 
@@ -117,6 +174,24 @@ class ObsDate():
     
     def local_now(self):
         return ObsDate(datetime.now(self.tzinfo))
+    
+    def local_now_reg( self):
+        dt1 = datetime.now(self.tzinfo)
+        try:
+            reg_time = dt1.strftime("%b %d %Y, %-I:%M:%S %p")
+        except:
+            reg_time = dt1.strftime("%b %d %Y, %#I:%M:%S %p")
+            
+        if isinstance(self.cannicol_tz, tz.tzfile):
+            try:
+                reg_time = dt1.strftime("%b %d %Y, %-I:%M:%S %p %Z")
+            except:
+                reg_time = dt1.strftime("%b %d %Y, %#I:%M:%S %p %Z")   
+            return ObsDate(reg_time)
+        reg_time = reg_time + " " + str(self.cannicol_tz)
+        return ObsDate( reg_time)
+        
+    
     
     
     def date(self):
@@ -302,6 +377,17 @@ if __name__ == "__main__":
     print(datetime.now(td_hawaii.tzinfo))
     
     print(td_hawaii.local_now())
-
+    print(td_hawaii.local_now_reg())
     
+    print(td_hawaii)
+    
+    guam_str = "Nov 23 2022, 1:54 am ChST"
+    td_guam = ObsDate(guam_str.upper())
+    
+    print(td_guam)
+    
+    print( td_guam.local_now() )
+    print( td_guam.local_now_reg())
+    
+    print( td_guam.tzinfo)
     

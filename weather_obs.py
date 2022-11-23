@@ -757,7 +757,7 @@ def weather_collect_driver(obs1):
     obs1.prior_obs_time = obs1.current_obs_time
     obs1.current_obs_time = get_obs_time(outdata[1][9])
     obs1.current_local_time = obs1.current_obs_time.local_now()
-    trace_print(4, "Local time now: ",  obs1.current_local_time)    
+    trace_print(4, "Local time now: ", str(obs1.current_local_time))    
     _
     if (obs1.prior_obs_time.hour == 23):
         trace_print(4, "Special driver processing at hour 23")
