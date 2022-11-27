@@ -47,7 +47,14 @@ class obsDateRegHandler:
             self.cannicol_tz = self.my_tz
         # #print\(parser.parse(dt, tzinfos={dt[-3:]: my_tz}))
         #self.obs_dt = parser.parse(dt)
-        self.obs_dt = parser.parse(dt, tzinfos={dt1 : self.my_tz})
+        # try upper case - Guam - ChST.
+        try:
+            # print("trying wihtout upper")
+            self.obs_dt = parser.parse(dt, tzinfos={dt1 : self.my_tz})
+        except:
+            # print("now upper")
+            # print({dt1:self.my_tz})
+            self.obs_dt = parser.parse(dt.upper(), tzinfos={dt1.upper(): self.my_tz})
         #print\("regdate+tz:", self.my_tz)
         #print\("regdate+obs:", self.obs_dt)
         self.out_type = 'reg'
@@ -382,6 +389,10 @@ if __name__ == "__main__":
     print(td_hawaii)
     
     guam_str = "Nov 23 2022, 1:54 am ChST"
+    try:
+        test_guam = ObsDate(guam_str)
+    except:
+        print(" must do upper case on Guam")
     td_guam = ObsDate(guam_str.upper())
     
     print(td_guam)

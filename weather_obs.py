@@ -756,7 +756,6 @@ def weather_collect_driver(obs1):
     # if it comes in at zero hour ( mindnight) then reset current and prior
     obs1.prior_obs_time = obs1.current_obs_time
     obs1.current_obs_time = get_obs_time(outdata[1][9])
-    obs1.local_time = ObsDate(outdata[1][9])
     obs1.current_local_time = obs1.local_time.local_now_reg()
     trace_print(4, "Local time now: ", str(obs1.current_local_time))    
     if (obs1.prior_obs_time.hour == 23):
