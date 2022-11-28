@@ -771,7 +771,7 @@ def weather_collect_driver(obs1):
             obs1.job2 = schedule.every().hour.at(":41").do(weather_collect_ad_hoc, obs1)
             trace_print(4, "Alt schedule job @ ", str(obs1.alt_station),
                 " -> ", str(obs1.station_file))
-            if obs1.current_obs_time.hour < 4:
+            if obs1.current_local_time.hour < 4:
                 obs1.job3 = schedule.every().hour.at(":24").do(weather_collect_ad_hoc, obs1)
                 trace_print(4, "Alt schedule at :24 job @ ", str(obs1.alt_station),
                             " -> ", str(obs1.station_file))
