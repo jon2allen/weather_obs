@@ -928,8 +928,10 @@ def obs_already_cut_today( station_file_name, current_time):
 def obs_cut_csv_file(obs1):
     """ determines if day transition has happened and starts a new CSV """
     if (obs1.cut_file == True):
-        t_cut_time = ObsDate.now()
-        obs_cut_time = obs1.current_obs_time + timedelta(minutes=10)
+        # obs_cut_time = obs1.current_obs_time + timedelta(minutes=10)
+        obs1.local_time = obs1.current_obs_time
+        obs1.current_local_time = obs1.local_time.local_now_reg()
+        obs_cut_time = obs1.current_local_time
         # cut time should be 10 minutes ahead 
         # NOAA observations at at approx 50 minutes after the hour
         if (duration_cut_check2(obs1, obs1.prior_obs_time, obs_cut_time, obs1.duration_interval)):
