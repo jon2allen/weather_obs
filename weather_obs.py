@@ -761,6 +761,7 @@ def weather_collect_driver(obs1):
     trace_print(4, "Local time now: ", str(obs1.current_local_time)) 
     if obs1.current_obs_time.day != obs1.current_local_time.day:
         trace_print(4, "obs time not on same day, exiting... ", str(obs1.current_obs_time))
+        obs_schedule_alt_jobs(obs1)
         return False
     if (obs1.prior_obs_time.hour == 23):
         trace_print(4, "Special driver processing at hour 23")
@@ -770,20 +771,23 @@ def weather_collect_driver(obs1):
     if (duplicate_observation(obs1, outdata[1])):
         trace_print(3, " duplicate in collect.  exiting...")
         if (obs1.alt_processing == True and obs1.ad_hoc == False):
-            trace_print(4, "scheduling ad_hoc @:41")
-            obs1.job2 = schedule.every().hour.at(":41").do(weather_collect_ad_hoc, obs1)
-            trace_print(4, "Alt schedule job @ ", str(obs1.alt_station),
-                " -> ", str(obs1.station_file))
-            if obs1.current_local_time.hour < 4:
-                obs1.job3 = schedule.every().hour.at(":24").do(weather_collect_ad_hoc, obs1)
-                trace_print(4, "Alt schedule at :24 job @ ", str(obs1.alt_station),
-                            " -> ", str(obs1.station_file))
+            obs_schedule_alt_jobs(obs1)
         return False
     weather_csv_driver(obs1, 'a', obs1.station_file, outdata[0], outdata[1])
 
     obs1.obs_iteration = obs1.obs_iteration + 1
     dump_xml(obs1, xmldata, obs1.obs_iteration)
     return True
+
+def obs_schedule_alt_jobs(obs1):
+    trace_print(4, "scheduling ad_hoc @:41")
+    obs1.job2 = schedule.every().hour.at(":41").do(weather_collect_ad_hoc, obs1)
+    trace_print(4, "Alt schedule job @ ", str(obs1.alt_station),
+                " -> ", str(obs1.station_file))
+    if obs1.current_local_time.hour < 4:
+        obs1.job3 = schedule.every().hour.at(":24").do(weather_collect_ad_hoc, obs1)
+        trace_print(4, "Alt schedule at :24 job @ ", str(obs1.alt_station),
+                            " -> ", str(obs1.station_file))
 
 def weather_obs_app_start(obs1):
     """ top level start of collection """
