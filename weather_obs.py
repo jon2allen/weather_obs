@@ -986,7 +986,7 @@ def main_obs_loop(obs1_list):
         if run_minutes % 5 == 0:
             all_jobs = schedule.get_jobs()
             for j in all_jobs:
-                trace_print(1,  str(j))
+                trace_print(1,  str(j.__repr__()))
     time.sleep(60)
 
 
