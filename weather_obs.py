@@ -43,7 +43,7 @@ testing
 #import unittest
 
 #freezer = freeze_time("2021-12-31 23:56:30", tick=True)
-#freezer.start()
+# freezer.start()
 
 
 logger = logging.getLogger('weather_obs_f')
@@ -97,7 +97,7 @@ class ObsSetting:
         station = station_url[-8:]
         self.station_id = station[:4]
         self._trace("Station URL of XML - " + str(station_url))
-        
+
     def set_alt_station(self, station_url):
         self.alt_processing = True
         self.alt_station = station_url
@@ -159,16 +159,15 @@ class ObsSetting:
         self.init_csv = True
         self.station_file = file
         self._trace("init_csv: file  ", self.station_file)
-    
-    def get_data_dir_path( self ):
+
+    def get_data_dir_path(self):
         if self.data_dir != '.':
             s = os.sep
             r_data_path = os.path.join(
-                os.getcwd() + s + self.data_dir + s )
+                os.getcwd() + s + self.data_dir + s)
         else:
-            r_data_path = '.'         
+            r_data_path = '.'
         return r_data_path
-        
 
 
 def get_obs_time(obs_date):
@@ -198,7 +197,7 @@ def create_station_file_name(station='KDCA', ext='csv', obs_time_stamp=0):
     Year_Month_Day_Hour - smalles unit is hour. 
     """
     if (obs_time_stamp == 0):
-        t_now =ObsDate.now()
+        t_now = ObsDate.now()
     else:
         t_now = obs_time_stamp
     year, month, day, hour, min = map(
@@ -208,7 +207,7 @@ def create_station_file_name(station='KDCA', ext='csv', obs_time_stamp=0):
     return file_n
 
 
-#def create_station_file_name2(station="https://w1.weather.gov/xml/current_obs/KDCA.xml", ext='csv'):
+# def create_station_file_name2(station="https://w1.weather.gov/xml/current_obs/KDCA.xml", ext='csv'):
 def create_station_file_name2(obs1, ext='csv'):
     """ 
     create_station_file from observation time 
@@ -218,7 +217,7 @@ def create_station_file_name2(obs1, ext='csv'):
         return ""
     headers, row = get_data_from_NOAA_xml(w_xml)
     obs_date = get_obs_time(row[9])
-    
+
     obs1.station_file_time = obs_date
 
     station_id = obs1.primary_station[-8:-4]
@@ -241,9 +240,12 @@ def weather_obs_init():
     parser.add_argument('--init', help='Initialize CSV')
     parser.add_argument('--station', help='URL of station')
     parser.add_argument('--station_id', help='station id')
-    parser.add_argument('--alt_station_id', help='alternate source converted to xml')
-    parser.add_argument('--alt_only', help='alt stationid only', action="store_true")
-    parser.add_argument('--xmldata', help='location of file xmldata - for testing')
+    parser.add_argument('--alt_station_id',
+                        help='alternate source converted to xml')
+    parser.add_argument(
+        '--alt_only', help='alt stationid only', action="store_true")
+    parser.add_argument(
+        '--xmldata', help='location of file xmldata - for testing')
     parser.add_argument(
         '--collect', help='Run collectiion in background - Y/N', action="store_true")
     parser.add_argument('--append', help='Append data to CSV file - specifed')
@@ -258,34 +260,40 @@ def weather_obs_init():
         '-f', '--file', help="read stations from file specified")
     parser.add_argument('--dir', help='data directory offet- default is cwd ')
     parser.add_argument('--interval', help='interval for append')
-    parser.add_argument('--ignoredup', help='ignore duplicates', action="store_true")
-    parser.add_argument('--nologging', help='no logging file', action="store_true")
-    parser.add_argument('--collectdate', help='add a collection date at end of CSV row', action="store_true")
+    parser.add_argument(
+        '--ignoredup', help='ignore duplicates', action="store_true")
+    parser.add_argument(
+        '--nologging', help='no logging file', action="store_true")
+    parser.add_argument(
+        '--collectdate', help='add a collection date at end of CSV row', action="store_true")
     args = parser.parse_args()
     # trace_print(1, "parsing args...")
     # cannocial header
     # can't depend on xml feed to complete every value
     global csv_headers
-    
-    def check_resume_file(obs_setting ):
+
+    def check_resume_file(obs_setting):
         today = ObsDate.now()
         day_1 = timedelta(hours=24)
-        tomorrow = today+ day_1
-        trace_print(4, "station_id", obs_setting.station_id)    
+        tomorrow = today + day_1
+        trace_print(4, "station_id", obs_setting.station_id)
         today_glob = create_station_glob_filter(
             obs_setting.station_id, "csv", today)
         # Guam or Hawaii might be actually ahead.
         tomorrow_glob = create_station_glob_filter(
             obs_setting.station_id, "csv", tomorrow)
-        last_file = hunt_for_noaa_csv_files(obs_setting.data_dir, tomorrow_glob) 
-        if  len(last_file ) < 1:
-            last_file = hunt_for_noaa_csv_files(obs_setting.data_dir, today_glob)
+        last_file = hunt_for_noaa_csv_files(
+            obs_setting.data_dir, tomorrow_glob)
+        if len(last_file) < 1:
+            last_file = hunt_for_noaa_csv_files(
+                obs_setting.data_dir, today_glob)
         return last_file
-    
+
     def check_params2(obs_setting, args):
         obs_setting.station_file = create_station_file_name2(
             obs_setting)
-        trace_print(3, "station file time: ", str(obs_setting.station_file_time) )
+        trace_print(3, "station file time: ", str(
+            obs_setting.station_file_time))
         if(args.dir):
             obs_setting.set_data_dir(args.dir)
         #    obs_setting.data_dir = args.dir
@@ -315,7 +323,7 @@ def weather_obs_init():
                 # 24 hours +/- otherwise just create a new file
                 data_path = obs_setting.get_data_dir_path()
                 trace_print(3, "data path: ", data_path)
-                obs_setting.station_file = check_resume_file( obs_setting)
+                obs_setting.station_file = check_resume_file(obs_setting)
                 if (len(obs_setting.station_file) < 4):
                     obs_setting.station_file = create_station_file_name2(
                         obs_setting)
@@ -324,8 +332,10 @@ def weather_obs_init():
                     obs_setting.append_data_specified = True
                     trace_print(3, "Resume - No file file on current day")
                 c_date = parse_date_from_station_csv(obs_setting.station_file)
-                obs_setting.station_file_time = datetime(c_date.year, c_date.month, c_date.day, 0, 0)
-                trace_print(3, "station file time: ", str(obs_setting.station_file_time))
+                obs_setting.station_file_time = datetime(
+                    c_date.year, c_date.month, c_date.day, 0, 0)
+                trace_print(3, "station file time: ", str(
+                    obs_setting.station_file_time))
                 trace_print(3, "station_file: ", obs_setting.station_file)
 
             trace_print(4, "Station id ( append ): ", obs_setting.station_file)
@@ -351,7 +361,7 @@ def weather_obs_init():
             trace_print(4, "use alt only set")
         return True
     if (args.nologging == True):
-            disable_logging_file()
+        disable_logging_file()
     if (args.file):
         try:
             with open(args.file, "r") as obs_file1:
@@ -404,8 +414,6 @@ def check_parms1(obs_setting, args):
     return True
 
 
-
-
 """
  function: dump_xml
    purpose:  dump raw xml for debugging
@@ -445,9 +453,6 @@ def dump_xml(obs1, xmldata, iteration):
 """
 
 
-
-
-
 """
    function:  get_last_csv_row
         get last line of current csv
@@ -463,7 +468,7 @@ def get_last_csv_row(st_file):
         with open(st_file) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             for row in csv_reader:
-                row_count +=1
+                row_count += 1
             if row_count > 1:
                 return row
             else:
@@ -512,8 +517,8 @@ def duplicate_observation(obs1, current_obs):
     """ test last line of csv for duplicate """
     """ finds observation times and compares"""
     if obs1.ignore_dup == True:
-        trace_print(3, "Ignore dup" )
-        return False  
+        trace_print(3, "Ignore dup")
+        return False
     r_csv_file = get_obs_csv_path(obs1, obs1.station_file)
     last_one = get_last_csv_row(r_csv_file)
     if (len(last_one) < 4):
@@ -523,9 +528,9 @@ def duplicate_observation(obs1, current_obs):
     trace_print(1, "last_obs:", last_obs_dt, "len ", str(len(last_obs_dt)))
     trace_print(1, "current_obs: ", current_obs[6], "  ", current_obs[10], "len ", str(
         len(current_obs[10])))
-    cur_obs = ObsDate( current_obs[10]).get_datetime()
-    last_obs = ObsDate( last_obs_dt).get_datetime()
-    trace_print(4, "curr_obs", str( cur_obs))
+    cur_obs = ObsDate(current_obs[10]).get_datetime()
+    last_obs = ObsDate(last_obs_dt).get_datetime()
+    trace_print(4, "curr_obs", str(cur_obs))
     trace_print(4, "last_obs", str(last_obs))
     if obs1.station_file_time.date() > cur_obs.date():
         trace_print(4, "current obs older than file date")
@@ -627,15 +632,18 @@ def get_data_from_NOAA_xml(xmldata):
     h1 = csv_headers
     return h1, r1_final
 
-def add_collection_time( w_header, w_row):
+
+def add_collection_time(w_header, w_row):
     """
        add collection entries at end of each row
     """
     w_header.append("collection time")
     dt1 = ObsDate(datetime.now())
     dt1.emit_type("reg")
-    w_row.append(str(dt1)) 
+    w_row.append(str(dt1))
     return w_header, w_row
+
+
 """
  function: weather_csv_driver
  inputs:
@@ -659,7 +667,7 @@ def weather_csv_driver(obs1, mode, csv_file, w_header, w_row):
     # add colleciton time.
     if obs1.collection_date == True:
         trace_print(3, "collection date added")
-        w_header, w_row = add_collection_time( w_header, w_row)
+        w_header, w_row = add_collection_time(w_header, w_row)
     if (mode == 'c'):
         # cut file request is active
         # denote the special mode and change it to write.
@@ -699,7 +707,7 @@ def get_obs_csv_path(obs1, csv_file):
     return r_csv_file
 
 
-def weather_collect_ad_hoc( obs1 ) :
+def weather_collect_ad_hoc(obs1):
     trace_print(4, "collect _ad_hoc")
     # swap alt and primary?
     temp_station = obs1.primary_station
@@ -722,7 +730,6 @@ def weather_collect_ad_hoc( obs1 ) :
     trace_print(4, "exit ad hoc")
     return schedule.CancelJob
 
-    
 
 """
 function: weather_collect_driver
@@ -739,6 +746,9 @@ def weather_collect_driver(obs1):
     trace_print(4, "weather_collect_driver")
     xmldata = get_weather_from_NOAA(obs1.primary_station)
     if (obs_check_xml_data(xmldata) == False):
+        # if error schedule alt jobs
+        if obs1.alt_processing == True:
+            obs_schedule_alt_jobs(obs1)
         return False
     outdata = get_data_from_NOAA_xml(xmldata)
     # check data and dump xml for post-mortem
@@ -756,11 +766,12 @@ def weather_collect_driver(obs1):
     # if it comes in at zero hour ( mindnight) then reset current and prior
     obs1.prior_obs_time = obs1.current_obs_time
     obs1.current_obs_time = get_obs_time(outdata[1][9])
-    obs1.local_time = ObsDate( outdata[1][9])
+    obs1.local_time = ObsDate(outdata[1][9])
     obs1.current_local_time = obs1.local_time.local_now_reg()
-    trace_print(4, "Local time now: ", str(obs1.current_local_time)) 
+    trace_print(4, "Local time now: ", str(obs1.current_local_time))
     if obs1.current_obs_time.day != obs1.current_local_time.day:
-        trace_print(4, "obs time not on same day, exiting... ", str(obs1.current_obs_time))
+        trace_print(4, "obs time not on same day, exiting... ",
+                    str(obs1.current_obs_time))
         obs_schedule_alt_jobs(obs1)
         return False
     if (obs1.prior_obs_time.hour == 23):
@@ -779,6 +790,7 @@ def weather_collect_driver(obs1):
     dump_xml(obs1, xmldata, obs1.obs_iteration)
     return True
 
+
 def obs_schedule_alt_jobs(obs1):
     trace_print(4, "scheduling ad_hoc @:41")
     obs1.job2 = schedule.every().hour.at(":41").do(weather_collect_ad_hoc, obs1)
@@ -787,15 +799,16 @@ def obs_schedule_alt_jobs(obs1):
     if obs1.current_local_time.hour < 4:
         obs1.job3 = schedule.every().hour.at(":24").do(weather_collect_ad_hoc, obs1)
         trace_print(4, "Alt schedule at :24 job @ ", str(obs1.alt_station),
-                            " -> ", str(obs1.station_file))
+                    " -> ", str(obs1.station_file))
+
 
 def weather_obs_app_start(obs1):
     """ top level start of collection """
     # if appending and scheduling - skip over to collect
     if obs1.use_alt_only == True:
         trace_print(4, "setting station id to alt")
-        obs1.primary_station = obs1.alt_station 
-    trace_print(3,"weather_obs_app_starT() enter ")
+        obs1.primary_station = obs1.alt_station
+    trace_print(3, "weather_obs_app_starT() enter ")
     if (obs1.append_data != True):
         content = get_weather_from_NOAA(obs1.primary_station)
         if (obs_check_xml_data(content) == False):
@@ -817,18 +830,20 @@ def weather_obs_app_start(obs1):
         if obs1.job1:
             trace_print(4, "schedule job set - exit()")
             return
-       
+
         obs1.append_data = True
         if obs1.use_alt_only == True:
-             obs1.primary_station = obs1.alt_station
-             trace_print(4, "alt only....")
-             obs1.job1 = schedule.every().hour.at(obs1.sched_interval).do(weather_collect_ad_hoc, obs1)
+            obs1.primary_station = obs1.alt_station
+            trace_print(4, "alt only....")
+            obs1.job1 = schedule.every().hour.at(
+                obs1.sched_interval).do(weather_collect_ad_hoc, obs1)
         else:
-             trace_print(4, "regular")
-             obs1.job1 = schedule.every().hour.at(obs1.sched_interval).do(weather_collect_driver, obs1)
+            trace_print(4, "regular")
+            obs1.job1 = schedule.every().hour.at(
+                obs1.sched_interval).do(weather_collect_driver, obs1)
         trace_print(4, "schedule job @ ", str(obs1.primary_station),
                     " -> ", str(obs1.station_file))
-        # execute every 20 minutes.   
+        # execute every 20 minutes.
     return
 #
 #
@@ -923,9 +938,10 @@ def foreach_obs(function, obs_list):
     """ foreach loop """
     for obs in obs_list:
         function(obs)
-        
-def obs_already_cut_today( station_file_name, current_time):
-    file_dt = parse_date_from_station_csv( station_file_name)
+
+
+def obs_already_cut_today(station_file_name, current_time):
+    file_dt = parse_date_from_station_csv(station_file_name)
     if file_dt.day == current_time.day:
         return True
     else:
@@ -939,35 +955,36 @@ def obs_cut_csv_file(obs1):
         obs1.local_time = obs1.current_obs_time
         obs1.current_local_time = obs1.local_time.local_now_reg()
         obs_cut_time = obs1.current_local_time
-        # cut time should be 10 minutes ahead 
+        # cut time should be 10 minutes ahead
         # NOAA observations at at approx 50 minutes after the hour
         if (duration_cut_check2(obs1, obs1.prior_obs_time, obs_cut_time, obs1.duration_interval)):
             run_cut_operation(obs1, obs_cut_time)
+
 
 def run_cut_operation(obs1, obs_cut_time):
     trace_print(4, "running cut operation")
     if obs_already_cut_today(obs1.station_file, obs_cut_time):
         trace_print(4, "already cut - return")
         return
-            # sychronize obs_time for new day - so file name will be corrrect
-            # last observation at 11:50 or so - add 10 minutes for file create.
+        # sychronize obs_time for new day - so file name will be corrrect
+        # last observation at 11:50 or so - add 10 minutes for file create.
     obs1.station_file = create_station_file_name(
-                obs1.station_id, "csv", obs_cut_time)
-            # start a new day cycle
+        obs1.station_id, "csv", obs_cut_time)
+    # start a new day cycle
     obs1.station_file_time = obs_cut_time
     obs1.prior_obs_time = obs_cut_time
     obs1.current_obs_time = obs_cut_time
     trace_print(4, "New Station file (cut):", obs1.station_file)
-            # create new file with cannocial headers
+    # create new file with cannocial headers
     weather_csv_driver(obs1, 'c', obs1.station_file, csv_headers, [])
     schedule.cancel_job(obs1.job1)
-            # we rassigned the next station file
-            # new writes should go there.
+    # we rassigned the next station file
+    # new writes should go there.
     obs1.job1 = None
     t_begin = ObsDate.now()
     trace_print(4, "Time of last cut:",
-                        t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
-            # this will reschedule job with new file.
+                t_begin.strftime("%A, %d. %B %Y %I:%M%p"))
+    # this will reschedule job with new file.
     weather_obs_app_start(obs1)
 
 
@@ -1054,6 +1071,7 @@ def obs_init_logger():
     schedule_logger.setLevel(level=logging.DEBUG)
     schedule_logger.addHandler(fhandler)
 
+
 def disable_logging_file():
     """
     Disables logging 
@@ -1063,7 +1081,6 @@ def disable_logging_file():
     print(logging.getLogger('weather_obs_f').handlers)
     logging.getLogger('weather_obs_f').setLevel(logging.CRITICAL + 1)
     return
-
 
 
 if __name__ == "__main__":
