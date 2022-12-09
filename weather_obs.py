@@ -1060,7 +1060,7 @@ def obs_init_logger():
                                         interval=1,
                                         backupCount=5)
     formatter_f = logging.Formatter(
-        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        '%(asctime)s - %(process)d -  %(name)s - %(levelname)s - %(message)s')
     fhandler.setFormatter(formatter_f)
     fhandler.setLevel(logging.DEBUG)
     logger.addHandler(fhandler)
