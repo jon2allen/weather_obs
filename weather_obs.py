@@ -792,6 +792,8 @@ def weather_collect_driver(obs1):
 
 
 def obs_schedule_alt_jobs(obs1):
+    if obs1.alt_processing == False:
+         return 
     trace_print(4, "scheduling ad_hoc @:41")
     obs1.job2 = schedule.every().hour.at(":41").do(weather_collect_ad_hoc, obs1)
     trace_print(4, "Alt schedule job @ ", str(obs1.alt_station),
