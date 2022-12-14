@@ -184,7 +184,9 @@ def get_obs_time(obs_date):
         return obs_date
     trace_print(4, "Local observation time ( get_obs_time): ", t_str)
     # actual timezone is not important for obs file output.
-    obs_date = ObsDate(t_str[:20])
+    #obs_date = ObsDate(t_str[:20])
+    obs_date = ObsDate(t_str)
+    trace_print(4, "Obsdate ( get_obs_time() : ", str(obs_date))
     #obs_date = parser.parse(t_str[:20])
     # obs_date = datetime.strptime( t_str[:20], "%b %d %Y, %I:%M %p ")
     trace_print(4, "get_obs_time return()")
@@ -954,6 +956,7 @@ def obs_cut_csv_file(obs1):
     """ determines if day transition has happened and starts a new CSV """
     if (obs1.cut_file == True):
         # obs_cut_time = obs1.current_obs_time + timedelta(minutes=10)
+        trace_print(1, "cut_csv: obs1.obs_time", str(obs1.current_obs_time) )
         obs1.local_time = obs1.current_obs_time
         obs1.current_local_time = obs1.local_time.local_now_reg()
         obs_cut_time = obs1.current_local_time
