@@ -292,7 +292,8 @@ def load_monthly_noaa_csv_files(dir, noaa_station, ext="csv", tyear=2021, tmonth
                 continue
             obs1 = read_weather_obs_csv(t_dir + f)
             trace_print(4, "loading:  ", f)
-            month_df = month_df.append(obs1, ignore_index=True)
+            month_df = pd.concat( [ month_df,obs1 ], ignore_index=True)
+            # month_df = month_df.append(obs1, ignore_index=True)
     return month_df
 
 
@@ -310,7 +311,8 @@ def load_range_noaa_csv_files(dir, noaa_station, ext="csv", startdt=0, enddt=0):
         for f in file_list:
             obs1 = read_weather_obs_csv(t_dir + f)
             trace_print(4, "loading:  ", f)
-            month_df = month_df.append(obs1, ignore_index=True)
+            month_df = pd.concat( [month_df, obs1], ignore_index=True)
+            #month_df = month_df.append(obs1, ignore_index=True)
     return month_df
 
 
