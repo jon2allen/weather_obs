@@ -33,9 +33,12 @@ class obsDateRegHandler:
         #print\("reg date: ", dt )
         dt1 = dt[-4:]
         dt1 = dt1.strip()
+        #print("dt1: ", dt1 )
         self.cannicol_tz = None
         #print\("td1: ", dt1, "len:", len(dt1) )
         self.my_tz = tz.gettz(dt1)
+        if str(self.my_tz).find('local') > 0:
+            self.my_tz = None
         #print\("regdate+tz1:", self.my_tz)
         if self.my_tz is None:
             self.my_tz = self._wiki_tz_search( dt1 )
@@ -104,7 +107,7 @@ class obsDateRegHandler:
             tzreader = csv.reader(csvfile, delimiter=',', quotechar='"')
             for row in tzreader:
                 # #print\( "row:", row )
-                if row[0].find(dt2) > -1:
+                if row[0].startswith(dt2):
                     return tz.gettz(row[2])
                 
 
@@ -156,6 +159,12 @@ class ObsDate():
                 self.cannicol_tz = None
         else:
             print(f"error:  ObsDate invalid type {dt}")
+        #print\("tzinfo: ", self.tzinfo )
+        #print\("tzinfo2: ",type(self.tzinfo))
+        #print(self.tzinfo.__dir__())
+        #if str(self.tzinfo).find('local') > 0:
+         #   print("tzinfo3: ", self.tzinfo.tzname())
+
 
     def strftime(self, fstr):
         return self.handler.obs_dt.strftime(fstr)
@@ -185,7 +194,7 @@ class ObsDate():
     def local_now_reg( self):
         dt1 = datetime.now(self.tzinfo)
         if str(self.tzinfo).find('local') > 0:
-           return ObsDate( dt1 )
+            return ObsDate( dt1 )
         try:
             reg_time = dt1.strftime("%b %d %Y, %-I:%M:%S %p")
         except:
@@ -271,6 +280,8 @@ if __name__ == "__main__":
     print(t2)
     print(t3)
 
+    print("t3, localnow")
+    print(t3.local_now_reg())
     for x in range(10):
         t1.add_one_hour()
         print(t1)
@@ -410,4 +421,3 @@ if __name__ == "__main__":
     
     print( td_guam.tzinfo)
    
-    print(t3.local_now_reg()) 
