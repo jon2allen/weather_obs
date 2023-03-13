@@ -184,6 +184,8 @@ class ObsDate():
     
     def local_now_reg( self):
         dt1 = datetime.now(self.tzinfo)
+        if str(self.tzinfo).find('local') > 0:
+           return ObsDate( dt1 )
         try:
             reg_time = dt1.strftime("%b %d %Y, %-I:%M:%S %p")
         except:
@@ -259,12 +261,15 @@ if __name__ == "__main__":
     # this is a internal test script if invoked as main
     obs_time = "Nov 16 2021, 11:52 am EST"
     obs_time_rfc = "Tue, 16 Nov 2021 11:52:00 -0500"
+    obs_time_edt = "Wed, Mar 12 2023, 04:52 am EDT"
 
     t1 = ObsDate(obs_time)
     t2 = ObsDate(obs_time_rfc)
+    t3 = ObsDate(obs_time_edt)
 
     print(t1)
     print(t2)
+    print(t3)
 
     for x in range(10):
         t1.add_one_hour()
@@ -289,7 +294,10 @@ if __name__ == "__main__":
     t2.add_multi_hours(int(-26))
 
     print(t2)
-    
+   
+    t3.emit_type('rfc')
+    print(t3)
+    print(ObsDate(str(t3))) 
     t2.add_multi_hours(int(28))
     
     print(f"t2: {t2}")
@@ -401,4 +409,5 @@ if __name__ == "__main__":
     print( td_guam.local_now_reg())
     
     print( td_guam.tzinfo)
-    
+   
+    print(t3.local_now_reg()) 

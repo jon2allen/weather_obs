@@ -871,6 +871,8 @@ def duration_cut_check2(obs1, t_last, t_curr, hour_cycle):
     trace_print(1, "obseration: ", str(obs1.station_id))
     trace_print(1, "t_now: ", str(t_now))
     trace_print(1, "t_last: ", str(t_last))
+    if t_last is None:
+       t_last = t_now;
     if t_now.year > t_last.year:
         trace_print(1, "Duration year check")
         return True
