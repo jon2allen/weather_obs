@@ -12,7 +12,8 @@
 #
 #########################################################################
 
-import os,sys
+import os
+import sys
 import hashlib
 import re
 from datetime import datetime, timedelta
@@ -26,30 +27,30 @@ import numpy as np
 import csv
 from obs_3_day_collect import ObsCollector3day, ObsCollector3dayhourly
 import obs_3_day_transform
- 
+
 
 class ObsCollector3dayWithTransform(ObsCollector3dayhourly):
-    def __init__( self, url, id, filetype):
+    def __init__(self, url, id, filetype):
         super().__init__(url, id, filetype)
+
     def _transform_station_data(self):
         transformer = obs_3_day_transform.ThreeDayTransform(self.last_forcast)
         my_df = transformer.process_transform()
         self.last_forcast = my_df
-        return 
-    
+        return
+
     def _post_process_station_data(self):
         pass
-        
-    
-    
+
+
 if __name__ == "__main__":
-    
-#######################################################################
-# FORCASTURL is where the data resides
-# FORCASTID is the station forcast 
-# The script changes wording directory and then writes
-# DATA_DIR
-#######################################################################
+
+    #######################################################################
+    # FORCASTURL is where the data resides
+    # FORCASTID is the station forcast
+    # The script changes wording directory and then writes
+    # DATA_DIR
+    #######################################################################
     FORECASTURL = 'https://w1.weather.gov/data/obhistory/KDCA.html'
     FORECASTID = 'KDCA_3_day_csv'
     DATA_DIR = '/var/www/html/weather_obs/data'
@@ -67,7 +68,7 @@ if __name__ == "__main__":
         url=FORECASTURL, id=FORECASTID, filetype='csv')
 
     print(obs_x.show_collector())
-    
+
     obs_x.row_num = 5
 
     obs_x.obs_collection_sequence()
@@ -76,6 +77,5 @@ if __name__ == "__main__":
     # write out to "latest" for page pickup
     # saves effort on figuring out which file to open
     # obs_x.write_station_data_custom("latest.csv")
-
 
     sys.exit()

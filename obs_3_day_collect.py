@@ -12,7 +12,8 @@
 #
 #########################################################################
 
-import os,sys
+import os
+import sys
 import hashlib
 import re
 import time
@@ -46,10 +47,9 @@ class ObsCollector:
             self.url_data = requests.get(self.station_url)
         except:
             print("get url data - trying again")
-            self._retry( 5 )
-        return 
-            
-        
+            self._retry(5)
+        return
+
     def _retry(self, times):
         for index in range(times):
             print("retry loop:  ", index)
@@ -67,41 +67,41 @@ class ObsCollector:
 
     def set_station_file_name(self):
         if not self.obs_filename:
-            self.obs_filename = create_station_file_name(self.station_id, self.filetype)
+            self.obs_filename = create_station_file_name(
+                self.station_id, self.filetype)
 
-    def _write_station_data( self, fname):
+    def _write_station_data(self, fname):
         obs_file = open(fname, "w")
         obs_file.write(self.last_forcast)
         obs_file.close()
-    
-    def _append_station_data( self, fname):
+
+    def _append_station_data(self, fname):
         obs_file = open(fname, "a")
         obs_file.write(self.last_forcast)
         obs_file.close()
-    
-    def _transform_station_data( self):
+
+    def _transform_station_data(self):
         pass
-    
-    def _post_process_station_data( self ):
+
+    def _post_process_station_data(self):
         pass
-    
-    def _pre_process_station_data( self ):
+
+    def _pre_process_station_data(self):
         pass
-        
+
     def write_station_data(self):
         """write out last forcast"""
         if self.writeflag == False:
             print("Write flag is off")
             return
         if self.appendflag == True:
-           print("append flag set")
-           self._append_station_data( self.obs_filename)
+            print("append flag set")
+            self._append_station_data(self.obs_filename)
         else:
-           self._write_station_data(self.obs_filename)
+            self._write_station_data(self.obs_filename)
 
     def write_station_data_custom(self, ending_text):
-        self._write_station_data(self.station_id + "_" + ending_text ) 
-
+        self._write_station_data(self.station_id + "_" + ending_text)
 
     def obs_collection_sequence(self):
         """ basic collection sequence - fetch, intpret, write """
@@ -134,13 +134,15 @@ class ObsCollector:
         yesterday = today - day_1
         today_glob = obs_utils.create_station_glob_filter(
             self.station_id, self.filetype, today)
-        print("today_glob: ", today_glob )
+        print("today_glob: ", today_glob)
         yesterday_glob = obs_utils.create_station_glob_filter(
             self.station_id, self.filetype, yesterday)
-        last_file = obs_utils.hunt_for_noaa_files3(".", today_glob, self.filetype)
+        last_file = obs_utils.hunt_for_noaa_files3(
+            ".", today_glob, self.filetype)
         print("last file: ", last_file)
         if len(last_file) < 1:
-            last_file = obs_utils.hunt_for_noaa_files3(".", yesterday_glob, self.filetype)
+            last_file = obs_utils.hunt_for_noaa_files3(
+                ".", yesterday_glob, self.filetype)
         if (len(last_file) > 0):
             with open(last_file, "rb") as f2:
                 blob2 = f2.read()
@@ -191,42 +193,45 @@ class ObsCollector:
         print(hashlib.md5(r_station_data.encode('utf-8')).hexdigest())
         return r_station_data
 
-class ObsCollector3day( ObsCollector):
-    def __init__( self, url, id, filetype):
+
+class ObsCollector3day(ObsCollector):
+    def __init__(self, url, id, filetype):
         print("3day: ", id)
         super().__init__(url, id, filetype)
+
     def _find_station_data(self):
-        #print(self.url_data.text)
-        tables1 = pd.read_html( self.url_data.text)
+        # print(self.url_data.text)
+        tables1 = pd.read_html(self.url_data.text)
         obs_a = tables1[3]
         obs_a.columns = obs_a.columns.get_level_values(2)
-        #print(obs_a.head())
+        # print(obs_a.head())
         self.last_forcast = obs_a
         return obs_a
-    
+
     def _write_station_data(self, fname):
-        self.last_forcast.to_csv( fname, index=False, header=True, quotechar='"',quoting=csv.QUOTE_NONNUMERIC)
-        
+        self.last_forcast.to_csv(
+            fname, index=False, header=True, quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
 
     def _append_station_data(self, fname):
-        self.last_forcast.to_csv( fname, index=False) 
-        
+        self.last_forcast.to_csv(fname, index=False)
+
     def obs_collection_duplicate_check(self):
         print("I am here in 3 day")
         return super().obs_collection_duplicate_check()
-    
-class ObsCollector3dayhourly( ObsCollector3day):
-    def __init__( self, url, id, filetype):
-        print("3dayhour:",  id )
+
+
+class ObsCollector3dayhourly(ObsCollector3day):
+    def __init__(self, url, id, filetype):
+        print("3dayhour:",  id)
         super().__init__(url, id, filetype)
-        
+
     def _find_station_data(self):
         if hasattr(self, "row_num"):
-            print("row_num: " , self.row_num) 
+            print("row_num: ", self.row_num)
         print("hourly")
         obs1 = super()._find_station_data()
-        obs_c = obs1.drop( obs1.index[1:obs1.shape[0]])
-        obs_c.rename(columns={ obs_c.columns[1]: "Time" }, inplace = True)
+        obs_c = obs1.drop(obs1.index[1:obs1.shape[0]])
+        obs_c.rename(columns={obs_c.columns[1]: "Time"}, inplace=True)
         print(obs_c.columns)
         now = datetime.now()
         obs_c.insert(0, 'Month', str(now.month))
@@ -234,34 +239,35 @@ class ObsCollector3dayhourly( ObsCollector3day):
         print(obs_c)
         self.last_forcast = obs_c
         return obs_c
-    
-    def _drop_all_but_row( self, df1, row_num):
+
+    def _drop_all_but_row(self, df1, row_num):
         data_r = df1.iloc[row_num]
-        new_df = df1.drop( df1.index[0:df1.shape[0]])
+        new_df = df1.drop(df1.index[0:df1.shape[0]])
         # append is depreciated
-        new_df = pd.concat([new_df,data_r.to_frame().T],ignore_index=True)
+        new_df = pd.concat([new_df, data_r.to_frame().T], ignore_index=True)
         return new_df
-    
-    def _set_row( self, row_num):
+
+    def _set_row(self, row_num):
         self.row_num = row_num
-        
+
     def _append_station_data(self, fname):
-        self.last_forcast.to_csv( fname, header=False, index=False , mode='a',
-                                  quotechar='"',quoting=csv.QUOTE_NONNUMERIC)
+        self.last_forcast.to_csv(fname, header=False, index=False, mode='a',
+                                 quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
         return
-    
+
     def _post_process_station_data(self):
-        self.obsday = self.last_forcast['Date'].values[0] 
-        print( f"Current date: { self.obsday } ")
-        return 
-    
+        self.obsday = self.last_forcast['Date'].values[0]
+        print(f"Current date: { self.obsday } ")
+        return
+
     def _pre_process_station_data(self):
         now = datetime.now()
         obs_cut_time = now - timedelta(minutes=30)
         # set time before - data at :52 and retrieved at 20 after hour
-        g1 = obs_utils.create_station_glob_filter(self.station_id, "csv", obs_cut_time)
-        print(f"G1: {g1}" )
-        target = obs_utils.hunt_for_noaa_files3( '.', g1, 'csv' )
+        g1 = obs_utils.create_station_glob_filter(
+            self.station_id, "csv", obs_cut_time)
+        print(f"G1: {g1}")
+        target = obs_utils.hunt_for_noaa_files3('.', g1, 'csv')
         print(f"target: { target }")
         if len(target) < 3:
             self.appendflag = False
@@ -270,17 +276,18 @@ class ObsCollector3dayhourly( ObsCollector3day):
             self.appendflag = True
             self.allowdup = True
             self.obs_filename = target
-        
-        return 
+
+        return
+
 
 if __name__ == "__main__":
-    
-#######################################################################
-# FORCASTURL is where the data resides
-# FORCASTID is the station forcast 
-# The script changes wording directory and then writes
-# DATA_DIR
-#######################################################################
+
+    #######################################################################
+    # FORCASTURL is where the data resides
+    # FORCASTID is the station forcast
+    # The script changes wording directory and then writes
+    # DATA_DIR
+    #######################################################################
     FORECASTURL = 'https://w1.weather.gov/data/obhistory/KDCA.html'
     FORECASTID = 'KDCA_3_day'
     DATA_DIR = '/var/www/html/weather_obs/data'
@@ -296,8 +303,6 @@ if __name__ == "__main__":
 
     obs_x = ObsCollector3dayhourly(
         url=FORECASTURL, id=FORECASTID, filetype='csv')
-    
-    
 
     print(obs_x.show_collector())
 
@@ -307,6 +312,5 @@ if __name__ == "__main__":
     # write out to "latest" for page pickup
     # saves effort on figuring out which file to open
     obs_x.write_station_data_custom("latest.csv")
-
 
     sys.exit()

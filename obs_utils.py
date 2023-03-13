@@ -18,6 +18,7 @@ import logging
 logger = logging.getLogger('weather_obs_f')
 trace = True
 
+
 def trace_print(level, first_string, *optional_strings):
     """ central logging function """
     global trace
@@ -35,10 +36,11 @@ def trace_print(level, first_string, *optional_strings):
         else:
             print("level not known:  ", trace_out, flush=True)
 
+
 def read_weather_obs_csv(target_csv):
     """ read csv and return dataframe """
     # handle no_value_provided as NAN
-    dtype_dict = {'temp_f': np.float64, 
+    dtype_dict = {'temp_f': np.float64,
                   'temp_c': np.float64,
                   'wind_mph': np.float64,
                   'wind_kt': np.float64,
@@ -57,24 +59,23 @@ def read_weather_obs_csv(target_csv):
                   'suggested_pickup_period': 'category',
                   'credit': 'category',
                   'credit_URL': 'category',
-                  'icon_url_base' : 'category',
+                  'icon_url_base': 'category',
                   'two_day_history_url': 'category',
                   'icon_url_name': 'category',
                   'ob_url': 'category',
                   'disclaimer_url': 'category',
-                  'copyright_url': 'category' , 
-                  'privacy_policy_url': 'category' 
-    }
+                  'copyright_url': 'category',
+                  'privacy_policy_url': 'category'
+                  }
 
-    
     try:
         # ignore time zone for parse here - times local to observation
         def date_utc(x): return dateutil.parser.parse(x[:20], ignoretz=True)
         obs1 = pd.read_csv(target_csv, parse_dates=[9], date_parser=date_utc,
-                            dtype = dtype_dict,
-                            na_values = "<no_value_provided>")
+                           dtype=dtype_dict,
+                           na_values="<no_value_provided>")
     except OSError:
-        trace_print( 4, "file not found:  ", target_csv)
+        trace_print(4, "file not found:  ", target_csv)
         # return empty dataframe
         obs1 = pd.DataFrame()
     return obs1
@@ -85,20 +86,22 @@ def trendline(index, data, order=1):
     slope = coeffs[-2]
     return float(slope)
 
-def month_to_num( my_month):
+
+def month_to_num(my_month):
     _month = {	'january': 1,
-		'february': 2,
-		'march': 3,
-		'april' : 4,
-		'may': 5,
-		'june': 6,
-		'july': 7,
-		'august': 8,
-		'september': 9,
-		'october': 10,
-		'november': 11,
-		'december': 12	}
-    return _month[my_month] 
+               'february': 2,
+               'march': 3,
+               'april': 4,
+               'may': 5,
+               'june': 6,
+               'july': 7,
+               'august': 8,
+               'september': 9,
+               'october': 10,
+               'november': 11,
+               'december': 12	}
+    return _month[my_month]
+
 
 def parse_date_from_station_csv(fname):
     csv_name = os.path.split(fname)
@@ -110,8 +113,9 @@ def parse_date_from_station_csv(fname):
         if item[0:1] == 'M':
             month = item[-2:]
         if item[0:1] == 'D':
-            day =  item[-2:]
-    return datetime.date(int(year), int(month), int(day))   
+            day = item[-2:]
+    return datetime.date(int(year), int(month), int(day))
+
 
 def create_station_glob_filter(station='ANZ535', ext='txt', obs_time_stamp=0):
     """ 
@@ -178,10 +182,12 @@ def get_noaa_text_files(dir, noaa_station):
     final_l.sort()
     return final_l
 
+
 def get_noaa_any_files(dir, noaa_station, ext):
     #  Generic get any ext
     glob_path = Path(dir)
-    file_list = [str(pp) for pp in glob_path.glob(str(noaa_station+  '*.' + ext))]
+    file_list = [str(pp)
+                 for pp in glob_path.glob(str(noaa_station + '*.' + ext))]
     final_l = []
     for f in file_list:
         final_l.append(os.path.split(f)[1])
@@ -192,7 +198,8 @@ def get_noaa_any_files(dir, noaa_station, ext):
 def diff_month(d1, d2):
     # stolen from Stackoverflow
     # https://stackoverflow.com/questions/4039879/best-way-to-find-the-months-between-two-dates
-    return abs( (d1.year - d2.year) * 12 + d1.month - d2.month )
+    return abs((d1.year - d2.year) * 12 + d1.month - d2.month)
+
 
 def get_next_month_year(month, year):
     i_month = month
@@ -208,7 +215,8 @@ def get_next_month_year(month, year):
             i_month = month
             i_year = year
             first_pass = False
-        yield (i_month, i_year )
+        yield (i_month, i_year)
+
 
 def file_exclusion_filter(f_name):
     f_list = ['Range', 'Month', 'Year']
@@ -216,7 +224,7 @@ def file_exclusion_filter(f_name):
         if f_name.find(f) > 0:
             return True
     return False
-        
+
 
 def gather_any_noaa_files(dir, noaa_station, ext, startdt, enddt):
     # startdt, enddt are datetime.
@@ -224,30 +232,33 @@ def gather_any_noaa_files(dir, noaa_station, ext, startdt, enddt):
     # logic will be if same month - then get all the month and filter.
     # if months different - calc difference in months.
     # then gather all the months, then filter.
-    range_list = gather_monthly_noaa_files(dir, noaa_station, ext, startdt.year, startdt.month)
-    
-    num_months = diff_month( startdt, enddt)
+    range_list = gather_monthly_noaa_files(
+        dir, noaa_station, ext, startdt.year, startdt.month)
+
+    num_months = diff_month(startdt, enddt)
     print("num_months: ", num_months)
     if num_months > 1:
-        m_generator = get_next_month_year( startdt.month, startdt.year)
+        m_generator = get_next_month_year(startdt.month, startdt.year)
         for n_month in range(num_months + 1):
             next_month = next(m_generator)
-            trace_print( 4, "  searching year: ", str(next_month[1]), " month: ", str(next_month[0]))
-            month_list =  gather_monthly_noaa_files(dir, noaa_station, ext, next_month[1], next_month[0])
+            trace_print(4, "  searching year: ", str(
+                next_month[1]), " month: ", str(next_month[0]))
+            month_list = gather_monthly_noaa_files(
+                dir, noaa_station, ext, next_month[1], next_month[0])
             if len(month_list) > 0:
-                range_list = range_list + month_list 
+                range_list = range_list + month_list
     final_list = []
     startdt = startdt.date()
     enddt = enddt.date()
     while range_list:
         csv_file = range_list.pop(0)
-        if file_exclusion_filter( csv_file):
+        if file_exclusion_filter(csv_file):
             continue
         try:
-            f_date = parse_date_from_station_csv(  csv_file )
+            f_date = parse_date_from_station_csv(csv_file)
         except ValueError:
             trace_print(4, "bad file name:", csv_file)
-        if ( f_date >= startdt)  and ( f_date <= enddt):
+        if (f_date >= startdt) and (f_date <= enddt):
             final_list.append(csv_file)
     return final_list
 
@@ -255,7 +266,7 @@ def gather_any_noaa_files(dir, noaa_station, ext, startdt, enddt):
 def gather_monthly_noaa_files(dir, noaa_station, ext, tyear, tmonth):
     glob_filter = create_station_monthly_glob_filter(
         noaa_station, ext, tyear, tmonth)
-    rdir =  r'{}'.format(dir)
+    rdir = r'{}'.format(dir)
     glob_path = Path(rdir)
     file_list = [str(pp) for pp in glob_path.glob(str(glob_filter))]
     final_l = []
@@ -270,19 +281,21 @@ def load_monthly_noaa_csv_files(dir, noaa_station, ext="csv", tyear=2021, tmonth
         dir, noaa_station, ext, tyear, tmonth)
     if dir == ".":
         t_dir = ""
-        trace_print( 4, "Using Current working direcotry")
+        trace_print(4, "Using Current working direcotry")
     else:
         t_dir = dir
-        trace_print( 4, " loading from dir: ", t_dir)
+        trace_print(4, " loading from dir: ", t_dir)
     month_df = pd.DataFrame()
     if len(file_list) > 0:
         for f in file_list:
             if file_exclusion_filter(f):
                 continue
             obs1 = read_weather_obs_csv(t_dir + f)
-            trace_print( 4, "loading:  ", f )
-            month_df = month_df.append(obs1, ignore_index=True)
+            trace_print(4, "loading:  ", f)
+            month_df = pd.concat( [ month_df,obs1 ], ignore_index=True)
+            # month_df = month_df.append(obs1, ignore_index=True)
     return month_df
+
 
 def load_range_noaa_csv_files(dir, noaa_station, ext="csv", startdt=0, enddt=0):
     file_list = gather_any_noaa_files(
@@ -290,16 +303,18 @@ def load_range_noaa_csv_files(dir, noaa_station, ext="csv", startdt=0, enddt=0):
     month_df = pd.DataFrame()
     if dir == ".":
         t_dir = ""
-        trace_print( 4, "Using Current working direcotry")
+        trace_print(4, "Using Current working direcotry")
     else:
         t_dir = dir
-        trace_print( 4, " loading from dir: ", t_dir)
+        trace_print(4, " loading from dir: ", t_dir)
     if len(file_list) > 0:
         for f in file_list:
             obs1 = read_weather_obs_csv(t_dir + f)
-            trace_print( 4, "loading:  ", f )
-            month_df = month_df.append(obs1, ignore_index=True)
+            trace_print(4, "loading:  ", f)
+            month_df = pd.concat( [month_df, obs1], ignore_index=True)
+            #month_df = month_df.append(obs1, ignore_index=True)
     return month_df
+
 
 def hunt_for_noaa_files2(dir, station_glob_filter):
     """
@@ -313,6 +328,7 @@ def hunt_for_noaa_files2(dir, station_glob_filter):
     if (len(station_file_list) > 0):
         target_csv = station_file_list[-1]
     return target_csv
+
 
 def hunt_for_noaa_files3(dir, station_glob_filter, ext):
     """
@@ -387,76 +403,79 @@ def construct_daily_cmd_call(file, obs_dir):
         r"daily_weather_obs_chart.py" + c_file + c_chart + c_table + c_dir
     return cmd
 
-def knots( mph):
+
+def knots(mph):
     return float(mph * 0.868976)
 
-def cardinal_points( dir ):
+
+def cardinal_points(dir):
     # returns -1 on failure
     points = {
-        "N" : 0,
-        "NORTH" : 0,
-        "NE"  : 45,
-        "NORTEAST" : 45,
-        "E" : 90,
-        "EAST" : 90,
-        "SE" : 135,
-        "SOUTHEAST" : 135,
-        "S" : 180,
+        "N": 0,
+        "NORTH": 0,
+        "NE": 45,
+        "NORTEAST": 45,
+        "E": 90,
+        "EAST": 90,
+        "SE": 135,
+        "SOUTHEAST": 135,
+        "S": 180,
         "SOUTH": 180,
         "SW": 225,
-        "SOUTHWEST" : 225,
-        "W" : 270,
+        "SOUTHWEST": 225,
+        "W": 270,
         "WEST": 270,
         "NW": 315,
         "NORTHWEST": 315
     }
     mydir = str(dir.upper())
-    
+
     try:
         my_point = points[mydir]
     except:
         print(f"unknown cardinal point: {mydir}")
         my_point = -1
-        
+
     return my_point
 
-def wind_text( dir ):
+
+def wind_text(dir):
     points = {
-        "N" : 'North',
+        "N": 'North',
         "NORTH": 'North',
-         0:  "North",
-         "NORTHEAST": "NorthEast",
-        "NE"  : "NorthEast",
-         45 :  "NorthEast",
-        "E" : "East",
-         90: "East",
-         "EAST" : "East",
-        "SE" : "SouthEast",
-         135: "SouthEast",
-         "SOUTHEAST" : "SouthEast",
-        "S" : "South",
-         180: "South",
-         "SOUTH" : "South",
-        "SW" :  "SouthWest",
-         225 : "SouthWest",
-         "SOUTHWEST" : "SouthWest",
-        "W" : "West",
-         270 : "West",
-         "WEST":  "West",
+        0:  "North",
+        "NORTHEAST": "NorthEast",
+        "NE": "NorthEast",
+        45:  "NorthEast",
+        "E": "East",
+        90: "East",
+        "EAST": "East",
+        "SE": "SouthEast",
+        135: "SouthEast",
+        "SOUTHEAST": "SouthEast",
+        "S": "South",
+        180: "South",
+        "SOUTH": "South",
+        "SW":  "SouthWest",
+        225: "SouthWest",
+        "SOUTHWEST": "SouthWest",
+        "W": "West",
+        270: "West",
+        "WEST":  "West",
         "NW": "NorthWest",
-         315 : "NorthWest",
-         "NORTHWEST":  "NorthWest"
+        315: "NorthWest",
+        "NORTHWEST":  "NorthWest"
     }
     mydir = str(dir.upper())
-    
+
     try:
         my_text = points[mydir]
     except:
         print(f"unknown text direction: {mydir}")
         my_text = -1
-        
+
     return my_text
-    
+
 
 if __name__ == "__main__":
 
@@ -533,9 +552,9 @@ if __name__ == "__main__":
 
    # obs2 = load_monthly_noaa_csv_files(".", "KDCA", "csv", 2021, 4)
 
-    #print(obs2.shape)
+    # print(obs2.shape)
 
-    #print(obs2.head(150))
+    # print(obs2.head(150))
 
     # obs2.to_csv("month_test.csv", index=False)
 
@@ -544,29 +563,27 @@ if __name__ == "__main__":
 
     print("diff_month: ", diff_month(T1, T2))
 
-    print(gather_any_noaa_files( ".", "KDCA", "csv", T1,T2))
-    
+    print(gather_any_noaa_files(".", "KDCA", "csv", T1, T2))
+
     obs3 = load_range_noaa_csv_files(".", "KDCA", "csv", T1, T2)
-   
-    print( obs3.shape)
-    
+
+    print(obs3.shape)
+
     print(obs3.head(150))
-    
+
     print("testing knots")
-    
-    print( f"10 mph is { knots(10)} knots")
-    
+
+    print(f"10 mph is { knots(10)} knots")
+
     print("testing cardinal points")
-    
-    test_pnts = ["South", "NW", "Southwest", "bat" ]
+
+    test_pnts = ["South", "NW", "Southwest", "bat"]
     for pnt in test_pnts:
         my_pnt = cardinal_points(pnt)
         print(f"{pnt} is { my_pnt } degrees")
-        
-    test_dir = ["S", "SW", "N", "NW", "NE", "E" ]
-    
+
+    test_dir = ["S", "SW", "N", "NW", "NE", "E"]
+
     for tdir in test_dir:
         my_cardinal_dir = wind_text(tdir)
         print(f'The text for {tdir} is {my_cardinal_dir} ')
-    
-    
