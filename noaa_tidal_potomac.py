@@ -120,7 +120,7 @@ class ObsCollector:
             try:
                 if tag_class[0] == "warn-highlight":
                     warn_flag = True
-                    print("warning")
+                    print("forcast has warning")
             except:
                 pass
         # Get the text content of the tag
@@ -135,11 +135,12 @@ class ObsCollector:
             for line in lines:
                 # print("l:", line)
                 # Check if the line starts with ANZxxx
-                if line.startswith("ANZ536"):
-                   print("here")
-                   station_flag = False
-                   break
-                if line.startswith("ANZ535"):
+                if line.startswith("ANZ"):
+                   if line.startswith(self.station_id) is False:
+                        print("end of station data...")
+                        station_flag = False
+                        break
+                if line.startswith(self.station_id):
                     station_flag = True
                 if station_flag == True:
                     print(line)
