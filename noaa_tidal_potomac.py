@@ -104,45 +104,38 @@ class ObsCollector:
 
     def find_station_data(self):
         """ parse station data from noaa html page """
-        f = BeautifulSoup(self.url_data.text, 'lxml')
-        my_content = f.find(id="contentarea")
-        # print(my_content)
-        t = re.finditer(r'\w\w\w\d\d\d\W\d\d\d\d\d\d',  str(my_content))
-        station_list = []
-        text_obs = str(my_content)
-        #leantext = BeautifulSoup(text_obs,'lxml').text
-        #text_obs = leantext
-        for i in t:
-            index = int(i.start())
-            # print(str(index))
-            # print(text_obs[index:(index+6)])
-            station_name = text_obs[index:(index+6)]
-            station_list.append((index, station_name))
-        tail = re.finditer(r'Start Tail', str(my_content))
-        for s in tail:
-            # print("Start Tail: ", str(s.start()))
-            station_list.append((int(s.start() - 5), 'end'))
-        print(station_list)
-        print(len(station_list))
-        station_list_len = len(station_list)
-        # print("test_obs:")
-        # print(text_obs)
+        #f = BeautifulSoup(self.url_data.text, 'lxml')
+        soup = BeautifulSoup(self.url_data.text, "html.parser")
 
-        for i in range(station_list_len):
-            station_data = "<not found>"
-            if i == (station_list_len - 1):
-                break
-            #print("i: ", str(i) )
-            station_data = text_obs[station_list[i][0]:station_list[i+1][0]]
-            #print("station_data:", station_data)
-            #print(" self.station:", self.station_id)
-            if self.station_id in station_data:
-                my_station = station_data
-                break
-        r_station_data = BeautifulSoup(station_data, 'lxml').text
+        # Find all the <pre> tags in the page
+        pre_tags = soup.find_all("p")
+        r_station_data = ""
+        station_flag = False
+        # Loop through each <pre> tag
+        for pre_tag in pre_tags:
+        # Get the text content of the tag
+            text = pre_tag.get_text()
+            # Split the text into lines
+            lines = text.split("\n")
+            # Loop through each line
+            for line in lines:
+                # print("l:", line)
+                # Check if the line starts with ANZxxx
+                if line.startswith("ANZ536"):
+                   print("here")
+                   station_flag = False
+                   break
+                if line.startswith("ANZ535"):
+                    station_flag = True
+                if station_flag == True:
+                    print(line)
+                    r_station_data = r_station_data + line + "\n"
+                    if line.endswith("."):
+                       r_station_data = r_station_data + "\n"
         self.last_forcast = r_station_data
         print(hashlib.md5(r_station_data.encode('utf-8')).hexdigest())
         return r_station_data
+
 
 #
 #  init the collector
