@@ -14,6 +14,7 @@ import os,sys
 import hashlib
 import re
 from datetime import datetime, timedelta
+from xml.dom.minidom import Attr
 import requests
 from bs4 import BeautifulSoup
 # from weather_obs import *
@@ -111,12 +112,25 @@ class ObsCollector:
         pre_tags = soup.find_all("p")
         r_station_data = ""
         station_flag = False
+        warn_flag = False
         # Loop through each <pre> tag
         for pre_tag in pre_tags:
+            tag_class = pre_tag.get("class", [])
+            #print("tag_class:", tag_class)
+            try:
+                if tag_class[0] == "warn-highlight":
+                    warn_flag = True
+                    print("warning")
+            except:
+                pass
         # Get the text content of the tag
             text = pre_tag.get_text()
             # Split the text into lines
             lines = text.split("\n")
+            if warn_flag == True:
+                lines.append("\n")
+                warn_flag = False
+            # print("lines:" , lines)
             # Loop through each line
             for line in lines:
                 # print("l:", line)
