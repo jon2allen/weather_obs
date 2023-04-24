@@ -20,90 +20,14 @@ from bs4 import BeautifulSoup
 # from weather_obs import *
 import obs_utils
 from weather_obs import create_station_file_name
+from obs_3_day_collect import ObsCollector
 
 
-class ObsCollector:
+class MarineForcast(ObsCollector):
     def __init__(self, url, id, filetype):
-        self.station_url = url
-        self.station_id = id
-        self.filetype = filetype
-        self.allowdup = False
-        self.appendflag = False
+        super().__init__(url, id, filetype)
 
-    def show_collector(self):
-        return str(self.station_id + "@" + self.station_url)
-
-    def get_url_data(self):
-        self.url_data = requests.get(self.station_url)
-
-    def show_url_data(self):
-        """show Url data if desired"""
-        return self.url_data.text
-
-    def set_station_file_name(self):
-        self.obs_filename = create_station_file_name(self.station_id, self.filetype)
-
-    def _write_station_data( self, fname):
-        obs_file = open(fname, "w")
-        obs_file.write(self.last_forcast)
-        obs_file.close()
-    
-    def _append_station_date( self, fname):
-        obs_file = open(fname, "a")
-        obs_file.write(self.last_forcast)
-        obs_file.close()
-        
-    def write_station_data(self):
-        """write out last forcast"""
-        if self.appendflag == True:
-           self._append_station_date( self.obs_filename)
-        else:
-           self._write_station_data(self.obs_filename)
-
-    def write_station_data_custom(self, ending_text):
-        self._write_station_data(self.station_id + "_" + ending_text ) 
-
-
-    def obs_collection_sequence(self):
-        """ basic collection sequence - fetch, intpret, write """
-        self.get_url_data()
-        self.find_station_data()
-        self.set_station_file_name()
-        if (self.obs_collection_duplicate_check()):
-            print("duplicate:  exit")
-        else:
-            self.write_station_data()
-
-    def obs_collection_duplicate_check(self):
-        # note to get correct md5 checksum - binary file comparison
-        # initialz test_md5 - preven error on fresh dir
-        if self.allowdup == True:
-            return False
-        test_md5 = " "
-        self.write_station_data_custom("dupcheck.txt")
-        with open(self.station_id + "_" + "dupcheck.txt", "rb") as fl:
-            blob1 = fl.read()
-            curr_md5 = str(hashlib.md5(blob1).hexdigest())
-            print("Curr_md5:", curr_md5)
-        today = datetime.now()
-        day_1 = timedelta(hours=24)
-        yesterday = today - day_1
-        today_glob = obs_utils.create_station_glob_filter(
-            self.station_id, "txt", today)
-        yesterday_glob = obs_utils.create_station_glob_filter(
-            self.station_id, "txt", yesterday)
-        last_file = obs_utils.hunt_for_noaa_files2(".", today_glob)
-        if len(last_file) < 1:
-            last_file = obs_utils.hunt_for_noaa_files2(".", yesterday_glob)
-        if (len(last_file) > 0):
-            with open(last_file, "rb") as f2:
-                blob2 = f2.read()
-                test_md5 = str(hashlib.md5(blob2).hexdigest())
-                print("test_md5", test_md5)
-                print("test_file ", last_file)
-        return (curr_md5 == test_md5)
-
-    def find_station_data(self):
+    def _find_station_data(self):
         """ parse station data from noaa html page """
         #f = BeautifulSoup(self.url_data.text, 'lxml')
         soup = BeautifulSoup(self.url_data.text, "html.parser")
@@ -182,7 +106,7 @@ if __name__ == "__main__":
     import logging
     logger = logging.getLogger('weather_obs_f')
 
-    obs_x = ObsCollector(
+    obs_x = MarineForcast(
         url=FORECASTURL, id=FORECASTID, filetype='txt')
 
     print(obs_x.show_collector())
