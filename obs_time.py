@@ -5,7 +5,7 @@ from tzlocal import get_localzone
 from xml.dom import ValidationErr
 from dateutil import parser, tz
 import csv
-
+import os
 
 class obsDateRfcHandler:
     def __init__(self, dt):
@@ -37,8 +37,9 @@ class obsDateRegHandler:
         self.cannicol_tz = None
         #print\("td1: ", dt1, "len:", len(dt1) )
         self.my_tz = tz.gettz(dt1)
+        #print\("regdate+tz0:", self.my_tz)
         if str(self.my_tz).find('local') > 0:
-            self.my_tz = None
+             self.my_tz = None
         #print\("regdate+tz1:", self.my_tz)
         if self.my_tz is None:
             self.my_tz = self._wiki_tz_search( dt1 )
@@ -103,7 +104,7 @@ class obsDateRegHandler:
             return None
         dt2 = dt1.upper()
         #print\("tzserach")
-        with open('timezone_table_wiki.csv') as csvfile:
+        with open(ObsDate.obs_time_dir + 'timezone_table_wiki.csv') as csvfile:
             tzreader = csv.reader(csvfile, delimiter=',', quotechar='"')
             for row in tzreader:
                 # #print\( "row:", row )
@@ -137,6 +138,7 @@ class obsExcelDtHandler:
             
 
 class ObsDate():
+    obs_time_dir = os.getcwd() + os.sep
     def __init__(self, dt):
         if isinstance(dt, datetime):
             self.handler = obsDateDtHandler(dt)
