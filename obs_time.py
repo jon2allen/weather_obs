@@ -110,7 +110,7 @@ class obsDateRegHandler:
            #\print("cache hit")
            return timezone_cache[dt2]
         with open(ObsDate.obs_time_dir + 'timezone_table_wiki.csv') as csvfile:
-            print("open csv" )
+            #print\("open csv" )
             tzreader = csv.reader(csvfile, delimiter=',', quotechar='"')
             for row in tzreader:
                 # #print\( "row:", row )
@@ -148,7 +148,7 @@ class ObsCache(dict):
 
     def __setitem__(self, key, value):
         super().__setitem__(key, value)
-        print("cache size()", len(self ))
+        #print\("cache size()", len(self ))
         if self.maxsize is not None and len(self) > self.maxsize:
             self.popitem(last=False)
 
