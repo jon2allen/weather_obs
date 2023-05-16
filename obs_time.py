@@ -7,6 +7,7 @@ from dateutil import parser, tz
 import csv
 import os
 
+
 class obsDateRfcHandler:
     def __init__(self, dt):
         if isinstance(dt, datetime):
@@ -104,11 +105,17 @@ class obsDateRegHandler:
             return None
         dt2 = dt1.upper()
         #print\("tzserach")
+        #printi\("get: ", timezone_cache.get(dt2), " ", dt2 )
+        if timezone_cache.get(dt2) is not  None:
+           #\print("cache hit")
+           return timezone_cache[dt2]
         with open(ObsDate.obs_time_dir + 'timezone_table_wiki.csv') as csvfile:
+            print("open csv" )
             tzreader = csv.reader(csvfile, delimiter=',', quotechar='"')
             for row in tzreader:
                 # #print\( "row:", row )
                 if row[0].startswith(dt2):
+                    timezone_cache[dt2] = tz.gettz(row[2])
                     return tz.gettz(row[2])
                 
 
@@ -133,12 +140,33 @@ class obsExcelDtHandler:
     def __repr__(self):
         return str(self.obs_dt.strftime('%x %X'))
 
+class ObsCache(dict):
 
+    def __init__(self, maxsize=None):
+        super().__init__()
+        self.maxsize = maxsize
+
+    def __setitem__(self, key, value):
+        super().__setitem__(key, value)
+        print("cache size()", len(self ))
+        if self.maxsize is not None and len(self) > self.maxsize:
+            self.popitem(last=False)
+
+    def get(self, key, default=None):
+        #print("self: ", super().get(key, False ) )
+        try:
+          if super().get(key, False):
+            return self[key]
+          else:
+            return default
+        except:
+          return False
         
             
 
 class ObsDate():
     obs_time_dir = os.getcwd() + os.sep
+    #timezone_cache = ObsCache(  maxsize = 4 )
     def __init__(self, dt):
         if isinstance(dt, datetime):
             self.handler = obsDateDtHandler(dt)
@@ -266,6 +294,7 @@ class ObsDate():
     
 
 
+timezone_cache = ObsCache(  maxsize = 4 )
 
 
 if __name__ == "__main__":
@@ -422,4 +451,11 @@ if __name__ == "__main__":
     print( td_guam.local_now_reg())
     
     print( td_guam.tzinfo)
-   
+  
+    my_cache = ObsCache( maxsize = 4 )
+    my_cache['EDT'] = 2
+    print(my_cache['EDT']) 
+    print( my_cache.get('jon')) 
+    print( my_cache.get('EDT'))
+    print( my_cache['EDT']) 
+
