@@ -286,7 +286,7 @@ if __name__ == "__main__":
     
     if obs1.empty:
         print("fata error - cannot read file")
-        if sys.platform.startswith("linux"):
+        if sys.platform.startswith("linux") and (now.hour > 3):
             from email_obs_err import *
             send_error_email("daily chart")
         exit(16)

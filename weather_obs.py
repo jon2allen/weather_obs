@@ -772,10 +772,16 @@ def weather_collect_driver(obs1):
     obs1.current_local_time = obs1.local_time.local_now_reg()
     trace_print(4, "Local time now: ", str(obs1.current_local_time))
     if obs1.current_obs_time.day != obs1.current_local_time.day:
-        trace_print(4, "obs time not on same day, exiting... ",
-                    str(obs1.current_obs_time))
-        obs_schedule_alt_jobs(obs1)
-        return False
+        if obs1.current_obs_time.hour != 23:
+            trace_print(4, "obs time not on same day, exiting... ",
+                        str(obs1.current_obs_time))
+            obs1.prior_obs_time = obs1.curent_local_time
+            obs1.obs_iteration = obs1.obs_iteration + 1
+            dump_xml(obs1, xmldata, obs1.obs_iteration)
+            obs_schedule_alt_jobs(obs1)
+            return False
+        else:
+            trace_print(4, "midnight processing")
     if (obs1.prior_obs_time.hour == 23):
         trace_print(4, "Special driver processing at hour 23")
         obs1.prior_obs_time = obs1.current_obs_time
