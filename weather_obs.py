@@ -775,7 +775,7 @@ def weather_collect_driver(obs1):
         if obs1.current_obs_time.hour != 23:
             trace_print(4, "obs time not on same day, exiting... ",
                         str(obs1.current_obs_time))
-            obs1.prior_obs_time = obs1.curent_local_time
+            obs1.prior_obs_time = obs1.current_local_time
             obs1.obs_iteration = obs1.obs_iteration + 1
             dump_xml(obs1, xmldata, obs1.obs_iteration)
             obs_schedule_alt_jobs(obs1)
