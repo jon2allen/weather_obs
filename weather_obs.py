@@ -964,13 +964,13 @@ def obs_cut_csv_file(obs1):
     """ determines if day transition has happened and starts a new CSV """
     if (obs1.cut_file == True):
         # obs_cut_time = obs1.current_obs_time + timedelta(minutes=10)
-        trace_print(1, "cut_csv: obs1.obs_time", str(obs1.current_obs_time) )
+        trace_print(1, "cut_csv: obs1.obs_time is ", str(obs1.current_obs_time) )
         obs1.local_time = obs1.current_obs_time
         obs1.current_local_time = obs1.local_time.local_now_reg()
         obs_cut_time = obs1.current_local_time
         # cut time should be 10 minutes ahead
         # NOAA observations at at approx 50 minutes after the hour
-        if (duration_cut_check2(obs1, obs1.prior_obs_time, obs_cut_time, obs1.duration_interval)):
+        if (duration_cut_check2(obs1, obs1.current_obs_time, obs_cut_time, obs1.duration_interval)):
             run_cut_operation(obs1, obs_cut_time)
 
 
@@ -1004,7 +1004,7 @@ def run_cut_operation(obs1, obs_cut_time):
 def main_obs_loop(obs1_list):
     """ main loop - runs schedule and test for cut csv condition """
     run_minutes = ObsDate.now().minute
-    if ((run_minutes == 59)):
+    if ((run_minutes == 59) or (run_minutes == 58 )):
         # every hour check to see if need to cut
         trace_print(1, "Num minutes running: ", str(run_minutes))
         foreach_obs(obs_cut_csv_file, obs1_list)
