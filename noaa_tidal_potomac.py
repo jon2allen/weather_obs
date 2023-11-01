@@ -44,7 +44,7 @@ class MarineForcast(ObsCollector):
             try:
                 if tag_class[0] == "warn-highlight":
                     warn_flag = True
-                    print("forcast has warning")
+                    print("forecast has warning")
             except:
                 pass
         # Get the text content of the tag
