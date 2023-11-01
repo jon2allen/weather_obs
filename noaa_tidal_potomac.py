@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #########################################################################
-# NOAA marine forcast collector
+# NOAA marine forecast collector
 #
 # Scrapes data from NOAA marine forecast site
 #
