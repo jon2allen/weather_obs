@@ -76,10 +76,9 @@ class ObsTideCollector( ObsCollector):
         return False
     def load_tidal_data(self, tidal_file):
         my_df = pd.read_csv(tidal_file, index_col=0,
-                              parse_dates = [0], sep = r'\s+', header = 12)
+                              parse_dates = [0], date_format="%Y/%m/%d  %a", sep = r'\s+', header = 12)
         #self.df = self.df.drop(columns = ['Time', 'Pred(Ft)', 'Pred(cm)'])
         print('my_df')
-
         my_df['Date'] = my_df.apply(lambda x: x['Date'][:-8], axis = 1)
         my_df['tide_time'] = my_df['Day'] + my_df['Time']
         my_df = my_df.drop(columns = ['Date', 'Time', 'Day'])
@@ -87,7 +86,7 @@ class ObsTideCollector( ObsCollector):
             self.df = my_df
         else:
             # self.df = self.df.append(my_df, ignore_index=False)
-            self.df = pd.concat([self.df, my_df], ignore_index=True)
+            self.df = pd.concat([self.df, my_df], ignore_index=False)
     def get_last_tidal_data(self):
         today = datetime.now()
         day_7 = timedelta(hours=168)
@@ -100,7 +99,7 @@ class ObsTideCollector( ObsCollector):
         if self.df.empty:
             super().obs_collection_sequence()
             self.get_next_year_data()
-            self.read_next_year_data()
+            self.read_next_year_data() 
             self.write_tide_table_to_html()
         else:
             self.read_next_year_data()
@@ -110,10 +109,9 @@ class ObsTideCollector( ObsCollector):
         super().get_url_data()
         print("tide get url")
         my_df = pd.read_csv(StringIO(self.url_data.text), index_col=0,
-                              parse_dates = [0], sep = r'\s+', header = 12)
+                              parse_dates = [0], date_format="%Y/%m/%d  %a", sep = r'\s+', header = 12)
         #my_df = my_df.df.drop(columns = ['Time', 'Pred(Ft)', 'Pred(cm)'])
         print('my_df')
-
         my_df['Date'] = my_df.apply(lambda x: x['Date'][:-8], axis = 1)
         my_df['tide_time'] = my_df['Day'] + my_df['Time']
         my_df = my_df.drop(columns = ['Date', 'Time', 'Day'])
@@ -121,7 +119,7 @@ class ObsTideCollector( ObsCollector):
             self.df = my_df
         else:
             # self.df = self.df.append(my_df, ignore_index=False)
-            self.df = pd.concat([self.df, my_df], ignore_index=True)
+            self.df = pd.concat([self.df, my_df], ignore_index=False)
         #index = self.df.index
         #print(index)
     def get_next_year_data(self):
@@ -148,7 +146,9 @@ class ObsTideCollector( ObsCollector):
         print(str(today))
         print(str(enddate))
         #tide_table = self.df['2021-09'].iloc[:, :6]
-        tide_table = self.df.loc[str(today): str(enddate)]
+        #tide_table = self.df.loc[str(today): str(enddate)]
+        tide_table = self.df.loc[str(today.strftime('%Y/%m/%d')): str(enddate.strftime('%Y/%m/%d'))] 
+        #tide_table = self.df.loc[today:enddate]
         tide_table.index.name = "Date"
         print("write tide table")
         #print(tide_table.head(10)) 
