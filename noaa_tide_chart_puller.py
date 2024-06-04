@@ -46,7 +46,7 @@ class ObsTideCollector( ObsCollector):
         # need new functino that gets and reads this file.
         # append this df_2022 to the df in the class
         today = datetime.now()
-        match = re.search('bdate=(\d+)', self.station_url)
+        match = re.search(r'bdate=(\d+)', self.station_url)
         print(f'match group 1 {match.group(1)}')
         bstring = "bdate=" + str(match.group(1))
         nstring = "bdate=" + str(today.year)
@@ -76,7 +76,7 @@ class ObsTideCollector( ObsCollector):
         return False
     def load_tidal_data(self, tidal_file):
         my_df = pd.read_csv(tidal_file, index_col=0,
-                              parse_dates = [0], sep = '\s+', header = 12)
+                              parse_dates = [0], sep = r'\s+', header = 12)
         #self.df = self.df.drop(columns = ['Time', 'Pred(Ft)', 'Pred(cm)'])
         print('my_df')
 
@@ -86,7 +86,8 @@ class ObsTideCollector( ObsCollector):
         if self.df.empty:
             self.df = my_df
         else:
-            self.df = self.df.append(my_df, ignore_index=False)
+            # self.df = self.df.append(my_df, ignore_index=False)
+            self.df = pd.concat([self.df, my_df], ignore_index=True)
     def get_last_tidal_data(self):
         today = datetime.now()
         day_7 = timedelta(hours=168)
@@ -109,7 +110,7 @@ class ObsTideCollector( ObsCollector):
         super().get_url_data()
         print("tide get url")
         my_df = pd.read_csv(StringIO(self.url_data.text), index_col=0,
-                              parse_dates = [0], sep = '\s+', header = 12)
+                              parse_dates = [0], sep = r'\s+', header = 12)
         #my_df = my_df.df.drop(columns = ['Time', 'Pred(Ft)', 'Pred(cm)'])
         print('my_df')
 
@@ -119,7 +120,8 @@ class ObsTideCollector( ObsCollector):
         if self.df.empty:
             self.df = my_df
         else:
-            self.df = self.df.append(my_df, ignore_index=False)
+            # self.df = self.df.append(my_df, ignore_index=False)
+            self.df = pd.concat([self.df, my_df], ignore_index=True)
         #index = self.df.index
         #print(index)
     def get_next_year_data(self):
