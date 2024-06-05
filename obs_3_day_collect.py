@@ -34,7 +34,7 @@ class ObsCollector:
         self.station_id = id
         self.filetype = filetype
         self.allowdup = True
-        self.appendflag = True
+        self.appendflag = False 
         self.obsday = 0
         self.obs_filename = None
         self.writeflag = True
@@ -84,7 +84,7 @@ class ObsCollector:
         pass
 
     def _post_process_station_data(self):
-        pass
+        Pass
 
     def _pre_process_station_data(self):
         pass
@@ -209,6 +209,7 @@ class ObsCollector3day(ObsCollector):
         return obs_a
 
     def _write_station_data(self, fname):
+        print("writing out station date - 3day")
         self.last_forcast.to_csv(
             fname, index=False, header=True, quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
 
@@ -269,10 +270,13 @@ class ObsCollector3dayhourly(ObsCollector3day):
         print(f"G1: {g1}")
         target = obs_utils.hunt_for_noaa_files3('.', g1, 'csv')
         print(f"target: { target }")
-        if len(target) < 3:
+        print("len: ", len(target) )
+        if len(target) > 3:
+            print("setting false")
             self.appendflag = False
             self.allowdup = False
         else:
+            print("setting true")
             self.appendflag = True
             self.allowdup = True
             self.obs_filename = target
@@ -290,7 +294,7 @@ if __name__ == "__main__":
     #######################################################################
     #FORECASTURL = 'https://w1.weather.gov/data/obhistory/KDCA.html'
     FORECASTURL = 'https://forecast.weather.gov/data/obhistory/KDCA.html'
-    FORECASTID = 'KDCA_3_day'
+    FORECASTID = 'KDCA_3_day_csv'
     DATA_DIR = '/var/www/html/weather_obs/data'
 
     # change to your desirect dirctory

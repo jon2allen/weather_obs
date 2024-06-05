@@ -40,15 +40,18 @@ class ObsCsvToXml:
         tf = TimezoneFinder()
         # print("row values", row[8], row[7])
         t_tz = tf.timezone_at(lng=float(row[8]), lat=float(row[7]))
-        #print("t_tz:" , t_tz)
+        print("t_tz:" , t_tz)
         self.tztext = t_tz
         my_zone = pytz.timezone(self.tztext)
-        #print("zone: " , my_zone.zone)
+        print("zone: " , my_zone.zone)
         obs_tz_time = obs_time.ObsDate(row[9])
         obs_tz_time.emit_type("dt")
         fmt = '%Y-%m-%d %H:%M:%S %Z'
-        #print("obs_tz_time:" , obs_tz_time)
-        loc_dt = my_zone.localize(obs_tz_time)
+        print("obs_tz_time:" , obs_tz_time)
+        try:
+           loc_dt = my_zone.localize(obs_tz_time)
+        except:
+           loc_dt = obs_tz_time 
         self.timezone = loc_dt.strftime(fmt)[-3:]
         #print(self.timezone)
     
