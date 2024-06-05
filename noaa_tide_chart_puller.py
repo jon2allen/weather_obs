@@ -76,7 +76,7 @@ class ObsTideCollector( ObsCollector):
         return False
     def load_tidal_data(self, tidal_file):
         my_df = pd.read_csv(tidal_file, index_col=0,
-                              parse_dates = [0], date_format="%Y/%m/%d  %a", sep = r'\s+', header = 12)
+                              parse_dates = [0],  sep = r'\s+', header = 12)
         #self.df = self.df.drop(columns = ['Time', 'Pred(Ft)', 'Pred(cm)'])
         print('my_df')
         my_df['Date'] = my_df.apply(lambda x: x['Date'][:-8], axis = 1)
@@ -109,7 +109,7 @@ class ObsTideCollector( ObsCollector):
         super().get_url_data()
         print("tide get url")
         my_df = pd.read_csv(StringIO(self.url_data.text), index_col=0,
-                              parse_dates = [0], date_format="%Y/%m/%d  %a", sep = r'\s+', header = 12)
+                              parse_dates = [0],  sep = r'\s+', header = 12)
         #my_df = my_df.df.drop(columns = ['Time', 'Pred(Ft)', 'Pred(cm)'])
         print('my_df')
         my_df['Date'] = my_df.apply(lambda x: x['Date'][:-8], axis = 1)
