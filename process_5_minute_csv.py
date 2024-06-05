@@ -26,7 +26,7 @@ Process file created by following command running via cron
 0,5,10,15,20,25,30,35,40,45,50,55  * * * * /home/jon2allen/weather_tracker.sh
 [jon2allen@freebsd12_3 ~]$ cat weather_tracker.sh
 #!/usr/local/bin/bash
-/home/jon2allen/github/weather_obs/weather_obs.py --append /home/jon2allen/jontest.csv --station https://w1.weather.gov/xml/current_obs/KDCA.xml --collectdate --ignoredup > /dev/null
+/home/jon2allen/github/weather_obs/weather_obs.py --append /home/jon2allen/jontest.csv --station https://forecast.weather.gov/xml/current_obs/KDCA.xml --collectdate --ignoredup > /dev/null
 
 
 Goal:  find the minutes after tha hour when the observation gets posted.  Run metrics.

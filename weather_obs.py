@@ -209,7 +209,6 @@ def create_station_file_name(station='KDCA', ext='csv', obs_time_stamp=0):
     return file_n
 
 
-# def create_station_file_name2(station="https://w1.weather.gov/xml/current_obs/KDCA.xml", ext='csv'):
 def create_station_file_name2(obs1, ext='csv'):
     """ 
     create_station_file from observation time 
@@ -585,7 +584,7 @@ def transform_observation(attribute, data):
     """ place to hook any transforms on te data """
     output = data
     if (attribute == 'observation_time'):
-        output = data[16:]
+        output = data[15:]
     return output
 
 

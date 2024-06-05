@@ -13,7 +13,7 @@ def lambda_handler(event, context):
         print("Fs:  ", f)
     print("executing script")
     exec = "python " + exec_dir + "/weather_obs.py"
-    station = " --station https://w1.weather.gov/xml/current_obs/KDCA.xml"
+    station = " --station https://forecast.weather.gov/xml/current_obs/KDCA.xml"
     cmd = exec + station
     os.system(cmd)
     print("after command")

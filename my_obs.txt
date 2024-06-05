@@ -1,3 +1,3 @@
-https://w1.weather.gov/xml/current_obs/KDCA.xml
-https://w1.weather.gov/xml/current_obs/PHOG.xml
-https://w1.weather.gov/xml/current_obs/PGUM.xml
+https://forecast.weather.gov/xml/current_obs/KDCA.xml
+https://forecast.weather.gov/xml/current_obs/PHOG.xml
+https://forecast.weather.gov/xml/current_obs/PGUM.xml

@@ -17,8 +17,8 @@ global logger
 logger = logging.getLogger('weather_obs_f')
 #note made changes to weather_obs.py for logging and csv_headers to make work, not sure if perm
 #
-test_station = "https://w1.weather.gov/xml/current_obs/KDCA.xml"
-test_station_hawaii = "https://w1.weather.gov/xml/current_obs/PHOG.xml"
+test_station = "https://forecast.weather.gov/xml/current_obs/KDCA.xml"
+test_station_hawaii = "https://forecast.weather.gov/xml/current_obs/KDCA.xml"
 
 def app_station(i_station):
     w_xml = get_weather_from_NOAA(i_station)
