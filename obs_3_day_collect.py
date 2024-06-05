@@ -202,7 +202,7 @@ class ObsCollector3day(ObsCollector):
     def _find_station_data(self):
         # print(self.url_data.text)
         tables1 = pd.read_html(self.url_data.text)
-        obs_a = tables1[3]
+        obs_a = tables1[0]
         obs_a.columns = obs_a.columns.get_level_values(2)
         # print(obs_a.head())
         self.last_forcast = obs_a
@@ -288,7 +288,8 @@ if __name__ == "__main__":
     # The script changes wording directory and then writes
     # DATA_DIR
     #######################################################################
-    FORECASTURL = 'https://w1.weather.gov/data/obhistory/KDCA.html'
+    #FORECASTURL = 'https://w1.weather.gov/data/obhistory/KDCA.html'
+    FORECASTURL = 'https://forecast.weather.gov/data/obhistory/KDCA.html'
     FORECASTID = 'KDCA_3_day'
     DATA_DIR = '/var/www/html/weather_obs/data'
 

@@ -51,8 +51,9 @@ if __name__ == "__main__":
     # The script changes wording directory and then writes
     # DATA_DIR
     #######################################################################
-    FORECASTURL = 'https://w1.weather.gov/data/obhistory/KDCA.html'
-    FORECASTID = 'KDCA_3_day_csv'
+    #FORECASTURL = 'https://w1.weather.gov/data/obhistory/KDCA.html'
+    FORECASTURL = 'https://forecast.weather.gov/data/obhistory/KDCA.html'
+    FORECASTID = 'KDCA_3_day'
     DATA_DIR = '/var/www/html/weather_obs/data'
 
     # change to your desirect dirctory
