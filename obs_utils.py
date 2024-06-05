@@ -71,7 +71,7 @@ def read_weather_obs_csv(target_csv):
     try:
         # ignore time zone for parse here - times local to observation
         def date_utc(x): return dateutil.parser.parse(x[:20], ignoretz=True)
-        obs1 = pd.read_csv(target_csv, parse_dates=[9], date_format="%Y/%m/%d  %a",
+        obs1 = pd.read_csv(target_csv, parse_dates=[9], date_parser=date_utc,
                            dtype=dtype_dict,
                            na_values="<no_value_provided>")
     except OSError:
