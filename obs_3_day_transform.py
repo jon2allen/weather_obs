@@ -23,7 +23,7 @@ class ThreeDayTransform:
         self.df3 = df3
         self.calm = False
         self.vrbl = False
-        self.wind_parts = self.df3['Wind(mph)'].values[0].split()
+        self.wind_parts = self.df3['Wind (mph)'].values[0].split()
         if len(self.wind_parts) < 3:
             self.gust = False
         else:
@@ -85,7 +85,7 @@ class ThreeDayTransform:
         }
 
     def get_visiblity(self):
-        return self.df3['Vis.(mi.)'].values[0]
+        return self.df3['Vis. (mi.)'].values[0]
 
     def get_weather_statement(self):
         return self.df3['Weather'].values[0]
@@ -170,13 +170,13 @@ class ThreeDayTransform:
         return f"{ temp_f} F ({temp_c} C)"
 
     def get_humidity(self):
-        return self.df3['RelativeHumidity'].values[0]
+        return self.df3['Relative Humidity'].values[0]
 
     def get_pressure_in(self):
-        return self.df3["altimeter(in)"].values[0]
+        return self.df3["altimeter (in)"].values[0]
 
     def get_pressure_mb(self):
-        return self.df3["sea level(mb)"].values[0]
+        return self.df3["sea level (mb)"].values[0]
 
     def get_pressure_str(self):
         return self.get_pressure_mb() + " mb"
@@ -194,12 +194,12 @@ class ThreeDayTransform:
         return format1
 
     def get_windchill_f(self):
-        if self.df3["WindChill(°F)"].isnull().values.any():
+        if self.df3["Wind Chill (°F)"].isnull().values.any():
             return obs_null_value
-        return self.df3["WindChill(°F)"].values[0]
+        return self.df3["Wind Chill (°F)"].values[0]
 
     def get_windchill_c(self):
-        if self.df3["WindChill(°F)"].isnull().values.any():
+        if self.df3["Wind Chill (°F)"].isnull().values.any():
             return obs_null_value
         return ((float(self.get_windchill_f()) - 32) * .5556)
 
@@ -212,12 +212,12 @@ class ThreeDayTransform:
         return format1
 
     def get_heatindex_f(self):
-        if self.df3["HeatIndex(°F)"].isnull().values.any():
+        if self.df3["Heat Index (°F)"].isnull().values.any():
             return obs_null_value
-        return self.df3["HeatIndex(°F)"].values[0]
+        return self.df3["Heat Index (°F)"].values[0]
 
     def get_heatindex_c(self):
-        if self.df3["HeatIndex(°F)"].isnull().values.any():
+        if self.df3["Heat Index (°F)"].isnull().values.any():
             return obs_null_value
         return ((float(self.get_heatindex_f()) - 32) * .5556)
 
@@ -270,8 +270,9 @@ transform_dict = {
 
 if __name__ == "__main__":
 
-    FORECASTURL = 'https://w1.weather.gov/data/obhistory/KDCA.html'
-    FORECASTID = 'KDCA_3_day'
+    #FORECASTURL = 'https://w1.weather.gov/data/obhistory/KDCA.html'
+    FORECASTURL = 'https://forecast.weather.gov/data/obhistory/KDCA.html'
+    FORECASTID = 'KDCA_3_day_csv'
     DATA_DIR = '/var/www/html/weather_obs/data'
 
     mydata = obs_3_day_collect.ObsCollector3dayhourly(
