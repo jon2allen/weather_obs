@@ -374,7 +374,7 @@ def weather_obs_init():
         setting_list = []
         # entries must be on the first 47 lines - no more or less - discard \n or other stuff
         for entry in obs_entry_list:
-            setting_list.append(ObsSetting(entry[0:47]))
+            setting_list.append(ObsSetting(entry[0:53]))
         trace_print(4, str(setting_list))
         for entry in setting_list:
             check_parms1(entry, args)
