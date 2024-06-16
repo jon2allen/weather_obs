@@ -34,7 +34,7 @@ class ObsCollector:
         self.station_id = id
         self.filetype = filetype
         self.allowdup = True
-        self.appendflag = False 
+        self.appendflag = True 
         self.obsday = 0
         self.obs_filename = None
         self.writeflag = True
@@ -271,7 +271,7 @@ class ObsCollector3dayhourly(ObsCollector3day):
         target = obs_utils.hunt_for_noaa_files3('.', g1, 'csv')
         print(f"target: { target }")
         print("len: ", len(target) )
-        if len(target) > 3:
+        if len(target) < 3:
             print("setting false")
             self.appendflag = False
             self.allowdup = False
