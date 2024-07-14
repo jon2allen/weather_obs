@@ -241,7 +241,7 @@ class obsCsvSplit:
         self.station_id = obs_setting.station_prefix
         self.outdir = obs_setting.outdir
         print(self.obs_setting.infile)
-        self.obs2 = read_weather_obs_csv(self.obs_setting.infile)
+        self.obs2 = read_weather_obs_csv(self.obs_setting.infile,strip_tz=False)
         trace_print(4, "analyzing input...")
         self.obs2['day_of_month'] = self.obs2['observation_time'].dt.day
         self.obs2['month_num'] = self.obs2['observation_time'].dt.month

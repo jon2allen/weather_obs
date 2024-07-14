@@ -1,4 +1,3 @@
-# from daily_weather_obs_chart import read_weather_obs_csv
 import os
 import sys
 import glob
@@ -37,7 +36,7 @@ def trace_print(level, first_string, *optional_strings):
             print("level not known:  ", trace_out, flush=True)
 
 
-def read_weather_obs_csv(target_csv):
+def read_weather_obs_csv(target_csv, strip_tz=True):
     """ read csv and return dataframe """
     # handle no_value_provided as NAN
     dtype_dict = {'temp_f': np.float64,
@@ -76,8 +75,8 @@ def read_weather_obs_csv(target_csv):
         obs1 = pd.read_csv(target_csv, 
                            dtype=dtype_dict,
                            na_values="<no_value_provided>")
-
-        obs1['observation_time'] = obs1['observation_time'].apply(date_utc)
+        if strip_tz is True:
+           obs1['observation_time'] = obs1['observation_time'].apply(date_utc)
     except OSError:
         trace_print(4, "file not found:  ", target_csv)
         # return empty dataframe
@@ -280,7 +279,7 @@ def gather_monthly_noaa_files(dir, noaa_station, ext, tyear, tmonth):
     return final_l
 
 
-def load_monthly_noaa_csv_files(dir, noaa_station, ext="csv", tyear=2021, tmonth=0):
+def load_monthly_noaa_csv_files(dir, noaa_station, ext="csv", tyear=2021, tmonth=0,strip_tz = False):
     file_list = gather_monthly_noaa_files(
         dir, noaa_station, ext, tyear, tmonth)
     if dir == ".":
@@ -301,7 +300,7 @@ def load_monthly_noaa_csv_files(dir, noaa_station, ext="csv", tyear=2021, tmonth
     return month_df
 
 
-def load_range_noaa_csv_files(dir, noaa_station, ext="csv", startdt=0, enddt=0):
+def load_range_noaa_csv_files(dir, noaa_station, ext="csv", startdt=0, enddt=0, strip_tz = False):
     file_list = gather_any_noaa_files(
         dir, noaa_station, ext, startdt, enddt)
     month_df = pd.DataFrame()
@@ -313,7 +312,7 @@ def load_range_noaa_csv_files(dir, noaa_station, ext="csv", startdt=0, enddt=0):
         trace_print(4, " loading from dir: ", t_dir)
     if len(file_list) > 0:
         for f in file_list:
-            obs1 = read_weather_obs_csv(t_dir + f)
+            obs1 = read_weather_obs_csv(t_dir + f,strip_tz)
             trace_print(4, "loading:  ", f)
             month_df = pd.concat( [month_df, obs1], ignore_index=True)
             #month_df = month_df.append(obs1, ignore_index=True)
