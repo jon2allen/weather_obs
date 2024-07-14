@@ -65,15 +65,19 @@ def read_weather_obs_csv(target_csv):
                   'ob_url': 'category',
                   'disclaimer_url': 'category',
                   'copyright_url': 'category',
-                  'privacy_policy_url': 'category'
+                  'privacy_policy_url': 'category',
+                  'observation_time': 'object' 
                   }
 
     try:
         # ignore time zone for parse here - times local to observation
         def date_utc(x): return dateutil.parser.parse(x[:20], ignoretz=True)
-        obs1 = pd.read_csv(target_csv, parse_dates=[9], date_format="%Y/%m/%d  %a",
+ 
+        obs1 = pd.read_csv(target_csv, 
                            dtype=dtype_dict,
                            na_values="<no_value_provided>")
+
+        obs1['observation_time'] = obs1['observation_time'].apply(date_utc)
     except OSError:
         trace_print(4, "file not found:  ", target_csv)
         # return empty dataframe
