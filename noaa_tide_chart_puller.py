@@ -56,9 +56,13 @@ class ObsTideCollector( ObsCollector):
         self.station_url = self.station_url.replace(bstring,nstring)
         self.df = pd.DataFrame()
         f_list = self.get_last_tidal_data()
-        print("f_list:", f_list)
+        print("f_list:", f_list) 
         if len(f_list) > 0:
-            self.obs_filename = f_list.pop()
+            self.obs_filename = f_list.pop() 
+            if str(today.year) in self.obs_filename:
+                print("year in")
+            else:
+                print("year out")
             self.load_tidal_data(self.obs_filename)
             self.read_next_year_data()
     def _find_station_data(self):
@@ -91,6 +95,9 @@ class ObsTideCollector( ObsCollector):
         today = datetime.now()
         day_7 = timedelta(hours=168)
         Seven_days = today - day_7
+        if Seven_days.year != today.year:
+           print( "seven day check")
+           return [] 
         file_list = obs_utils.gather_any_noaa_files('.', self.station_id, 'txt', Seven_days, today)
         return file_list
     def set_station_file_name(self):
@@ -138,7 +145,12 @@ class ObsTideCollector( ObsCollector):
         today = datetime.now()
         next_year = today.year + 1
         next_year_file = self.station_id + "_Y" + str(next_year) + ".txt"
-        self.load_tidal_data( next_year_file)
+        print("debug here")
+        if os.path.exists(next_year_file):
+           self.load_tidal_data( next_year_file) 
+        else:
+           self.get_next_year_data()
+           self.load_tidal_data( next_year_file )
     def write_tide_table_to_html(self):
         today = datetime.now().date()
         three_days = timedelta(hours=72)
