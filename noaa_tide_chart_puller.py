@@ -91,6 +91,9 @@ class ObsTideCollector( ObsCollector):
         today = datetime.now()
         day_7 = timedelta(hours=168)
         Seven_days = today - day_7
+        if Seven_days.year != today.year:
+           print("Seven day before start of year")
+           return []
         file_list = obs_utils.gather_any_noaa_files('.', self.station_id, 'txt', Seven_days, today)
         return file_list
     def set_station_file_name(self):
@@ -204,8 +207,8 @@ if __name__ == "__main__":
     # change to your desirect dirctory
     try:
         os.chdir(DATA_DIR)
-    except:
-        pass
+    except Exception:
+        pass 
 
 # thinking - logic - collect xml once a week.
 #              each day - write out html for tide - current day + 3

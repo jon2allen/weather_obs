@@ -84,7 +84,7 @@ class ObsCollector:
         pass
 
     def _post_process_station_data(self):
-        Pass
+        pass
 
     def _pre_process_station_data(self):
         pass
